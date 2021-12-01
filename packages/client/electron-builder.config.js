@@ -18,17 +18,22 @@ const config = {
     'package.json',
     {
       from: 'dist/main',
-      to: '',
+      to: 'dist/main',
       filter: ['**/*'],
     },
     {
       from: 'dist/preload',
-      to: 'preload',
+      to: 'dist/preload',
       filter: ['**/*'],
     },
     {
       from: 'dist/renderer',
-      to: 'renderer',
+      to: 'dist/renderer',
+      filter: ['**/*'],
+    },
+    {
+      from: 'dist/splash',
+      to: 'dist/splash',
       filter: ['**/*'],
     },
   ],

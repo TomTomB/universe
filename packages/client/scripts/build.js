@@ -6,10 +6,9 @@ const { dirname } = require('path');
 const path = require('path');
 const { copySync, removeSync } = require('fs-extra');
 
-// The script gets started from packages/client/main
 const packagesPath = path.resolve(__dirname, '..');
 
-/** @type 'production' | 'development' */
+/** @type {'production' | 'development'} */
 const mode = (process.env.MODE = process.env.MODE || 'production');
 
 const packagesConfigs = [

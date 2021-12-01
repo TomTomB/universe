@@ -1,0 +1,11 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@universe/client-main/*": ["./src/*"]
+    }
+  },
+  "files": ["src/index.ts"],
+  "include": ["../../../../types/**/*.d.ts"]
+}

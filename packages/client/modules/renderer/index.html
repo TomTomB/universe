@@ -2,12 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' blob:"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Universe</title>
   </head>
-  <body>
-    <h1>Hello world!</h1>
-    <script src="./src/index.ts" type="module"></script>
+  <body
+    style="
+      border-width: 1px;
+      border-top-width: 2px;
+      border-color: #1e282d;
+      border-top-color: #785a28;
+      border-style: solid;
+      height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    "
+  >
+    <div id="universe-app"></div>
+    <script src="./src/index.tsx" type="module"></script>
   </body>
 </html>
