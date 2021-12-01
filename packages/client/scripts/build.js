@@ -21,7 +21,7 @@ const buildSplash = () => {
   copySync(
     path.resolve(packagesPath, 'modules/splash'),
     path.resolve(packagesPath, 'dist/splash'),
-    { recursive: true }
+    { recursive: true },
   );
 };
 

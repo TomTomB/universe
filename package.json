@@ -9,10 +9,16 @@
     "packages/**"
   ],
   "scripts": {
+    "prepare": "husky install",
     "commit": "npx git-cz",
-    "client": "yarn --cwd packages/client"
+    "client": "yarn --cwd packages/client",
+    "lint": "eslint --cache .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "devDependencies": {
+    "@changesets/changelog-github": "0.4.2",
+    "@changesets/cli": "2.18.1",
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
     "cross-env": "7.0.3",
@@ -21,6 +27,8 @@
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
+    "git-format-staged": "2.1.2",
+    "husky": "7.0.4",
     "prettier": "2.4.1",
     "typescript": "4.5.2",
     "vite": "2.6.14"

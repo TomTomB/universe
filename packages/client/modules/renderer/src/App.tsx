@@ -49,6 +49,8 @@ export const App = () => {
 
   return (
     <div
+      role="grid"
+      tabIndex={0}
       style={{
         height: '30px',
         background: 'red',

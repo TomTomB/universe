@@ -54,14 +54,14 @@ const buildPackageJsonForDist = async (packageJson) => {
 const writeBackupPackageJson = async (packageJson) => {
   await fs.writeFile(
     path.resolve(PACKAGE_ROOT, 'package.json.bak'),
-    JSON.stringify(packageJson, null, 2)
+    JSON.stringify(packageJson, null, 2),
   );
 };
 
 const writePackageJson = async (packageJson) => {
   await fs.writeFile(
     path.resolve(PACKAGE_ROOT, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
+    JSON.stringify(packageJson, null, 2),
   );
 };
 

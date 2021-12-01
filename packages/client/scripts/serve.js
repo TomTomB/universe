@@ -4,7 +4,6 @@ const { createServer, build, createLogger } = require('vite');
 const electronPath = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
-const { writeFileSync } = require('fs-extra');
 const { copySync } = require('fs-extra');
 
 const packagesPath = path.resolve(__dirname, '..');
@@ -81,7 +80,7 @@ const setupMainPackageWatcher = (viteDevServer) => {
       spawnProcess.stdout.on(
         'data',
         (d) =>
-          d.toString().trim() && logger.warn(d.toString(), { timestamp: true })
+          d.toString().trim() && logger.warn(d.toString(), { timestamp: true }),
       );
       spawnProcess.stderr.on('data', (d) => {
         const data = d.toString().trim();
@@ -115,7 +114,7 @@ const buildSplash = () => {
   copySync(
     path.resolve(packagesPath, 'modules/splash'),
     path.resolve(packagesPath, 'dist/splash'),
-    { recursive: true }
+    { recursive: true },
   );
 };
 
