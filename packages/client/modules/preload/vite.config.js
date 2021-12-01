@@ -14,7 +14,7 @@ export default defineConfig({
   root: __dirname,
   resolve: {
     alias: {
-      '@universe/client-preload': SRC_PATH,
+      '@': SRC_PATH,
     },
   },
   build: {

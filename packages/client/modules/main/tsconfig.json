@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@universe/client-main/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "files": ["src/index.ts"],

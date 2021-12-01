@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="script-src 'self' blob:"
+      content="script-src 'self' blob: https://www.googletagmanager.com"
     />
     <meta
       name="viewport"
@@ -12,19 +12,8 @@
     />
     <title>Universe</title>
   </head>
-  <body
-    style="
-      border-width: 1px;
-      border-top-width: 2px;
-      border-color: #1e282d;
-      border-top-color: #785a28;
-      border-style: solid;
-      height: 100vh;
-      margin: 0;
-      box-sizing: border-box;
-    "
-  >
+  <body>
     <div id="universe-app"></div>
-    <script src="./src/index.tsx" type="module"></script>
+    <script src="./src/main.tsx" type="module"></script>
   </body>
 </html>

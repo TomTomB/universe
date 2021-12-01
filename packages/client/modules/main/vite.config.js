@@ -11,7 +11,7 @@ export default defineConfig({
   envDir: process.cwd(),
   resolve: {
     alias: {
-      '@universe/client-main': SRC_PATH,
+      '@': SRC_PATH,
     },
   },
   build: {

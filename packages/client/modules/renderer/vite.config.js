@@ -18,7 +18,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@universe/client-renderer': SRC_PATH,
+      '@': SRC_PATH,
     },
   },
   plugins: [react()],
