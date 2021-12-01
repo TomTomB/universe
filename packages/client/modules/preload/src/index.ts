@@ -1,4 +1,4 @@
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 import { init as initSentryRenderer } from '@sentry/electron/dist/renderer';
 import { version } from '../../../package.json';
 
@@ -14,6 +14,7 @@ const apiKey = 'electron';
  */
 const api: ElectronApi = {
   versions: process.versions,
+  didLoad: () => ipcRenderer.send('universe:did-load'),
 };
 
 /**

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell, protocol } from 'electron';
+import { app, BrowserWindow, shell, protocol, ipcMain, Menu } from 'electron';
 import { join } from 'path';
 import { URL } from 'url';
 import { Logger } from './util/logger';
@@ -28,6 +28,8 @@ if (!isSingleInstance) {
   app.quit();
   process.exit(0);
 }
+
+Menu.setApplicationMenu(null);
 
 if (import.meta.env.DEV) {
   app
@@ -89,7 +91,7 @@ const createWindow = async () => {
     },
   });
 
-  mainWindow.webContents.once('dom-ready', () => {
+  ipcMain.once('universe:did-load', () => {
     splash.destroy();
 
     if (!mainWindow) {
