@@ -14,7 +14,14 @@ const apiKey = 'electron';
  */
 const api: ElectronApi = {
   versions: process.versions,
-  didLoad: () => ipcRenderer.send('universe:did-load'),
+  window: {
+    didLoad: () => ipcRenderer.send('universe:window:did-load'),
+    minimize: () => ipcRenderer.send('universe:window:minimize'),
+    close: () => ipcRenderer.send('universe:window:close'),
+    setPosition: (args) =>
+      ipcRenderer.send('universe:window:set-position', args),
+    getPosition: () => ipcRenderer.invoke('universe:window:get-position'),
+  },
 };
 
 /**
