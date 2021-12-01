@@ -1,2 +1,2 @@
-const baz: string = 'baz123';
+const baz: string = 'baz1234';
 console.log(baz);

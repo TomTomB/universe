@@ -33,7 +33,6 @@ export default defineConfig({
         entryFileNames: '[name].cjs',
       },
     },
-    emptyOutDir: false,
     brotliSize: false,
   },
 });

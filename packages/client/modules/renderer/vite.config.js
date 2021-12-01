@@ -23,7 +23,7 @@ export default defineConfig({
   },
   plugins: [react()],
   build: {
-    sourcemap: process.env.MODE === 'development' ? true : false,
+    sourcemap: process.env.MODE === 'development',
     target: `chrome${chrome}`,
     assetsDir: '.',
     minify: process.env.MODE !== 'development',
@@ -32,7 +32,6 @@ export default defineConfig({
         dir: 'dist/renderer',
       },
     },
-    emptyOutDir: true,
     brotliSize: false,
   },
 });

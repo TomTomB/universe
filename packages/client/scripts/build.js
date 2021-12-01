@@ -4,6 +4,7 @@
 const { build } = require('vite');
 const { dirname } = require('path');
 const path = require('path');
+const { copySync, removeSync } = require('fs-extra');
 
 // The script gets started from packages/client/main
 const packagesPath = path.resolve(__dirname, '..');
@@ -18,13 +19,18 @@ const packagesConfigs = [
 ];
 
 const buildSplash = () => {
-  const { copySync } = require('fs-extra');
-
   copySync(
-    path.resolve(packagesPath, 'client/splash'),
-    path.resolve(packagesPath, '../dist/client/splash'),
+    path.resolve(packagesPath, 'modules/splash'),
+    path.resolve(packagesPath, 'dist/splash'),
     { recursive: true }
   );
+};
+
+const cleanupDist = () => {
+  removeSync(path.resolve(packagesPath, 'dist/main'));
+  removeSync(path.resolve(packagesPath, 'dist/preload'));
+  removeSync(path.resolve(packagesPath, 'dist/renderer'));
+  removeSync(path.resolve(packagesPath, 'dist/splash'));
 };
 
 /**
@@ -37,7 +43,8 @@ const buildByConfig = (configFile) => build({ configFile, mode });
     const totalTimeLabel = 'Total bundling time';
     console.time(totalTimeLabel);
 
-    // buildSplash();
+    cleanupDist();
+    buildSplash();
 
     for (const packageConfigPath of packagesConfigs) {
       const consoleGroupName = `${dirname(packageConfigPath)}/`;
