@@ -1,0 +1,5 @@
+package.json.bak
+dist
+node_modules
+temp
+*.log

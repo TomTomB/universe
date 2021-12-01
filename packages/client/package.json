@@ -1,0 +1,35 @@
+{
+  "name": "@universe/client",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.cjs",
+  "description": "Universe client",
+  "author": "Tom-Rune Bornholdt",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "package": "node ./scripts/package.js"
+  },
+  "dependencies": {
+    "@sentry/electron": "2.5.4",
+    "electron-log": "4.4.1",
+    "electron-updater": "4.6.2",
+    "firebase": "9.5.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "electronDependencies": [
+    "@sentry/electron",
+    "electron-log",
+    "electron-updater",
+    "electron"
+  ],
+  "devDependencies": {
+    "@types/electron-devtools-installer": "2.2.0",
+    "electron": "16.0.1",
+    "electron-builder": "22.14.5",
+    "electron-devtools-installer": "3.2.0",
+    "@types/react": "17.0.36",
+    "@types/react-dom": "17.0.11",
+    "@vitejs/plugin-react": "1.1.0"
+  }
+}
