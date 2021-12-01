@@ -14,6 +14,7 @@ const config = {
   directories: {
     output: 'dist/bin',
   },
+  asar: false,
   files: [
     'package.json',
     {
@@ -34,6 +35,11 @@ const config = {
     {
       from: 'dist/splash',
       to: 'dist/splash',
+      filter: ['**/*'],
+    },
+    {
+      from: 'modules/renderer/public',
+      to: 'dist/renderer',
       filter: ['**/*'],
     },
   ],

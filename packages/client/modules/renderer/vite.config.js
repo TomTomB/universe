@@ -25,8 +25,8 @@ export default defineConfig({
   build: {
     sourcemap: process.env.MODE === 'development',
     target: `chrome${chrome}`,
-    assetsDir: '.',
     minify: process.env.MODE !== 'development',
+    assetsDir: '.',
     rollupOptions: {
       output: {
         dir: 'dist/renderer',

@@ -26,12 +26,7 @@ interface SplashScreenControlsProps {
   };
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
-  // const playLoginAnimations = useSelector(selectPlayLoginAnimations);
-  // const playLoginMusic = useSelector(selectPlayLoginMusic);
-  // const dispatch = useAppDispatch();
-
   const store = useStore();
 
   return (

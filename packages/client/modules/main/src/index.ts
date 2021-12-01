@@ -67,7 +67,7 @@ const createWindow = async () => {
     webPreferences: {
       sandbox: true,
       contextIsolation: true,
-      devTools: !app.isPackaged,
+      // devTools: !app.isPackaged,
       nativeWindowOpen: true,
       disableBlinkFeatures: 'Auxclick',
       preload: join(__dirname, '../preload/index.cjs'),
@@ -102,6 +102,8 @@ const createWindow = async () => {
     mainWindow.show();
     mainWindow.focus();
 
+    mainWindow?.webContents.openDevTools({ mode: 'detach' });
+
     if (import.meta.env.DEV) {
       mainWindow?.webContents.openDevTools({ mode: 'detach' });
     }
@@ -110,17 +112,11 @@ const createWindow = async () => {
   const mainWindowUrl =
     import.meta.env.DEV && import.meta.env.VITE_DEV_SERVER_URL !== undefined
       ? import.meta.env.VITE_DEV_SERVER_URL
-      : new URL(
-          join(__dirname, '../renderer/index.html'),
-          `${Protocol.scheme}://`,
-        ).toString();
+      : `${Protocol.scheme}://renderer/index.html`;
 
   const splashWindowUrl = import.meta.env.DEV
     ? new URL(join(__dirname, '../splash/index.html'), 'file://').toString()
-    : new URL(
-        join(__dirname, '../splash/index.html'),
-        `${Protocol.scheme}://`,
-      ).toString();
+    : `${Protocol.scheme}://splash/index.html`;
 
   splash.loadURL(splashWindowUrl);
   mainWindow.loadURL(mainWindowUrl);

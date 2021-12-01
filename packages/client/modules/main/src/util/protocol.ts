@@ -9,7 +9,9 @@ export const requestHandler = (
 ): void => {
   const url = request.url.substr(scheme.length + 3);
 
-  Logger.verbose('Loading file', `${__dirname}/${url}`);
+  const rootDir = path.join(__dirname, '..');
 
-  callback({ path: path.normalize(`${__dirname}/${url}`) });
+  Logger.verbose('Loading file', `${rootDir}/${url}`);
+
+  callback({ path: path.normalize(`${rootDir}/${url}`) });
 };
