@@ -67,7 +67,7 @@ const createWindow = async () => {
     webPreferences: {
       sandbox: true,
       contextIsolation: true,
-      // devTools: !app.isPackaged,
+      devTools: !app.isPackaged,
       nativeWindowOpen: true,
       disableBlinkFeatures: 'Auxclick',
       preload: join(__dirname, '../preload/index.cjs'),
@@ -101,8 +101,6 @@ const createWindow = async () => {
 
     mainWindow.show();
     mainWindow.focus();
-
-    mainWindow?.webContents.openDevTools({ mode: 'detach' });
 
     if (import.meta.env.DEV) {
       mainWindow?.webContents.openDevTools({ mode: 'detach' });

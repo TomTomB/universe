@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 import { Shell } from './domain/shell/views';
 import { BodyTypography, HeadingTypography } from './styles/global';
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route, HashRouter, Routes } from 'react-router-dom';
 import { Login } from './domain/auth/views';
 import { rootSelector } from './uikit/core/constants';
 
@@ -16,12 +16,12 @@ ReactDOM.render(
       <HeadingTypography />
       <BodyTypography />
       <Shell>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </Shell>
     </ThemeProvider>
   </React.StrictMode>,

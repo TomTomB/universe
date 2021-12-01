@@ -14,7 +14,6 @@ const config = {
   directories: {
     output: 'dist/bin',
   },
-  asar: false,
   files: [
     'package.json',
     {
