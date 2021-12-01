@@ -3,3 +3,7 @@ dist
 node_modules
 temp
 *.log
+.DS_Store
+*.local
+.eslintcache
+tsconfig.tsbuildinfo

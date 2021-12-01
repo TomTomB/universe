@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CI: true
+
+jobs:
+  version:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Create and publish versions
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: yarn changeset version
+          commit: 'chore: 🤖 update versions'
+          publish: yarn changeset tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for a universe/client version
+        uses: actions/github-script@v5
+        id: getClientVersion
+        with:
+          script: |
+            const newVersions = JSON.parse(process.env.DATA);
+            const clientVersion = newVersions.find((v) => v.name === '@universe/client');
+
+            if (clientVersion) {
+              return clientVersion.version;
+            }
+
+            return false;
+          result-encoding: string
+        env:
+          DATA: ${{ steps.changesets.outputs.publishedPackages }}
+
+      - name: Do a sentry release of universe/client
+        if: steps.getClientVersion.outputs.result != 'false'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: production
+          version: ${{ steps.getClientVersion.outputs.result }}

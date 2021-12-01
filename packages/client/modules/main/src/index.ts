@@ -41,7 +41,7 @@ if (import.meta.env.DEV) {
           loadExtensionOptions: {
             allowFileAccess: true,
           },
-        })
+        }),
     )
     .catch((e) => Logger.error('Failed install extension:', e));
 }
@@ -112,14 +112,14 @@ const createWindow = async () => {
       ? import.meta.env.VITE_DEV_SERVER_URL
       : new URL(
           join(__dirname, '../renderer/index.html'),
-          `${Protocol.scheme}://`
+          `${Protocol.scheme}://`,
         ).toString();
 
   const splashWindowUrl = import.meta.env.DEV
     ? new URL(join(__dirname, '../splash/index.html'), 'file://').toString()
     : new URL(
         join(__dirname, '../splash/index.html'),
-        `${Protocol.scheme}://`
+        `${Protocol.scheme}://`,
       ).toString();
 
   splash.loadURL(splashWindowUrl);
@@ -201,7 +201,7 @@ ipcMain.on(
     }
 
     mainWindow.setPosition(args.x, args.y);
-  }
+  },
 );
 
 ipcMain.handle('universe:window:get-position', () => {
