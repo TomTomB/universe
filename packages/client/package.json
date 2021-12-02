@@ -17,7 +17,7 @@
     "@xstate/react": "1.6.3",
     "classnames": "2.3.1",
     "electron-log": "4.4.1",
-    "electron-updater": "4.6.2",
+    "electron-updater": "4.6.5",
     "gl-matrix": "3.4.3",
     "i18next": "21.5.4",
     "i18next-http-backend": "1.3.1",
