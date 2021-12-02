@@ -1,8 +1,9 @@
 // @ts-check
 
-const { writeFile, mkdir } = require('fs/promises');
+const { writeFile, mkdir, readFile } = require('fs/promises');
 const { execSync } = require('child_process');
 const electron = require('electron');
+const path = require('path');
 
 /**
  * Returns versions of electron vendors
@@ -31,7 +32,7 @@ async function updateVendors() {
   const chromeMajorVersion =
     electronRelease.v8.split('.')[0] + electronRelease.v8.split('.')[1];
 
-  // const packageJSONPath = path.resolve(process.cwd(), 'package.json');
+  const packageJSONPath = path.resolve(process.cwd(), 'package.json');
 
   await mkdir('temp', { recursive: true });
 
@@ -44,15 +45,17 @@ async function updateVendors() {
       }),
     ),
 
-    // readFile(packageJSONPath).then(JSON.parse).then((packageJSON) => {
-    //   if (!packageJSON || !Array.isArray(packageJSON.browserslist)) {
-    //     throw new Error(`Can't find browserslist in ${packageJSONPath}`);
-    //   }
+    readFile(packageJSONPath, { encoding: 'utf-8' })
+      .then(JSON.parse)
+      .then((packageJSON) => {
+        if (!packageJSON || !Array.isArray(packageJSON.browserslist)) {
+          throw new Error(`Can't find browserslist in ${packageJSONPath}`);
+        }
 
-    //   packageJSON.browserslist = [`Chrome ${chromeMajorVersion}`];
+        packageJSON.browserslist = [`Chrome ${chromeMajorVersion}`];
 
-    //   return writeFile(packageJSONPath, formattedJSON(packageJSON));
-    // }),
+        return writeFile(packageJSONPath, formattedJSON(packageJSON));
+      }),
   ]);
 }
 

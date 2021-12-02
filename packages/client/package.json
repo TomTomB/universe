@@ -5,6 +5,9 @@
   "main": "dist/main/index.cjs",
   "description": "Universe client",
   "author": "Tom-Rune Bornholdt",
+  "browserslist": [
+    "Chrome 96"
+  ],
   "scripts": {
     "postinstall": "yarn gen:build-vars",
     "build": "node ./scripts/build.js",
