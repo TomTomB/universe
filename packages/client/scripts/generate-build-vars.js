@@ -1,6 +1,6 @@
 // @ts-check
 
-const { writeFile } = require('fs/promises');
+const { writeFile, mkdir } = require('fs/promises');
 const { execSync } = require('child_process');
 const electron = require('electron');
 
@@ -24,7 +24,7 @@ function formattedJSON(obj) {
   return JSON.stringify(obj, null, 2) + '\n';
 }
 
-function updateVendors() {
+async function updateVendors() {
   const electronRelease = getVendors();
 
   const nodeMajorVersion = electronRelease.node.split('.')[0];
@@ -32,6 +32,8 @@ function updateVendors() {
     electronRelease.v8.split('.')[0] + electronRelease.v8.split('.')[1];
 
   // const packageJSONPath = path.resolve(process.cwd(), 'package.json');
+
+  await mkdir('temp', { recursive: true });
 
   return Promise.all([
     writeFile(
