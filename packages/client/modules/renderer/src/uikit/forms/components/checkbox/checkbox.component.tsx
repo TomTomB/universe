@@ -3,6 +3,8 @@ import React from 'react';
 import classNames from 'classnames';
 import type { FC } from 'react';
 import type { UseFormRegister } from 'react-hook-form';
+import { useAudio } from '@/uikit/core/hooks';
+import clickAudioFile from './assets/sounds/sfx-uikit-checkbox-click.ogg';
 
 export interface CheckboxProps {
   id: string;
@@ -11,6 +13,7 @@ export interface CheckboxProps {
   disabled?: boolean;
   className?: string;
   value?: boolean;
+  playSounds?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register?: UseFormRegister<any>;
   onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,9 +26,12 @@ export const Checkbox: FC<CheckboxProps> = ({
   className,
   disabled = false,
   value = false,
+  playSounds,
   register,
   onChange,
 }) => {
+  const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
+
   return (
     <C.CheckboxContainer
       className={classNames(
@@ -34,6 +40,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         },
         className,
       )}
+      {...clickAudio.active}
     >
       {register && (
         <C.CheckboxInput

@@ -9,6 +9,8 @@ import { useTransition } from 'react-spring';
 import type { FC } from 'react';
 import type { SelectOption } from '../select.types';
 import type { UseFormRegister } from 'react-hook-form';
+import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
+import { useAudio } from '@/uikit/core/hooks';
 
 export interface FramedSelectProps {
   items: SelectOption[];
@@ -18,6 +20,7 @@ export interface FramedSelectProps {
   value?: string;
   disabled?: boolean;
   openUpward?: boolean;
+  playSounds?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register?: UseFormRegister<any>;
 }
@@ -30,6 +33,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
   name,
   value,
   disabled,
+  playSounds,
   openUpward = false,
 }) => {
   const {
@@ -51,6 +55,8 @@ export const FramedSelect: FC<FramedSelectProps> = ({
     enter: { opacity: 1, transform: 'scaleY(1)' },
     leave: { opacity: 0, transform: 'scaleY(0)' },
   });
+
+  const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
 
   return (
     <FormField>
@@ -107,6 +113,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
                           <FramedSelectOption
                             index={index}
                             disabled={option.disabled}
+                            playSounds={playSounds}
                             key={option.label + option.value}
                             selected={selectedOption === option.value}
                             onClick={() => {
@@ -124,7 +131,12 @@ export const FramedSelect: FC<FramedSelectProps> = ({
             ),
         )}
 
-        <C.CurrentContainer onClick={() => setIsOpen(!isOpen)}>
+        <C.CurrentContainer
+          onClick={() => {
+            setIsOpen(!isOpen);
+            clickAudio.active.onClick();
+          }}
+        >
           <C.CurrentValue>
             {items.find((item) => item.value === selectedOption)?.label ||
               'Select'}

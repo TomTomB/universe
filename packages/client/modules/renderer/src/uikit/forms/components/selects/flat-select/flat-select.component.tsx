@@ -9,6 +9,8 @@ import { useMemo } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import type { SelectOption } from '../select.types';
 import type { UseFormRegister } from 'react-hook-form';
+import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
+import { useAudio } from '@/uikit/core/hooks';
 
 export interface SelectOptionsWithGroups {
   items: SelectOption[];
@@ -28,6 +30,7 @@ export interface FlatSelectProps {
   value?: string;
   disabled?: boolean;
   openUpward?: boolean;
+  playSounds?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register?: UseFormRegister<any>;
 }
@@ -40,6 +43,7 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
   label,
   name,
   register,
+  playSounds,
   value,
 }) => {
   const normalizedItems = useMemo(() => {
@@ -73,6 +77,8 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
       transform: `scale(0.25) translate(10px,${translateY})`,
     },
   });
+
+  const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
 
   return (
     <>
@@ -162,7 +168,12 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
               </C.AnimatedOptionsContainer>
             ),
         )}
-        <C.Current onClick={() => setIsOpen(!isOpen)}>
+        <C.Current
+          onClick={() => {
+            setIsOpen(!isOpen);
+            clickAudio.active.onClick();
+          }}
+        >
           {normalizedItems.find((item) => item.value === selectedOption)
             ?.label || 'Select'}
         </C.Current>

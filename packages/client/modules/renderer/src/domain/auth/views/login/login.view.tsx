@@ -37,6 +37,7 @@ export const Login: FC = () => {
 
           <FramedSelect
             id="id"
+            playSounds
             items={[
               { label: 'Label 1', value: 'value1' },
               { label: 'Label 2', value: 'value2' },

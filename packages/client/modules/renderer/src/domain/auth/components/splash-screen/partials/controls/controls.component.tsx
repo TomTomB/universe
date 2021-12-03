@@ -51,6 +51,7 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             label="Disable Login Animations"
             name="disableLoginAnimations"
             value={!store.playLoginAnimations}
+            playSounds
             onChange={() => {
               store.setPlayLoginAnimations(!store.playLoginAnimations);
             }}
@@ -60,6 +61,7 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             label="Disable Login Music"
             name="disableLoginMusic"
             value={!store.playLoginMusic}
+            playSounds
             onChange={() => {
               store.setPlayLoginMusic(!store.playLoginMusic);
             }}
