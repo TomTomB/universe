@@ -37,7 +37,7 @@
     "styled-components": "5.3.3",
     "xstate": "4.26.1",
     "yup": "0.32.11",
-    "zustand": "3.6.5"
+    "zustand": "3.6.6"
   },
   "electronDependencies": [
     "@sentry/electron",
