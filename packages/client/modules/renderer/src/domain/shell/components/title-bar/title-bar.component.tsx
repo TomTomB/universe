@@ -63,16 +63,23 @@ export const TitleBar = () => {
         <TitleBarButton
           label="Minimize"
           type="minimize"
+          playSounds
           onClick={minimizeWindow}
         />
         <TitleBarButton
           label="Settings"
           type="settings"
+          playSounds
           onClick={() => {
             console.log('Settings');
           }}
         />
-        <TitleBarButton label="Close" type="close" onClick={closeWindow} />
+        <TitleBarButton
+          label="Close"
+          type="close"
+          playSounds
+          onClick={closeWindow}
+        />
       </C.TitleBarControls>
     </C.StyledHeader>
   );

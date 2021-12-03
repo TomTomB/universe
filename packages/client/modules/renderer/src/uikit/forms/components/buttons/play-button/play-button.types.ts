@@ -38,6 +38,7 @@ export interface PlayButtonProps extends ButtonProps {
   downloadProgress?: DownloadProgress | null;
   buttonState: PlayButtonState;
   prevButtonState: PlayButtonState;
+  playSounds?: boolean;
 }
 
 export interface ButtonTextProps {

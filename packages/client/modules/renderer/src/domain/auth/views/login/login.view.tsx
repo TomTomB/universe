@@ -28,6 +28,7 @@ export const Login: FC = () => {
             buttonState={PlayButtonState.PLAY}
             prevButtonState={PlayButtonState.HIDDEN}
             type="button"
+            playSounds
           >
             Play
           </PlayButton>

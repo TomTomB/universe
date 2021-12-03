@@ -10,6 +10,11 @@ import { PlayButtonState } from './play-button.types';
 import { useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import type { PlayButtonProps } from './play-button.types';
+import { useAudio } from '@/uikit/core/hooks';
+import lobbyClickAudioFile from './assets/sounds/sfx-nav-button-lobby-click.ogg';
+import lobbyHoverAudioFile from './assets/sounds/sfx-nav-button-lobby-hover.ogg';
+import playClickAudioFile from './assets/sounds/sfx-nav-button-play-click.ogg';
+import playHoverAudioFile from './assets/sounds/sfx-nav-button-play-hover.ogg';
 
 export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
   type,
@@ -20,6 +25,7 @@ export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
   buttonState,
   prevButtonState,
   downloadProgress,
+  playSounds,
 }) => {
   const btnIsDisabled =
     disabled ||
@@ -33,6 +39,24 @@ export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
     prevButtonState === PlayButtonState.HIDDEN;
 
   const [isHovering, setIsHovering] = useState(false);
+
+  const lobbyClickAudio = useAudio(
+    lobbyClickAudioFile,
+    disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
+  );
+  const lobbyHoverAudio = useAudio(
+    lobbyHoverAudioFile,
+    disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
+  );
+
+  const playClickAudio = useAudio(
+    playClickAudioFile,
+    disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
+  );
+  const playHoverAudio = useAudio(
+    playHoverAudioFile,
+    disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
+  );
 
   return (
     <C.StyledPlayButton
@@ -51,12 +75,22 @@ export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
           />
         </C.LeagueLogoContainer>
         <C.ButtonContainer
-          onClick={onClick}
+          onClick={(e) => {
+            onClick?.(e);
+            lobbyClickAudio.active.onClick();
+            playClickAudio.active.onClick();
+          }}
           onMouseEnter={() => {
             setIsHovering(true);
+            lobbyHoverAudio.hover.onMouseEnter();
+            playHoverAudio.hover.onMouseEnter();
           }}
           onMouseLeave={() => {
             setIsHovering(false);
+          }}
+          onFocus={() => {
+            lobbyHoverAudio.hover.onMouseEnter();
+            playHoverAudio.hover.onMouseEnter();
           }}
           disabled={btnIsDisabled}
           type={type}
