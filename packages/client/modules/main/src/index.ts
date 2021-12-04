@@ -118,6 +118,10 @@ const createWindow = async () => {
 
   splash.loadURL(splashWindowUrl);
   mainWindow.loadURL(mainWindowUrl);
+
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 };
 
 app.on('second-instance', () => {
@@ -130,6 +134,12 @@ app.on('second-instance', () => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (mainWindow === null) {
+    createWindow();
   }
 });
 
