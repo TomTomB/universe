@@ -172,29 +172,17 @@ app.on('web-contents-created', (_event, contents) => {
 });
 
 ipcMain.on('universe:window:minimize', () => {
-  if (!mainWindow) {
-    return;
-  }
-
-  mainWindow.minimize();
+  mainWindow?.minimize();
 });
 
-ipcMain.once('universe:window:close', () => {
-  if (!mainWindow) {
-    return;
-  }
-
-  mainWindow.close();
+ipcMain.on('universe:window:close', () => {
+  mainWindow?.destroy();
 });
 
 ipcMain.on(
   'universe:window:set-position',
   (_, args: { x: number; y: number }) => {
-    if (!mainWindow || !args) {
-      return;
-    }
-
-    mainWindow.setPosition(args.x, args.y);
+    mainWindow?.setPosition(args.x, args.y);
   },
 );
 
