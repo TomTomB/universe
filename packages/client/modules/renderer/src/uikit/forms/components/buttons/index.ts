@@ -1,6 +1,7 @@
 export * from './button.types';
 
 export * from './arrow-button';
+export * from './arrow-footer';
 export * from './button-group';
 export * from './close-button';
 export * from './play-button';

@@ -2,6 +2,7 @@ import type {
   SplashScreenAudioMachine,
   SplashScreenVideoMachine,
 } from '@/uikit/core/machines';
+import { ArrowFooter } from '@/uikit/forms/components';
 import type { FC } from 'react';
 import { useRef } from 'react';
 import type { State } from 'xstate';
@@ -115,6 +116,10 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
           });
         }}
       />
+
+      <div style={{ position: 'relative', zIndex: 20000, marginTop: '30px' }}>
+        <ArrowFooter hideCloseButton> Hello! </ArrowFooter>
+      </div>
     </>
   );
 };
