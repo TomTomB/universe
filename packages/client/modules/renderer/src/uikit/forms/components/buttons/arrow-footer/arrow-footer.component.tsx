@@ -1,3 +1,4 @@
+import { AnimatedArrowOverlay } from '@/uikit/common/components';
 import type { FC } from 'react';
 import * as C from './arrow-footer.styles';
 
@@ -7,6 +8,7 @@ export interface ArrowFooterProps {
   isCloseDisabled?: boolean;
   isCompleted?: boolean;
   isBack?: boolean;
+  isDecorated?: boolean;
 }
 
 export const ArrowFooter: FC<ArrowFooterProps> = ({
@@ -15,13 +17,16 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
   isCloseDisabled,
   isCompleted,
   isBack,
+  isDecorated,
   children,
 }) => {
   return (
     <C.StyledArrowFooter>
-      <C.Decoration closeHidden={hideCloseButton}>
-        <C.DecorationChildLeft closeHidden={hideCloseButton} />
-      </C.Decoration>
+      {isDecorated && (
+        <C.Decoration>
+          <C.DecorationChildLeft />
+        </C.Decoration>
+      )}
 
       <C.ConfirmButtonContainer>
         <C.BorderBg>
@@ -30,13 +35,19 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
           <C.BorderRightBg />
         </C.BorderBg>
 
-        <C.ConfirmButton disabled={isConfirmDisabled} completed={isCompleted}>
+        <C.ConfirmButton
+          disabled={isConfirmDisabled}
+          completed={isCompleted}
+          closeHidden={hideCloseButton}
+        >
           <C.LeftConfirm
             completed={isCompleted}
             closeHidden={hideCloseButton}
           />
           <C.MiddleConfirm completed={isCompleted}>{children}</C.MiddleConfirm>
           <C.RightConfirm completed={isCompleted} />
+
+          <AnimatedArrowOverlay isCarrot={hideCloseButton} />
         </C.ConfirmButton>
 
         {!hideCloseButton && (
@@ -46,9 +57,11 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
         )}
       </C.ConfirmButtonContainer>
 
-      <C.Decoration closeHidden={hideCloseButton}>
-        <C.DecorationChildRight closeHidden={hideCloseButton} />
-      </C.Decoration>
+      {isDecorated && (
+        <C.Decoration>
+          <C.DecorationChildRight />
+        </C.Decoration>
+      )}
     </C.StyledArrowFooter>
   );
 };

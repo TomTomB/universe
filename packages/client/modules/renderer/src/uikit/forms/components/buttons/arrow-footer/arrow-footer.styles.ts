@@ -1,3 +1,4 @@
+import { AnimatedArrowOverlayStyles } from '@/uikit/common/components';
 import styled, { css } from 'styled-components';
 import { Images } from './assets';
 
@@ -6,53 +7,34 @@ export const StyledArrowFooter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 0 0 1px;
-  height: 51px;
+  height: 43px;
   box-sizing: border-box;
 `;
 
-export const Decoration = styled.div<{ closeHidden?: boolean }>`
+export const Decoration = styled.div`
   display: flex;
   position: relative;
   flex: 1 1 auto;
-  height: 34px;
-
-  ${({ closeHidden }) =>
-    closeHidden &&
-    css`
-      flex-direction: column;
-      justify-content: center;
-    `}
+  flex-direction: column;
+  justify-content: center;
 `;
 
-export const DecorationChild = styled.div<{ closeHidden?: boolean }>`
-  ${({ closeHidden }) =>
-    closeHidden &&
-    css`
-      background-size: 100% 100%;
-      width: 256px;
-      height: 8px;
-    `}
+export const DecorationChild = styled.div`
+  background-size: 100% 100%;
+  width: 256px;
+  height: 8px;
 `;
 
 export const DecorationChildLeft = styled(DecorationChild)`
-  ${({ closeHidden }) =>
-    closeHidden &&
-    css`
-      margin-right: 50px;
-      align-self: flex-end;
-      background-image: url(${Images.footerMetalDecorationLeft});
-    `}
+  margin-right: 50px;
+  align-self: flex-end;
+  background-image: url(${Images.footerMetalDecorationLeft});
 `;
 
 export const DecorationChildRight = styled(DecorationChild)`
-  ${({ closeHidden }) =>
-    closeHidden &&
-    css`
-      margin-left: 50px;
-      align-self: flex-start;
-      background-image: url(${Images.footerMetalDecorationRight});
-    `}
+  margin-left: 50px;
+  align-self: flex-start;
+  background-image: url(${Images.footerMetalDecorationRight});
 `;
 
 export const ConfirmButtonContainer = styled.div`
@@ -67,7 +49,6 @@ export const BorderBg = styled.div`
   width: 100%;
   height: 44px;
   display: flex;
-  top: -5px;
 `;
 
 export const BorderLeftBg = styled.div<{ closeHidden?: boolean }>`
@@ -111,7 +92,12 @@ export const BorderRightBg = styled.div`
   background-image: url(${Images.bgRight});
 `;
 
-export const ConfirmButton = styled.button<{ completed?: boolean }>`
+type LeftConfirmProps = {
+  closeHidden?: boolean;
+  completed?: boolean;
+};
+
+export const ConfirmButton = styled.button<LeftConfirmProps>`
   font-kerning: normal;
   font-family: LoL Display;
   -webkit-font-feature-settings: 'kern' 1;
@@ -129,38 +115,44 @@ export const ConfirmButton = styled.button<{ completed?: boolean }>`
 
   height: 34px;
   min-width: 170px;
-  margin-left: 29px;
+
   padding-right: 1px;
   color: #a3c7c7;
   position: relative;
   display: flex;
 
-  &:hover {
-    color: #f0e6d2;
-  }
+  top: 5px;
 
-  &:disabled {
+  ${({ completed }) =>
+    completed
+      ? css`
+          color: #c89b3c;
+          cursor: default;
+        `
+      : css`
+          &:hover {
+            color: #f0e6d2;
+
+            ${AnimatedArrowOverlayStyles.AnimatedArrowOverlayStateHoverFocus}
+          }
+          &:active {
+            color: #005a82;
+
+            ${AnimatedArrowOverlayStyles.AnimatedArrowOverlayStateActive}
+          }
+        `}
+
+  ${({ closeHidden }) =>
+    !closeHidden &&
+    css`
+      margin-left: 29px;
+    `}
+
+    &:disabled {
     color: #5c5b57;
     cursor: default;
   }
-
-  &:active {
-    /* color: #785a28; */
-    color: #005a82;
-  }
-
-  ${({ completed }) =>
-    completed &&
-    css`
-      color: #c89b3c;
-      cursor: default;
-    `}
 `;
-
-type LeftConfirmProps = {
-  closeHidden?: boolean;
-  completed?: boolean;
-};
 
 export const LeftConfirm = styled.div<LeftConfirmProps>`
   background-size: 100% 100%;
@@ -176,15 +168,15 @@ export const LeftConfirm = styled.div<LeftConfirmProps>`
               `
             : css`
                 background-image: url(${Images.leftStraightDefault});
+
+                ${ConfirmButton}:hover & {
+                  background-image: url(${Images.leftStraightHover});
+                }
+
+                ${ConfirmButton}:active & {
+                  background-image: url(${Images.leftStraightClick});
+                }
               `}
-
-          ${ConfirmButton}:hover & {
-            background-image: url(${Images.leftStraightHover});
-          }
-
-          ${ConfirmButton}:active & {
-            background-image: url(${Images.leftStraightClick});
-          }
 
           ${ConfirmButton}:disabled & {
             background-image: url(${Images.leftStraightDisabled});
@@ -197,15 +189,15 @@ export const LeftConfirm = styled.div<LeftConfirmProps>`
               `
             : css`
                 background-image: url(${Images.leftDefault});
+
+                ${ConfirmButton}:hover & {
+                  background-image: url(${Images.leftHover});
+                }
+
+                ${ConfirmButton}:active & {
+                  background-image: url(${Images.leftClick});
+                }
               `}
-
-          ${ConfirmButton}:hover & {
-            background-image: url(${Images.leftHover});
-          }
-
-          ${ConfirmButton}:active & {
-            background-image: url(${Images.leftClick});
-          }
 
           ${ConfirmButton}:disabled & {
             background-image: url(${Images.leftDisabled});
@@ -230,15 +222,15 @@ export const MiddleConfirm = styled.div<{ completed?: boolean }>`
         `
       : css`
           background-image: url(${Images.midDefault});
+
+          ${ConfirmButton}:hover & {
+            background-image: url(${Images.midHover});
+          }
+
+          ${ConfirmButton}:active & {
+            background-image: url(${Images.midClick});
+          }
         `}
-
-  ${ConfirmButton}:hover & {
-    background-image: url(${Images.midHover});
-  }
-
-  ${ConfirmButton}:active & {
-    background-image: url(${Images.midClick});
-  }
 
   ${ConfirmButton}:disabled & {
     background-image: url(${Images.midDisabled});
@@ -257,15 +249,15 @@ export const RightConfirm = styled.div<{ completed?: boolean }>`
         `
       : css`
           background-image: url(${Images.rightDefault});
+
+          ${ConfirmButton}:hover & {
+            background-image: url(${Images.rightHover});
+          }
+
+          ${ConfirmButton}:active & {
+            background-image: url(${Images.rightClick});
+          }
         `}
-
-  ${ConfirmButton}:hover & {
-    background-image: url(${Images.rightHover});
-  }
-
-  ${ConfirmButton}:active & {
-    background-image: url(${Images.rightClick});
-  }
 
   ${ConfirmButton}:disabled & {
     background-image: url(${Images.rightDisabled});
@@ -284,6 +276,7 @@ export const CloseButton = styled.button<{ completed?: boolean }>`
   background-size: contain;
   position: absolute;
   left: 0px;
+  top: 5px;
 
   ${({ completed }) =>
     completed
@@ -293,19 +286,19 @@ export const CloseButton = styled.button<{ completed?: boolean }>`
         `
       : css`
           background-image: url(${Images.normal});
-          cursor: default;
+
+          &:hover {
+            background-image: url(${Images.hover});
+          }
+
+          &:active {
+            background-image: url(${Images.clicked});
+          }
         `}
-
-  &:hover {
-    background-image: url(${Images.hover});
-  }
-
-  &:active {
-    background-image: url(${Images.clicked});
-  }
 
   &:disabled {
     cursor: default;
+    background-image: url(${Images.disabled});
   }
 `;
 
