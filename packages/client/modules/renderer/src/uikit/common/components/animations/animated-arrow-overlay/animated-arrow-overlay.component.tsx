@@ -1,7 +1,8 @@
 import * as C from './animated-arrow-overlay.styles';
 import { Assets } from './assets';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FC } from 'react';
+import { useResizeObserver } from '@/uikit/core/hooks';
 
 export interface AnimatedArrowOverlayProps {
   isCarrot?: boolean;
@@ -9,21 +10,29 @@ export interface AnimatedArrowOverlayProps {
 }
 
 export const AnimatedArrowOverlay: FC<AnimatedArrowOverlayProps> = ({
-  isCarrot = true,
+  isCarrot,
   className,
 }) => {
   const animatedArrowOverlayWrapper = useRef<HTMLDivElement | null>(null);
+  const [path, setPath] = useState<string>('');
+  const { width } = useResizeObserver(animatedArrowOverlayWrapper);
 
-  const generatePath = () => {
+  useEffect(() => {
     if (!animatedArrowOverlayWrapper.current) {
-      return '';
+      setPath('');
+      return;
     }
-    const width = animatedArrowOverlayWrapper.current.offsetWidth - 31;
-    const pathArrow = `M0, 0 h${width} l15 16 l-15 16 H0 a21.461 21.461,0,0,0,8.4 -16,21.461 21.461,0,0,0,-8.4 -16 Z`;
-    const pathCarrot = `M0, 0 h${width} l15 16 l-15 16 H0 0,0 Z`;
 
-    return isCarrot ? pathCarrot : pathArrow;
-  };
+    const w = width - 31;
+    if (isCarrot) {
+      setPath(`M0, 0 h${w} l15 16 l-15 16 H0 0,0 Z`);
+      return;
+    }
+
+    setPath(
+      `M0, 0 h${w} l15 16 l-15 16 H0 a21.461 21.461,0,0,0,8.4 -16,21.461 21.461,0,0,0,-8.4 -16 Z`,
+    );
+  }, [animatedArrowOverlayWrapper, isCarrot, width]);
 
   return (
     <C.Container className={className}>
@@ -97,7 +106,7 @@ export const AnimatedArrowOverlay: FC<AnimatedArrowOverlayProps> = ({
             </pattern>
             <path
               id="scalable-path"
-              d={generatePath()}
+              d={path}
               fill="none"
               stroke="#fff"
               strokeWidth="2"

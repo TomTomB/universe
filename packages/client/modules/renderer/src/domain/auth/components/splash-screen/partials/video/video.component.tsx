@@ -118,7 +118,9 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
       />
 
       <div style={{ position: 'relative', zIndex: 20000, marginTop: '30px' }}>
-        <ArrowFooter isDecorated> Pfeile beschte junge! </ArrowFooter>
+        <ArrowFooter isDecorated playSounds soundType="lobby">
+          Pfeile beschte junge!
+        </ArrowFooter>
       </div>
     </>
   );
