@@ -30,8 +30,8 @@ export const TogglePasswordCheckbox = styled.input`
   height: 22px;
   width: 22px;
   position: absolute;
-  right: 1px;
-  top: 22px;
+  right: 3px;
+  top: 27px;
   z-index: 1;
   cursor: pointer;
   background-color: ${(props) => props.theme.colors.gold[2]};
