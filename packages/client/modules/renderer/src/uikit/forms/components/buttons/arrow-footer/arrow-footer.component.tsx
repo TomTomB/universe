@@ -19,6 +19,15 @@ export interface ArrowFooterProps {
   isDecorated?: boolean;
   soundType?: 'game-select' | 'lobby';
   playSounds?: boolean;
+  className?: string;
+  confirmType?: 'button' | 'submit' | 'reset' | undefined;
+  closeType?: 'button' | 'submit' | 'reset' | undefined;
+  onConfirmClick?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
+  onCloseClick?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
 }
 
 export const ArrowFooter: FC<ArrowFooterProps> = ({
@@ -30,6 +39,11 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
   isDecorated,
   soundType,
   playSounds,
+  className,
+  onCloseClick,
+  onConfirmClick,
+  closeType,
+  confirmType,
   children,
 }) => {
   const closeClickAudio = useAudio(
@@ -51,7 +65,7 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
   );
 
   return (
-    <C.StyledArrowFooter>
+    <C.StyledArrowFooter className={className}>
       {isDecorated && (
         <C.Decoration>
           <C.DecorationChildLeft />
@@ -69,7 +83,11 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
           disabled={isConfirmDisabled}
           completed={isCompleted}
           closeHidden={hideCloseButton}
-          {...confirmClickAudio.active}
+          type={confirmType ?? 'button'}
+          onClick={(e) => {
+            onConfirmClick?.(e);
+            confirmClickAudio.active.onClick();
+          }}
           {...confirmHoverAudio.hover}
         >
           <C.LeftConfirm
@@ -86,7 +104,11 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
           <C.CloseButton
             disabled={isCloseDisabled}
             completed={isCompleted}
-            {...closeClickAudio.active}
+            type={closeType ?? 'button'}
+            onClick={(e) => {
+              onCloseClick?.(e);
+              closeClickAudio.active.onClick();
+            }}
             {...closeHoverAudio.hover}
           >
             <C.CloseIcon completed={isCompleted} isBack={isBack} />
