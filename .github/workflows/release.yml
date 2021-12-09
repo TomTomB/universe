@@ -54,6 +54,12 @@ jobs:
         env:
           DATA: ${{ steps.changesets.outputs.publishedPackages }}
 
+      - name: Build universe/client and publish artifacts
+        if: steps.getClientVersion.outputs.result != 'false'
+        run: yarn client build && yarn client package --publish
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+
       - name: Do a sentry release of universe/client
         if: steps.getClientVersion.outputs.result != 'false'
         uses: getsentry/action-release@v1

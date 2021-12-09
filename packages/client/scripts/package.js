@@ -70,6 +70,8 @@ const cleanUpBackupPackageJson = async () => {
 };
 
 (async () => {
+  const publish = process.argv.includes('--publish');
+
   const packageJson = await readPackageJson();
 
   try {
@@ -77,7 +79,11 @@ const cleanUpBackupPackageJson = async () => {
     const packageJsonForDist = await buildPackageJsonForDist(packageJson);
     await writePackageJson(packageJsonForDist);
 
-    await buildElectionDist({ config: 'electron-builder.config.js' });
+    await buildElectionDist({
+      config: 'electron-builder.config.js',
+      publish: publish ? 'always' : undefined,
+      win: publish ? [] : undefined,
+    });
   } finally {
     await writePackageJson(packageJson);
     await cleanUpBackupPackageJson();

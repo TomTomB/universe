@@ -5,12 +5,12 @@
 const config = {
   productName: 'Universe',
   appId: 'digital.bornholdt.Universe',
-  // publish: {
-  //   provider: 'github',
-  //   owner: 'TomTomB',
-  //   repo: 'universe',
-  //   releaseType: 'release',
-  // },
+  publish: {
+    provider: 'github',
+    owner: 'TomTomB',
+    repo: 'universe-artifacts',
+    releaseType: 'release',
+  },
   directories: {
     output: 'dist/bin',
   },
