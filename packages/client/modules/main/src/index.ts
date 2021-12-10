@@ -3,6 +3,7 @@ import { join } from 'path';
 import { URL } from 'url';
 import { Logger } from './util/logger';
 import * as Protocol from './util/protocol';
+import { LCUConnector } from './lcu/lcu-connector';
 import { init as initSentryMain } from '@sentry/electron/dist/main';
 import { version } from '../../../package.json';
 
@@ -47,6 +48,7 @@ if (import.meta.env.DEV) {
 }
 
 let mainWindow: BrowserWindow | null = null;
+const lcuConnector = new LCUConnector();
 
 const createWindow = async () => {
   if (app.isPackaged) {
@@ -91,6 +93,8 @@ const createWindow = async () => {
     },
   });
 
+  lcuConnector.start();
+
   ipcMain.once('universe:window:did-load', () => {
     splash.destroy();
 
@@ -121,6 +125,7 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+    lcuConnector.stop();
   });
 };
 
