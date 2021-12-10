@@ -27,11 +27,7 @@ export default defineConfig({
     target: `chrome${chrome}`,
     minify: process.env.MODE !== 'development',
     assetsDir: '.',
-    rollupOptions: {
-      output: {
-        dir: 'dist/renderer',
-      },
-    },
+    outDir: '../../dist/renderer',
     brotliSize: false,
   },
 });
