@@ -66,11 +66,11 @@ export class LCUConnector {
         const credentials = this.decryptLockfile(credentialString);
 
         if (credentials) {
-          mainWindow.webContents.send('lcu-connect', credentials);
+          mainWindow.webContents.send('universe:lcu:connect', credentials);
           Logger.info('LCU CONNECTOR > lcu-connect', credentials);
         }
       } else {
-        mainWindow.webContents.send('lcu-disconnect');
+        mainWindow.webContents.send('universe:lcu:disconnect');
         Logger.info('LCU CONNECTOR > lcu-disconnect');
       }
     });

@@ -93,8 +93,6 @@ const createWindow = async () => {
     },
   });
 
-  lcuConnector.start();
-
   ipcMain.once('universe:window:did-load', () => {
     splash.destroy();
 
@@ -105,6 +103,7 @@ const createWindow = async () => {
 
     mainWindow.show();
     mainWindow.focus();
+    lcuConnector.start();
 
     if (import.meta.env.DEV) {
       mainWindow?.webContents.openDevTools({ mode: 'detach' });

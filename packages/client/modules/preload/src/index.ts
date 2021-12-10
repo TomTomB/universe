@@ -22,6 +22,12 @@ const api: ElectronApi = {
       ipcRenderer.send('universe:window:set-position', args),
     getPosition: () => ipcRenderer.invoke('universe:window:get-position'),
   },
+  lcu: {
+    onConnect: (callback) =>
+      ipcRenderer.on('universe:lcu:connect', (e, d) => callback(d)),
+    onDisconnect: (callback) =>
+      ipcRenderer.on('universe:lcu:disconnect', () => callback()),
+  },
 };
 
 /**
