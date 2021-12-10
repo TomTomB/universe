@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useCallback } from 'react';
+import type { OptionalObjectSchema } from 'yup/lib/object';
 
 // TODO(TRB): Assign correct types
-export const useYupValidationResolver = (validationSchema: any) =>
+export const useYupValidationResolver = <T extends OptionalObjectSchema<any>>(
+  validationSchema: T,
+) =>
   useCallback(
     async (data) => {
       try {
