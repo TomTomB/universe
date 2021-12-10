@@ -46,13 +46,13 @@ if (import.meta.env.DEV) {
     .catch((e) => Logger.error('Failed install extension:', e));
 }
 
-if (app.isPackaged) {
-  protocol.registerFileProtocol(Protocol.scheme, Protocol.requestHandler);
-}
-
 let mainWindow: BrowserWindow | null = null;
 
 const createWindow = async () => {
+  if (app.isPackaged) {
+    protocol.registerFileProtocol(Protocol.scheme, Protocol.requestHandler);
+  }
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 1280,
