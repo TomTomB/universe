@@ -32,7 +32,6 @@ export const BodyTypography = createGlobalStyle`
     outline: 0;
     letter-spacing: 0.05em;
     -webkit-font-smoothing: subpixel-antialiased;
-    transition: 300ms color ${(props) => props.theme.easing.soft};
 
     &:hover, &:focus-visible {
       color: ${(props) => props.theme.colors.gold[1]};
@@ -52,8 +51,6 @@ export const BodyTypography = createGlobalStyle`
         -webkit-mask-size: contain;
         background-color: ${(props) => props.theme.colors.blue[3]};
         margin-left: 5px;
-        transition: 300ms background-color ${(props) =>
-          props.theme.easing.soft};
       }
 
       &:hover, &:focus-visible {
