@@ -23,10 +23,17 @@ const api: ElectronApi = {
     getPosition: () => ipcRenderer.invoke('universe:window:get-position'),
   },
   lcu: {
-    onConnect: (callback) =>
-      ipcRenderer.on('universe:lcu:connect', (e, d) => callback(d)),
-    onDisconnect: (callback) =>
-      ipcRenderer.on('universe:lcu:disconnect', () => callback()),
+    ws: {
+      onMessage: (callback) =>
+        ipcRenderer.on('universe:lcu-websocket-message', (e, d) => callback(d)),
+      onOpen: (callback) =>
+        ipcRenderer.on('universe:lcu-websocket-open', () => callback()),
+      onClose: (callback) =>
+        ipcRenderer.on('universe:lcu-websocket-close', () => callback()),
+      onError: (callback) =>
+        ipcRenderer.on('universe:lcu-websocket-error', () => callback()),
+    },
+    request: (data) => ipcRenderer.invoke('universe:lcu-request', data),
   },
 };
 

@@ -10,8 +10,17 @@ interface ElectronApi {
     getPosition: () => Promise<{ x: number; y: number }>;
   };
   lcu: {
-    onConnect: (callback: (credentials: any) => void) => void;
-    onDisconnect: (callback: () => void) => void;
+    ws: {
+      onMessage: (callback: (message: string) => void) => void;
+      onOpen: (callback: () => void) => void;
+      onClose: (callback: () => void) => void;
+      onError: (callback: () => void) => void;
+    };
+    request: (args: {
+      url: string;
+      method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+      body?: unknown;
+    }) => Promise<{ data: unknown; status: number }>;
   };
 }
 

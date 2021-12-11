@@ -3,9 +3,10 @@ import { join } from 'path';
 import { URL } from 'url';
 import { Logger } from './util/logger';
 import * as Protocol from './util/protocol';
-import { LCUConnector } from './lcu/lcu-connector';
+import { LCUConnector } from './lcu/connector';
 import { init as initSentryMain } from '@sentry/electron/dist/main';
 import { version } from '../../../package.json';
+import type { RequestOptions } from './lcu/request';
 
 initSentryMain({
   dsn: import.meta.env.VITE_SENTRY_URL,
@@ -103,7 +104,7 @@ const createWindow = async () => {
 
     mainWindow.show();
     mainWindow.focus();
-    lcuConnector.start();
+    lcuConnector.connect();
 
     if (import.meta.env.DEV) {
       mainWindow?.webContents.openDevTools({ mode: 'detach' });
@@ -124,7 +125,7 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
-    lcuConnector.stop();
+    lcuConnector.disconnect();
   });
 };
 
@@ -209,3 +210,12 @@ ipcMain.handle('universe:window:get-position', () => {
 
   return { x, y };
 });
+
+ipcMain.handle(
+  'universe:lcu-request',
+  async (e, data: RequestOptions<unknown>) => {
+    const resp = await lcuConnector.request(data);
+
+    return resp ?? { status: 600, data: null };
+  },
+);

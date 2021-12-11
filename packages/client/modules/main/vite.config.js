@@ -12,6 +12,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': SRC_PATH,
+      // ws: '../../node_modules/ws/index.js',
+      'node-fetch': '../../node_modules/node-fetch/lib/index.js',
     },
   },
   build: {
@@ -24,7 +26,12 @@ export default defineConfig({
       formats: ['cjs'],
     },
     rollupOptions: {
-      external: ['electron', 'electron-devtools-installer', ...builtinModules],
+      external: [
+        'electron',
+        'electron-devtools-installer',
+        'ws',
+        ...builtinModules,
+      ],
       output: {
         dir: 'dist/main',
         entryFileNames: '[name].cjs',
