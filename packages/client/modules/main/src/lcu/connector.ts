@@ -1,50 +1,80 @@
-import type { Credentials } from './authentication';
-import { authenticate } from './authentication';
-import type { LeagueWebSocket } from './websocket';
-import { connect } from './websocket';
-import type { RequestOptions } from './request';
-import { request } from './request';
+import { createLCUWebSocket } from './websocket';
+import type { WebSocket } from 'ws';
+import { createLCURequest } from './request';
 import { getMainWindow } from '../util/window';
 import pem from './riot.pem?raw';
-import type { BrowserWindow } from 'electron';
+import { getLCUCredentials } from './client';
+import type { LCUCredentials, RequestOptions } from './types';
 
 export class LCUConnector {
-  private _ws?: LeagueWebSocket;
-  private _credentials?: Credentials;
-  private _window?: BrowserWindow;
+  private _ws?: WebSocket;
+  private _credentials?: LCUCredentials;
+
+  private _isPolling = false;
+  private _pollingInterval?: NodeJS.Timer;
+  private _isConnected = false;
+
+  get isConnected() {
+    return this._isConnected;
+  }
 
   async connect() {
+    this._setupLCUPolling(
+      (credentials, ws) => {
+        const win = getMainWindow();
+
+        if (!win) {
+          return;
+        }
+
+        win.webContents.send('universe:lcu:connected');
+
+        this._ws?.close();
+        this._setupWs(ws);
+
+        this._credentials = credentials;
+        this._isConnected = true;
+      },
+      () => {
+        const win = getMainWindow();
+
+        if (!win) {
+          return;
+        }
+
+        win.webContents.send('universe:lcu:disconnected');
+        this._isConnected = false;
+      },
+    );
+  }
+
+  request(opts: RequestOptions<unknown>) {
+    if (!this._credentials) {
+      return;
+    }
+
+    return createLCURequest(opts, this._credentials);
+  }
+
+  disconnect() {
+    if (this._ws) {
+      this._ws.close();
+    }
+    this._isPolling = false;
+    this._pollingInterval?.unref();
+    this._pollingInterval = undefined;
+  }
+
+  private _setupWs(ws: WebSocket) {
     const win = getMainWindow();
 
     if (!win) {
-      throw new Error('No main window found');
+      return;
     }
-    this._window = win;
-
-    const credentials = await authenticate({
-      awaitConnection: true,
-      pollInterval: 2500,
-      certificate: pem,
-    });
-    this._credentials = credentials;
-
-    const ws = await connect(credentials);
-    this._ws = ws;
-
-    ws.on('open', () => {
-      win.webContents.send('universe:lcu-websocket-open');
-    });
-
-    ws.on('close', () => {
-      win.webContents.send('universe:lcu-websocket-close');
-    });
-
-    ws.on('error', () => {
-      win.webContents.send('universe:lcu-websocket-error');
-    });
 
     ws.on('message', (message) => {
       const msg = message.toString();
+
       if (!msg) {
         return;
       }
@@ -62,23 +92,69 @@ export class LCUConnector {
       }
 
       win.webContents.send(
-        'universe:lcu-websocket-message',
+        'universe:lcu:websocket-message',
         JSON.stringify(innerData),
       );
     });
+
+    this._ws = ws;
   }
 
-  request(opts: RequestOptions<unknown>) {
-    if (!this._credentials) {
+  private _setupLCUPolling(
+    onConnect: (credentials: LCUCredentials, ws: WebSocket) => void,
+    onDisconnect: () => void,
+  ) {
+    if (this._isPolling) {
       return;
     }
 
-    return request(opts, this._credentials);
-  }
+    this._isPolling = true;
+    let previousResult: 'connect' | 'disconnect' = 'disconnect';
 
-  disconnect() {
-    if (this._ws) {
-      this._ws.close();
-    }
+    const tick = async () => {
+      const credentials = await getLCUCredentials();
+
+      if (!credentials) {
+        if (previousResult === 'disconnect') {
+          return;
+        }
+
+        onDisconnect();
+        previousResult = 'disconnect';
+        return;
+      }
+
+      if (previousResult === 'connect') {
+        return;
+      }
+
+      const lcuCredentials = {
+        authToken: credentials.authToken,
+        appPort: credentials.appPort,
+        appCertificate: pem,
+        username: 'riot',
+      };
+
+      const ws = createLCUWebSocket(lcuCredentials);
+
+      const win = getMainWindow();
+
+      if (!win) {
+        return;
+      }
+
+      ws.on('open', () => {
+        onConnect(lcuCredentials, ws);
+        previousResult = 'connect';
+      });
+
+      ws.on('error', () => {
+        previousResult = 'disconnect';
+      });
+    };
+
+    tick();
+
+    this._pollingInterval = setInterval(async () => await tick(), 2500);
   }
 }

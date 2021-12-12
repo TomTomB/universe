@@ -25,15 +25,15 @@ const api: ElectronApi = {
   lcu: {
     ws: {
       onMessage: (callback) =>
-        ipcRenderer.on('universe:lcu-websocket-message', (e, d) => callback(d)),
-      onOpen: (callback) =>
-        ipcRenderer.on('universe:lcu-websocket-open', () => callback()),
-      onClose: (callback) =>
-        ipcRenderer.on('universe:lcu-websocket-close', () => callback()),
-      onError: (callback) =>
-        ipcRenderer.on('universe:lcu-websocket-error', () => callback()),
+        ipcRenderer.on('universe:lcu:websocket-message', (e, d) => callback(d)),
     },
-    request: (data) => ipcRenderer.invoke('universe:lcu-request', data),
+    onConnected: (callback) =>
+      ipcRenderer.on('universe:lcu:connected', () => callback()),
+    onDisconnected: (callback) =>
+      ipcRenderer.on('universe:lcu:disconnected', () => callback()),
+    getIsConnected: () => ipcRenderer.invoke('universe:lcu:get-is-connected'),
+
+    request: (data) => ipcRenderer.invoke('universe:lcu:request', data),
   },
 };
 

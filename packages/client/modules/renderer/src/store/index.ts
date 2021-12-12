@@ -6,6 +6,11 @@ interface StoreState {
   playLoginMusic: boolean;
   setPlayLoginAnimations: (play: boolean) => void;
   setPlayLoginMusic: (play: boolean) => void;
+
+  lcu: {
+    isConnected: boolean;
+    setIsConnected: (play: boolean) => void;
+  };
 }
 
 export const useStore = create<StoreState>(
@@ -20,5 +25,13 @@ export const useStore = create<StoreState>(
       set((state) => {
         state.playLoginMusic = play;
       }),
+
+    lcu: {
+      isConnected: false,
+      setIsConnected: (isConnected) =>
+        set((state) => {
+          state.lcu.isConnected = isConnected;
+        }),
+    },
   })),
 );

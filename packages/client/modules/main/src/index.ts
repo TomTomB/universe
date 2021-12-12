@@ -6,7 +6,7 @@ import * as Protocol from './util/protocol';
 import { LCUConnector } from './lcu/connector';
 import { init as initSentryMain } from '@sentry/electron/dist/main';
 import { version } from '../../../package.json';
-import type { RequestOptions } from './lcu/request';
+import type { RequestOptions } from './lcu/types';
 
 initSentryMain({
   dsn: import.meta.env.VITE_SENTRY_URL,
@@ -212,10 +212,12 @@ ipcMain.handle('universe:window:get-position', () => {
 });
 
 ipcMain.handle(
-  'universe:lcu-request',
+  'universe:lcu:request',
   async (e, data: RequestOptions<unknown>) => {
     const resp = await lcuConnector.request(data);
 
     return resp ?? { status: 600, data: null };
   },
 );
+
+ipcMain.handle('universe:lcu:get-is-connected', () => lcuConnector.isConnected);

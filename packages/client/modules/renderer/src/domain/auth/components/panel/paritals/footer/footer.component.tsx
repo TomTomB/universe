@@ -2,8 +2,11 @@ import type { FC } from 'react';
 import * as C from './footer.styles';
 import { hash } from '../../../../../../../../../../../temp/version.json';
 import { version } from '../../../../../../../../../package.json';
+import { useStore } from '@/store';
 
 export const Footer: FC = () => {
+  const store = useStore();
+
   return (
     <>
       <C.StyledFooter>
@@ -27,6 +30,7 @@ export const Footer: FC = () => {
         <span>
           V{version}.{hash}
         </span>
+        {!store.lcu.isConnected && <C.FooterLoadingSpinner />}
       </C.VersionFooter>
     </>
   );
