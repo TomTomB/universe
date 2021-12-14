@@ -39,10 +39,10 @@ export const Modal: FC<ModalProps> = ({
   caret,
 }) => {
   const transitionModal = useTransition(show, {
-    config: { tension: 250, friction: 20 },
+    config: { tension: 300, friction: 20 },
     from: { transform: 'scale(0.6)' },
     enter: { transform: 'scale(1)' },
-    leave: { transform: 'scale(1.2)' },
+    leave: { transform: 'scale(0.8)' },
   });
 
   const transitionBackdrop = useTransition(show, {
