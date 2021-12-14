@@ -8,9 +8,9 @@ import type { FC } from 'react';
 import { useEffect } from 'react';
 import { Controls, Video } from './partials';
 import * as C from './splash-screen.styles';
-import videoSplash from '@/assets/splash/videos/video-splash-snowdown2016.webm';
-import musicSplash from '@/assets/splash/music/music-splash-snowdown2016.ogg';
-import staticSplash from '@/assets/splash/images/image-splash-snowdown2016.jpg';
+import videoSplash from '@/assets/splash/videos/video-splash-snowdown2017.webm';
+import musicSplash from '@/assets/splash/music/music-splash-snowdown2017.ogg';
+import staticSplash from '@/assets/splash/images/image-splash-snowdown2017.jpg';
 
 interface SplashScreenContainerProps {
   className?: string;
