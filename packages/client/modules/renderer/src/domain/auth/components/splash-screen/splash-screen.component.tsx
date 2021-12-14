@@ -8,6 +8,9 @@ import type { FC } from 'react';
 import { useEffect } from 'react';
 import { Controls, Video } from './partials';
 import * as C from './splash-screen.styles';
+import videoSplash from '@/assets/splash/videos/video-splash-snowdown2016.webm';
+import musicSplash from '@/assets/splash/music/music-splash-snowdown2016.ogg';
+import staticSplash from '@/assets/splash/images/image-splash-snowdown2016.jpg';
 
 interface SplashScreenContainerProps {
   className?: string;
@@ -52,13 +55,13 @@ export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
     <C.StyledSplashScreenContainer className={className}>
       <Video
         music={{
-          loop: '/music/music-splash-snowdown2016.ogg',
+          loop: musicSplash,
           current: currentMusic,
           send: sendMusic,
         }}
-        picture="/images/image-splash-snowdown2016.jpg"
+        picture={staticSplash}
         video={{
-          loop: '/videos/video-splash-snowdown2016.webm',
+          loop: videoSplash,
           current: currentVideo,
           send: sendVideo,
         }}
