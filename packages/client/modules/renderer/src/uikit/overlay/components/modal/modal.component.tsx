@@ -1,4 +1,4 @@
-import * as C from './Modal.styles';
+import * as C from './modal.styles';
 import { PrimaryFlatButton } from '@/uikit/forms/components';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
