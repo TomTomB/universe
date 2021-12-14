@@ -24,6 +24,7 @@ export interface ModalProps {
   caret?: boolean;
   disabled?: boolean;
   borderless?: boolean;
+  playSounds?: boolean;
 }
 
 export const Modal: FC<ModalProps> = ({
@@ -37,6 +38,7 @@ export const Modal: FC<ModalProps> = ({
   borderless,
   topRightCloseButton,
   caret,
+  playSounds,
 }) => {
   const transitionModal = useTransition(show, {
     config: { tension: 300, friction: 20 },
@@ -96,6 +98,7 @@ export const Modal: FC<ModalProps> = ({
                               type="button"
                               key={b.buttonText}
                               onClick={b.click}
+                              playSounds={playSounds}
                             >
                               {b.buttonText}
                             </PrimaryFlatButton>

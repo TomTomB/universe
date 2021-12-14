@@ -2,6 +2,9 @@ import * as C from './primary-flat-button.styles';
 import { useEffect, useState, type FC } from 'react';
 import classNames from 'classnames';
 import type { PrimaryFlatButtonProps } from './primary-flat-button.types';
+import clickFile from './assets/sounds/sfx-uikit-button-gold-click.ogg';
+import hoverFile from './assets/sounds/sfx-uikit-button-gold-hover.ogg';
+import { useAudio } from '@/uikit/core/hooks';
 
 export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
   type,
@@ -10,9 +13,13 @@ export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
   disabled,
   onClick,
   variant,
+  playSounds,
   external,
 }) => {
   const [showClickAnim, setShowClickAnim] = useState(false);
+
+  const clickAudio = useAudio(clickFile, disabled || !playSounds);
+  const hoverAudio = useAudio(hoverFile, disabled || !playSounds);
 
   useEffect(() => {
     if (!showClickAnim) {
@@ -35,9 +42,11 @@ export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
       className={classNames(className, { click: showClickAnim })}
       variant={variant}
       external={external}
+      {...hoverAudio.hover}
       onClick={(e) => {
         setShowClickAnim(true);
         onClick?.(e);
+        clickAudio.active.onClick();
       }}
     >
       <C.Flare />

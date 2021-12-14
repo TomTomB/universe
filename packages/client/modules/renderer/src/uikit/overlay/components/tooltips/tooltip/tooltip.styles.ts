@@ -26,6 +26,7 @@ export const StyledTooltip = styled(animated.div)`
   border: 2px solid transparent;
   z-index: 100;
   pointer-events: none;
+  will-change: opacity;
 
   &::before {
     content: '';

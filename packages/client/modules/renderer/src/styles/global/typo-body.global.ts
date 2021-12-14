@@ -51,6 +51,8 @@ export const BodyTypography = createGlobalStyle`
         -webkit-mask-size: contain;
         background-color: ${(props) => props.theme.colors.blue[3]};
         margin-left: 5px;
+        position: relative;
+        bottom: 1px;
       }
 
       &:hover, &:focus-visible {

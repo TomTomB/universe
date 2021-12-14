@@ -3,6 +3,7 @@ import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
 import classNames from 'classnames';
 import type { FC } from 'react';
+import { OverlayHost } from '../base';
 
 export interface FlyoutFrameProps {
   className?: string;
@@ -72,7 +73,7 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
   });
 
   return (
-    <>
+    <OverlayHost>
       {transitionBase(
         (styleBase, showBase) =>
           showBase && (
@@ -117,6 +118,6 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
             </C.StyledFlyoutFrame>
           ),
       )}
-    </>
+    </OverlayHost>
   );
 };

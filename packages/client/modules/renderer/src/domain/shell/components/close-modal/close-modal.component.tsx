@@ -9,6 +9,7 @@ export const CloseModal: FC = () => {
   return (
     <>
       <Modal
+        playSounds
         bottomButtons={[
           {
             buttonText: 'Yes',

@@ -4,6 +4,7 @@ import { usePopperTooltip } from 'react-popper-tooltip';
 import { useTransition } from 'react-spring';
 import { useEffect, type FC } from 'react';
 import { useCompare } from '@/uikit/core/hooks';
+import { TooltipHost } from '../../base';
 
 export interface SystemTooltipProps {
   triggerRef: HTMLElement | null;
@@ -51,7 +52,7 @@ export const SystemTooltip: FC<SystemTooltipProps> = ({
   }
 
   return (
-    <>
+    <TooltipHost>
       {transition(
         (style, show) =>
           show && (
@@ -65,6 +66,6 @@ export const SystemTooltip: FC<SystemTooltipProps> = ({
             </C.StyledSystemTooltip>
           ),
       )}
-    </>
+    </TooltipHost>
   );
 };

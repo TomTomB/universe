@@ -4,7 +4,7 @@ import { usePopperTooltip } from 'react-popper-tooltip';
 import { useTransition } from 'react-spring';
 import { useEffect, type FC } from 'react';
 import { useCompare } from '@/uikit/core/hooks';
-
+import { TooltipHost } from '../../base';
 export interface TooltipProps {
   triggerRef: HTMLElement | null;
   placement?: 'auto' | 'left' | 'top' | 'right' | 'bottom';
@@ -51,12 +51,13 @@ export const Tooltip: FC<TooltipProps> = ({
   }
 
   return (
-    <>
+    <TooltipHost>
       {transition(
         (style, show) =>
           show && (
             <C.StyledTooltip
               ref={setTooltipRef}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               {...getTooltipProps({ style: style as any })}
             >
               <div {...getArrowProps({ className: 'tooltip-arrow' })} />
@@ -65,6 +66,6 @@ export const Tooltip: FC<TooltipProps> = ({
             </C.StyledTooltip>
           ),
       )}
-    </>
+    </TooltipHost>
   );
 };

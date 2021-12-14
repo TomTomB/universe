@@ -10,4 +10,5 @@ export type PrimaryFlatButtonVariant = 'primary' | 'purchase';
 export interface PrimaryFlatButtonProps extends ButtonProps {
   variant?: PrimaryFlatButtonVariant;
   external?: boolean;
+  playSounds?: boolean;
 }
