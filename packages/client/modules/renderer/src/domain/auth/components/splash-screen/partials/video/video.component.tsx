@@ -38,7 +38,6 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
   return (
     <>
       <C.BackgroundAudio
-        src={music.intro}
         ref={introMusic}
         onLoadedData={() => {
           music.send({
@@ -46,10 +45,12 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
             type: 'LOADED_INTRO_MUSIC',
           });
         }}
-      />
+      >
+        <source src={music.intro} type="audio/ogg" />
+      </C.BackgroundAudio>
       <C.BackgroundAudio
-        src={music.loop}
         ref={loopMusic}
+        controls
         onLoadedData={() => {
           music.send({
             element: loopMusic.current,
@@ -61,7 +62,9 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
             type: 'LOOP_END',
           });
         }}
-      />
+      >
+        <source src={music.loop} type="audio/ogg" />
+      </C.BackgroundAudio>
       <C.StaticSplash
         src={picture}
         show={
@@ -77,7 +80,6 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
         }
         ref={loopVideo}
         muted
-        src={video.loop}
         onLoadedData={() => {
           video.send({
             element: loopVideo.current,
@@ -89,7 +91,9 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
             type: 'LOOP_END',
           });
         }}
-      />
+      >
+        <source src={video.loop} type="video/webm" />
+      </C.DynamicSplash>
       <C.DynamicSplash
         show={video.current.matches('playing.intro')}
         enabled={
@@ -98,7 +102,6 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
         }
         ref={introVideo}
         muted
-        src={video.intro}
         onLoadedData={() => {
           if (!introVideo.current) {
             return;
@@ -113,7 +116,9 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
             type: 'INTRO_END',
           });
         }}
-      />
+      >
+        <source src={video.intro} type="video/webm" />
+      </C.DynamicSplash>
     </>
   );
 };

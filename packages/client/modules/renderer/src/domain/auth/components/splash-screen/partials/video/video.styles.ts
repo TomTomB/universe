@@ -45,6 +45,6 @@ export const DynamicSplash = styled.video<{ show: boolean; enabled: boolean }>`
     `}
 `;
 
-export const BackgroundAudio = styled.audio`
+export const BackgroundAudio = styled.video`
   display: none;
 `;
