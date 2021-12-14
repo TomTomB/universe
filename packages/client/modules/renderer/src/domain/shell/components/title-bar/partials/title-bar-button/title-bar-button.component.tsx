@@ -26,6 +26,7 @@ export const TitleBarButton: FC<TitleBarButtonProps> = ({
         <C.TitleBarButtonClose
           type="button"
           aria-label={label}
+          disabled={disabled}
           onClick={() => {
             onClick();
             clickAudio.active.onClick();
@@ -37,6 +38,7 @@ export const TitleBarButton: FC<TitleBarButtonProps> = ({
         <C.TitleBarButtonHide
           type="button"
           aria-label={label}
+          disabled={disabled}
           onClick={() => {
             onClick();
             clickAudio.active.onClick();
@@ -48,6 +50,7 @@ export const TitleBarButton: FC<TitleBarButtonProps> = ({
         <C.TitleBarButtonSettings
           type="button"
           aria-label={label}
+          disabled={disabled}
           onClick={() => {
             onClick();
             clickAudio.active.onClick();
@@ -59,6 +62,7 @@ export const TitleBarButton: FC<TitleBarButtonProps> = ({
         <C.TitleBarButtonHelp
           type="button"
           aria-label={label}
+          disabled={disabled}
           onClick={() => {
             onClick();
             clickAudio.active.onClick();

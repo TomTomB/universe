@@ -1,5 +1,5 @@
 import { type FC, useEffect } from 'react';
-import { TitleBar } from '../../components';
+import { CloseModal, TitleBar } from '../../components';
 import * as C from './shell.styles';
 
 export const Shell: FC = ({ children }) => {
@@ -10,6 +10,9 @@ export const Shell: FC = ({ children }) => {
   return (
     <C.StyledShell>
       <TitleBar />
+
+      <CloseModal />
+
       {children}
     </C.StyledShell>
   );

@@ -18,6 +18,11 @@ export const TitleBarButtonBase = styled.button`
   :active {
     background-color: ${(props) => props.theme.colors.grey[2]};
   }
+
+  :disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 `;
 
 export const TitleBarButtonClose = styled(TitleBarButtonBase)`

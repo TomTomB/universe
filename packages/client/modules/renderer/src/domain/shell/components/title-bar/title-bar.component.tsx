@@ -1,8 +1,11 @@
+import { useStore } from '@/store';
 import { useEffect, useState } from 'react';
 import { TitleBarButton } from './partials';
 import * as C from './title-bar.styles';
 
 export const TitleBar = () => {
+  const store = useStore();
+
   const [position, setPosition] = useState({ x: 0, y: 0 });
   let startPosition: { x: number; y: number } | null = null;
 
@@ -53,8 +56,8 @@ export const TitleBar = () => {
     window.electron.window.minimize();
   };
 
-  const closeWindow = () => {
-    window.electron.window.close();
+  const showCloseModal = () => {
+    store.window.setIsCloseModalVisible(true);
   };
 
   return (
@@ -64,12 +67,14 @@ export const TitleBar = () => {
           label="Minimize"
           type="minimize"
           playSounds
+          disabled={store.window.isCloseModalVisible}
           onClick={minimizeWindow}
         />
         <TitleBarButton
           label="Settings"
           type="settings"
           playSounds
+          disabled={store.window.isCloseModalVisible}
           onClick={() => {
             console.log('Settings');
           }}
@@ -78,7 +83,8 @@ export const TitleBar = () => {
           label="Close"
           type="close"
           playSounds
-          onClick={closeWindow}
+          disabled={store.window.isCloseModalVisible}
+          onClick={showCloseModal}
         />
       </C.TitleBarControls>
     </C.StyledHeader>

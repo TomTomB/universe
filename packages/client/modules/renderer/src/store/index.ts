@@ -11,6 +11,11 @@ interface StoreState {
     isConnected: boolean;
     setIsConnected: (play: boolean) => void;
   };
+
+  window: {
+    isCloseModalVisible: boolean;
+    setIsCloseModalVisible: (visible: boolean) => void;
+  };
 }
 
 export const useStore = create<StoreState>(
@@ -31,6 +36,14 @@ export const useStore = create<StoreState>(
       setIsConnected: (isConnected) =>
         set((state) => {
           state.lcu.isConnected = isConnected;
+        }),
+    },
+
+    window: {
+      isCloseModalVisible: false,
+      setIsCloseModalVisible: (visible) =>
+        set((state) => {
+          state.window.isCloseModalVisible = visible;
         }),
     },
   })),

@@ -1,6 +1,6 @@
 import * as C from './input.styles';
 import { useRef, useState, type FC } from 'react';
-// import { Tooltip, TooltipText } from '@uikit/components/tooltip';
+import { SystemTooltip, TooltipText } from '@/uikit/overlay/components';
 import { FormField } from '../base';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
@@ -75,11 +75,11 @@ export const Input: FC<InputProps> = ({
             ref={triggerShowPasswordCheckboxRef}
           />
 
-          {/* <Tooltip triggerRef={triggerShowPasswordCheckboxRef.current}>
+          <SystemTooltip triggerRef={triggerShowPasswordCheckboxRef.current}>
             <TooltipText>
               {showPassword ? 'Hide password' : 'Show password'}
             </TooltipText>
-          </Tooltip> */}
+          </SystemTooltip>
         </>
       )}
       {showError && (
