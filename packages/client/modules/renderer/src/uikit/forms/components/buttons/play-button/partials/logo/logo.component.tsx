@@ -2,8 +2,7 @@ import { Animation } from '../../../../base';
 import { PlayButtonState } from '../../play-button.types';
 import { Videos } from './assets';
 import { useCompare } from '@/uikit/core/hooks';
-import { useEffect, useRef, useState } from 'react';
-import type { FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 
 export interface PlayButtonLogoProps {
   buttonState: { prev: PlayButtonState; curr: PlayButtonState };

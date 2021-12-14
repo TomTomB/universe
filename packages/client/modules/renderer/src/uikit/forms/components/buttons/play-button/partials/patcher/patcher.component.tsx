@@ -2,8 +2,7 @@ import * as C from './patcher.styles';
 import { PlayButtonState } from '../../play-button.types';
 import { Videos } from './assets';
 import { useCompare } from '@/uikit/core/hooks';
-import { useEffect, useRef } from 'react';
-import type { FC } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import type { DownloadProgress } from '@/types';
 
 export interface PlayButtonPatcherProps {

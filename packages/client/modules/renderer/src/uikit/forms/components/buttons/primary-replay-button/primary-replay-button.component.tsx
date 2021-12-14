@@ -1,5 +1,4 @@
 import * as C from './primary-replay-button.styles';
-import React from 'react';
 import type { FC } from 'react';
 
 export interface PrimaryReplayButtonProps {

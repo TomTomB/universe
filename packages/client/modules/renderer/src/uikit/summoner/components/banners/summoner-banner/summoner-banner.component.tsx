@@ -1,9 +1,8 @@
 import * as C from './summoner-banner.styles';
 import { BannerBase } from '../banner-base';
 import { Videos } from './assets';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import classNames from 'classnames';
-import type { FC } from 'react';
 import type { Rank } from '@/types';
 
 export type SummonerBannerType = 'primary' | 'ally';

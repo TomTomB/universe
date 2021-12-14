@@ -1,7 +1,6 @@
 import * as C from './range.styles';
 import { useBoundingRect } from '@/uikit/core/hooks';
-import React, { useState } from 'react';
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import type { Direction } from '@/types';
 import type { UseFormRegister } from 'react-hook-form';
 

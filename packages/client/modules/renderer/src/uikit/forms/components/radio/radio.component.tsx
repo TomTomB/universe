@@ -1,5 +1,4 @@
 import * as C from './radio.styles';
-import React from 'react';
 import type { FC } from 'react';
 import type { UseFormRegister } from 'react-hook-form';
 

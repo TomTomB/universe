@@ -1,8 +1,10 @@
 import * as C from './radial-progress.styles';
 import { PolygonGenerator } from '@/uikit/core/utils';
-import { RADIAL_PROGRESS_FULL } from './radial-progress.types';
+import {
+  type RadialProgressProps,
+  RADIAL_PROGRESS_FULL,
+} from './radial-progress.types';
 import type { FC } from 'react';
-import type { RadialProgressProps } from './radial-progress.types';
 
 export const RadialProgress: FC<RadialProgressProps> = ({
   topLayerChildren,

@@ -1,7 +1,6 @@
 import * as C from './primary-flat-button.styles';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import classNames from 'classnames';
-import type { FC } from 'react';
 import type { PrimaryFlatButtonProps } from './primary-flat-button.types';
 
 export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({

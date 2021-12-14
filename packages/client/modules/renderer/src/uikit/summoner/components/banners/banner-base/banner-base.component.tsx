@@ -1,9 +1,8 @@
 import { Banner as BannerLogic, bannerAnimationConfig } from './util';
 import { Images } from './assets';
 import { StyledBannerBase, getRankTrim } from './banner-base.styles';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import type { BannerAssets, BannerBaseProps } from './banner-base.types';
-import type { FC } from 'react';
 
 export const BannerBase: FC<BannerBaseProps> = ({
   rank,

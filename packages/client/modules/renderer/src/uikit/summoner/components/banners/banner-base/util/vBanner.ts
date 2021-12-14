@@ -1,10 +1,17 @@
-import { EaseNumber, GlOption, createPlane } from '@/uikit/webgl';
+import {
+  EaseNumber,
+  GlOption,
+  createPlane,
+  type Gl,
+  type GlMesh,
+  type GlShader,
+  type GlTexture,
+} from '@/uikit/webgl';
 import { Shaders } from '../assets';
 import type {
   BannerAnimationConfig,
   BannerTextureMap,
 } from '../banner-base.types';
-import type { Gl, GlMesh, GlShader, GlTexture } from '@/uikit/webgl';
 
 export class VBanner {
   private _gl: Gl;

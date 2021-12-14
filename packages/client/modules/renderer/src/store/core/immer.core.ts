@@ -6,8 +6,7 @@ import type {
   StateCreator,
   StoreApi,
 } from 'zustand';
-import { produce } from 'immer';
-import type { Draft } from 'immer';
+import { type Draft, produce } from 'immer';
 
 export const immer =
   <

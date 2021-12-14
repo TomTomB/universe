@@ -1,5 +1,4 @@
 import * as C from './checkbox.styles';
-import React from 'react';
 import classNames from 'classnames';
 import type { FC } from 'react';
 import type { UseFormRegister } from 'react-hook-form';

@@ -10,6 +10,7 @@
     "types": ["node"],
     "typeRoots": ["node_modules/@types"],
     "lib": ["ESNext"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "importsNotUsedAsValues": "error"
   }
 }

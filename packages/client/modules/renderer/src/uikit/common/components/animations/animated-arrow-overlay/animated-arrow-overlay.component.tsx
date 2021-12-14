@@ -1,7 +1,6 @@
 import * as C from './animated-arrow-overlay.styles';
 import { Assets } from './assets';
-import { useEffect, useRef, useState } from 'react';
-import type { FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import { useResizeObserver } from '@/uikit/core/hooks';
 
 export interface AnimatedArrowOverlayProps {

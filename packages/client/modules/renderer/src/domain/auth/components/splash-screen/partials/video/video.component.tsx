@@ -2,8 +2,7 @@ import type {
   SplashScreenAudioMachine,
   SplashScreenVideoMachine,
 } from '@/uikit/core/machines';
-import type { FC } from 'react';
-import { useRef } from 'react';
+import { type FC, useRef } from 'react';
 import type { State } from 'xstate';
 import * as C from './video.styles';
 

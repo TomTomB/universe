@@ -1,10 +1,9 @@
-import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { generateShortId } from '@/core/util';
 import * as yup from 'yup';
 import { Checkbox, FramedSelect, Input } from '@/uikit/forms/components';
 import { useYupValidationResolver } from '@/uikit/core/hooks';
-import { useMemo } from 'react';
+import { type FC, useMemo } from 'react';
 import * as C from './sign-in-form.styles';
 
 interface FormValues {

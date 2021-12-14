@@ -1,7 +1,6 @@
 import * as C from './primary-magic-button.styles';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import classNames from 'classnames';
-import type { FC } from 'react';
 import hoverAudioFile from './assets/sounds/sfx-login-button-signin-hover.ogg';
 import clickAudioFile from './assets/sounds/sfx-login-button-signin-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';

@@ -1,6 +1,5 @@
 import * as C from './input.styles';
-import { useRef, useState } from 'react';
-import type { FC } from 'react';
+import { useRef, useState, type FC } from 'react';
 // import { Tooltip, TooltipText } from '@uikit/components/tooltip';
 import { FormField } from '../base';
 import { springConfigHarsh } from '@/uikit/core/constants';

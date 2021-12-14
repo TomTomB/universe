@@ -7,8 +7,7 @@ import {
   PlayButtonPlay,
 } from './partials';
 import { PlayButtonState } from './play-button.types';
-import { useState } from 'react';
-import type { FC, PropsWithChildren } from 'react';
+import { type FC, type PropsWithChildren, useState } from 'react';
 import type { PlayButtonProps } from './play-button.types';
 import { useAudio } from '@/uikit/core/hooks';
 import lobbyClickAudioFile from './assets/sounds/sfx-nav-button-lobby-click.ogg';

@@ -1,6 +1,5 @@
 import * as C from './parallax-background.styles';
-import type { ParallaxLayerProps } from './partials';
-import { ParallaxLayer } from './partials';
+import { type ParallaxLayerProps, ParallaxLayer } from './partials';
 import type { FC } from 'react';
 
 export interface ParallaxBackgroundProps {

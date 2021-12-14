@@ -1,7 +1,6 @@
 import { generateShortId } from '@/core/util';
 import type { Direction } from '@/types';
-import type { FC } from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { type FC, useEffect, useMemo, useState } from 'react';
 import * as C from './scrollable.styles';
 
 export interface ScrollableProps {
