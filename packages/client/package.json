@@ -13,7 +13,11 @@
     "build": "node ./scripts/build.js",
     "package": "node ./scripts/package.js",
     "serve": "node ./scripts/serve.js",
-    "gen:build-vars": "node ./scripts/generate-build-vars.js"
+    "gen:build-vars": "node ./scripts/generate-build-vars.js",
+    "type-check": "yarn type-check:main && yarn type-check:preload && yarn type-check:renderer",
+    "type-check:main": "tsc -p ./modules/main/tsconfig.json --noEmit",
+    "type-check:preload": "tsc -p ./modules/preload/tsconfig.json --noEmit",
+    "type-check:renderer": "tsc -p ./modules/renderer/tsconfig.json --noEmit"
   },
   "dependencies": {
     "@sentry/electron": "2.5.4",
