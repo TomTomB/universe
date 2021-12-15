@@ -14,6 +14,7 @@ export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
   onClick,
   variant,
   playSounds,
+  id,
   external,
 }) => {
   const [showClickAnim, setShowClickAnim] = useState(false);
@@ -37,6 +38,7 @@ export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
 
   return (
     <C.StyledPrimaryFlatButton
+      id={id}
       disabled={disabled}
       type={type}
       className={classNames(className, { click: showClickAnim })}

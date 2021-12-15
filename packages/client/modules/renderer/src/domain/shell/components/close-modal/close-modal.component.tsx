@@ -10,9 +10,13 @@ export const CloseModal: FC = () => {
     <>
       <Modal
         playSounds
+        closeFn={() => store.window.setIsCloseModalVisible(false)}
+        labeledById="close-modal-label"
+        describedById="close-modal-description"
         bottomButtons={[
           {
             buttonText: 'Yes',
+            initialFocus: true,
             click: () => {
               window.electron.window.close();
             },
@@ -27,8 +31,8 @@ export const CloseModal: FC = () => {
         show={store.window.isCloseModalVisible}
       >
         <C.StyledCloseModal>
-          <h4>Exit now?</h4>
-          <p>
+          <h4 id="close-modal-label">Exit now?</h4>
+          <p id="close-modal-description">
             Do you really want to exit Universe now? <br /> (sad poro noises)
           </p>
         </C.StyledCloseModal>

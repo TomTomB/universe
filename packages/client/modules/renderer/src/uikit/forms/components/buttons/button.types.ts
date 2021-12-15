@@ -3,4 +3,5 @@ export interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   type: 'button' | 'submit' | 'reset' | undefined;
   disabled?: boolean;
+  id?: string;
 }
