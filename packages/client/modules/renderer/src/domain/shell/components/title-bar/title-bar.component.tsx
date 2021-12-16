@@ -1,15 +1,15 @@
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
-  getIsCloseModalVisible,
-  setIsCloseModalVisible,
-  useStore,
-} from '@/store';
+  selectIsCloseModalVisible,
+  toggleIsCloseModalVisible,
+} from '@/store/slices';
 import { useEffect, useState } from 'react';
 import { TitleBarButton } from './partials';
 import * as C from './title-bar.styles';
 
 export const TitleBar = () => {
-  const setIsCloseModalVisibleFn = useStore(setIsCloseModalVisible);
-  const isCloseModalVisible = useStore(getIsCloseModalVisible);
+  const dispatch = useAppDispatch();
+  const isCloseModalVisible = useAppSelector(selectIsCloseModalVisible);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   let startPosition: { x: number; y: number } | null = null;
@@ -62,7 +62,7 @@ export const TitleBar = () => {
   };
 
   const showCloseModal = () => {
-    setIsCloseModalVisibleFn(true);
+    dispatch(toggleIsCloseModalVisible(true));
   };
 
   return (

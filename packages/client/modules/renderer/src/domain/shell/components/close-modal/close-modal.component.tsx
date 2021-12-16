@@ -1,21 +1,21 @@
+import { useAppDispatch, useAppSelector } from '@/store';
 import {
-  getIsCloseModalVisible,
-  setIsCloseModalVisible,
-  useStore,
-} from '@/store';
+  selectIsCloseModalVisible,
+  toggleIsCloseModalVisible,
+} from '@/store/slices';
 import { Modal } from '@/uikit/overlay/components';
 import type { FC } from 'react';
 import * as C from './close-modal.styles';
 
 export const CloseModal: FC = () => {
-  const setIsCloseModalVisibleFn = useStore(setIsCloseModalVisible);
-  const isCloseModalVisible = useStore(getIsCloseModalVisible);
+  const dispatch = useAppDispatch();
+  const isCloseModalVisible = useAppSelector(selectIsCloseModalVisible);
 
   return (
     <>
       <Modal
         playSounds
-        closeFn={() => setIsCloseModalVisibleFn(false)}
+        closeFn={() => dispatch(toggleIsCloseModalVisible(false))}
         labeledById="close-modal-label"
         describedById="close-modal-description"
         bottomButtons={[
@@ -29,7 +29,7 @@ export const CloseModal: FC = () => {
           {
             buttonText: 'No',
             click: () => {
-              setIsCloseModalVisibleFn(false);
+              dispatch(toggleIsCloseModalVisible(false));
             },
           },
         ]}

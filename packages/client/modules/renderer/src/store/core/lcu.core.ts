@@ -1,13 +1,12 @@
-import { useStore } from '..';
+import { store } from '..';
+import { toggleIsConnected } from '../slices';
 
 export const initLCU = async () => {
-  const store = useStore.getState();
-
   window.electron.lcu.onConnected(() => {
-    store.lcu.setIsConnected(true);
+    store.dispatch(toggleIsConnected(true));
   });
   window.electron.lcu.onDisconnected(() => {
-    store.lcu.setIsConnected(false);
+    store.dispatch(toggleIsConnected(false));
   });
 
   window.electron.lcu.ws.onMessage((message) => {
@@ -17,7 +16,7 @@ export const initLCU = async () => {
   // This is probably only needed during development.
   // Otherwise the state gets lost after a reload.
   const isConnected = await window.electron.lcu.getIsConnected();
-  store.lcu.setIsConnected(isConnected);
+  store.dispatch(toggleIsConnected(isConnected));
 
   // setTimeout(() => {
   //   const r = window.electron.lcu.request({

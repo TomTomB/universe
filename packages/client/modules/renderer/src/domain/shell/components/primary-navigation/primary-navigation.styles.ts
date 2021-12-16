@@ -8,7 +8,7 @@ export const StyledPrimaryNavigation = styled.div<{
   top: 2px;
   left: 1px;
   right: 1px;
-  z-index: 100001;
+  z-index: 10;
   height: 79px;
   display: flex;
   align-items: center;

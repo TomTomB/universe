@@ -1,4 +1,3 @@
-import { getPlayLoginAnimations, getPlayLoginMusic, useStore } from '@/store';
 import {
   SplashScreenAudioMachine,
   SplashScreenVideoMachine,
@@ -11,14 +10,19 @@ import * as C from './splash-screen.styles';
 import videoSplash from '@/assets/splash/videos/video-splash-snowdown2017.webm';
 import musicSplash from '@/assets/splash/music/music-splash-snowdown2017.ogg';
 import staticSplash from '@/assets/splash/images/image-splash-snowdown2017.jpg';
+import { useAppSelector } from '@/store';
+import {
+  selectPlayLoginAnimations,
+  selectPlayLoginMusic,
+} from '@/store/slices';
 
 interface SplashScreenContainerProps {
   className?: string;
 }
 
 export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
-  const playLoginMusic = useStore(getPlayLoginMusic);
-  const playLoginAnimations = useStore(getPlayLoginAnimations);
+  const playLoginMusic = useAppSelector(selectPlayLoginMusic);
+  const playLoginAnimations = useAppSelector(selectPlayLoginAnimations);
 
   const [currentMusic, sendMusic] = useMachine(
     SplashScreenAudioMachine.machine,

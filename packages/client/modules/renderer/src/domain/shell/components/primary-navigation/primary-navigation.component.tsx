@@ -1,15 +1,15 @@
-import {
-  getIsConnected,
-  getIsNotificationCenterVisible,
-  setIsNotificationCenterVisible,
-  useStore,
-} from '@/store';
 import { type FC, useEffect } from 'react';
 import { NotificationToggleButton } from '../notifications';
 import * as C from './primary-navigation.styles';
 import clickFileOff from './assets/sounds/sfx-servicestatus-button-click-off.ogg';
 import clickFileOn from './assets/sounds/sfx-servicestatus-button-click-on.ogg';
 import { useAudio, usePrevious } from '@/uikit/core/hooks';
+import { useAppDispatch, useAppSelector } from '@/store';
+import {
+  selectIsLCUConnected,
+  selectIsNotificationCenterVisible,
+  toggleIsNotificationCenterVisible,
+} from '@/store/slices';
 
 export interface PrimaryNavigationProps {
   showTickerOnly: boolean;
@@ -18,12 +18,12 @@ export interface PrimaryNavigationProps {
 export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
   showTickerOnly,
 }) => {
-  const isLCUConnected = useStore(getIsConnected);
-
-  const isNotificationCenterVisible = useStore(getIsNotificationCenterVisible);
-  const setIsNotificationCenterVisibleFn = useStore(
-    setIsNotificationCenterVisible,
+  const isLCUConnected = useAppSelector(selectIsLCUConnected);
+  const isNotificationCenterVisible = useAppSelector(
+    selectIsNotificationCenterVisible,
   );
+
+  const dispatch = useAppDispatch();
 
   const previousIsNotificationCenterVisible = usePrevious(
     isNotificationCenterVisible,
@@ -32,10 +32,9 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
   const clickAudioOff = useAudio(clickFileOff);
   const clickAudioOn = useAudio(clickFileOn);
 
-  useEffect(
-    () => setIsNotificationCenterVisibleFn(!isLCUConnected),
-    [isLCUConnected, setIsNotificationCenterVisibleFn],
-  );
+  useEffect(() => {
+    dispatch(toggleIsNotificationCenterVisible(!isLCUConnected));
+  }, [isLCUConnected, dispatch]);
 
   useEffect(() => {
     if (isNotificationCenterVisible === previousIsNotificationCenterVisible) {
@@ -56,7 +55,9 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
         <NotificationToggleButton
           variant="error"
           onClick={() =>
-            setIsNotificationCenterVisibleFn(!isNotificationCenterVisible)
+            dispatch(
+              toggleIsNotificationCenterVisible(!isNotificationCenterVisible),
+            )
           }
         ></NotificationToggleButton>
       )}
@@ -64,7 +65,9 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
       <C.NotificationFrame
         animated
         show={isNotificationCenterVisible}
-        onClickOutside={() => setIsNotificationCenterVisibleFn(false)}
+        onClickOutside={() =>
+          dispatch(toggleIsNotificationCenterVisible(false))
+        }
       >
         <C.NotificationList>
           <C.NotificationListItem>
