@@ -1,5 +1,7 @@
 import { type FC, useEffect } from 'react';
 import { CloseModal, TitleBar } from '../../components';
+import { NotificationToggleButton } from '../../components/notifications';
+import { PrimaryNavigation } from '../../components/primary-navigation';
 import * as C from './shell.styles';
 
 export const Shell: FC = ({ children }) => {
@@ -10,6 +12,7 @@ export const Shell: FC = ({ children }) => {
   return (
     <C.StyledShell>
       <TitleBar />
+      <PrimaryNavigation showTickerOnly />
 
       <CloseModal />
 

@@ -73,7 +73,7 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
   });
 
   return (
-    <OverlayHost>
+    <>
       {transitionBase(
         (styleBase, showBase) =>
           showBase && (
@@ -118,6 +118,6 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
             </C.StyledFlyoutFrame>
           ),
       )}
-    </OverlayHost>
+    </>
   );
 };

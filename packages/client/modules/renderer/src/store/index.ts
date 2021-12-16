@@ -15,6 +15,9 @@ interface StoreState {
   window: {
     isCloseModalVisible: boolean;
     setIsCloseModalVisible: (visible: boolean) => void;
+
+    isNotificationCenterVisible: boolean;
+    setIsNotificationCenterVisible: (visible: boolean) => void;
   };
 }
 
@@ -44,6 +47,12 @@ export const useStore = create<StoreState>(
       setIsCloseModalVisible: (visible) =>
         set((state) => {
           state.window.isCloseModalVisible = visible;
+        }),
+
+      isNotificationCenterVisible: false,
+      setIsNotificationCenterVisible: (visible) =>
+        set((state) => {
+          state.window.isNotificationCenterVisible = visible;
         }),
     },
   })),
