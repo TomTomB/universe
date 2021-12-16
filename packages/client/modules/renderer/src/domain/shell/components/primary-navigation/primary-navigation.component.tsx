@@ -1,5 +1,5 @@
 import { useStore } from '@/store';
-import { FC, useEffect } from 'react';
+import { type FC, useEffect } from 'react';
 import { NotificationToggleButton } from '../notifications';
 import * as C from './primary-navigation.styles';
 import clickFileOff from './assets/sounds/sfx-servicestatus-button-click-off.ogg';
@@ -24,7 +24,11 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
     } else {
       store.window.setIsNotificationCenterVisible(true);
     }
-  }, [store.lcu.isConnected, store.window.setIsNotificationCenterVisible]);
+  }, [
+    store.lcu.isConnected,
+    store.window,
+    store.window.setIsNotificationCenterVisible,
+  ]);
 
   useEffect(() => {
     if (store.window.isNotificationCenterVisible) {
@@ -32,7 +36,7 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
     } else {
       clickAudioOff.play();
     }
-  }, [store.window.isNotificationCenterVisible]);
+  }, [store.window.isNotificationCenterVisible, clickAudioOff, clickAudioOn]);
 
   return (
     <C.StyledPrimaryNavigation showTickerOnly={showTickerOnly}>

@@ -107,7 +107,7 @@ export const Modal: FC<ModalProps> = ({
     return () => {
       document.removeEventListener('keyup', handleKeyUp);
     };
-  }, []);
+  }, [closeFn]);
 
   return (
     <OverlayHost>

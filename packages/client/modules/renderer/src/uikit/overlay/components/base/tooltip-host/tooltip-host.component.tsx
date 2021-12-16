@@ -1,7 +1,8 @@
+import { tooltipSelector } from '@/uikit/core/constants';
 import { type FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-const overlayRoot = document.getElementById('universe-tooltip');
+const overlayRoot = document.getElementById(tooltipSelector);
 
 export const TooltipHost: FC = ({ children }) => {
   const [el, setEl] = useState<HTMLDivElement | null>(null);
