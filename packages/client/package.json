@@ -1,6 +1,6 @@
 {
   "name": "@universe/client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "main": "dist/main/index.cjs",
   "description": "Universe client",
