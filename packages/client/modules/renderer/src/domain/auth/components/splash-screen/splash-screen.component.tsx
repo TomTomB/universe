@@ -1,4 +1,4 @@
-import { useStore } from '@/store';
+import { getPlayLoginAnimations, getPlayLoginMusic, useStore } from '@/store';
 import {
   SplashScreenAudioMachine,
   SplashScreenVideoMachine,
@@ -17,7 +17,8 @@ interface SplashScreenContainerProps {
 }
 
 export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
-  const store = useStore();
+  const playLoginMusic = useStore(getPlayLoginMusic);
+  const playLoginAnimations = useStore(getPlayLoginAnimations);
 
   const [currentMusic, sendMusic] = useMachine(
     SplashScreenAudioMachine.machine,
@@ -44,12 +45,12 @@ export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
   );
 
   useEffect(() => {
-    sendMusic({ type: 'SET_ENABLED', enabled: store.playLoginMusic });
-  }, [store.playLoginMusic, sendMusic]);
+    sendMusic({ type: 'SET_ENABLED', enabled: playLoginMusic });
+  }, [playLoginMusic, sendMusic]);
 
   useEffect(() => {
-    sendVideo({ type: 'SET_ENABLED', enabled: store.playLoginAnimations });
-  }, [store.playLoginAnimations, sendVideo]);
+    sendVideo({ type: 'SET_ENABLED', enabled: playLoginAnimations });
+  }, [playLoginAnimations, sendVideo]);
 
   return (
     <C.StyledSplashScreenContainer className={className}>

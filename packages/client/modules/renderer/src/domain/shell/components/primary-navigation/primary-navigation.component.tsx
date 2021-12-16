@@ -1,10 +1,15 @@
-import { useStore } from '@/store';
+import {
+  getIsConnected,
+  getIsNotificationCenterVisible,
+  setIsNotificationCenterVisible,
+  useStore,
+} from '@/store';
 import { type FC, useEffect } from 'react';
 import { NotificationToggleButton } from '../notifications';
 import * as C from './primary-navigation.styles';
 import clickFileOff from './assets/sounds/sfx-servicestatus-button-click-off.ogg';
 import clickFileOn from './assets/sounds/sfx-servicestatus-button-click-on.ogg';
-import { useAudio } from '@/uikit/core/hooks';
+import { useAudio, usePrevious } from '@/uikit/core/hooks';
 
 export interface PrimaryNavigationProps {
   showTickerOnly: boolean;
@@ -13,47 +18,53 @@ export interface PrimaryNavigationProps {
 export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
   showTickerOnly,
 }) => {
-  const store = useStore();
+  const isLCUConnected = useStore(getIsConnected);
+
+  const isNotificationCenterVisible = useStore(getIsNotificationCenterVisible);
+  const setIsNotificationCenterVisibleFn = useStore(
+    setIsNotificationCenterVisible,
+  );
+
+  const previousIsNotificationCenterVisible = usePrevious(
+    isNotificationCenterVisible,
+  );
 
   const clickAudioOff = useAudio(clickFileOff);
   const clickAudioOn = useAudio(clickFileOn);
 
-  useEffect(() => {
-    if (store.lcu.isConnected) {
-      store.window.setIsNotificationCenterVisible(false);
-    } else {
-      store.window.setIsNotificationCenterVisible(true);
-    }
-  }, [
-    store.lcu.isConnected,
-    store.window,
-    store.window.setIsNotificationCenterVisible,
-  ]);
+  useEffect(
+    () => setIsNotificationCenterVisibleFn(!isLCUConnected),
+    [isLCUConnected, setIsNotificationCenterVisibleFn],
+  );
 
   useEffect(() => {
-    if (store.window.isNotificationCenterVisible) {
-      clickAudioOn.play();
-    } else {
-      clickAudioOff.play();
+    if (isNotificationCenterVisible === previousIsNotificationCenterVisible) {
+      return;
     }
-  }, [store.window.isNotificationCenterVisible, clickAudioOff, clickAudioOn]);
+
+    isNotificationCenterVisible ? clickAudioOn.play() : clickAudioOff.play();
+  }, [
+    isNotificationCenterVisible,
+    previousIsNotificationCenterVisible,
+    clickAudioOff,
+    clickAudioOn,
+  ]);
 
   return (
     <C.StyledPrimaryNavigation showTickerOnly={showTickerOnly}>
-      {!store.lcu.isConnected && (
+      {!isLCUConnected && (
         <NotificationToggleButton
           variant="error"
           onClick={() =>
-            store.window.setIsNotificationCenterVisible(
-              !store.window.isNotificationCenterVisible,
-            )
+            setIsNotificationCenterVisibleFn(!isNotificationCenterVisible)
           }
         ></NotificationToggleButton>
       )}
 
       <C.NotificationFrame
         animated
-        show={store.window.isNotificationCenterVisible}
+        show={isNotificationCenterVisible}
+        onClickOutside={() => setIsNotificationCenterVisibleFn(false)}
       >
         <C.NotificationList>
           <C.NotificationListItem>

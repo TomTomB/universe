@@ -1,4 +1,10 @@
-import { useStore } from '@/store';
+import {
+  getPlayLoginAnimations,
+  getPlayLoginMusic,
+  setPlayLoginAnimations,
+  setPlayLoginMusic,
+  useStore,
+} from '@/store';
 import type {
   SplashScreenAudioMachine,
   SplashScreenVideoMachine,
@@ -27,7 +33,11 @@ interface SplashScreenControlsProps {
 }
 
 export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
-  const store = useStore();
+  const playLoginMusic = useStore(getPlayLoginMusic);
+  const playLoginAnimations = useStore(getPlayLoginAnimations);
+
+  const setPlayLoginAnimationsFn = useStore(setPlayLoginAnimations);
+  const setPlayLoginMusicFn = useStore(setPlayLoginMusic);
 
   return (
     <C.SplashScreenControlsContainer>
@@ -50,20 +60,20 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             id="disableLoginAnimations"
             label="Disable Login Animations"
             name="disableLoginAnimations"
-            value={!store.playLoginAnimations}
+            value={!playLoginAnimations}
             playSounds
             onChange={() => {
-              store.setPlayLoginAnimations(!store.playLoginAnimations);
+              setPlayLoginAnimationsFn(!playLoginAnimations);
             }}
           />
           <Checkbox
             id="disableLoginMusic"
             label="Disable Login Music"
             name="disableLoginMusic"
-            value={!store.playLoginMusic}
+            value={!playLoginMusic}
             playSounds
             onChange={() => {
-              store.setPlayLoginMusic(!store.playLoginMusic);
+              setPlayLoginMusicFn(!playLoginMusic);
             }}
           />
         </C.SplashCheckboxContainer>

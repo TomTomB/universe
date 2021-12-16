@@ -2,12 +2,14 @@ import * as C from './flyout-frame.styles';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
 import classNames from 'classnames';
-import type { FC } from 'react';
+import { type FC, useRef } from 'react';
+import { useClickOutside } from '@/uikit/core/hooks';
 
 export interface FlyoutFrameProps {
   className?: string;
   position?: 'top' | 'right' | 'bottom' | 'left';
   closeButtonClick?: (e: React.MouseEvent) => void;
+  onClickOutside?: () => void;
   showCloseButton?: boolean;
   animated?: boolean;
   show?: boolean;
@@ -18,11 +20,19 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
   children,
   showCloseButton,
   closeButtonClick,
+  onClickOutside,
   animated,
   show,
   position = 'bottom',
 }) => {
+  const flyoutFrameRef = useRef<HTMLDivElement | null>(null);
   const isTopOrBottom = position === 'top' || position === 'bottom';
+
+  useClickOutside(flyoutFrameRef, () => {
+    if (show) {
+      onClickOutside?.();
+    }
+  });
 
   const transitionsBorder = useTransition(show, {
     config: springConfigHarsh,
@@ -89,6 +99,7 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
                 { animated },
                 { show },
               )}
+              ref={flyoutFrameRef}
             >
               {transitionsBorder(
                 (style, show) => show && <C.Border style={style} />,

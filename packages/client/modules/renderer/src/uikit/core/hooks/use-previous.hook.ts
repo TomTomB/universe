@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-export const usePrevious = (val: string | boolean | number) => {
-  const ref = useRef<string | boolean | number>();
+export const usePrevious = <T extends string | boolean | number>(val: T) => {
+  const ref = useRef<T>(val);
   useEffect(() => {
     ref.current = val;
   });
