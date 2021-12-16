@@ -1,28 +1,12 @@
 import create from 'zustand';
 import { immer } from './core';
-
-interface State {
-  playLoginAnimations: boolean;
-  playLoginMusic: boolean;
-  setPlayLoginAnimations: (play: boolean) => void;
-  setPlayLoginMusic: (play: boolean) => void;
-
-  lcu: {
-    isConnected: boolean;
-    setIsConnected: (play: boolean) => void;
-  };
-
-  window: {
-    isCloseModalVisible: boolean;
-    setIsCloseModalVisible: (visible: boolean) => void;
-
-    isNotificationCenterVisible: boolean;
-    setIsNotificationCenterVisible: (visible: boolean) => void;
-  };
-}
+import { createSettingsSlice } from './settings.store';
+import type { State } from './types';
 
 export const useStore = create<State>(
   immer((set) => ({
+    settings: createSettingsSlice(set),
+
     playLoginAnimations: true,
     playLoginMusic: false,
     setPlayLoginAnimations: (play) =>
