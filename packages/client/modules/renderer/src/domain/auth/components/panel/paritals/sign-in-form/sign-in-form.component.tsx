@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { generateShortId } from '@/core/util';
 import * as yup from 'yup';
-import { Checkbox, FramedSelect, Input } from '@/uikit/forms/components';
+import { Checkbox, Input, Label } from '@/uikit/forms/components';
 import { useYupValidationResolver } from '@/uikit/core/hooks';
 import { type FC, useMemo } from 'react';
 import * as C from './sign-in-form.styles';
@@ -56,7 +55,6 @@ export const SignInForm: FC = () => {
         error={formState.errors.password}
         register={register}
       />
-      <br />
       <Checkbox
         label="Remember Me"
         name="staySignedIn"
@@ -64,34 +62,17 @@ export const SignInForm: FC = () => {
         register={register}
         playSounds
       />
-      <br />
-      <br />
-      <FramedSelect
-        register={register}
-        name="someSelect"
-        id="someSelect"
-        label="Some Label"
-        playSounds
-        items={[
-          { label: 'An Option 1', value: 'opt-1' },
-          { label: 'An Option 2', value: 'opt-2' },
-          { label: 'An Option 3', value: 'opt-3' },
-          { label: 'An Option 4', value: 'opt-4' },
-          { label: 'An Option 5', value: generateShortId() },
-          {
-            label: 'Cool Option 6',
-            value: generateShortId(),
-            disabled: true,
-          },
-          { label: 'Cold Option 7', value: generateShortId() },
-          { label: 'Best Option 8', value: generateShortId() },
-        ]}
-      />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
+      <C.RegionLanguageToggleContainer>
+        <Label htmlFor="showRegionLanguageSelectsBtn" isInvalid={false}>
+          Region/Language
+        </Label>
+        <C.RegionLanguageToggle type="button" id="showRegionLanguageSelectsBtn">
+          EU West (English)
+          <C.RegionLanguageDropdownArrow></C.RegionLanguageDropdownArrow>
+        </C.RegionLanguageToggle>
+      </C.RegionLanguageToggleContainer>
+
       <C.SignInButton playSounds disabled={!formState.isValid}>
         Sign in
       </C.SignInButton>

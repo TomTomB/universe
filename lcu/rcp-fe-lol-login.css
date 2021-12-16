@@ -1,0 +1,681 @@
+.login-component .login-response .login-response-sign-in,
+.login-component .login-response .login-response-mfa,
+.login-component .login-app-version {
+  font-family: var(--font-display);
+}
+.login-component,
+.login-component .login-external-link,
+.login-component .login-response .login-response-service-offline,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link,
+.login-component .login-response .login-patcher-disconnected,
+.login-notification-content .login-external-link {
+  font-family: var(--font-body);
+}
+.login-component,
+.login-component .login-external-link,
+.login-component .login-response .login-response-sign-in,
+.login-component .login-response .login-response-mfa,
+.login-component .login-response .login-response-service-offline,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link,
+.login-component .login-response .login-patcher-disconnected,
+.login-component .login-app-version,
+.login-notification-content .login-external-link {
+  -webkit-user-select: none;
+}
+.login-component,
+.login-component .login-external-link,
+.login-component .login-response .login-response-sign-in,
+.login-component .login-response .login-response-mfa,
+.login-component .login-response .login-response-service-offline,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link,
+.login-component .login-response .login-patcher-disconnected,
+.login-component .login-app-version,
+.login-notification-content .login-external-link {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.login-component .login-response .login-response-sign-in,
+.login-component .login-response .login-response-mfa {
+  text-transform: uppercase;
+}
+.login-component .login-response .login-response-sign-in:lang(ko-kr),
+.login-component .login-response .login-response-mfa:lang(ko-kr),
+.login-component .login-response .login-response-sign-in:lang(ja-jp),
+.login-component .login-response .login-response-mfa:lang(ja-jp),
+.login-component .login-response .login-response-sign-in:lang(tr-tr),
+.login-component .login-response .login-response-mfa:lang(tr-tr),
+.login-component .login-response .login-response-sign-in:lang(el-gr),
+.login-component .login-response .login-response-mfa:lang(el-gr),
+.login-component .login-response .login-response-sign-in:lang(th-th),
+.login-component .login-response .login-response-mfa:lang(th-th),
+.login-component .login-response .login-response-sign-in:lang(zh-tw),
+.login-component .login-response .login-response-mfa:lang(zh-tw) {
+  text-transform: none;
+}
+.login-component .login-response .login-response-sign-in,
+.login-component .login-response .login-response-mfa {
+  color: #f0e6d2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.075em;
+}
+.login-component .login-response .login-response-sign-in:lang(ar-ae),
+.login-component .login-response .login-response-mfa:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.login-component {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.login-component:lang(ja-jp) {
+  font-size: 13px;
+}
+.login-component:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.login-component .login-response .login-response-service-offline,
+.login-component .login-response .login-patcher-disconnected {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.login-component .login-response .login-response-service-offline:lang(ja-jp),
+.login-component .login-response .login-patcher-disconnected:lang(ja-jp) {
+  font-size: 13px;
+}
+.login-component .login-response .login-response-service-offline:lang(ar-ae),
+.login-component .login-response .login-patcher-disconnected:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.login-component .login-external-link,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link,
+.login-notification-content .login-external-link {
+  font-size: 12px;
+  font-weight: normal;
+  outline: 0;
+  letter-spacing: 0.05em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.login-component .login-external-link:lang(ja-jp),
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:lang(ja-jp),
+.login-notification-content .login-external-link:lang(ja-jp) {
+  font-size: 13px;
+}
+.login-component .login-external-link:lang(ar-ae),
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:lang(ar-ae),
+.login-notification-content .login-external-link:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.login-component .login-external-link,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link,
+.login-notification-content .login-external-link {
+  color: #0596aa;
+  text-decoration: none;
+}
+.login-component .login-external-link:hover,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:hover,
+.login-notification-content .login-external-link:hover,
+.login-component .login-external-link.hover,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link.hover,
+.login-notification-content .login-external-link.hover {
+  color: #cdfafa;
+}
+.login-component .login-external-link:after,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:after,
+.login-notification-content .login-external-link:after {
+  width: 9px;
+  height: 9px;
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-mask: url(/fe/lol-login/external-link-mask.png) no-repeat;
+  -webkit-mask-size: contain;
+  background-color: #0596aa;
+  margin: 0 0 0 5px;
+}
+.login-component .login-external-link:lang(ar-ae):after,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:lang(ar-ae):after,
+.login-notification-content .login-external-link:lang(ar-ae):after {
+  margin: 0 5px 0 0;
+  transform: scaleX(-1);
+}
+.login-component .login-external-link:hover:after,
+.login-component
+  .login-response
+  .login-response-service-offline
+  .login-response-service-link:hover:after,
+.login-notification-content .login-external-link:hover:after {
+  background-color: #cdfafa;
+}
+.login-component .login-app-version {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.login-component .login-app-version:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-login-sidebar,
+.lol-login-sidebar > div {
+  height: 100%;
+}
+.login-component {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #010a13;
+  color: #a09b8c;
+  border-left: thin solid #1e282d;
+  box-sizing: border-box;
+  outline: none;
+}
+.login-component .login-body {
+  direction: ltr;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 16px;
+  flex: 1;
+  margin-top: 30px;
+}
+.login-component .login-lol-logo {
+  background-image: url(/fe/lol-login/lol-logo.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 128px;
+  height: 48px;
+  margin: 0 auto 20px;
+}
+.login-component .login-response {
+  min-height: 30px;
+  margin-bottom: 15px;
+}
+.login-component .login-response .login-response-service-offline {
+  color: #be1e37;
+}
+.login-component .login-response .login-patcher-disconnected {
+  color: #be1e37;
+  word-wrap: break-word;
+}
+.login-component .login-region-locale {
+  margin-top: 31px;
+}
+.login-component .login-body-lower-section {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+}
+.login-component .login-button-container {
+  height: 32px;
+}
+.login-component .signup-button-container {
+  margin-top: 10px;
+}
+.login-component .login-external-links {
+  margin-top: 50px;
+}
+.login-component .login-external-links .login-external-link {
+  margin-top: 2px;
+}
+.login-component .login-app-version {
+  border-top: thin solid #1e282d;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-grow: 0;
+  padding: 8px 0;
+  flex-direction: column;
+  align-items: center;
+  color: #3c3c41;
+  white-space: nowrap;
+}
+.login-notification-content p {
+  white-space: pre-line;
+}
+.login-error,
+.no-entitlement-signup {
+  font-family: var(--font-body);
+}
+.login-error,
+.no-entitlement-signup {
+  -webkit-user-select: none;
+}
+.login-error,
+.no-entitlement-signup {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.login-error {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.login-error:lang(ja-jp) {
+  font-size: 13px;
+}
+.login-error:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.no-entitlement-signup {
+  font-size: 12px;
+  font-weight: normal;
+  outline: 0;
+  letter-spacing: 0.05em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.no-entitlement-signup:lang(ja-jp) {
+  font-size: 13px;
+}
+.no-entitlement-signup:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.no-entitlement-signup {
+  color: #0596aa;
+  text-decoration: none;
+}
+.no-entitlement-signup:hover,
+.no-entitlement-signup.hover {
+  color: #cdfafa;
+}
+.no-entitlement-signup:after {
+  width: 9px;
+  height: 9px;
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-mask: url(/fe/lol-login/external-link-mask.png) no-repeat;
+  -webkit-mask-size: contain;
+  background-color: #0596aa;
+  margin: 0 0 0 5px;
+}
+.no-entitlement-signup:lang(ar-ae):after {
+  margin: 0 5px 0 0;
+  transform: scaleX(-1);
+}
+.no-entitlement-signup:hover:after {
+  background-color: #cdfafa;
+}
+.login-error {
+  color: #be1e37;
+  word-wrap: break-word;
+}
+.login-input-label {
+  display: block;
+  margin-bottom: 2px;
+}
+.login-input-password-container {
+  margin-top: 10px;
+}
+.login-input-rememberme-container {
+  margin-top: 15px;
+}
+.login-input-password::-webkit-input-placeholder {
+  font-style: normal;
+}
+.login-caps-on {
+  position: relative;
+}
+.login-caps-on input {
+  padding-right: 34px;
+}
+.login-caps-on input[placeholder] {
+  text-overflow: ellipsis;
+}
+.login-caps-on::after {
+  position: absolute;
+  content: '';
+  background-image: url(/fe/lol-login/capslock.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  right: 6px;
+  bottom: 6px;
+}
+.login-mfa-title {
+  margin-bottom: 15px;
+  font-weight: 800;
+  font-size: 16px;
+}
+.login-mfa-description {
+  margin-bottom: 15px;
+}
+.login-inprogress .login-inprogress-title {
+  font-family: var(--font-display);
+}
+.login-inprogress .login-inprogress-title {
+  -webkit-user-select: none;
+}
+.login-inprogress .login-inprogress-title {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.login-inprogress .login-inprogress-title {
+  text-transform: uppercase;
+}
+.login-inprogress .login-inprogress-title:lang(ko-kr),
+.login-inprogress .login-inprogress-title:lang(ja-jp),
+.login-inprogress .login-inprogress-title:lang(tr-tr),
+.login-inprogress .login-inprogress-title:lang(el-gr),
+.login-inprogress .login-inprogress-title:lang(th-th),
+.login-inprogress .login-inprogress-title:lang(zh-tw) {
+  text-transform: none;
+}
+.login-inprogress .login-inprogress-title {
+  color: #f0e6d2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.075em;
+}
+.login-inprogress .login-inprogress-title:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.login-inprogress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.login-inprogress .login-inprogress-title {
+  margin-top: 20px;
+}
+.login-inprogress .login-queue-message {
+  white-space: pre-wrap;
+}
+.login-inprogress .login-inprogress-description {
+  margin-top: 20px;
+}
+.login-inprogress .login-inprogress-footer {
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+.login-inprogress .login-inprogress-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 175px;
+}
+.login-inprogress .login-inprogress-spinner {
+  background-image: url(/fe/lol-login/spinner.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 32px;
+  -webkit-animation: login-spin 4s linear infinite;
+}
+.login-inprogress .login-queue-highlight {
+  color: #c8aa6e;
+}
+.login-inprogress .login-queue-cancel-button {
+  width: 150px;
+}
+@-webkit-keyframes login-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+.login-region-locale .login-region-locale-text {
+  margin-top: 5px;
+  display: inline-block;
+  transition: color 100ms linear;
+  text-decoration: none;
+  color: #c8aa6e;
+}
+.login-region-locale .login-region-locale-text:hover,
+.login-region-locale .login-region-locale-text:focus {
+  color: #f0e6d2;
+}
+.login-region-locale
+  .login-region-locale-text:hover
+  .login-region-locale-text-dropdown-arrow,
+.login-region-locale
+  .login-region-locale-text:focus
+  .login-region-locale-text-dropdown-arrow {
+  border-top: 6px solid #f0e6d2;
+}
+.login-region-locale
+  .login-region-locale-text
+  .login-region-locale-text-dropdown-arrow {
+  float: right;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #c8aa6e;
+  margin-top: 5px;
+  margin-left: 7px;
+  transition: border-top-color 100ms linear;
+}
+.login-region-locale .login-region-locale-dropdowns {
+  margin-top: 6px;
+}
+.login-region-locale
+  .login-region-locale-dropdowns
+  .login-dropdown-container:not(:first-child) {
+  margin-top: 8px;
+}
+.login-region-locale .login-region-locale-dropdowns .login-lol-dropdown {
+  width: 100%;
+}
+.login-version-info {
+  display: flex;
+  align-items: center;
+  white-space: pre-wrap;
+}
+.lol-splash-root-component {
+  direction: ltr;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.lol-splash-controllers-component {
+  position: absolute;
+  bottom: 28px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+}
+.splash-riot-games-logo {
+  margin: 0 32px 0 0;
+  background: url('/fe/lol-static-assets/images/riot-logo.png');
+  background-image: url('/fe/lol-static-assets/images/riot-logo.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 88px;
+  height: 33px;
+}
+.splash-vertical-fade {
+  background: url('/fe/lol-static-assets/images/line-vertical-fade.png');
+  background-image: url('/fe/lol-static-assets/images/line-vertical-fade.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 56px;
+  width: 1px;
+  margin: 0 15px 0 0;
+}
+.splash-replay-video-button {
+  background: url('/fe/lol-static-assets/images/button-replay-normal.png');
+  background-image: url('/fe/lol-static-assets/images/button-replay-normal.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin: 0 15px 0 0;
+}
+.splash-replay-video-button:hover {
+  background: url('/fe/lol-static-assets/images/button-replay-hover.png');
+  background-image: url('/fe/lol-static-assets/images/button-replay-hover.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+}
+.splash-replay-video-button:active {
+  background: url('/fe/lol-static-assets/images/button-replay-click.png');
+  background-image: url('/fe/lol-static-assets/images/button-replay-click.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+}
+.splash-replay-video-button[disabled='true'] {
+  pointer-events: none;
+  background: url('/fe/lol-static-assets/images/button-replay-disabled.png');
+  background-image: url('/fe/lol-static-assets/images/button-replay-disabled.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  cursor: default;
+  opacity: 0.5;
+}
+.splash-settings .splash-control-animation {
+  margin-bottom: 7px;
+}
+.lol-splash-video-component::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.2) 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player,
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  font-family: var(--font-display);
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player,
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  font-family: var(--font-display);
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player,
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  -webkit-user-select: none;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player,
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player,
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  text-transform: uppercase;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(ko-kr),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(ko-kr),
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(ja-jp),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(ja-jp),
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(tr-tr),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(tr-tr),
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(el-gr),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(el-gr),
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(th-th),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(th-th),
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(zh-tw),
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(zh-tw) {
+  text-transform: none;
+}
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  color: #f0e6d2;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+}
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player {
+  color: #f0e6d2;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-splash-welcome-component {
+  display: none;
+  position: fixed;
+  top: 300px;
+  left: 32px;
+  pointer-events: none;
+  text-shadow: 2px 2px 4px #000;
+}
+.lol-splash-welcome-component .splash-l10n-welcome-new-player {
+  color: #c8aa6e;
+}
+.lol-splash-welcome-component .splash-l10n-league-of-legends-span {
+  display: block;
+}

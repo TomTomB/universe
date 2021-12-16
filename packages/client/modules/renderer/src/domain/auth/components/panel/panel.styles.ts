@@ -12,6 +12,8 @@ export const LeagueLogoImg = styled.img`
   margin-left: 9px;
   object-fit: contain;
   margin-top: 5px;
+  object-position: left;
+  height: 58px;
 `;
 
 export const SignInContainer = styled.div`
@@ -20,4 +22,5 @@ export const SignInContainer = styled.div`
 
 export const SignInHead = styled.h5`
   height: 36px;
+  margin-bottom: 10px;
 `;

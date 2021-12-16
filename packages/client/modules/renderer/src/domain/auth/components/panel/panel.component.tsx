@@ -8,8 +8,7 @@ export const Panel: FC = () => {
       <C.LeagueLogoImg
         src="/splashscreen/lol-logo.png"
         alt="League of legends logo"
-        width="150"
-        height="65"
+        height="58"
       />
       <C.SignInContainer>
         <C.SignInHead>Sign in </C.SignInHead>
