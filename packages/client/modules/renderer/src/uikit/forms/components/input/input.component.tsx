@@ -75,7 +75,7 @@ export const Input: FC<InputProps> = ({
             ref={triggerShowPasswordCheckboxRef}
           />
 
-          <SystemTooltip triggerRef={triggerShowPasswordCheckboxRef.current}>
+          <SystemTooltip triggerRef={triggerShowPasswordCheckboxRef}>
             <TooltipText>
               {showPassword ? 'Hide password' : 'Show password'}
             </TooltipText>

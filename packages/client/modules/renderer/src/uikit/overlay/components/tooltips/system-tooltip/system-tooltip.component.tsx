@@ -2,12 +2,12 @@ import * as C from './system-tooltip.styles';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import { useTransition } from 'react-spring';
-import { useEffect, type FC } from 'react';
+import { type RefObject, useEffect, type FC } from 'react';
 import { useCompare } from '@/uikit/core/hooks';
 import { TooltipHost } from '../../base';
 
 export interface SystemTooltipProps {
-  triggerRef: HTMLElement | null;
+  triggerRef: RefObject<HTMLElement> | null;
   placement?: 'auto' | 'left' | 'top' | 'right' | 'bottom';
 }
 
@@ -35,10 +35,10 @@ export const SystemTooltip: FC<SystemTooltipProps> = ({
   const childrenHasChanged = useCompare(children?.toString() ?? '');
 
   useEffect(() => {
-    if (!triggerRef) {
+    if (!triggerRef?.current) {
       return;
     }
-    setTriggerRef(triggerRef);
+    setTriggerRef(triggerRef.current);
   }, [triggerRef, setTriggerRef]);
 
   useEffect(() => {

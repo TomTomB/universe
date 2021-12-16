@@ -39,6 +39,7 @@ export const RegionLanguageDropdownArrow = styled.div`
   margin-top: 5px;
   margin-left: 7px;
   transition: border-top-color 100ms linear;
+
   ${RegionLanguageToggle}:hover &, ${RegionLanguageToggle}:focus-visible & {
     border-top: 6px solid #f0e6d2;
   }
