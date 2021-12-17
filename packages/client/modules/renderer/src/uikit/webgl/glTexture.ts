@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GlOption, GlOptionReverse } from './types';
 import type { Gl } from './gl';
 import type {
@@ -22,7 +21,7 @@ export class GlTexture {
   get minFilter() {
     return this._params.minFilter;
   }
-  set minFilter(v: number) {
+  set minFilter(v: keyof typeof GlOptionReverse) {
     this._params.minFilter = v;
     this._checkMipmap();
 
@@ -159,20 +158,27 @@ export class GlTexture {
     }
   }
 
-  // TODO(TRB): remove any type casting
   private _getDimension(
     source: GlTextureSource,
     width: number,
     height: number,
   ) {
     if (source) {
-      this._width = (source as any).width;
-      this._height = (source as any).height;
+      if (
+        source instanceof HTMLImageElement ||
+        source instanceof HTMLCanvasElement
+      ) {
+        this._width = source.width;
+        this._height = source.height;
+      }
+
       this._width = this._width || width;
       this._height = this._height || height;
 
       if (!this._width || !this._height) {
-        this._width = this._height = Math.sqrt((source as any).length / 4);
+        if (source instanceof Uint8Array || source instanceof Float32Array) {
+          this._width = this._height = Math.sqrt(source.length / 4);
+        }
       }
     } else {
       this._width = width;
@@ -180,19 +186,24 @@ export class GlTexture {
     }
   }
 
-  // TODO(TRB): remove any type casting
   private _checkSource() {
     if (!this._source) {
       return;
     }
 
     if (this._sourceType === GlOption.UNSIGNED_BYTE) {
-      if (!(this._source instanceof Uint8Array)) {
-        this._source = new Uint8Array(this._source as any);
+      if (
+        !(this._source instanceof Uint8Array) &&
+        this._source instanceof Float32Array
+      ) {
+        this._source = new Uint8Array(this._source);
       }
     } else if (this._sourceType === GlOption.FLOAT) {
-      if (!(this._source instanceof Float32Array)) {
-        this._source = new Float32Array(this._source as any);
+      if (
+        !(this._source instanceof Float32Array) &&
+        this._source instanceof Uint8Array
+      ) {
+        this._source = new Float32Array(this._source);
       }
     }
   }
@@ -215,13 +226,11 @@ export class GlTexture {
 
     this._generateMipmap = this._params.mipmap;
 
-    if (!this._r(this._width) || !this._r(this._height)) {
+    if (!this._isPowerOfTwo(this._width) || !this._isPowerOfTwo(this._height)) {
       this._generateMipmap = false;
     }
 
-    if (
-      (GlOptionReverse as any)[this._params.minFilter].indexOf('MIPMAP') === -1
-    ) {
+    if (GlOptionReverse[this._params.minFilter].indexOf('MIPMAP') === -1) {
       this._generateMipmap = false;
     }
   }
@@ -353,8 +362,12 @@ export class GlTexture {
     }
   }
 
-  private _r(e: number) {
-    return 0 !== e && !(e & (e - 1));
+  private _isPowerOfTwo(num: number) {
+    if (num === 0) {
+      return false;
+    }
+
+    return !(num & (num - 1));
   }
 
   private _getTextureParameters(
@@ -364,8 +377,8 @@ export class GlTexture {
       if (
         this._width &&
         this._height &&
-        this._r(this._width) &&
-        this._r(this._height)
+        this._isPowerOfTwo(this._width) &&
+        this._isPowerOfTwo(this._height)
       ) {
         return GlOption.NEAREST_MIPMAP_LINEAR;
       }

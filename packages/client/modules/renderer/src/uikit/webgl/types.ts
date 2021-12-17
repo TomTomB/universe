@@ -14,7 +14,7 @@ export interface GlTextureParams {
   internalFormat?: number;
   level?: number;
   magFilter?: number;
-  minFilter?: number;
+  minFilter?: keyof typeof GlOptionReverse;
   mipmap?: boolean;
   premultiplyAlpha?: boolean;
   wrapS?: number;
