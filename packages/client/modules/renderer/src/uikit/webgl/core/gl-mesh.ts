@@ -1,4 +1,4 @@
-import { GlOption } from './types';
+import { GlOption } from '../types';
 import { vec3 } from 'gl-matrix';
 import type { Gl } from './gl';
 

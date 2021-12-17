@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GlOption } from './types';
-import basicFragmentShader from './shaders/basic.frag.glsl?raw';
-import basicVertexShader from './shaders/basic.vert.glsl?raw';
+import { GlOption } from '../types';
+import basicFragmentShader from '../shaders/basic.frag.glsl?raw';
+import basicVertexShader from '../shaders/basic.vert.glsl?raw';
 import type { Gl } from './gl';
 
 export interface GlShaderParameter {

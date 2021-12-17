@@ -1,4 +1,4 @@
-import { Camera } from './camera';
+import { Camera } from './base.camera';
 import { mat4, vec3 } from 'gl-matrix';
 
 export class CameraOrtho extends Camera {

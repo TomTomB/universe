@@ -1,5 +1,5 @@
-import { Camera } from './camera';
-import { Ray } from '../ray';
+import { Camera } from './base.camera';
+import { Ray } from '../core/ray';
 import { mat4, vec3 } from 'gl-matrix';
 
 export class CameraPerspective extends Camera {

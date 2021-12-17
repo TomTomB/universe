@@ -1,5 +1,5 @@
-import { GlOption } from './types';
-import type { Gl } from './gl';
+import { GlOption } from '../types';
+import type { Gl } from '../core';
 
 export const createPlane = (
   gl: Gl,
