@@ -21,6 +21,7 @@ export interface FramedSelectProps {
   disabled?: boolean;
   openUpward?: boolean;
   playSounds?: boolean;
+  className?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register?: UseFormRegister<any>;
 }
@@ -34,6 +35,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
   value,
   disabled,
   playSounds,
+  className,
   openUpward = false,
 }) => {
   const {
@@ -59,7 +61,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
   const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
 
   return (
-    <FormField>
+    <FormField className={className}>
       <NativeSelect
         id={nativeSelectId}
         register={register}

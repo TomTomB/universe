@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { Checkbox, Input, Label } from '@/uikit/forms/components';
+import { Checkbox, FramedSelect, Input, Label } from '@/uikit/forms/components';
 import { useYupValidationResolver } from '@/uikit/core/hooks';
-import { type FC, useMemo } from 'react';
+import { type FC, useMemo, useState } from 'react';
 import * as C from './sign-in-form.styles';
 
 interface FormValues {
@@ -12,6 +12,9 @@ interface FormValues {
 }
 
 export const SignInForm: FC = () => {
+  const [showRegionLanguageSelects, toggleShowRegionLanguageSelects] =
+    useState(false);
+
   const validationSchema = useMemo(
     () =>
       yup.object({
@@ -36,7 +39,7 @@ export const SignInForm: FC = () => {
   });
 
   return (
-    <form noValidate onSubmit={onSubmit}>
+    <C.StyledSignInFom noValidate onSubmit={onSubmit}>
       <Input
         name="email"
         spellcheck={false}
@@ -64,18 +67,43 @@ export const SignInForm: FC = () => {
       />
 
       <C.RegionLanguageToggleContainer>
-        <Label htmlFor="showRegionLanguageSelectsBtn" isInvalid={false}>
-          Region/Language
-        </Label>
-        <C.RegionLanguageToggle type="button" id="showRegionLanguageSelectsBtn">
-          EU West (English)
-          <C.RegionLanguageDropdownArrow></C.RegionLanguageDropdownArrow>
-        </C.RegionLanguageToggle>
+        {!showRegionLanguageSelects ? (
+          <>
+            <Label htmlFor="showRegionLanguageSelectsBtn" isInvalid={false}>
+              Region/Language
+            </Label>
+            <C.RegionLanguageToggle
+              type="button"
+              id="showRegionLanguageSelectsBtn"
+              onClick={() => toggleShowRegionLanguageSelects(true)}
+            >
+              EU West (English)
+              <C.RegionLanguageDropdownArrow></C.RegionLanguageDropdownArrow>
+            </C.RegionLanguageToggle>
+          </>
+        ) : (
+          <>
+            <FramedSelect
+              label="Region"
+              id="region-select"
+              items={[{ label: 'EU West', value: 'euw' }]}
+              name="region"
+              value="euw"
+            />
+            <C.LanguageSelect
+              label="Language"
+              id="language-select"
+              items={[{ label: 'English', value: 'en' }]}
+              name="language"
+              value="en"
+            />
+          </>
+        )}
       </C.RegionLanguageToggleContainer>
 
       <C.SignInButton playSounds disabled={!formState.isValid}>
         Sign in
       </C.SignInButton>
-    </form>
+    </C.StyledSignInFom>
   );
 };

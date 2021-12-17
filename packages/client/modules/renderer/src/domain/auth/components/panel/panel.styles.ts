@@ -18,6 +18,8 @@ export const LeagueLogoImg = styled.img`
 
 export const SignInContainer = styled.div`
   padding: 16px;
+  display: grid;
+  grid-template-rows: auto 1fr;
 `;
 
 export const SignInHead = styled.h5`

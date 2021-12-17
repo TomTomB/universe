@@ -1,14 +1,19 @@
-import { PrimaryMagicButton } from '@/uikit/forms/components';
+import { FramedSelect, PrimaryMagicButton } from '@/uikit/forms/components';
 import styled from 'styled-components';
+
+export const StyledSignInFom = styled.form`
+  position: relative;
+`;
 
 export const SignInButton = styled(PrimaryMagicButton)`
   display: block;
   width: 100%;
+  position: absolute;
+  bottom: 0;
 `;
 
 export const RegionLanguageToggleContainer = styled.div`
   margin-top: 2rem;
-  margin-bottom: 9rem;
   display: grid;
 `;
 
@@ -42,5 +47,11 @@ export const RegionLanguageDropdownArrow = styled.div`
 
   ${RegionLanguageToggle}:hover &, ${RegionLanguageToggle}:focus-visible & {
     border-top: 6px solid #f0e6d2;
+  }
+`;
+
+export const LanguageSelect = styled(FramedSelect)`
+  && {
+    margin-top: 8px;
   }
 `;
