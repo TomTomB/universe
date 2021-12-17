@@ -41,9 +41,12 @@ export class GlMesh {
   private _useVAO: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _vao: any;
-  private _drawType?: GlOption.DYNAMIC_DRAW | GlOption.STATIC_DRAW;
+  private _drawType?:
+    | GlOption.DYNAMIC_DRAW
+    | GlOption.STATIC_DRAW
+    | GlOption.POINTS;
 
-  drawType: number;
+  drawType: GlOption.DYNAMIC_DRAW | GlOption.STATIC_DRAW | GlOption.POINTS;
   iBuffer?: WebGLBuffer & { itemSize?: number; numItems?: number };
 
   get vertices() {

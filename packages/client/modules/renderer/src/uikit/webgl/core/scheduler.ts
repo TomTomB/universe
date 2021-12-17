@@ -8,7 +8,7 @@ interface TaskWithDelay extends Task {
   time: number;
 }
 
-export class Scheduler {
+export class SchedulerImpl {
   private _delayTasks: Array<TaskWithDelay | null> = [];
   private _nextTasks: Array<Task | null> = [];
   private _deferTasks: Array<Task | null> = [];
@@ -163,5 +163,13 @@ export class Scheduler {
     } else {
       this._looping = false;
     }
+  }
+}
+
+export class Scheduler {
+  private static instance = new SchedulerImpl();
+
+  static getInstance() {
+    return this.instance;
   }
 }

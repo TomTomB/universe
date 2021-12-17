@@ -20,7 +20,6 @@ export class Banner extends EventEmitter<'loaded' | 'error'> {
   private _gl: Gl;
   private _camera?: CameraOrtho;
   private _vBanner?: VBanner;
-  private _scheduler: Scheduler;
 
   private _canvasEl: HTMLCanvasElement;
   private _config: BannerAnimationConfig;
@@ -47,7 +46,6 @@ export class Banner extends EventEmitter<'loaded' | 'error'> {
     this._config = config;
 
     this._fpsCounter = new FpsCounter();
-    this._scheduler = new Scheduler();
     this._gl = new Gl(canvasEl, { premultipliedAlpha: true });
 
     this._gl.context.blendFunc(GlOption.ONE, GlOption.ONE_MINUS_SRC_ALPHA);
@@ -92,16 +90,16 @@ export class Banner extends EventEmitter<'loaded' | 'error'> {
     }
 
     if (this._isLoading) {
-      this._scheduler.next(() => this.play());
+      Scheduler.getInstance().next(() => this.play());
     } else {
       this.pause();
-      this._efIndex = this._scheduler.addEF(() => this._loop());
+      this._efIndex = Scheduler.getInstance().addEF(() => this._loop());
     }
   }
 
   pause() {
     if (this._efIndex !== undefined) {
-      this._scheduler.removeEF(this._efIndex);
+      Scheduler.getInstance().removeEF(this._efIndex);
       this._efIndex = undefined;
     }
   }
