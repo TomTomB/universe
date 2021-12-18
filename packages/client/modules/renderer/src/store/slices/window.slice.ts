@@ -13,7 +13,7 @@ export type SettingsModalPage =
   | 'in-game:interface'
   | 'in-game:game'
   | 'in-game:replays'
-  | 'about:verfification'
+  | 'about:verification'
   | 'about:privacy-notice'
   | 'about:terms-of-use'
   | 'about:third-party-licenses'

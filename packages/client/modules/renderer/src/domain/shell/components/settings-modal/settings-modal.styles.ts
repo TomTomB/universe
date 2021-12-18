@@ -43,3 +43,18 @@ export const ResetSettingsForPageButton = styled(SecondaryFlatButton)`
   top: 20px;
   min-width: 152px;
 `;
+
+export const PagePlaceholder = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PagePlaceholderImg = styled.img`
+  width: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+`;

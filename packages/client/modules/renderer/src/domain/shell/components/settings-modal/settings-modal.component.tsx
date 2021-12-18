@@ -5,69 +5,127 @@ import {
   toggleIsSettingsModalVisible,
 } from '@/store/slices';
 import { Modal } from '@/uikit/overlay/components';
-import { type FC, useEffect, useState } from 'react';
-import { SettingsNavigation } from './partials';
+import { type FC, useEffect, useState, type ReactElement } from 'react';
+import { ClientSound, SettingsNavigation } from './partials';
 import * as C from './settings-modal.styles';
+import propSmile from './assets/images/poro_smile.png';
 
 export const SettingsModal: FC = () => {
   const dispatch = useAppDispatch();
   const isSettingsModalVisible = useAppSelector(selectIsSettingsModalVisible);
   const activePage = useAppSelector(selectActiveSettingsModalPage);
 
-  const [headerText, setHeaderText] = useState<{
+  const [settingsPage, setSettingsPage] = useState<{
     section: string;
     label: string;
-  }>({ section: 'Client', label: 'General' });
+    component: ReactElement | null;
+  }>({ section: 'Client', label: 'General', component: null });
 
   useEffect(() => {
     switch (activePage) {
       case 'client:general':
-        setHeaderText({ section: 'Client', label: 'General' });
+        setSettingsPage({
+          section: 'Client',
+          label: 'General',
+          component: null,
+        });
         break;
       case 'client:notifications':
-        setHeaderText({ section: 'Client', label: 'Notifications' });
+        setSettingsPage({
+          section: 'Client',
+          label: 'Notifications',
+          component: null,
+        });
         break;
       case 'client:chat-and-friends':
-        setHeaderText({ section: 'Client', label: 'Chat & Friends' });
+        setSettingsPage({
+          section: 'Client',
+          label: 'Chat & Friends',
+          component: null,
+        });
         break;
       case 'client:sound':
-        setHeaderText({ section: 'Client', label: 'Sound' });
+        setSettingsPage({
+          section: 'Client',
+          label: 'Sound',
+          component: <ClientSound />,
+        });
         break;
       case 'client:voice':
-        setHeaderText({ section: 'Client', label: 'Voice' });
+        setSettingsPage({ section: 'Client', label: 'Voice', component: null });
         break;
       case 'client:block-list':
-        setHeaderText({ section: 'Client', label: 'Block list' });
+        setSettingsPage({
+          section: 'Client',
+          label: 'Block list',
+          component: null,
+        });
         break;
       case 'in-game:hotkeys':
-        setHeaderText({ section: 'In-Game', label: 'Hotkeys' });
+        setSettingsPage({
+          section: 'In-Game',
+          label: 'Hotkeys',
+          component: null,
+        });
         break;
       case 'in-game:sound':
-        setHeaderText({ section: 'In-Game', label: 'Sound' });
+        setSettingsPage({
+          section: 'In-Game',
+          label: 'Sound',
+          component: null,
+        });
         break;
       case 'in-game:interface':
-        setHeaderText({ section: 'In-Game', label: 'Interface' });
+        setSettingsPage({
+          section: 'In-Game',
+          label: 'Interface',
+          component: null,
+        });
         break;
       case 'in-game:game':
-        setHeaderText({ section: 'In-Game', label: 'Game' });
+        setSettingsPage({ section: 'In-Game', label: 'Game', component: null });
         break;
       case 'in-game:replays':
-        setHeaderText({ section: 'In-Game', label: 'Replays' });
+        setSettingsPage({
+          section: 'In-Game',
+          label: 'Replays',
+          component: null,
+        });
         break;
-      case 'about:verfification':
-        setHeaderText({ section: 'About', label: 'Verification' });
+      case 'about:verification':
+        setSettingsPage({
+          section: 'About',
+          label: 'Verification',
+          component: null,
+        });
         break;
       case 'about:privacy-notice':
-        setHeaderText({ section: 'About', label: 'Privacy Notice' });
+        setSettingsPage({
+          section: 'About',
+          label: 'Privacy Notice',
+          component: null,
+        });
         break;
       case 'about:terms-of-use':
-        setHeaderText({ section: 'About', label: 'Terms of Use' });
+        setSettingsPage({
+          section: 'About',
+          label: 'Terms of Use',
+          component: null,
+        });
         break;
       case 'about:third-party-licenses':
-        setHeaderText({ section: 'About', label: 'Third-Party Licenses' });
+        setSettingsPage({
+          section: 'About',
+          label: 'Third-Party Licenses',
+          component: null,
+        });
         break;
       case 'about:version':
-        setHeaderText({ section: 'About', label: 'Version' });
+        setSettingsPage({
+          section: 'About',
+          label: 'Version',
+          component: null,
+        });
         break;
     }
   }, [activePage]);
@@ -94,16 +152,23 @@ export const SettingsModal: FC = () => {
       <C.StyledSettingsModal>
         <C.SettingsTitleBar>
           <C.TitleBarTitle>
-            {headerText.section}
+            {settingsPage.section}
             <C.TitleBarBreak>/</C.TitleBarBreak>
-            <C.TitleBarCurrent>{headerText.label}</C.TitleBarCurrent>
+            <C.TitleBarCurrent>{settingsPage.label}</C.TitleBarCurrent>
           </C.TitleBarTitle>
           <C.ResetSettingsForPageButton type="button">
             Restore Defaults
           </C.ResetSettingsForPageButton>
         </C.SettingsTitleBar>
         <SettingsNavigation></SettingsNavigation>
-        <C.SettingsContent></C.SettingsContent>
+        <C.SettingsContent>
+          {settingsPage.component ?? (
+            <C.PagePlaceholder>
+              <C.PagePlaceholderImg src={propSmile} alt="Smiling poro" />
+              <h5>Nothing here yet</h5>
+            </C.PagePlaceholder>
+          )}
+        </C.SettingsContent>
       </C.StyledSettingsModal>
     </Modal>
   );

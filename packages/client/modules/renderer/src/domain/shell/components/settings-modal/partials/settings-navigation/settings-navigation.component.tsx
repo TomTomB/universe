@@ -47,7 +47,7 @@ export const SettingsNavigation: FC<SettingsNavigationProps> = ({
           isActive={activePage === 'client:chat-and-friends'}
           onClick={() => setActivePage('client:chat-and-friends')}
         >
-          Chat & Fiends
+          Chat & Friends
         </C.StyledTabNavigationItem>
         <C.StyledTabNavigationItem
           isActive={activePage === 'client:sound'}
@@ -104,8 +104,8 @@ export const SettingsNavigation: FC<SettingsNavigationProps> = ({
       <C.NavSectionHeader>About</C.NavSectionHeader>
       <TabNavigation>
         <C.StyledTabNavigationItem
-          isActive={activePage === 'about:verfification'}
-          onClick={() => setActivePage('about:verfification')}
+          isActive={activePage === 'about:verification'}
+          onClick={() => setActivePage('about:verification')}
         >
           Verfification
         </C.StyledTabNavigationItem>
