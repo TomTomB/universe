@@ -6,6 +6,7 @@ export interface ScrollableProps {
   className?: string;
   maskOverflow?: boolean;
   scrollDirection?: Direction;
+  overlay?: boolean;
 }
 
 export const Scrollable: FC<ScrollableProps> = ({
@@ -13,6 +14,7 @@ export const Scrollable: FC<ScrollableProps> = ({
   className,
   maskOverflow,
   scrollDirection,
+  overlay,
 }) => {
   const [scrolledStart, setScrolledStart] = useState(false);
   const [scrolledEnd, setScrolledEnd] = useState(false);
@@ -72,6 +74,7 @@ export const Scrollable: FC<ScrollableProps> = ({
     <C.StyledScrollable
       className={className}
       ref={scrollContainerRef}
+      overlay={overlay}
       scrollDirection={scrollDirection}
       scrolledStart={scrolledStart}
       scrolledEnd={scrolledEnd}

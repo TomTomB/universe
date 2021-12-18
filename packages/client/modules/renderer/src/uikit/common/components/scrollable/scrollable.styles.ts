@@ -54,11 +54,12 @@ const getScrollMask = (
 
 export const StyledScrollable = styled.div<{
   scrollDirection?: Direction;
+  overlay?: boolean;
   scrolledStart: boolean;
   scrolledEnd: boolean;
 }>`
   position: relative;
-  overflow: overlay;
+  overflow: ${({ overlay }) => (overlay ? 'overlay' : 'auto')};
 
   ${({ scrollDirection, scrolledStart, scrolledEnd }) =>
     getScrollMask(scrollDirection, scrolledStart, scrolledEnd)}

@@ -5,6 +5,12 @@ import {
 } from '@/uikit/common/components/navigations';
 import styled from 'styled-components';
 
+export const StyledSettingsNavigation = styled(Scrollable)`
+  height: 482px;
+  margin-top: 5px;
+  width: 186px;
+`;
+
 export const StyledTabNavigationItem = styled(TabNavigationItem)`
   ${TabNavigationItemStyles.ItemLink} {
     padding: 0 0 0 3px;
@@ -12,7 +18,7 @@ export const StyledTabNavigationItem = styled(TabNavigationItem)`
     line-height: 16px;
     align-items: center;
     font-size: 12px;
-    transition: all 0.3s ease;
+    transition: background 300ms ease, color 300ms ease;
     width: 100%;
     color: #cdbe91;
     text-align: left;
@@ -36,10 +42,4 @@ export const NavSectionHeader = styled.p`
   &:not(:first-of-type) {
     margin-top: 20px;
   }
-`;
-
-export const StyledSettingsNavigation = styled(Scrollable)`
-  height: 482px;
-  margin-top: 5px;
-  width: 176px;
 `;
