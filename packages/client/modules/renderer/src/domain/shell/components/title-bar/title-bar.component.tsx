@@ -67,7 +67,9 @@ export const TitleBar = () => {
   };
 
   const showSettingsModal = () => {
-    dispatch(toggleIsSettingsModalVisible(true));
+    dispatch(
+      toggleIsSettingsModalVisible({ visible: true, page: 'client:general' }),
+    );
   };
 
   return (

@@ -46,12 +46,14 @@ export const ItemLink = styled.button`
     height: 100%;
     top: 0;
     left: 1px;
-    background-image: linear-gradient(to bottom, #c89b3c, #c89b3c);
+    background-color: #c89b3c;
     background-size: 100% 100%;
     background-position: left center;
     background-repeat: no-repeat;
     opacity: 0;
-    transition: 400ms opacity;
+    transition: 300ms opacity;
+    transform: scaleY(0);
+    will-change: transform, opacity;
   }
 
   &:hover,
@@ -66,14 +68,15 @@ export const ItemLink = styled.button`
   &.active {
     cursor: default;
     color: #f0e6d2;
-    cursor: default;
 
     &::before {
+      transition: 300ms opacity, 300ms transform;
       opacity: 1;
+      transform: scaleY(1);
     }
   }
 
-  &[data-disabled='true'] {
+  &:disabled {
     pointer-events: none;
     color: #888;
   }

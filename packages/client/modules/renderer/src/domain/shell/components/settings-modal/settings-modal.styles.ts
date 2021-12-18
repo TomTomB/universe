@@ -39,7 +39,7 @@ export const TitleBarCurrent = styled.span`
 
 export const ResetSettingsForPageButton = styled(SecondaryFlatButton)`
   position: absolute;
-  right: 18px;
+  right: 9px;
   top: 20px;
   min-width: 152px;
 `;
