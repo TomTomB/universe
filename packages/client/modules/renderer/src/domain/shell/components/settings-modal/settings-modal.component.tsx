@@ -151,7 +151,7 @@ export const SettingsModal: FC = () => {
     >
       <C.StyledSettingsModal>
         <C.SettingsTitleBar>
-          <C.TitleBarTitle>
+          <C.TitleBarTitle id="settings-modal-label">
             {settingsPage.section}
             <C.TitleBarBreak>/</C.TitleBarBreak>
             <C.TitleBarCurrent>{settingsPage.label}</C.TitleBarCurrent>

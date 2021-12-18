@@ -37,6 +37,8 @@ export const Range: FC<RangeProps> = ({
     defaultValue > max ? max : defaultValue < min ? min : defaultValue,
   );
 
+  const reg = register?.(name);
+
   const stepInverse = 1 / step;
 
   let cacheVal = value;
@@ -151,6 +153,11 @@ export const Range: FC<RangeProps> = ({
     setValue(newValue);
     cacheVal = newValue;
     onChange?.(newValue);
+
+    reg?.onChange({ target: {}, type: 'change' });
+
+    const slider = document.getElementById(id + '_native') as HTMLInputElement;
+    slider.value = newValue.toString();
   };
 
   const styleValue = (100 / max) * value;
@@ -159,14 +166,15 @@ export const Range: FC<RangeProps> = ({
   return (
     <>
       <C.NativeSlider
+        id={id + '_native'}
         type="range"
         disabled={disabled}
         name={name}
         min={min}
         max={max}
-        value={value}
-        {...register?.(name)}
+        // value={value}
         onChange={(e) => updateValue(+e.target.value)}
+        {...reg}
       />
       <C.StyledSlider
         aria-orientation={direction}

@@ -5,7 +5,7 @@ import type { FC } from 'react';
 
 export interface LabelProps {
   htmlFor: string;
-  isInvalid: boolean;
+  isInvalid?: boolean;
   disabled?: boolean;
   id?: string;
   onClick?: (e: ReactMouseEvent<HTMLLabelElement, MouseEvent>) => void;
