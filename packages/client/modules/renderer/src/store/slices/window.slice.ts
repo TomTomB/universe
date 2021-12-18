@@ -50,6 +50,8 @@ export const windowSlice = createSlice({
 
       if (action.payload.page) {
         state.activeSettingsModalPage = action.payload.page;
+      } else if (action.payload.visible) {
+        state.activeSettingsModalPage = 'client:general';
       }
     },
     toggleIsNotificationCenterVisible: (
