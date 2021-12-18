@@ -89,7 +89,6 @@ export const StyledSecondaryFlatButton = styled.button`
   justify-content: center;
   box-sizing: border-box;
   min-width: 90px;
-  height: 100%;
   min-height: 32px;
   cursor: pointer;
   -webkit-user-select: none;

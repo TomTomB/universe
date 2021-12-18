@@ -1,0 +1,53 @@
+{
+  "importComponentStyles": {
+    "scope": "typescriptreact",
+    "prefix": "uni-s",
+    "body": "import * as C from './${TM_FILENAME/(.*)\\..+$/$1/}.styles'"
+  },
+  "exportComponent": {
+    "scope": "typescript",
+    "prefix": "uni-ex",
+    "body": [
+      "export * from './${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}.component';",
+      "export * as ${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}Styles from './${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}.styles';"
+    ]
+  },
+  "exportComponentWithTypes": {
+    "scope": "typescript",
+    "prefix": "uni-ext",
+    "body": [
+      "export * from './${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}';",
+      "export * as ${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}Styles from './${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}.styles';",
+      "export * from './${TM_DIRECTORY/.*[\\\\\\/](.*)$/$1/}.types';"
+    ]
+  },
+  "reactFuntionComponent": {
+    "scope": "typescriptreact",
+    "prefix": "uni-cs",
+    "body": [
+      "import type { FC } from 'react';",
+      "import * as C from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}.styles';",
+      "",
+      "export interface ${0}Props {",
+      "  className?: string;",
+      "}",
+      "",
+      "export const ${0}: FC<${0}Props> = ({ className }) => {",
+      "  return <div />;",
+      "};",
+      ""
+    ]
+  },
+  "styledComponent": {
+    "scope": "typescript",
+    "prefix": "uni-sc",
+    "body": [
+      "import styled from 'styled-components';",
+      "",
+      "export const Styled${1} = styled.${0}`",
+      "",
+      "`;",
+      ""
+    ]
+  }
+}

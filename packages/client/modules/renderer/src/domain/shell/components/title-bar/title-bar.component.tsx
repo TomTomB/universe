@@ -1,7 +1,8 @@
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
-  selectIsCloseModalVisible,
+  selectIsModalOpen,
   toggleIsCloseModalVisible,
+  toggleIsSettingsModalVisible,
 } from '@/store/slices';
 import { useEffect, useState } from 'react';
 import { TitleBarButton } from './partials';
@@ -9,7 +10,7 @@ import * as C from './title-bar.styles';
 
 export const TitleBar = () => {
   const dispatch = useAppDispatch();
-  const isCloseModalVisible = useAppSelector(selectIsCloseModalVisible);
+  const isModalOpen = useAppSelector(selectIsModalOpen);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   let startPosition: { x: number; y: number } | null = null;
@@ -65,6 +66,10 @@ export const TitleBar = () => {
     dispatch(toggleIsCloseModalVisible(true));
   };
 
+  const showSettingsModal = () => {
+    dispatch(toggleIsSettingsModalVisible(true));
+  };
+
   return (
     <C.StyledHeader onMouseDown={(e) => mouseDown(e)}>
       <C.TitleBarControls>
@@ -72,23 +77,21 @@ export const TitleBar = () => {
           label="Minimize"
           type="minimize"
           playSounds
-          disabled={isCloseModalVisible}
+          disabled={isModalOpen}
           onClick={minimizeWindow}
         />
         <TitleBarButton
           label="Settings"
           type="settings"
           playSounds
-          disabled={isCloseModalVisible}
-          onClick={() => {
-            console.log('Settings');
-          }}
+          disabled={isModalOpen}
+          onClick={showSettingsModal}
         />
         <TitleBarButton
           label="Close"
           type="close"
           playSounds
-          disabled={isCloseModalVisible}
+          disabled={isModalOpen}
           onClick={showCloseModal}
         />
       </C.TitleBarControls>

@@ -1,119 +1,84 @@
-import { generateShortId } from '@/core/util';
 import type { Direction } from '@/types';
-import { type FC, useEffect, useMemo, useState } from 'react';
+import { type FC, useEffect, useState, useRef } from 'react';
 import * as C from './scrollable.styles';
 
 export interface ScrollableProps {
   className?: string;
   maskOverflow?: boolean;
   scrollDirection?: Direction;
-  observeTopSelector?: string;
-  observeBottomSelector?: string;
-  observeLeftSelector?: string;
-  observeRightSelector?: string;
 }
 
 export const Scrollable: FC<ScrollableProps> = ({
   children,
   className,
   maskOverflow,
-  observeBottomSelector,
-  observeLeftSelector,
-  observeRightSelector,
-  observeTopSelector,
   scrollDirection,
 }) => {
-  const scrollContainerId = useMemo(() => {
-    return generateShortId();
-  }, []);
-  const [scrolledTop, setScrolledTop] = useState(false);
-  const [scrolledBottom, setScrolledBottom] = useState(false);
-  const [scrolledLeft, setScrolledLeft] = useState(false);
-  const [scrolledRight, setScrolledRight] = useState(false);
+  const [scrolledStart, setScrolledStart] = useState(false);
+  const [scrolledEnd, setScrolledEnd] = useState(false);
+
+  const startPointRef = useRef<HTMLDivElement>(null);
+  const endPointRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
 
-    const targetTop = document.querySelector(
-      `#${scrollContainerId} ${observeTopSelector}`,
-    );
-    const targetBottom = document.querySelector(
-      `#${scrollContainerId} ${observeBottomSelector}`,
-    );
+    const startPoint = startPointRef.current;
+    const endPoint = endPointRef.current;
+    const scrollContainer = scrollContainerRef.current;
 
-    const targetLeft = document.querySelector(
-      `#${scrollContainerId} ${observeLeftSelector}`,
-    );
-    const targetRight = document.querySelector(
-      `#${scrollContainerId} ${observeRightSelector}`,
-    );
-
-    const root = document.querySelector(`#${scrollContainerId}`);
+    if (!startPoint || !endPoint || !scrollContainer) {
+      return;
+    }
 
     if (maskOverflow) {
       const handleIntersect: IntersectionObserverCallback = (entries) => {
         entries.forEach((entry) => {
           const { isIntersecting, target } = entry;
 
-          if (target === targetTop) {
-            setScrolledTop(isIntersecting);
+          if (target === startPoint) {
+            setScrolledStart(isIntersecting);
           }
-          if (target === targetBottom) {
-            setScrolledBottom(isIntersecting);
-          }
-          if (target === targetLeft) {
-            setScrolledLeft(isIntersecting);
-          }
-          if (target === targetRight) {
-            setScrolledRight(isIntersecting);
+          if (target === endPoint) {
+            setScrolledEnd(isIntersecting);
           }
         });
       };
 
       observer = new IntersectionObserver(handleIntersect, {
         threshold: [1],
-        root,
+        root: scrollContainer,
       });
 
-      if (targetTop && targetBottom) {
-        observer.observe(targetTop);
-        observer.observe(targetBottom);
-      }
-      if (targetLeft && targetRight) {
-        observer.observe(targetLeft);
-        observer.observe(targetRight);
-      }
+      observer.observe(startPoint);
+      observer.observe(endPoint);
     }
     return () => {
-      if (targetTop && targetBottom) {
-        observer?.unobserve(targetTop);
-        observer?.unobserve(targetBottom);
-      }
-      if (targetLeft && targetRight) {
-        observer?.unobserve(targetLeft);
-        observer?.unobserve(targetRight);
+      if (startPoint && endPoint) {
+        observer?.unobserve(startPoint);
+        observer?.unobserve(endPoint);
       }
     };
   }, [
     maskOverflow,
-    scrollContainerId,
-    observeTopSelector,
-    observeBottomSelector,
-    observeLeftSelector,
-    observeRightSelector,
     scrollDirection,
+    startPointRef,
+    endPointRef,
+    scrollContainerRef,
   ]);
 
   return (
     <C.StyledScrollable
       className={className}
-      id={scrollContainerId}
-      data-scrolled-top={scrolledTop}
-      data-scrolled-bottom={scrolledBottom}
-      data-scrolled-left={scrolledLeft}
-      data-scrolled-right={scrolledRight}
+      ref={scrollContainerRef}
+      scrollDirection={scrollDirection}
+      scrolledStart={scrolledStart}
+      scrolledEnd={scrolledEnd}
     >
+      <div ref={startPointRef} />
       {children}
+      <div ref={endPointRef} />
     </C.StyledScrollable>
   );
 };

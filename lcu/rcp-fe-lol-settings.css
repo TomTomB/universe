@@ -1,0 +1,2719 @@
+.lol-settings-title,
+.lol-settings-voice-ptt-key,
+.lol-settings-voice-ptt-modifier,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-key,
+.lol-settings-voice-section-title,
+.lol-settings-account-verification-verified-label,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  font-family: var(--font-display);
+}
+.lol-settings-checkbox-label,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .subtitle {
+  font-family: var(--font-body);
+}
+.lol-settings-checkbox-label,
+.lol-settings-title,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-section-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-settings-account-verification-verified-label,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-title,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-title,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .title,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .title,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .title,
+.lol-settings-legal-statements .subtitle {
+  -webkit-user-select: none;
+}
+.lol-settings-checkbox-label,
+.lol-settings-title,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-section-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-settings-account-verification-verified-label,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-title,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-title,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .title,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .title,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .title,
+.lol-settings-legal-statements .subtitle {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.lol-settings-title,
+.lol-settings-voice-section-title,
+.lol-settings-account-verification-verified-label,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  text-transform: uppercase;
+}
+.lol-settings-title:lang(ko-kr),
+.lol-settings-voice-section-title:lang(ko-kr),
+.lol-settings-account-verification-verified-label:lang(ko-kr),
+.lol-settings-ingame-hotkeys-castall-text:lang(ko-kr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ko-kr),
+.additional-hotkeys-header:lang(ko-kr),
+.lol-settings-ingame-section-title:lang(ko-kr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(ko-kr),
+.replays-settings-root-title:lang(ko-kr),
+.license-agreement-settings .license-agreement-settings-title:lang(ko-kr),
+.lol-settings-license .title:lang(ko-kr),
+.lol-settings-version .title:lang(ko-kr),
+.lol-settings-legal-statements .title:lang(ko-kr),
+.lol-settings-title:lang(ja-jp),
+.lol-settings-voice-section-title:lang(ja-jp),
+.lol-settings-account-verification-verified-label:lang(ja-jp),
+.lol-settings-ingame-hotkeys-castall-text:lang(ja-jp),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ja-jp),
+.additional-hotkeys-header:lang(ja-jp),
+.lol-settings-ingame-section-title:lang(ja-jp),
+.lol-settings-ingame-keybind-dialog-key-label:lang(ja-jp),
+.replays-settings-root-title:lang(ja-jp),
+.license-agreement-settings .license-agreement-settings-title:lang(ja-jp),
+.lol-settings-license .title:lang(ja-jp),
+.lol-settings-version .title:lang(ja-jp),
+.lol-settings-legal-statements .title:lang(ja-jp),
+.lol-settings-title:lang(tr-tr),
+.lol-settings-voice-section-title:lang(tr-tr),
+.lol-settings-account-verification-verified-label:lang(tr-tr),
+.lol-settings-ingame-hotkeys-castall-text:lang(tr-tr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(tr-tr),
+.additional-hotkeys-header:lang(tr-tr),
+.lol-settings-ingame-section-title:lang(tr-tr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(tr-tr),
+.replays-settings-root-title:lang(tr-tr),
+.license-agreement-settings .license-agreement-settings-title:lang(tr-tr),
+.lol-settings-license .title:lang(tr-tr),
+.lol-settings-version .title:lang(tr-tr),
+.lol-settings-legal-statements .title:lang(tr-tr),
+.lol-settings-title:lang(el-gr),
+.lol-settings-voice-section-title:lang(el-gr),
+.lol-settings-account-verification-verified-label:lang(el-gr),
+.lol-settings-ingame-hotkeys-castall-text:lang(el-gr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(el-gr),
+.additional-hotkeys-header:lang(el-gr),
+.lol-settings-ingame-section-title:lang(el-gr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(el-gr),
+.replays-settings-root-title:lang(el-gr),
+.license-agreement-settings .license-agreement-settings-title:lang(el-gr),
+.lol-settings-license .title:lang(el-gr),
+.lol-settings-version .title:lang(el-gr),
+.lol-settings-legal-statements .title:lang(el-gr),
+.lol-settings-title:lang(th-th),
+.lol-settings-voice-section-title:lang(th-th),
+.lol-settings-account-verification-verified-label:lang(th-th),
+.lol-settings-ingame-hotkeys-castall-text:lang(th-th),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(th-th),
+.additional-hotkeys-header:lang(th-th),
+.lol-settings-ingame-section-title:lang(th-th),
+.lol-settings-ingame-keybind-dialog-key-label:lang(th-th),
+.replays-settings-root-title:lang(th-th),
+.license-agreement-settings .license-agreement-settings-title:lang(th-th),
+.lol-settings-license .title:lang(th-th),
+.lol-settings-version .title:lang(th-th),
+.lol-settings-legal-statements .title:lang(th-th),
+.lol-settings-title:lang(zh-tw),
+.lol-settings-voice-section-title:lang(zh-tw),
+.lol-settings-account-verification-verified-label:lang(zh-tw),
+.lol-settings-ingame-hotkeys-castall-text:lang(zh-tw),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(zh-tw),
+.additional-hotkeys-header:lang(zh-tw),
+.lol-settings-ingame-section-title:lang(zh-tw),
+.lol-settings-ingame-keybind-dialog-key-label:lang(zh-tw),
+.replays-settings-root-title:lang(zh-tw),
+.license-agreement-settings .license-agreement-settings-title:lang(zh-tw),
+.lol-settings-license .title:lang(zh-tw),
+.lol-settings-version .title:lang(zh-tw),
+.lol-settings-legal-statements .title:lang(zh-tw) {
+  text-transform: none;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  text-transform: none;
+}
+.lol-settings-ingame-keybind-dialog-key-label {
+  color: #f0e6d2;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-ingame-keybind-dialog-key-label:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-content {
+  color: #f0e6d2;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-title,
+.lol-settings-account-verification-verified-label {
+  color: #f0e6d2;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-title:lang(ar-ae),
+.lol-settings-account-verification-verified-label:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-voice-section-title,
+.lol-settings-ingame-section-title,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  color: #f0e6d2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.075em;
+}
+.lol-settings-voice-section-title:lang(ar-ae),
+.lol-settings-ingame-section-title:lang(ar-ae),
+.replays-settings-root-title:lang(ar-ae),
+.license-agreement-settings .license-agreement-settings-title:lang(ar-ae),
+.lol-settings-license .title:lang(ar-ae),
+.lol-settings-version .title:lang(ar-ae),
+.lol-settings-legal-statements .title:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  color: #f0e6d2;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.075em;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  letter-spacing: 0.0375em;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.blocked-summoner-summoner-name {
+  color: #a09b8c;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.blocked-summoner-summoner-name:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-checkbox-label,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-game-name-tagline,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.lol-settings-license,
+.lol-settings-version,
+.lol-settings-legal-statements {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-checkbox-label:lang(ja-jp),
+.lol-settings-nav-title:lang(ja-jp),
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label:lang(ja-jp),
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title:lang(ja-jp),
+.lol-settings-voice-keybind-dialog-unbind-button:lang(ja-jp),
+.lol-settings-repair-title:lang(ja-jp),
+.lol-settings-reload-title:lang(ja-jp),
+.lol-settings-general-title:lang(ja-jp),
+.lol-settings-window-size-text:lang(ja-jp),
+.lol-settings-content-targeting-label:lang(ja-jp),
+.lol-settings-sound-title:lang(ja-jp),
+.lol-settings-voice-row:lang(ja-jp),
+.lol-settings-voice-input .lol-settings-voice-input-volume-label:lang(ja-jp),
+.lol-settings-voice-input .lol-settings-voice-input-device-label:lang(ja-jp),
+.lol-settings-voice-input-mode
+  .lol-settings-voice-input-mode-option:lang(ja-jp),
+.lol-settings-voice-sensitivity
+  .lol-settings-voice-sensitivity-label:lang(ja-jp),
+.lol-settings-account-verification-title:lang(ja-jp),
+.lol-blocked-summoners:lang(ja-jp),
+.no-blocked-summoners:lang(ja-jp),
+.blocked-summoner-game-name-tagline:lang(ja-jp),
+.additional-hotkeys-tb:lang(ja-jp),
+.lol-settings-ingame-sound-title:lang(ja-jp),
+.lol-settings-ingame-interface-title:lang(ja-jp),
+.lol-settings-checkbox-title:lang(ja-jp),
+.lol-settings-ingame-dropdown-title:lang(ja-jp),
+.lol-settings-ingame-label:lang(ja-jp),
+.lol-settings-ingame-slider-title:lang(ja-jp),
+.lol-settings-ingame-keybind-dialog-unbind-button:lang(ja-jp),
+.replays-settings-root-description:lang(ja-jp),
+.replays-settings-hints-title:lang(ja-jp),
+.replays-settings-hints-description:lang(ja-jp),
+.replays-settings-folder-path-title:lang(ja-jp),
+.replays-settings-folder-path-value:lang(ja-jp),
+.licence-settings-verification:lang(ja-jp),
+.license-agreement-settings:lang(ja-jp),
+.lol-settings-license:lang(ja-jp),
+.lol-settings-version:lang(ja-jp),
+.lol-settings-legal-statements:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-checkbox-label:lang(ar-ae),
+.lol-settings-nav-title:lang(ar-ae),
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label:lang(ar-ae),
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title:lang(ar-ae),
+.lol-settings-voice-keybind-dialog-unbind-button:lang(ar-ae),
+.lol-settings-repair-title:lang(ar-ae),
+.lol-settings-reload-title:lang(ar-ae),
+.lol-settings-general-title:lang(ar-ae),
+.lol-settings-window-size-text:lang(ar-ae),
+.lol-settings-content-targeting-label:lang(ar-ae),
+.lol-settings-sound-title:lang(ar-ae),
+.lol-settings-voice-row:lang(ar-ae),
+.lol-settings-voice-input .lol-settings-voice-input-volume-label:lang(ar-ae),
+.lol-settings-voice-input .lol-settings-voice-input-device-label:lang(ar-ae),
+.lol-settings-voice-input-mode
+  .lol-settings-voice-input-mode-option:lang(ar-ae),
+.lol-settings-voice-sensitivity
+  .lol-settings-voice-sensitivity-label:lang(ar-ae),
+.lol-settings-account-verification-title:lang(ar-ae),
+.lol-blocked-summoners:lang(ar-ae),
+.no-blocked-summoners:lang(ar-ae),
+.blocked-summoner-game-name-tagline:lang(ar-ae),
+.additional-hotkeys-tb:lang(ar-ae),
+.lol-settings-ingame-sound-title:lang(ar-ae),
+.lol-settings-ingame-interface-title:lang(ar-ae),
+.lol-settings-checkbox-title:lang(ar-ae),
+.lol-settings-ingame-dropdown-title:lang(ar-ae),
+.lol-settings-ingame-label:lang(ar-ae),
+.lol-settings-ingame-slider-title:lang(ar-ae),
+.lol-settings-ingame-keybind-dialog-unbind-button:lang(ar-ae),
+.replays-settings-root-description:lang(ar-ae),
+.replays-settings-hints-title:lang(ar-ae),
+.replays-settings-hints-description:lang(ar-ae),
+.replays-settings-folder-path-title:lang(ar-ae),
+.replays-settings-folder-path-value:lang(ar-ae),
+.licence-settings-verification:lang(ar-ae),
+.license-agreement-settings:lang(ar-ae),
+.lol-settings-license:lang(ar-ae),
+.lol-settings-version:lang(ar-ae),
+.lol-settings-legal-statements:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.additional-hotkeys-header {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #cdbe91;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.additional-hotkeys-header.active {
+  position: relative;
+  color: #f0e6d2;
+}
+.additional-hotkeys-header:lang(ja-jp) {
+  font-size: 13px;
+}
+.additional-hotkeys-header:lang(zh-tw) {
+  font-size: 14px;
+}
+.additional-hotkeys-header:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-section-label,
+.lol-settings-license .subtitle,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements .subtitle {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-ingame-sound-description-text:lang(ja-jp),
+.lol-settings-ingame-section-label:lang(ja-jp),
+.lol-settings-license .subtitle:lang(ja-jp),
+.lol-settings-version .subtitle:lang(ja-jp),
+.lol-settings-legal-statements .subtitle:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-ingame-sound-description-text:lang(ar-ae),
+.lol-settings-ingame-section-label:lang(ar-ae),
+.lol-settings-license .subtitle:lang(ar-ae),
+.lol-settings-version .subtitle:lang(ar-ae),
+.lol-settings-legal-statements .subtitle:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited {
+  font-size: 12px;
+  font-weight: normal;
+  outline: 0;
+  letter-spacing: 0.05em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ja-jp),
+lol-settings-code-of-conduct-link a:visited:lang(ja-jp),
+.lol-settings-legal-statements-link a:link:lang(ja-jp),
+.lol-settings-legal-statements-link a:visited:lang(ja-jp),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ja-jp),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ar-ae),
+lol-settings-code-of-conduct-link a:visited:lang(ar-ae),
+.lol-settings-legal-statements-link a:link:lang(ar-ae),
+.lol-settings-legal-statements-link a:visited:lang(ar-ae),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ar-ae),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited {
+  color: #0596aa;
+  text-decoration: none;
+}
+.lol-settings-code-of-conduct-link a:link:hover,
+lol-settings-code-of-conduct-link a:visited:hover,
+.lol-settings-legal-statements-link a:link:hover,
+.lol-settings-legal-statements-link a:visited:hover,
+.license-agreement-settings .license-agreement-settings-content a:link:hover,
+.license-agreement-settings .license-agreement-settings-content a:visited:hover,
+.lol-settings-code-of-conduct-link a:link.hover,
+lol-settings-code-of-conduct-link a:visited.hover,
+.lol-settings-legal-statements-link a:link.hover,
+.lol-settings-legal-statements-link a:visited.hover,
+.license-agreement-settings .license-agreement-settings-content a:link.hover,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited.hover {
+  color: #cdfafa;
+}
+.lol-settings-code-of-conduct-link a:link:after,
+lol-settings-code-of-conduct-link a:visited:after,
+.lol-settings-legal-statements-link a:link:after,
+.lol-settings-legal-statements-link a:visited:after,
+.license-agreement-settings .license-agreement-settings-content a:link:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:after {
+  width: 9px;
+  height: 9px;
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-mask: url(/fe/lol-settings/external-link-mask.png) no-repeat;
+  -webkit-mask-size: contain;
+  background-color: #0596aa;
+  margin: 0 0 0 5px;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ar-ae):after,
+lol-settings-code-of-conduct-link a:visited:lang(ar-ae):after,
+.lol-settings-legal-statements-link a:link:lang(ar-ae):after,
+.lol-settings-legal-statements-link a:visited:lang(ar-ae):after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ar-ae):after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ar-ae):after {
+  margin: 0 5px 0 0;
+  transform: scaleX(-1);
+}
+.lol-settings-code-of-conduct-link a:link:hover:after,
+lol-settings-code-of-conduct-link a:visited:hover:after,
+.lol-settings-legal-statements-link a:link:hover:after,
+.lol-settings-legal-statements-link a:visited:hover:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:hover:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:hover:after {
+  background-color: #cdfafa;
+}
+.lol-settings-title,
+.lol-settings-voice-ptt-key,
+.lol-settings-voice-ptt-modifier,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-key,
+.lol-settings-voice-section-title,
+.lol-settings-account-verification-verified-label,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  font-family: var(--font-display);
+}
+.lol-settings-checkbox-label,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .subtitle {
+  font-family: var(--font-body);
+}
+.lol-settings-title,
+.lol-settings-voice-ptt-key,
+.lol-settings-voice-ptt-modifier,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-key,
+.lol-settings-voice-section-title,
+.lol-settings-account-verification-verified-label,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  font-family: var(--font-display);
+}
+.lol-settings-checkbox-label,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .subtitle {
+  font-family: var(--font-body);
+}
+.lol-settings-checkbox-label,
+.lol-settings-title,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-section-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-settings-account-verification-verified-label,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-title,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-title,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .title,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .title,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .title,
+.lol-settings-legal-statements .subtitle {
+  -webkit-user-select: none;
+}
+.lol-settings-checkbox-label,
+.lol-settings-title,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-section-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-settings-account-verification-verified-label,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-summoner-name,
+.blocked-summoner-game-name-tagline,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-section-label,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-title,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.license-agreement-settings .license-agreement-settings-title,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited,
+.lol-settings-license,
+.lol-settings-license .title,
+.lol-settings-license .subtitle,
+.lol-settings-version,
+.lol-settings-version .title,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements,
+.lol-settings-legal-statements .title,
+.lol-settings-legal-statements .subtitle {
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+}
+.lol-settings-title,
+.lol-settings-voice-section-title,
+.lol-settings-account-verification-verified-label,
+.lol-settings-ingame-hotkeys-castall-text,
+.lol-settings-ingame-hotkeys-keybinding-button-content,
+.additional-hotkeys-header,
+.lol-settings-ingame-section-title,
+.lol-settings-ingame-keybind-dialog-key-label,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  text-transform: uppercase;
+}
+.lol-settings-title:lang(ko-kr),
+.lol-settings-voice-section-title:lang(ko-kr),
+.lol-settings-account-verification-verified-label:lang(ko-kr),
+.lol-settings-ingame-hotkeys-castall-text:lang(ko-kr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ko-kr),
+.additional-hotkeys-header:lang(ko-kr),
+.lol-settings-ingame-section-title:lang(ko-kr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(ko-kr),
+.replays-settings-root-title:lang(ko-kr),
+.license-agreement-settings .license-agreement-settings-title:lang(ko-kr),
+.lol-settings-license .title:lang(ko-kr),
+.lol-settings-version .title:lang(ko-kr),
+.lol-settings-legal-statements .title:lang(ko-kr),
+.lol-settings-title:lang(ja-jp),
+.lol-settings-voice-section-title:lang(ja-jp),
+.lol-settings-account-verification-verified-label:lang(ja-jp),
+.lol-settings-ingame-hotkeys-castall-text:lang(ja-jp),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ja-jp),
+.additional-hotkeys-header:lang(ja-jp),
+.lol-settings-ingame-section-title:lang(ja-jp),
+.lol-settings-ingame-keybind-dialog-key-label:lang(ja-jp),
+.replays-settings-root-title:lang(ja-jp),
+.license-agreement-settings .license-agreement-settings-title:lang(ja-jp),
+.lol-settings-license .title:lang(ja-jp),
+.lol-settings-version .title:lang(ja-jp),
+.lol-settings-legal-statements .title:lang(ja-jp),
+.lol-settings-title:lang(tr-tr),
+.lol-settings-voice-section-title:lang(tr-tr),
+.lol-settings-account-verification-verified-label:lang(tr-tr),
+.lol-settings-ingame-hotkeys-castall-text:lang(tr-tr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(tr-tr),
+.additional-hotkeys-header:lang(tr-tr),
+.lol-settings-ingame-section-title:lang(tr-tr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(tr-tr),
+.replays-settings-root-title:lang(tr-tr),
+.license-agreement-settings .license-agreement-settings-title:lang(tr-tr),
+.lol-settings-license .title:lang(tr-tr),
+.lol-settings-version .title:lang(tr-tr),
+.lol-settings-legal-statements .title:lang(tr-tr),
+.lol-settings-title:lang(el-gr),
+.lol-settings-voice-section-title:lang(el-gr),
+.lol-settings-account-verification-verified-label:lang(el-gr),
+.lol-settings-ingame-hotkeys-castall-text:lang(el-gr),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(el-gr),
+.additional-hotkeys-header:lang(el-gr),
+.lol-settings-ingame-section-title:lang(el-gr),
+.lol-settings-ingame-keybind-dialog-key-label:lang(el-gr),
+.replays-settings-root-title:lang(el-gr),
+.license-agreement-settings .license-agreement-settings-title:lang(el-gr),
+.lol-settings-license .title:lang(el-gr),
+.lol-settings-version .title:lang(el-gr),
+.lol-settings-legal-statements .title:lang(el-gr),
+.lol-settings-title:lang(th-th),
+.lol-settings-voice-section-title:lang(th-th),
+.lol-settings-account-verification-verified-label:lang(th-th),
+.lol-settings-ingame-hotkeys-castall-text:lang(th-th),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(th-th),
+.additional-hotkeys-header:lang(th-th),
+.lol-settings-ingame-section-title:lang(th-th),
+.lol-settings-ingame-keybind-dialog-key-label:lang(th-th),
+.replays-settings-root-title:lang(th-th),
+.license-agreement-settings .license-agreement-settings-title:lang(th-th),
+.lol-settings-license .title:lang(th-th),
+.lol-settings-version .title:lang(th-th),
+.lol-settings-legal-statements .title:lang(th-th),
+.lol-settings-title:lang(zh-tw),
+.lol-settings-voice-section-title:lang(zh-tw),
+.lol-settings-account-verification-verified-label:lang(zh-tw),
+.lol-settings-ingame-hotkeys-castall-text:lang(zh-tw),
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(zh-tw),
+.additional-hotkeys-header:lang(zh-tw),
+.lol-settings-ingame-section-title:lang(zh-tw),
+.lol-settings-ingame-keybind-dialog-key-label:lang(zh-tw),
+.replays-settings-root-title:lang(zh-tw),
+.license-agreement-settings .license-agreement-settings-title:lang(zh-tw),
+.lol-settings-license .title:lang(zh-tw),
+.lol-settings-version .title:lang(zh-tw),
+.lol-settings-legal-statements .title:lang(zh-tw) {
+  text-transform: none;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  text-transform: none;
+}
+.lol-settings-ingame-keybind-dialog-key-label {
+  color: #f0e6d2;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-ingame-keybind-dialog-key-label:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-content {
+  color: #f0e6d2;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-content:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-title,
+.lol-settings-account-verification-verified-label {
+  color: #f0e6d2;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+}
+.lol-settings-title:lang(ar-ae),
+.lol-settings-account-verification-verified-label:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-voice-section-title,
+.lol-settings-ingame-section-title,
+.replays-settings-root-title,
+.license-agreement-settings .license-agreement-settings-title,
+.lol-settings-license .title,
+.lol-settings-version .title,
+.lol-settings-legal-statements .title {
+  color: #f0e6d2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.075em;
+}
+.lol-settings-voice-section-title:lang(ar-ae),
+.lol-settings-ingame-section-title:lang(ar-ae),
+.replays-settings-root-title:lang(ar-ae),
+.license-agreement-settings .license-agreement-settings-title:lang(ar-ae),
+.lol-settings-license .title:lang(ar-ae),
+.lol-settings-version .title:lang(ar-ae),
+.lol-settings-legal-statements .title:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  color: #f0e6d2;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.075em;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  letter-spacing: 0.0375em;
+}
+.lol-settings-ingame-hotkeys-castall-text:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.blocked-summoner-summoner-name {
+  color: #a09b8c;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.blocked-summoner-summoner-name:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-checkbox-label,
+.lol-settings-nav-title,
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label,
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title,
+.lol-settings-voice-keybind-dialog-unbind-button,
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title,
+.lol-settings-window-size-text,
+.lol-settings-content-targeting-label,
+.lol-settings-sound-title,
+.lol-settings-voice-row,
+.lol-settings-voice-input .lol-settings-voice-input-volume-label,
+.lol-settings-voice-input .lol-settings-voice-input-device-label,
+.lol-settings-voice-input-mode .lol-settings-voice-input-mode-option,
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label,
+.lol-settings-account-verification-title,
+.lol-blocked-summoners,
+.no-blocked-summoners,
+.blocked-summoner-game-name-tagline,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-interface-title,
+.lol-settings-checkbox-title,
+.lol-settings-ingame-dropdown-title,
+.lol-settings-ingame-label,
+.lol-settings-ingame-slider-title,
+.lol-settings-ingame-keybind-dialog-unbind-button,
+.replays-settings-root-description,
+.replays-settings-hints-title,
+.replays-settings-hints-description,
+.replays-settings-folder-path-title,
+.replays-settings-folder-path-value,
+.licence-settings-verification,
+.license-agreement-settings,
+.lol-settings-license,
+.lol-settings-version,
+.lol-settings-legal-statements {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.025em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-checkbox-label:lang(ja-jp),
+.lol-settings-nav-title:lang(ja-jp),
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label:lang(ja-jp),
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title:lang(ja-jp),
+.lol-settings-voice-keybind-dialog-unbind-button:lang(ja-jp),
+.lol-settings-repair-title:lang(ja-jp),
+.lol-settings-reload-title:lang(ja-jp),
+.lol-settings-general-title:lang(ja-jp),
+.lol-settings-window-size-text:lang(ja-jp),
+.lol-settings-content-targeting-label:lang(ja-jp),
+.lol-settings-sound-title:lang(ja-jp),
+.lol-settings-voice-row:lang(ja-jp),
+.lol-settings-voice-input .lol-settings-voice-input-volume-label:lang(ja-jp),
+.lol-settings-voice-input .lol-settings-voice-input-device-label:lang(ja-jp),
+.lol-settings-voice-input-mode
+  .lol-settings-voice-input-mode-option:lang(ja-jp),
+.lol-settings-voice-sensitivity
+  .lol-settings-voice-sensitivity-label:lang(ja-jp),
+.lol-settings-account-verification-title:lang(ja-jp),
+.lol-blocked-summoners:lang(ja-jp),
+.no-blocked-summoners:lang(ja-jp),
+.blocked-summoner-game-name-tagline:lang(ja-jp),
+.additional-hotkeys-tb:lang(ja-jp),
+.lol-settings-ingame-sound-title:lang(ja-jp),
+.lol-settings-ingame-interface-title:lang(ja-jp),
+.lol-settings-checkbox-title:lang(ja-jp),
+.lol-settings-ingame-dropdown-title:lang(ja-jp),
+.lol-settings-ingame-label:lang(ja-jp),
+.lol-settings-ingame-slider-title:lang(ja-jp),
+.lol-settings-ingame-keybind-dialog-unbind-button:lang(ja-jp),
+.replays-settings-root-description:lang(ja-jp),
+.replays-settings-hints-title:lang(ja-jp),
+.replays-settings-hints-description:lang(ja-jp),
+.replays-settings-folder-path-title:lang(ja-jp),
+.replays-settings-folder-path-value:lang(ja-jp),
+.licence-settings-verification:lang(ja-jp),
+.license-agreement-settings:lang(ja-jp),
+.lol-settings-license:lang(ja-jp),
+.lol-settings-version:lang(ja-jp),
+.lol-settings-legal-statements:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-checkbox-label:lang(ar-ae),
+.lol-settings-nav-title:lang(ar-ae),
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label:lang(ar-ae),
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-title:lang(ar-ae),
+.lol-settings-voice-keybind-dialog-unbind-button:lang(ar-ae),
+.lol-settings-repair-title:lang(ar-ae),
+.lol-settings-reload-title:lang(ar-ae),
+.lol-settings-general-title:lang(ar-ae),
+.lol-settings-window-size-text:lang(ar-ae),
+.lol-settings-content-targeting-label:lang(ar-ae),
+.lol-settings-sound-title:lang(ar-ae),
+.lol-settings-voice-row:lang(ar-ae),
+.lol-settings-voice-input .lol-settings-voice-input-volume-label:lang(ar-ae),
+.lol-settings-voice-input .lol-settings-voice-input-device-label:lang(ar-ae),
+.lol-settings-voice-input-mode
+  .lol-settings-voice-input-mode-option:lang(ar-ae),
+.lol-settings-voice-sensitivity
+  .lol-settings-voice-sensitivity-label:lang(ar-ae),
+.lol-settings-account-verification-title:lang(ar-ae),
+.lol-blocked-summoners:lang(ar-ae),
+.no-blocked-summoners:lang(ar-ae),
+.blocked-summoner-game-name-tagline:lang(ar-ae),
+.additional-hotkeys-tb:lang(ar-ae),
+.lol-settings-ingame-sound-title:lang(ar-ae),
+.lol-settings-ingame-interface-title:lang(ar-ae),
+.lol-settings-checkbox-title:lang(ar-ae),
+.lol-settings-ingame-dropdown-title:lang(ar-ae),
+.lol-settings-ingame-label:lang(ar-ae),
+.lol-settings-ingame-slider-title:lang(ar-ae),
+.lol-settings-ingame-keybind-dialog-unbind-button:lang(ar-ae),
+.replays-settings-root-description:lang(ar-ae),
+.replays-settings-hints-title:lang(ar-ae),
+.replays-settings-hints-description:lang(ar-ae),
+.replays-settings-folder-path-title:lang(ar-ae),
+.replays-settings-folder-path-value:lang(ar-ae),
+.licence-settings-verification:lang(ar-ae),
+.license-agreement-settings:lang(ar-ae),
+.lol-settings-license:lang(ar-ae),
+.lol-settings-version:lang(ar-ae),
+.lol-settings-legal-statements:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.additional-hotkeys-header {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #cdbe91;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.additional-hotkeys-header.active {
+  position: relative;
+  color: #f0e6d2;
+}
+.additional-hotkeys-header:lang(ja-jp) {
+  font-size: 13px;
+}
+.additional-hotkeys-header:lang(zh-tw) {
+  font-size: 14px;
+}
+.additional-hotkeys-header:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-ingame-sound-description-text,
+.lol-settings-ingame-section-label,
+.lol-settings-license .subtitle,
+.lol-settings-version .subtitle,
+.lol-settings-legal-statements .subtitle {
+  color: #a09b8c;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-ingame-sound-description-text:lang(ja-jp),
+.lol-settings-ingame-section-label:lang(ja-jp),
+.lol-settings-license .subtitle:lang(ja-jp),
+.lol-settings-version .subtitle:lang(ja-jp),
+.lol-settings-legal-statements .subtitle:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-ingame-sound-description-text:lang(ar-ae),
+.lol-settings-ingame-section-label:lang(ar-ae),
+.lol-settings-license .subtitle:lang(ar-ae),
+.lol-settings-version .subtitle:lang(ar-ae),
+.lol-settings-legal-statements .subtitle:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited {
+  font-size: 12px;
+  font-weight: normal;
+  outline: 0;
+  letter-spacing: 0.05em;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ja-jp),
+lol-settings-code-of-conduct-link a:visited:lang(ja-jp),
+.lol-settings-legal-statements-link a:link:lang(ja-jp),
+.lol-settings-legal-statements-link a:visited:lang(ja-jp),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ja-jp),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ja-jp) {
+  font-size: 13px;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ar-ae),
+lol-settings-code-of-conduct-link a:visited:lang(ar-ae),
+.lol-settings-legal-statements-link a:link:lang(ar-ae),
+.lol-settings-legal-statements-link a:visited:lang(ar-ae),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ar-ae),
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ar-ae) {
+  letter-spacing: 0;
+}
+.lol-settings-code-of-conduct-link a:link,
+lol-settings-code-of-conduct-link a:visited,
+.lol-settings-legal-statements-link a:link,
+.lol-settings-legal-statements-link a:visited,
+.license-agreement-settings .license-agreement-settings-content a:link,
+.license-agreement-settings .license-agreement-settings-content a:visited {
+  color: #0596aa;
+  text-decoration: none;
+}
+.lol-settings-code-of-conduct-link a:link:hover,
+lol-settings-code-of-conduct-link a:visited:hover,
+.lol-settings-legal-statements-link a:link:hover,
+.lol-settings-legal-statements-link a:visited:hover,
+.license-agreement-settings .license-agreement-settings-content a:link:hover,
+.license-agreement-settings .license-agreement-settings-content a:visited:hover,
+.lol-settings-code-of-conduct-link a:link.hover,
+lol-settings-code-of-conduct-link a:visited.hover,
+.lol-settings-legal-statements-link a:link.hover,
+.lol-settings-legal-statements-link a:visited.hover,
+.license-agreement-settings .license-agreement-settings-content a:link.hover,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited.hover {
+  color: #cdfafa;
+}
+.lol-settings-code-of-conduct-link a:link:after,
+lol-settings-code-of-conduct-link a:visited:after,
+.lol-settings-legal-statements-link a:link:after,
+.lol-settings-legal-statements-link a:visited:after,
+.license-agreement-settings .license-agreement-settings-content a:link:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:after {
+  width: 9px;
+  height: 9px;
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-mask: url(/fe/lol-settings/external-link-mask.png) no-repeat;
+  -webkit-mask-size: contain;
+  background-color: #0596aa;
+  margin: 0 0 0 5px;
+}
+.lol-settings-code-of-conduct-link a:link:lang(ar-ae):after,
+lol-settings-code-of-conduct-link a:visited:lang(ar-ae):after,
+.lol-settings-legal-statements-link a:link:lang(ar-ae):after,
+.lol-settings-legal-statements-link a:visited:lang(ar-ae):after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:lang(ar-ae):after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:lang(ar-ae):after {
+  margin: 0 5px 0 0;
+  transform: scaleX(-1);
+}
+.lol-settings-code-of-conduct-link a:link:hover:after,
+lol-settings-code-of-conduct-link a:visited:hover:after,
+.lol-settings-legal-statements-link a:link:hover:after,
+.lol-settings-legal-statements-link a:visited:hover:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:link:hover:after,
+.license-agreement-settings
+  .license-agreement-settings-content
+  a:visited:hover:after {
+  background-color: #cdfafa;
+}
+.additional-hotkeys-header {
+  cursor: pointer;
+}
+.additional-hotkeys-header:focus {
+  outline: 0;
+}
+.lol-settings-slider,
+.lol-settings-general-row,
+.lol-settings-repair-row,
+.lol-settings-reload-row,
+.lol-settings-video-row,
+.lol-settings-content-targeting-row,
+.lol-settings-content-targeting-label,
+.lol-settings-content-targeting-dropdown,
+.lol-settings-notifications-row,
+.lol-settings-chat-row-top,
+.lol-settings-chat-row,
+.lol-settings-sound-title,
+.lol-settings-sound-row,
+.lol-settings-sound-row-slider,
+.lol-settings-sound-subsection-row,
+.lol-settings-sound-subsection-row-slider,
+.lol-settings-sound-subchannel-slider,
+.additional-hotkeys-header,
+.additional-hotkeys-tb,
+.lol-settings-ingame-sound-title,
+.lol-settings-ingame-interface-row,
+.lol-settings-ingame-interface-title,
+.lol-settings-ingame-interface-slider,
+.lol-settings-interface-checkboxes,
+.lol-settings-interface-checkbox-row,
+.lol-settings-dropdown-item {
+  clear: both;
+}
+.lol-settings-slider:after,
+.lol-settings-general-row:after,
+.lol-settings-repair-row:after,
+.lol-settings-reload-row:after,
+.lol-settings-video-row:after,
+.lol-settings-content-targeting-row:after,
+.lol-settings-content-targeting-label:after,
+.lol-settings-content-targeting-dropdown:after,
+.lol-settings-notifications-row:after,
+.lol-settings-chat-row-top:after,
+.lol-settings-chat-row:after,
+.lol-settings-sound-title:after,
+.lol-settings-sound-row:after,
+.lol-settings-sound-row-slider:after,
+.lol-settings-sound-subsection-row:after,
+.lol-settings-sound-subsection-row-slider:after,
+.lol-settings-sound-subchannel-slider:after,
+.additional-hotkeys-header:after,
+.additional-hotkeys-tb:after,
+.lol-settings-ingame-sound-title:after,
+.lol-settings-ingame-interface-row:after,
+.lol-settings-ingame-interface-title:after,
+.lol-settings-ingame-interface-slider:after,
+.lol-settings-interface-checkboxes:after,
+.lol-settings-interface-checkbox-row:after,
+.lol-settings-dropdown-item:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lol-settings-container {
+  width: 700px;
+  box-sizing: border-box;
+  background-color: #010a13;
+  -webkit-user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+.lol-settings-content {
+  display: flex;
+  flex: 1;
+  height: 482px;
+}
+.lol-settings-checkbox {
+  transition: all 0.3s ease;
+}
+.lol-settings-checkbox-label {
+  margin-left: 9px;
+}
+.lol-settings-icon-green-check-mark {
+  background-image: url(/fe/lol-settings/green_check_mark.png);
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin: 0 10px 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline;
+}
+.lol-settings-icon-red-x-mark {
+  background-image: url(/fe/lol-settings/red_x_mark.png);
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin-right: 12px;
+  margin-top: 3px;
+  margin: 3px 12px 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline;
+}
+.lol-settings-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 67px;
+  border-bottom: thin solid #1e282d;
+  margin: 0 9px;
+}
+.lol-settings-title {
+  color: #a09b8c;
+  direction: ltr;
+}
+.lol-settings-title-current {
+  color: #f0e6d2;
+}
+.lol-settings-title-break {
+  padding: 0 3px;
+}
+.lol-settings-reset-button {
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  min-width: 152px;
+}
+.lol-settings-reset-button.hide {
+  display: none;
+}
+.lol-settings-options {
+  width: calc(100% - 40px);
+  overflow-x: hidden;
+  padding: 15px 20px;
+  position: relative;
+}
+.lol-settings-options.hide {
+  display: none;
+}
+.lol-settings-options lol-uikit-flat-checkbox {
+  transition: all 0.3s ease;
+}
+.lol-settings-scroll-container {
+  width: calc(100% + 5px);
+  overflow-x: hidden;
+  height: 410px;
+  padding-right: 2px;
+  padding-left: 7px;
+}
+.lol-settings-footer {
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  width: 100%;
+}
+.lol-settings-close-container {
+  position: relative;
+  bottom: -2px;
+}
+.lol-settings-close-button {
+  position: relative;
+  bottom: 0;
+  width: 100px;
+  height: 32px;
+}
+.lol-settings-navs {
+  width: 172px;
+  height: 100%;
+  margin-top: 5px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.lol-settings-nav-scroller {
+  overflow-x: hidden;
+}
+.lol-settings-nav-title {
+  margin: 10px 0 10px 18px;
+  direction: ltr;
+}
+.lol-settings-nav-title:not(:first-child) {
+  margin-top: 20px;
+}
+lol-uikit-navigation-bar[type='tabbed']
+  lol-uikit-navigation-item.lol-settings-nav {
+  padding: 0 0 0 14px;
+  height: auto;
+  min-height: 30px;
+  line-height: 16px;
+  align-items: center;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  width: 147px;
+  color: #cdbe91;
+  direction: ltr;
+  text-align: left;
+}
+lol-uikit-navigation-bar[type='tabbed']
+  lol-uikit-navigation-item.lol-settings-nav:hover {
+  background: #1e2328;
+  color: #f0e6d2;
+}
+lol-uikit-navigation-bar[type='tabbed']
+  lol-uikit-navigation-item[active].lol-settings-nav {
+  padding: 0 0 0 19px;
+  width: 142px;
+  color: #f0e6d2;
+}
+lol-uikit-navigation-bar[type='tabbed']
+  lol-uikit-navigation-item.lol-settings-nav::before {
+  width: 3px;
+  min-height: 32px;
+  line-height: 16px;
+  top: 0;
+  left: 0;
+  right: auto; /* * RTL only: 'will-change' property in scrollbar breaks visiual after click event, * disabling transition here fixes the problem. */
+  transition: 400ms opacity;
+}
+.lol-settings-slider {
+  height: 30px;
+  width: 100%;
+  float: none;
+}
+.lol-settings-voice-ptt {
+  display: flex;
+  flex-direction: column;
+}
+.lol-settings-voice-ptt .lol-settings-voice-ptt-icon {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  height: 100px;
+  background-image: url(/fe/lol-settings/hotkey-background.png);
+  background-repeat: no-repeat;
+  background-position: -180px 0;
+}
+.lol-settings-voice-ptt .lol-settings-voice-ptt-icon:hover {
+  background-position: -240px 0;
+}
+.lol-settings-voice-ptt .lol-settings-voice-ptt-icon:active {
+  background-position: -120px;
+}
+.lol-settings-voice-ptt
+  .lol-settings-voice-ptt-icon:active
+  .lol-settings-voice-ptt-key {
+  color: #463714;
+}
+.lol-settings-voice-ptt
+  .lol-settings-voice-ptt-icon
+  .lol-settings-voice-ptt-speaker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+.lol-settings-voice-ptt
+  .lol-settings-voice-ptt-icon
+  .lol-settings-voice-ptt-speaker-wrapper
+  .lol-settings-voice-ptt-speaker {
+  height: 20px;
+  width: 20px;
+  background-image: url(/fe/lol-settings/mic-hover.png);
+  background-size: cover;
+}
+.lol-settings-voice-ptt .lol-settings-voice-ptt-label {
+  margin-bottom: 10px;
+}
+.lol-settings-voice-ptt-key {
+  display: flex;
+  cursor: default;
+  justify-content: center;
+  font-size: 30px;
+  color: #f0e6d2;
+  width: 60px;
+  height: 50px;
+  text-transform: uppercase;
+}
+.lol-settings-voice-ptt-modifier {
+  width: 50px;
+  height: 24px;
+  cursor: default;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  color: #f0e6d2;
+  line-height: 24px;
+}
+.lol-settings-voice-ptt-modal {
+  display: flex;
+  flex-direction: column;
+}
+.lol-settings-voice-ptt-modal .lol-settings-voice-ptt-modal-key {
+  display: flex;
+  cursor: default;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1.3em;
+  color: #f0e6d2;
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+.lol-settings-voice-keybind-dialog-unbind-button {
+  color: #cdbe91;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: 5px;
+  outline: none;
+}
+.lol-settings-voice-keybind-dialog-unbind-button:disabled {
+  color: #5c5b57;
+  cursor: default;
+}
+.lol-settings-general-row {
+  margin-bottom: 15px;
+}
+.lol-settings-repair-row,
+.lol-settings-reload-row {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  max-width: 460px;
+  min-width: 250px;
+  display: inline-block;
+  direction: ltr;
+  float: none;
+}
+.lol-settings-repair-title,
+.lol-settings-reload-title,
+.lol-settings-general-title {
+  color: #a09b8c;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+.lol-settings-repair-button,
+.lol-settings-reload-button {
+  display: inline-block;
+  min-width: 234px;
+  max-width: inherit;
+  float: none;
+}
+.lol-settings-window-size-text {
+  color: #a09b8c;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+.lol-settings-video-row {
+  margin-bottom: 15px;
+  margin-top: 25px;
+  direction: ltr;
+}
+.lol-settings-window-size-dropdown,
+.lol-settings-general-dropdown {
+  width: 234px;
+  display: inline-block;
+  --framed-dropdown-direction-rtl: ltr;
+}
+.lol-settings-window-size-dropdown lol-uikit-dropdown-option,
+.lol-settings-general-dropdown lol-uikit-dropdown-option {
+  --dropdown-option-direction-rtl: ltr;
+}
+.lol-settings-content-targeting-row {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  max-width: 460px;
+  min-width: 250px;
+  display: inline-block;
+  direction: ltr;
+}
+.lol-settings-content-targeting-label {
+  color: #a09b8c;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+.lol-settings-content-targeting-dropdown {
+  display: inline-block;
+  width: 234px;
+  --framed-dropdown-direction-rtl: ltr;
+}
+.lol-settings-content-targeting-dropdown lol-uikit-dropdown-option {
+  --dropdown-option-direction-rtl: ltr;
+}
+.lol-settings-notifications-row {
+  margin: 18px 0 0 7px;
+}
+.lol-settings-notifications-label {
+  margin: 0 0 0 8px;
+}
+.lol-settings-chat-row-top {
+  margin: 18px 0 0 7px;
+  direction: ltr;
+}
+.lol-settings-chat-row {
+  margin: 12px 0 0 7px;
+  direction: ltr;
+}
+.lol-settings-chat-label {
+  margin: 0 0 0 8px;
+}
+.lol-settings-sound-subsections {
+  margin: 0 0 20px 25px;
+}
+.lol-settings-sound-title {
+  margin-top: -6px;
+  direction: ltr;
+}
+.lol-settings-options .lol-settings-sound-title {
+  margin-bottom: 0;
+}
+.lol-settings-sound-row {
+  margin-bottom: 15px;
+}
+.lol-settings-sound-row-slider {
+  margin-bottom: 15px;
+  width: 396px;
+}
+.lol-settings-sound-subsection-row {
+  margin-bottom: 10px;
+}
+.lol-settings-sound-subsection-row-slider {
+  margin-bottom: 10px;
+  width: 361px;
+}
+.lol-settings-sound-slider {
+  width: 396px;
+}
+.lol-settings-sound-subsection {
+  margin: 0 0 20px 10px;
+}
+.lol-settings-sound-subchannel-slider {
+  height: 30px;
+  width: 361px;
+  float: none;
+}
+.lol-settings-voice-section-title {
+  margin-bottom: 10px;
+  color: #f0e6d2;
+  direction: ltr;
+}
+.lol-settings-voice-row {
+  margin-bottom: 10px;
+}
+.lol-settings-voice-party-join {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.lol-settings-voice-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+}
+.lol-settings-voice-input lol-uikit-slider {
+  height: 30px;
+  width: 465px;
+}
+.lol-settings-voice-input lol-uikit-framed-dropdown {
+  width: 350px;
+  margin: 0 20px 0 0;
+}
+.lol-settings-voice-input .lol-settings-voice-row.input-mode-row {
+  display: flex;
+  direction: ltr;
+}
+.lol-settings-voice-input .lol-settings-voice-input-volume-label {
+  margin-top: 10px;
+  direction: ltr;
+}
+.lol-settings-voice-input .lol-settings-voice-input-device-label {
+  margin-bottom: 5px;
+}
+.lol-settings-voice-input hr {
+  height: 1px;
+  border: 0 none;
+  background-color: #1e2328;
+  margin-bottom: 10px;
+}
+.lol-settings-voice-input-mode {
+  display: flex;
+  flex-direction: column;
+  width: 175px;
+}
+.lol-settings-voice-input-mode
+  .lol-settings-voice-input-mode-option.unavailable {
+  display: none;
+}
+lol-uikit-content-block.voice-settings-push-to-talk-alert b {
+  color: #f0e6d2;
+}
+.lol-settings-voice-sensitivity {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 100px;
+  left: auto;
+  top: 318px;
+  width: 200px;
+  height: 75px;
+}
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-label {
+  direction: ltr;
+}
+.lol-settings-voice-sensitivity .lol-settings-voice-sensitivity-slider {
+  height: 30px;
+  width: 210px;
+}
+.lol-settings-voice-push-to-talk {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 171px;
+  top: 290px;
+}
+.lol-settings-account-verification-row {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  max-width: 460px;
+  min-width: 250px;
+  display: inline-block;
+}
+.lol-settings-account-verification-title {
+  color: #a09b8c;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+.lol-settings-account-verification-verified-label {
+  padding-top: 5px;
+  direction: ltr;
+  display: block;
+}
+.lol-settings-account-verification-button-verify {
+  display: inline-block;
+  min-width: 150px;
+  max-width: inherit;
+}
+.lol-settings-account-verification-button-change {
+  display: inline-block;
+  min-width: 250px;
+  max-width: inherit;
+  margin-top: 10px;
+}
+.lol-settings-account-verification-icon-mobile {
+  background-image: url(/fe/lol-settings/acc_ver_icon_mobile_sm.png);
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin: 0 3px 0 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0% 0%;
+}
+.lol-blocked-summoners {
+  color: #a09b8c;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.block-summoner-text {
+  direction: ltr;
+  margin-bottom: 10px;
+}
+.block-summoner-input-group {
+  direction: ltr;
+  display: flex;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: thin solid #3c3c41;
+}
+.block-summoner-input {
+  flex: 1;
+  margin: 0 10px 0 0;
+}
+.block-summoner-input input {
+  height: 32px;
+}
+.block-summoner-button {
+  width: 150px;
+}
+.blocked-summoners-list {
+  direction: ltr;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;
+}
+.no-blocked-summoners {
+  color: #a09b8c;
+  background: url(/fe/lol-settings/poro_smile.png) no-repeat center;
+  padding-top: 150px;
+  text-align: center;
+  margin-top: 100px;
+  margin-right: 191px;
+}
+.blocked-summoners-info {
+  direction: ltr;
+  margin-bottom: 10px;
+}
+.confirm-friend-actions p {
+  direction: ltr;
+  text-align: left;
+}
+.lol-blocked-summoner {
+  width: 50%;
+  padding: 8px 15px 8px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.lol-blocked-summoner:hover .blocked-summoner-summoner-name {
+  color: #f0e6d2;
+}
+.lol-blocked-summoner:hover .blocked-summoner-unblock-button {
+  display: block;
+  margin-bottom: 2px;
+}
+.lol-blocked-summoner:hover .blocked-summoner-tagline,
+.lol-blocked-summoner:hover .blocked-summoner-game-name-tagline {
+  color: #a09b8c;
+}
+.lol-blocked-summoner:active .blocked-summoner-summoner-name {
+  color: #5b5a56;
+}
+.lol-blocked-summoner:active .blocked-summoner-unblock-button {
+  background-color: #5b5a56;
+}
+.lol-blocked-summoner:active .blocked-summoner-tagline,
+.lol-blocked-summoner:active .blocked-summoner-game-name-tagline {
+  color: #5b5a56;
+}
+.lol-block-list-summoner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.blocked-summoner-summoner-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 0 0 10px;
+  flex: 1;
+}
+.blocked-summoner-tagline {
+  color: #5b5a56;
+}
+.blocked-summoner-game-name-tagline {
+  display: block;
+  color: #5b5a56;
+}
+.blocked-summoner-unblock-button {
+  display: none;
+  width: 18px;
+  height: 18px;
+  -webkit-mask: url(/fe/lol-settings/x_mask.png) no-repeat center;
+  background-color: #f0e6d2;
+  -webkit-mask-size: contain;
+}
+.lol-settings-ingame-quickcast-with-indicators {
+  margin-bottom: 20px;
+}
+.lol-settings-ingame-hotkeys-primary {
+  margin-bottom: 20px;
+}
+.lol-settings-ingame-hotkeys-castall-button {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+.lol-settings-ingame-hotkeys-castall-text {
+  color: #cdbe91;
+}
+.lol-settings-ingame-hotkeys-abilities-block-left {
+  float: left;
+}
+.lol-settings-ingame-hotkeys-abilities-block-right {
+  float: right;
+}
+.lol-settings-ingame-hotkeys-keybinding-button {
+  float: left;
+  width: 60px;
+  height: 100px;
+  margin: 0 3px 0 0;
+  background-image: url(/fe/lol-settings/hotkeyBg.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.lol-settings-ingame-hotkeys-keybinding-button:hover {
+  background-position: -60px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button:active {
+  background-position: -120px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast {
+  background-position: -180px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  background-position: -36px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom:hover
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  background-position: -48px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom:active
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  background-position: -24px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast
+  .lol-settings-ingame-hotkeys-keybinding-button-colored-text {
+  color: #f0e6d2;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast:hover {
+  background-position: -240px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button.quickcast:active {
+  background-position: -120px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-top {
+  margin-top: 1px;
+  width: 60px;
+  height: 74px;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-top:hover
+  .lol-settings-ingame-hotkeys-keybinding-button-colored-text {
+  color: #f0e6d2;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-top:active
+  .lol-settings-ingame-hotkeys-keybinding-button-colored-text {
+  color: #463714;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-colored-text {
+  color: #a09b8c;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-modifier {
+  width: 50px;
+  height: 18px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-top: 6px;
+  margin-left: 5px;
+  font-size: 13px;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-content {
+  width: 60px;
+  height: 50px;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-bottom {
+  margin-left: 1px;
+  width: 60px;
+  height: 26px;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-bottom:hover
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  background-position: -12px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-bottom:active
+  .lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  background-position: -24px 0;
+}
+.lol-settings-ingame-hotkeys-keybinding-button-bottom-icon {
+  width: 12px;
+  height: 16px;
+  background-image: url(/fe/lol-settings/QuickCastIcons.png);
+  background-position: 0 0;
+  margin: 2px 0 0 23px;
+}
+.additional-hotkeys-section {
+  margin-bottom: 4px;
+}
+.additional-hotkeys-header {
+  direction: ltr;
+  margin: 0 17px 0 0;
+  height: 24px;
+  line-height: 24px;
+  color: #a09b8c;
+  background: rgba(30, 35, 40, 0.5);
+  position: relative;
+  max-width: 975px;
+}
+.additional-hotkeys-header:hover {
+  color: #f0e6d2;
+}
+.additional-hotkeys-header:before {
+  content: '\25B8';
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.open .additional-hotkeys-header:before {
+  content: '\25BE';
+}
+.additional-hotkeys-header:after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 11px;
+  background: rgba(30, 35, 40, 0.5);
+  right: -11px;
+  top: 0;
+}
+.additional-hotkeys-main {
+  position: relative;
+  display: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.open .additional-hotkeys-main {
+  display: block;
+}
+.additional-hotkeys-tb {
+  position: relative;
+  padding: 5px 0 5px 0px;
+  display: table;
+  width: 469px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  float: none;
+  direction: ltr;
+}
+.additional-hotkeys-tb tr:hover:nth-child(1n + 2) td.td-column-header {
+  color: #f0e6d2;
+}
+.additional-hotkeys-tb tr {
+  border-collapse: collapse;
+  width: 469px;
+}
+.additional-hotkeys-tb td {
+  border: thin solid #3c3c41;
+  border-collapse: collapse;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+.additional-hotkeys-tb td:nth-last-child(1) {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+.additional-hotkeys-tb td:nth-child(1) {
+  border-left-width: 0;
+  border-right-width: 1px;
+}
+.additional-hotkeys-tb .td-normal {
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+}
+.additional-hotkeys-tb .td-normal.current {
+  color: #fabe0a;
+}
+.additional-hotkeys-tb .td-no-border {
+  text-align: center;
+  border: 0;
+  cursor: auto;
+}
+.additional-hotkeys-tb .td-column-header {
+  padding-left: 8px;
+  text-align: left;
+}
+.lol-settings-game-sound-content-component {
+  overflow: hidden;
+}
+.lol-settings-ingame-sound-row {
+  margin-bottom: 15px;
+}
+.lol-settings-ingame-sound-title {
+  margin-left: 9px;
+  direction: ltr;
+}
+.lol-settings-ingame-sound-slider {
+  float: left;
+  height: 44px;
+  width: 396px;
+}
+.lol-settings-ingame-sound-checkbox {
+  padding-left: 6px;
+  margin-top: 0px;
+}
+input[type='checkbox'].lol-settings-ingame-sound-mutebutton {
+  display: none;
+}
+input[type='checkbox'].lol-settings-ingame-sound-mutebutton + label {
+  cursor: pointer;
+  float: none;
+}
+input[type='checkbox'].lol-settings-ingame-sound-mutebutton + label span {
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
+  background: url(/fe/lol-settings/AudioOn.png);
+  background-size: cover;
+}
+input[type='checkbox']:checked.lol-settings-ingame-sound-mutebutton
+  + label
+  span {
+  background: url(/fe/lol-settings/AudioOff.png);
+  background-size: cover;
+}
+.lol-settings-ingame-sound-description-text {
+  color: #5c5b57;
+  margin-top: 10px;
+  margin-left: 0;
+  direction: ltr;
+  float: none;
+}
+.lol-settings-ingame-sound-dropdown-item {
+  margin-left: 5px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.lol-settings-game-interface-content-component {
+  overflow: hidden;
+}
+.lol-settings-ingame-interface-row {
+  margin-bottom: 15px;
+}
+.lol-settings-ingame-interface-title {
+  margin-left: 9px;
+  direction: ltr;
+}
+.lol-settings-ingame-interface-slider {
+  height: 44px;
+  width: 396px;
+  float: none;
+}
+.lol-settings-checkbox-title {
+  margin-bottom: 12px;
+}
+.lol-settings-interface-checkboxes {
+  margin-bottom: 17px;
+}
+.lol-settings-interface-checkbox-column {
+  float: left;
+  width: 50%;
+}
+.lol-settings-interface-checkbox {
+  float: left;
+  width: 240px;
+  margin-bottom: 13px;
+}
+.lol-settings-interface-dropdown {
+  margin-bottom: 30px;
+  width: 234px;
+  float: none;
+}
+.lol-settings-game-gameplay-content-component {
+  overflow: hidden;
+}
+.lol-settings-ingame-dropdown-title {
+  color: #a09b8c;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+.lol-settings-ingame-dropdown {
+  width: 234px;
+  display: inline-block;
+  float: none;
+}
+.lol-settings-ingame-gameplay-controls {
+  margin: 0 0 15px 0;
+}
+.lol-settings-ingame-gameplay-controls:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lol-settings-ingame-section-title {
+  margin-bottom: 10px;
+  direction: ltr;
+}
+.lol-settings-ingame-section-label {
+  margin-bottom: 10px;
+}
+.lol-settings-ingame-label {
+  margin-bottom: 5px;
+  direction: ltr;
+}
+.lol-settings-ingame-row {
+  margin-bottom: 10px;
+  clear: both;
+}
+.lol-settings-ingame-row:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lol-settings-ingame-checkbox {
+  margin-bottom: 10px;
+}
+.lol-settings-ingame-slider {
+  height: 30px;
+  width: 396px;
+  float: none;
+}
+.lol-settings-ingame-slider-title {
+  direction: ltr;
+}
+.lol-settings-ingame-column-container {
+  margin-bottom: 10px;
+}
+.lol-settings-ingame-column-container:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lol-settings-ingame-column {
+  float: left;
+  width: 50%;
+}
+.lol-settings-ingame-keybind-dialog-key-label {
+  color: #cdbe91;
+  font-size: 20px;
+  height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.lol-settings-ingame-keybind-dialog-key-label[empty='true'] {
+  color: #5c5b57;
+}
+.lol-settings-ingame-keybind-dialog-unbind-button {
+  color: #cdbe91;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: 5px;
+}
+.lol-settings-ingame-keybind-dialog-unbind-button:disabled {
+  color: #5c5b57;
+  cursor: default;
+}
+.replays-settings-root-container {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.replays-settings-root-title {
+  margin: 20px 0 5px 0;
+  direction: ltr;
+  max-width: none;
+}
+.replays-settings-root-description {
+  color: #a09b8c;
+  font-style: italic;
+  margin-bottom: 40px;
+  direction: ltr;
+  max-width: none;
+  padding: 0;
+}
+.replays-settings-hints-container {
+  margin-top: 10px;
+  max-width: 400px;
+  overflow: hidden;
+  direction: ltr;
+}
+.replays-settings-hints-title {
+  color: #a09b8c;
+  margin-bottom: 5px;
+}
+.replays-settings-hints-description {
+  color: #a09b8c;
+  font-style: italic;
+  padding: 0;
+}
+.replays-settings-folder-path-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.replays-settings-folder-path-title {
+  color: #a09b8c;
+  margin-bottom: 5px;
+  direction: ltr;
+  max-width: none;
+}
+.replays-settings-folder-path-row {
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.replays-settings-folder-path-value {
+  color: #a09b8c;
+  margin: 0 5px 8px 0;
+  padding-left: 5px;
+  padding-right: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(160, 155, 140, 0.4);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  user-select: text;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 380px;
+  min-width: 380px;
+  min-height: 16px;
+  direction: ltr;
+}
+.replays-settings-folder-path-button,
+.replays-settings-folder-path-button:hover,
+.replays-settings-folder-path-button:active {
+  background-size: contain;
+  background-image: url(/fe/lol-settings/icon-edit.png);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.replays-settings-folder-path-button:hover {
+  background-image: url(/fe/lol-settings/icon-edit-hover.png);
+}
+.replays-settings-folder-path-button:active {
+  background-image: url(/fe/lol-settings/icon-edit-click.png);
+}
+.replays-settings-repair-row-hide {
+  display: none;
+}
+.licence-settings-verification {
+  padding: 15px 0 0 0;
+}
+.licence-settings-verification-sent-desc-kr {
+  margin-bottom: 7px;
+}
+.licence-settings-verification-sent-desc {
+  height: 16px;
+  direction: ltr;
+}
+.licence-settings-verification-accept-tou-checkbox {
+  margin-bottom: 7px;
+}
+.licence-settings-verification-desc {
+  width: 100%;
+  direction: ltr;
+}
+.license-settings-verification-bottom {
+  display: flex;
+}
+.licence-settings-verification-flat-input {
+  flex-grow: 1;
+  height: 32px;
+  margin: 0 10px 0 0;
+}
+.licence-settings-verification-input {
+  height: 100%;
+}
+.license-agreement-settings {
+  height: 402px;
+  position: relative;
+  padding: 15px 0 0 0;
+}
+.license-agreement-settings .license-agreement-settings-title {
+  padding-top: 13px;
+  padding-bottom: 5px;
+  direction: ltr;
+}
+.license-agreement-settings hr {
+  height: 1px;
+  border: 0 none;
+  background-color: #1e282d;
+  margin-top: 13px;
+}
+.license-agreement-settings .license-agreement-settings-content {
+  padding: 0 80px 0 0;
+  white-space: pre-line;
+  direction: ltr;
+}
+.lol-settings-license {
+  height: 402px;
+  position: relative;
+  padding: 15px 0 0 0;
+}
+.lol-settings-license hr {
+  height: 1px;
+  border: 0 none;
+  background-color: #1e282d;
+  margin-top: 13px;
+}
+.lol-settings-license .title {
+  padding-top: 13px;
+  padding-bottom: 5px;
+  direction: ltr;
+}
+.lol-settings-license .subtitle {
+  direction: ltr;
+}
+.lol-settings-license .license-text-content {
+  padding-right: 50px;
+  white-space: pre-line;
+  overflow: hidden;
+}
+.lol-settings-license .bottom-gradient {
+  background: linear-gradient(to top, #010a13 0%, rgba(1, 10, 19, 0) 92%);
+  height: 30px;
+  width: calc(100% - 20px);
+  position: absolute;
+  bottom: 0;
+}
+.lol-settings-version {
+  height: 402px;
+  position: relative;
+  padding: 15px 0 0 0;
+}
+.lol-settings-version hr {
+  height: 1px;
+  border: 0 none;
+  background-color: #1e282d;
+  margin-top: 13px;
+}
+.lol-settings-version .title {
+  padding-top: 13px;
+  padding-bottom: 5px;
+  direction: ltr;
+}
+.lol-settings-version .subtitle {
+  direction: ltr;
+}
+.lol-settings-version .dropdown {
+  margin-top: 13px;
+}
+.lol-settings-version .warning {
+  font-style: italic;
+}
+.lol-settings-version .button {
+  width: 160px;
+  height: 30px;
+  margin-right: 10px;
+}
+.lol-settings-version .button-group {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  display: flex;
+  justify-content: center;
+}
+.lol-settings-version .error-box {
+  box-sizing: border-box;
+  width: 100%;
+  border: solid #cc212f 3px;
+  padding: 5px;
+}
+.lol-settings-version lol-uikit-dropdown-option {
+  --dropdown-option-framed-overflow-wrap: break-word;
+  --dropdown-option-framed-line-height: unset;
+  --dropdown-option-framed-white-space: unset;
+}
+.lol-settings-legal-statements {
+  height: 402px;
+  position: relative;
+  padding: 15px 0 0 0;
+}
+.lol-settings-legal-statements hr {
+  height: 1px;
+  border: 0 none;
+  background-color: #1e282d;
+  margin-top: 13px;
+}
+.lol-settings-legal-statements .title {
+  padding-top: 13px;
+  padding-bottom: 5px;
+  direction: ltr;
+}
+.lol-settings-legal-statements .subtitle {
+  direction: ltr;
+}
+.lol-settings-legal-statements .dropdown {
+  margin-top: 13px;
+}
+.lol-settings-legal-statements .warning {
+  font-style: italic;
+}
+.lol-settings-legal-statements .button {
+  width: 160px;
+  height: 30px;
+  margin-right: 10px;
+}
+.lol-settings-legal-statements .button-group {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  display: flex;
+  justify-content: center;
+}
+.lol-settings-legal-statements .error-box {
+  box-sizing: border-box;
+  width: 100%;
+  border: solid #cc212f 3px;
+  padding: 5px;
+}
+.lol-settings-legal-statements lol-uikit-dropdown-option {
+  --dropdown-option-framed-overflow-wrap: break-word;
+  --dropdown-option-framed-line-height: unset;
+  --dropdown-option-framed-white-space: unset;
+}

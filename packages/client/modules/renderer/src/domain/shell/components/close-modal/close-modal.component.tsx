@@ -12,36 +12,40 @@ export const CloseModal: FC = () => {
   const isCloseModalVisible = useAppSelector(selectIsCloseModalVisible);
 
   return (
-    <>
-      <Modal
-        playSounds
-        closeFn={() => dispatch(toggleIsCloseModalVisible(false))}
-        labeledById="close-modal-label"
-        describedById="close-modal-description"
-        bottomButtons={[
-          {
-            buttonText: 'Yes',
-            initialFocus: true,
-            click: () => {
-              window.electron.window.close();
-            },
+    <Modal
+      playSounds
+      closeFn={() => dispatch(toggleIsCloseModalVisible(false))}
+      labeledById="close-modal-label"
+      describedById="close-modal-description"
+      bottomButtons={[
+        {
+          buttonText: 'Yes',
+          initialFocus: true,
+          click: () => {
+            window.electron.window.close();
           },
-          {
-            buttonText: 'No',
-            click: () => {
-              dispatch(toggleIsCloseModalVisible(false));
-            },
+        },
+        {
+          buttonText: 'No',
+          click: () => {
+            dispatch(toggleIsCloseModalVisible(false));
           },
-        ]}
-        show={isCloseModalVisible}
-      >
-        <C.StyledCloseModal>
-          <h4 id="close-modal-label">Exit now?</h4>
-          <p id="close-modal-description">
-            Do you really want to exit Universe now? <br /> (sad poro noises)
-          </p>
-        </C.StyledCloseModal>
-      </Modal>
-    </>
+        },
+      ]}
+      topRightCloseButton={{
+        click: () => {
+          dispatch(toggleIsCloseModalVisible(false));
+        },
+        variant: 'circle',
+      }}
+      show={isCloseModalVisible}
+    >
+      <C.StyledCloseModal>
+        <h4 id="close-modal-label">Exit now?</h4>
+        <p id="close-modal-description">
+          Do you really want to exit Universe now? <br /> (sad poro noises)
+        </p>
+      </C.StyledCloseModal>
+    </Modal>
   );
 };

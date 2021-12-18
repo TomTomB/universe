@@ -1,6 +1,10 @@
 import { type FC, useEffect } from 'react';
-import { CloseModal, TitleBar } from '../../components';
-import { PrimaryNavigation } from '../../components/primary-navigation';
+import {
+  CloseModal,
+  TitleBar,
+  PrimaryNavigation,
+  SettingsModal,
+} from '../../components';
 import * as C from './shell.styles';
 
 export const Shell: FC = ({ children }) => {
@@ -13,6 +17,7 @@ export const Shell: FC = ({ children }) => {
       <TitleBar />
       <PrimaryNavigation showTickerOnly />
 
+      <SettingsModal />
       <CloseModal />
 
       {children}

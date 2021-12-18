@@ -10,6 +10,7 @@ export const TitleBarButtonBase = styled.button`
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   background-color: ${(props) => props.theme.colors.grey[1]};
+  transition: opacity 300ms ease;
 
   :hover,
   :focus-visible {
