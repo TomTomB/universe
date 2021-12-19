@@ -123,7 +123,6 @@ export const Modal: FC<ModalProps> = ({
                 aria-labelledby={labeledById}
                 aria-describedby={describedById}
                 style={tbStyle}
-                onKeyUp={console.log}
               >
                 {transitionModal(
                   (mStyles, mVisible) =>
