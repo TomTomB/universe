@@ -10,6 +10,7 @@ import {
   selectIsNotificationCenterVisible,
   toggleIsNotificationCenterVisible,
 } from '@/store/slices';
+import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 
 export interface PrimaryNavigationProps {
   showTickerOnly: boolean;
@@ -25,12 +26,15 @@ export const PrimaryNavigation: FC<PrimaryNavigationProps> = ({
 
   const dispatch = useAppDispatch();
 
+  const sfxVolume = useSfxVolume();
+  const playSounds = useSfxChannel();
+
   const previousIsNotificationCenterVisible = usePrevious(
     isNotificationCenterVisible,
   );
 
-  const clickAudioOff = useAudio(clickFileOff);
-  const clickAudioOn = useAudio(clickFileOn);
+  const clickAudioOff = useAudio(clickFileOff, !playSounds, sfxVolume);
+  const clickAudioOn = useAudio(clickFileOn, !playSounds, sfxVolume);
 
   useEffect(() => {
     dispatch(toggleIsNotificationCenterVisible(!isLCUConnected));

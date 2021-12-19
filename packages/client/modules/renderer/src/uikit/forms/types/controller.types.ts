@@ -10,3 +10,8 @@ export interface ControlledInput<T> {
   isDisabled?: boolean;
   onChange?: (newValue: T) => void;
 }
+
+export interface WithSound {
+  playSounds: boolean;
+  soundVolume: number;
+}

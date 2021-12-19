@@ -9,11 +9,15 @@ import { type FC, useEffect, useState, type ReactElement } from 'react';
 import { ClientSound, SettingsNavigation } from './partials';
 import * as C from './settings-modal.styles';
 import propSmile from './assets/images/poro_smile.png';
+import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 
 export const SettingsModal: FC = () => {
   const dispatch = useAppDispatch();
   const isSettingsModalVisible = useAppSelector(selectIsSettingsModalVisible);
   const activePage = useAppSelector(selectActiveSettingsModalPage);
+
+  const sfxVolume = useSfxVolume();
+  const playSounds = useSfxChannel();
 
   const [settingsPage, setSettingsPage] = useState<{
     section: string;
@@ -132,7 +136,8 @@ export const SettingsModal: FC = () => {
 
   return (
     <Modal
-      playSounds
+      playSounds={playSounds}
+      soundVolume={sfxVolume}
       closeFn={() => {
         dispatch(toggleIsSettingsModalVisible({ visible: false }));
       }}

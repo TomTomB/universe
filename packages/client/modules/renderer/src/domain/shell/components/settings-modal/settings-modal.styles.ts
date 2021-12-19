@@ -25,7 +25,7 @@ export const SettingsTitleBar = styled.div`
 
 export const TitleBarTitle = styled.h4`
   color: #a09b8c;
-  direction: ltr;
+  margin-left: 9px;
 `;
 
 export const TitleBarBreak = styled.span`

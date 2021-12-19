@@ -11,17 +11,16 @@ import videoSplash from '@/assets/splash/videos/video-splash-ss19-c.webm';
 import musicSplash from '@/assets/splash/music/music-splash-ss19-c.ogg';
 import staticSplash from '@/assets/splash/images/image-splash-ss19-c.jpg';
 import { useAppSelector } from '@/store';
-import {
-  selectPlayLoginAnimations,
-  selectPlayLoginMusic,
-} from '@/store/slices';
+import { selectPlayLoginAnimations } from '@/store/slices';
+import { useMusicChannel, useMusicVolume } from '@/domain/core/hooks';
 
 interface SplashScreenContainerProps {
   className?: string;
 }
 
 export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
-  const playLoginMusic = useAppSelector(selectPlayLoginMusic);
+  const playLoginMusic = useMusicChannel('login');
+  const musicVolume = useMusicVolume();
   const playLoginAnimations = useAppSelector(selectPlayLoginAnimations);
 
   const [currentMusic, sendMusic] = useMachine(
@@ -51,6 +50,10 @@ export const SplashScreen: FC<SplashScreenContainerProps> = ({ className }) => {
   useEffect(() => {
     sendMusic({ type: 'SET_ENABLED', enabled: playLoginMusic });
   }, [playLoginMusic, sendMusic]);
+
+  useEffect(() => {
+    sendMusic({ type: 'SET_VOLUME', volume: musicVolume });
+  }, [musicVolume, sendMusic]);
 
   useEffect(() => {
     sendVideo({ type: 'SET_ENABLED', enabled: playLoginAnimations });

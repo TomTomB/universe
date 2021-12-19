@@ -4,11 +4,10 @@ import type { FC } from 'react';
 import { useController } from 'react-hook-form';
 import { useAudio } from '@/uikit/core/hooks';
 import clickAudioFile from './assets/sounds/sfx-uikit-checkbox-click.ogg';
-import type { ControlledInput } from '../../types';
+import type { ControlledInput, WithSound } from '../../types';
 
-export interface CheckboxProps extends ControlledInput<boolean> {
+export interface CheckboxProps extends ControlledInput<boolean>, WithSound {
   label: string;
-  playSounds?: boolean;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -20,10 +19,15 @@ export const Checkbox: FC<CheckboxProps> = ({
   isDisabled,
   defaultValue = false,
   playSounds,
+  soundVolume,
   onChange,
 }) => {
   const controller = useController({ name, control, defaultValue });
-  const clickAudio = useAudio(clickAudioFile, isDisabled || !playSounds);
+  const clickAudio = useAudio(
+    clickAudioFile,
+    isDisabled || !playSounds,
+    soundVolume,
+  );
 
   return (
     <C.CheckboxContainer

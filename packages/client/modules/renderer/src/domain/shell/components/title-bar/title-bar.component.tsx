@@ -1,3 +1,4 @@
+import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
   selectIsModalOpen,
@@ -11,6 +12,9 @@ import * as C from './title-bar.styles';
 export const TitleBar = () => {
   const dispatch = useAppDispatch();
   const isModalOpen = useAppSelector(selectIsModalOpen);
+
+  const sfxVolume = useSfxVolume();
+  const playSounds = useSfxChannel();
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   let startPosition: { x: number; y: number } | null = null;
@@ -78,21 +82,24 @@ export const TitleBar = () => {
         <TitleBarButton
           label="Minimize"
           type="minimize"
-          playSounds
+          playSounds={playSounds}
+          soundVolume={sfxVolume}
           disabled={isModalOpen}
           onClick={minimizeWindow}
         />
         <TitleBarButton
           label="Settings"
           type="settings"
-          playSounds
+          playSounds={playSounds}
+          soundVolume={sfxVolume}
           disabled={isModalOpen}
           onClick={showSettingsModal}
         />
         <TitleBarButton
           label="Close"
           type="close"
-          playSounds
+          playSounds={playSounds}
+          soundVolume={sfxVolume}
           disabled={isModalOpen}
           onClick={showCloseModal}
         />

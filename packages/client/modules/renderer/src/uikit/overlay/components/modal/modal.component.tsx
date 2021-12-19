@@ -30,7 +30,8 @@ export interface ModalProps {
   caret?: boolean;
   disabled?: boolean;
   borderless?: boolean;
-  playSounds?: boolean;
+  playSounds: boolean;
+  soundVolume: number;
 }
 
 export const Modal: FC<ModalProps> = ({

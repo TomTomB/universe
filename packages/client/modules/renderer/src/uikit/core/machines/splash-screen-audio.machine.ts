@@ -13,6 +13,10 @@ export type MachineEvent =
       enabled: boolean;
     }
   | {
+      type: 'SET_VOLUME';
+      volume: number;
+    }
+  | {
       type: 'LOADED_INTRO_MUSIC';
       element: HTMLAudioElement | null;
     }
@@ -111,6 +115,13 @@ export const machine = createMachine<MachineContext, MachineEvent>(
             },
           ],
 
+          SET_VOLUME: [
+            {
+              target: 'playing',
+              actions: ['setIntroVolume', 'setLoopVolume'],
+            },
+          ],
+
           REPLAY: [
             {
               target: 'playing',
@@ -131,6 +142,13 @@ export const machine = createMachine<MachineContext, MachineEvent>(
                 }),
                 'resetAndPlayLoop',
               ],
+            },
+          ],
+
+          SET_VOLUME: [
+            {
+              target: 'disabled',
+              actions: ['setIntroVolume', 'setLoopVolume'],
             },
           ],
         },
@@ -170,6 +188,24 @@ export const machine = createMachine<MachineContext, MachineEvent>(
 
         context.loopAudio.currentTime = 0;
         context.loopAudio.play();
+      },
+      setIntroVolume: (context, event) => {
+        if (!context.introAudio) {
+          return;
+        }
+
+        if (event.type === 'SET_VOLUME') {
+          context.introAudio.volume = event.volume;
+        }
+      },
+      setLoopVolume: (context, event) => {
+        if (!context.loopAudio) {
+          return;
+        }
+
+        if (event.type === 'SET_VOLUME') {
+          context.loopAudio.volume = event.volume;
+        }
       },
     },
   },

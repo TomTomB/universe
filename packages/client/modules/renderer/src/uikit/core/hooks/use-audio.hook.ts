@@ -1,7 +1,17 @@
-export const useAudio = (src: string, isDisabled = false) => {
-  const audio = new Audio(src);
+import { useEffect, useMemo } from 'react';
+
+export const useAudio = (src: string, isDisabled = false, volume = 1) => {
+  const audio = useMemo(() => new Audio(src), [src]);
+
+  useEffect(() => {
+    audio.volume = volume;
+  }, [audio, volume]);
 
   const play = () => {
+    if (isDisabled) {
+      return;
+    }
+
     stop();
     audio.play();
   };

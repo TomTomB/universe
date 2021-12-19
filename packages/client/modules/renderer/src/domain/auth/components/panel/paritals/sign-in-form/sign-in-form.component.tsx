@@ -4,6 +4,7 @@ import { Checkbox, FramedSelect, Input, Label } from '@/uikit/forms/components';
 import { useYupValidationResolver } from '@/uikit/core/hooks';
 import { type FC, useMemo, useState } from 'react';
 import * as C from './sign-in-form.styles';
+import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 
 interface FormValues {
   password: string;
@@ -14,6 +15,9 @@ interface FormValues {
 export const SignInForm: FC = () => {
   const [showRegionLanguageSelects, toggleShowRegionLanguageSelects] =
     useState(false);
+
+  const sfxVolume = useSfxVolume();
+  const playSounds = useSfxChannel();
 
   const validationSchema = useMemo(
     () =>
@@ -63,7 +67,8 @@ export const SignInForm: FC = () => {
         name="staySignedIn"
         id="staySignedIn"
         control={control}
-        playSounds
+        playSounds={playSounds}
+        soundVolume={sfxVolume}
       />
 
       <C.RegionLanguageToggleContainer>
@@ -89,6 +94,7 @@ export const SignInForm: FC = () => {
               items={[{ label: 'EU West', value: 'euw' }]}
               name="region"
               value="euw"
+              playSounds={playSounds}
             />
             <C.LanguageSelect
               label="Language"
@@ -96,12 +102,13 @@ export const SignInForm: FC = () => {
               items={[{ label: 'English', value: 'en' }]}
               name="language"
               value="en"
+              playSounds={playSounds}
             />
           </>
         )}
       </C.RegionLanguageToggleContainer>
 
-      <C.SignInButton playSounds disabled={!formState.isValid}>
+      <C.SignInButton playSounds={playSounds} disabled={!formState.isValid}>
         Sign in
       </C.SignInButton>
     </C.StyledSignInFom>
