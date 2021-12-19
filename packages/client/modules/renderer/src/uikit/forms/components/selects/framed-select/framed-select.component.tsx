@@ -1,45 +1,38 @@
 import * as C from './framed-select.styles';
 import { FormField } from '../../base';
 import { FramedSelectOption } from './partials';
-import { NativeSelect } from '../native-select';
 import { Scrollable } from '@/uikit/common/components';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useSelectBehavior } from '../use-select-behavior';
 import { useTransition } from 'react-spring';
 import type { FC } from 'react';
 import type { SelectOption } from '../select.types';
-import type { UseFormRegister } from 'react-hook-form';
+import { useController } from 'react-hook-form';
 import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';
+import type { ControlledInput, WithSound } from '../../../types';
 
-export interface FramedSelectProps {
+export interface FramedSelectProps extends ControlledInput<string>, WithSound {
   items: SelectOption[];
-  id: string;
   label: string;
-  name: string;
-  value?: string;
-  disabled?: boolean;
   openUpward?: boolean;
-  playSounds?: boolean;
-  className?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
 }
 
 export const FramedSelect: FC<FramedSelectProps> = ({
   items,
-  register,
   id,
   label,
   name,
-  value,
-  disabled,
+  isDisabled,
+  control,
+  soundVolume,
+  defaultValue,
+  onChange,
   playSounds,
   className,
-  openUpward = false,
+  openUpward,
 }) => {
   const {
-    nativeSelectId,
     labelId,
     selectedOption,
     optionsContainerRef,
@@ -49,7 +42,9 @@ export const FramedSelect: FC<FramedSelectProps> = ({
     setIsOpen,
     handleKeyDown,
     handleKeyUp,
-  } = useSelectBehavior(items, name, id, value);
+  } = useSelectBehavior(items, name, id, defaultValue);
+
+  const controller = useController({ name, control, defaultValue });
 
   const transition = useTransition(isOpen, {
     config: springConfigHarsh,
@@ -58,44 +53,35 @@ export const FramedSelect: FC<FramedSelectProps> = ({
     leave: { opacity: 0, transform: 'scaleY(0)' },
   });
 
-  const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
+  const clickAudio = useAudio(
+    clickAudioFile,
+    isDisabled || !playSounds,
+    soundVolume,
+  );
 
   return (
     <FormField className={className}>
-      <NativeSelect
-        id={nativeSelectId}
-        register={register}
-        hidden
-        items={items}
-        name={name}
-        disabled={disabled}
-        onChange={(e) => {
-          if (selectedOption !== e.target.value) {
-            setSelectedOption(e.target.value);
-          }
-        }}
-      />
-
       <C.SelectLabel
         id={labelId}
         htmlFor={id}
         isInvalid={false}
-        disabled={disabled}
+        disabled={isDisabled}
         onClick={() => document.getElementById(id)?.focus()}
       >
         {label}
       </C.SelectLabel>
       <C.Select
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={isDisabled ? -1 : 0}
         active={isOpen}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
+        onBlur={controller.field.onBlur}
         role="combobox"
         aria-expanded={isOpen ? 'true' : 'false'}
         aria-haspopup="true"
         aria-autocomplete="none"
         aria-labelledby={labelId}
-        data-disabled={disabled}
+        data-disabled={isDisabled}
         id={id}
         ref={customSelectRef}
       >
@@ -103,7 +89,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
           (style, show) =>
             show && (
               <C.AnimatedOptionsContainer
-                openUpward={openUpward}
+                openUpward={!!openUpward}
                 ref={optionsContainerRef}
                 style={style}
               >
@@ -116,11 +102,14 @@ export const FramedSelect: FC<FramedSelectProps> = ({
                             index={index}
                             disabled={option.disabled}
                             playSounds={playSounds}
+                            soundVolume={soundVolume}
                             key={option.label + option.value}
                             selected={selectedOption === option.value}
                             onClick={() => {
                               setSelectedOption(option.value);
                               setIsOpen(false);
+                              controller.field.onChange(option.value);
+                              onChange?.(option.value);
                             }}
                           >
                             {option.label}

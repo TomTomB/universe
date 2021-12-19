@@ -32,9 +32,6 @@ export const useSelectBehavior = (
   id: string,
   value?: string,
 ) => {
-  const nativeSelectId = useMemo(() => {
-    return generateShortId();
-  }, []);
   const labelId = useMemo(() => {
     return generateShortId();
   }, []);
@@ -73,14 +70,10 @@ export const useSelectBehavior = (
   }, [isOpen, isOpenChanged, currentFocusedOptionIndex, items, id]);
 
   useEffect(() => {
-    const element = document.getElementById(nativeSelectId);
-    if (element) {
-      (element as HTMLSelectElement).value = selectedOption as string;
-    }
     setCurrentFocusedOptionIndex(
       items.findIndex((i) => i.value === selectedOption),
     );
-  }, [selectedOption, name, items, nativeSelectId]);
+  }, [selectedOption, name, items]);
 
   let searchTerm = '';
   let debounceTimeout: number | null = null;
@@ -181,7 +174,6 @@ export const useSelectBehavior = (
   };
 
   return {
-    nativeSelectId,
     labelId,
     selectedOption,
     setSelectedOption,

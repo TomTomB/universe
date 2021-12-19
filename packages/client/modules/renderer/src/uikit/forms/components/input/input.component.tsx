@@ -5,18 +5,14 @@ import { FormField } from '../base';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
 import classNames from 'classnames';
-import type { FieldError, UseFormRegister } from 'react-hook-form';
+import { type FieldError, useController } from 'react-hook-form';
+import type { ControlledInput } from '../../types';
 
-export interface InputProps {
-  id: string;
+export interface InputProps extends ControlledInput<string> {
   label: string;
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: UseFormRegister<any>;
   type?: string;
   placeholder?: string;
   showError?: boolean;
-  disabled?: boolean;
   error?: FieldError;
   spellcheck?: boolean;
 }
@@ -24,16 +20,21 @@ export interface InputProps {
 export const Input: FC<InputProps> = ({
   id,
   label,
-  name,
   placeholder,
   error,
   spellcheck,
   type = 'text',
   showError = true,
-  disabled = false,
-  register,
+  isDisabled,
+  control,
+  name,
+  className,
+  defaultValue,
+  onChange,
 }) => {
   const triggerShowPasswordCheckboxRef = useRef<HTMLInputElement>(null);
+
+  const controller = useController({ name, control, defaultValue });
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -45,12 +46,11 @@ export const Input: FC<InputProps> = ({
   });
 
   return (
-    <FormField>
-      <C.InputLabel htmlFor={id} isInvalid={!!error} disabled={disabled}>
+    <FormField className={className}>
+      <C.InputLabel htmlFor={id} isInvalid={!!error} disabled={isDisabled}>
         {label}
       </C.InputLabel>
       <C.FlatInput
-        {...register?.(name)}
         id={id}
         spellCheck={spellcheck}
         aria-invalid={error ? 'true' : 'false'}
@@ -60,7 +60,13 @@ export const Input: FC<InputProps> = ({
         })}
         placeholder={placeholder}
         type={showPassword ? 'text' : type}
-        disabled={disabled}
+        disabled={isDisabled}
+        name={controller.field.name}
+        onChange={(e) => {
+          controller.field.onChange(e.target.value);
+          onChange?.(e.target.value);
+        }}
+        onBlur={controller.field.onBlur}
       />
       {type === 'password' && (
         <>

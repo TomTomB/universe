@@ -10,6 +10,8 @@ interface FormValues {
   password: string;
   email: string;
   staySignedIn: boolean;
+  region?: string;
+  language?: string;
 }
 
 export const SignInForm: FC = () => {
@@ -32,7 +34,7 @@ export const SignInForm: FC = () => {
   );
 
   const resolver = useYupValidationResolver(validationSchema);
-  const { register, handleSubmit, formState, control } = useForm<FormValues>({
+  const { handleSubmit, formState, control } = useForm<FormValues>({
     resolver,
     mode: 'onChange',
   });
@@ -51,7 +53,7 @@ export const SignInForm: FC = () => {
         id="kuchen"
         type="email"
         error={formState.errors.email}
-        register={register}
+        control={control}
       />
       <Input
         spellcheck={false}
@@ -60,7 +62,7 @@ export const SignInForm: FC = () => {
         id="password"
         type="password"
         error={formState.errors.password}
-        register={register}
+        control={control}
       />
       <Checkbox
         label="Remember Me"
@@ -93,22 +95,30 @@ export const SignInForm: FC = () => {
               id="region-select"
               items={[{ label: 'EU West', value: 'euw' }]}
               name="region"
-              value="euw"
+              defaultValue="euw"
+              control={control}
               playSounds={playSounds}
+              soundVolume={sfxVolume}
             />
             <C.LanguageSelect
               label="Language"
               id="language-select"
               items={[{ label: 'English', value: 'en' }]}
               name="language"
-              value="en"
+              defaultValue="en"
+              control={control}
               playSounds={playSounds}
+              soundVolume={sfxVolume}
             />
           </>
         )}
       </C.RegionLanguageToggleContainer>
 
-      <C.SignInButton playSounds={playSounds} disabled={!formState.isValid}>
+      <C.SignInButton
+        playSounds={playSounds}
+        soundVolume={sfxVolume}
+        disabled={!formState.isValid}
+      >
         Sign in
       </C.SignInButton>
     </C.StyledSignInFom>

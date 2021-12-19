@@ -3,17 +3,13 @@ import { FormField } from '../base';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useTransition } from 'react-spring';
 import type { FC } from 'react';
-import type { FieldError, UseFormRegister } from 'react-hook-form';
+import { type FieldError, useController } from 'react-hook-form';
+import type { ControlledInput } from '../../types';
 
-export interface TextareaProps {
-  id: string;
+export interface TextareaProps extends ControlledInput<string> {
   label: string;
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: UseFormRegister<any>;
   placeholder?: string;
   showError?: boolean;
-  disabled?: boolean;
   error?: FieldError;
   spellcheck?: boolean;
 }
@@ -26,9 +22,14 @@ export const Textarea: FC<TextareaProps> = ({
   error,
   spellcheck,
   showError = true,
-  disabled = false,
-  register,
+  isDisabled,
+  control,
+  className,
+  defaultValue,
+  onChange,
 }) => {
+  const controller = useController({ name, control, defaultValue });
+
   const transition = useTransition(error, {
     config: springConfigHarsh,
     from: { transform: 'translateY(-20px)', opacity: 0 },
@@ -37,17 +38,21 @@ export const Textarea: FC<TextareaProps> = ({
   });
 
   return (
-    <FormField>
-      <C.TextareaLabel htmlFor={id} isInvalid={!!error} disabled={disabled}>
+    <FormField className={className}>
+      <C.TextareaLabel htmlFor={id} isInvalid={!!error} disabled={isDisabled}>
         {label}
       </C.TextareaLabel>
       <C.StyledTextarea
-        disabled={disabled}
+        disabled={isDisabled}
         id={id}
         spellCheck={spellcheck}
         aria-invalid={error ? 'true' : 'false'}
         placeholder={placeholder}
-        {...register?.(name)}
+        name={name}
+        onChange={(e) => {
+          controller.field.onChange(e.target.value);
+          onChange?.(e.target.value);
+        }}
       />
       {showError && (
         <C.ErrorContainer>

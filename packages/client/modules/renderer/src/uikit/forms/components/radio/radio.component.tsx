@@ -1,17 +1,10 @@
 import * as C from './radio.styles';
 import type { FC } from 'react';
-import type { UseFormRegister } from 'react-hook-form';
+import { useController } from 'react-hook-form';
+import type { ControlledInput } from '../../types';
 
-export interface RadioProps {
-  id: string;
+export interface RadioProps extends ControlledInput<string | number> {
   label: string;
-  name: string;
-  disabled?: boolean;
-  className?: string;
-  value?: string | number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
-  onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Radio: FC<RadioProps> = ({
@@ -19,31 +12,27 @@ export const Radio: FC<RadioProps> = ({
   label,
   name,
   className,
-  disabled = false,
-  value,
-  register,
+  isDisabled,
+  defaultValue,
+  control,
   onChange,
 }) => {
+  const controller = useController({ name, control, defaultValue });
+
   return (
     <C.StyledRadioOption className={className}>
-      {register && (
-        <C.RadioInput
-          type="radio"
-          id={id}
-          disabled={disabled}
-          {...register(name)}
-        />
-      )}
-      {!register && (
-        <C.RadioInput
-          type="radio"
-          id={id}
-          name={name}
-          disabled={disabled}
-          value={value}
-          onChange={onChange}
-        />
-      )}
+      <C.RadioInput
+        type="radio"
+        id={id}
+        name={name}
+        disabled={isDisabled}
+        value={defaultValue}
+        onChange={(e) => {
+          controller.field.onChange(e.target.value);
+          onChange?.(e.target.value);
+        }}
+      />
+
       <C.RadioSpan />
       <C.RadioLabel htmlFor={id} isInvalid={false}>
         {label}

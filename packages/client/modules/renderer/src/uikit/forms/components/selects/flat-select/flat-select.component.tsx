@@ -1,15 +1,15 @@
 import * as C from './flat-select.styles';
 import { FlatSelectOption, FlatSelectOptionGroup } from './partials';
-import { NativeSelect } from '../native-select';
 import { Scrollable } from '@/uikit/common/components';
 import { springConfigHarsh } from '@/uikit/core/constants';
 import { useSelectBehavior } from '../use-select-behavior';
 import { useTransition } from 'react-spring';
 import { useMemo, type FC, type PropsWithChildren } from 'react';
 import type { SelectOption } from '../select.types';
-import type { UseFormRegister } from 'react-hook-form';
 import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';
+import type { ControlledInput, WithSound } from '../../../types';
+import { useController } from 'react-hook-form';
 
 export interface SelectOptionsWithGroups {
   items: SelectOption[];
@@ -21,29 +21,25 @@ export interface SelectOptionGroup {
   group: string;
 }
 
-export interface FlatSelectProps {
+export interface FlatSelectProps extends ControlledInput<string>, WithSound {
   items: SelectOptionsWithGroups;
-  id: string;
   label: string;
-  name: string;
-  value?: string;
-  disabled?: boolean;
   openUpward?: boolean;
-  playSounds?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
 }
 
 export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
-  openUpward = false,
-  disabled,
+  openUpward,
+  isDisabled,
   id,
   items,
   label,
   name,
-  register,
   playSounds,
-  value,
+  soundVolume,
+  control,
+  className,
+  defaultValue,
+  onChange,
 }) => {
   const normalizedItems = useMemo(() => {
     const itemsCopy = [...items.items];
@@ -52,7 +48,6 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
   }, [items]);
 
   const {
-    nativeSelectId,
     selectedOption,
     optionsContainerRef,
     customSelectRef,
@@ -61,7 +56,9 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
     setIsOpen,
     handleKeyDown,
     handleKeyUp,
-  } = useSelectBehavior(normalizedItems, name, id, value);
+  } = useSelectBehavior(normalizedItems, name, id, defaultValue);
+
+  const controller = useController({ name, control, defaultValue });
 
   const translateY = openUpward ? '-10px' : '10px';
   const transition = useTransition(isOpen, {
@@ -77,106 +74,103 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
     },
   });
 
-  const clickAudio = useAudio(clickAudioFile, disabled || !playSounds);
+  const clickAudio = useAudio(
+    clickAudioFile,
+    isDisabled || !playSounds,
+    soundVolume,
+  );
 
   return (
-    <>
-      <NativeSelect
-        id={nativeSelectId}
-        register={register}
-        hidden
-        items={normalizedItems}
-        name={name}
-        disabled={disabled}
-        onChange={(e) => {
-          if (selectedOption !== e.target.value) {
-            setSelectedOption(e.target.value);
-          }
+    <C.StyledFlatSelect
+      className={className}
+      tabIndex={isDisabled ? -1 : 0}
+      active={isOpen}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
+      role="combobox"
+      aria-expanded={isOpen ? 'true' : 'false'}
+      aria-haspopup="true"
+      aria-autocomplete="none"
+      aria-label={label}
+      data-disabled={isDisabled}
+      id={id}
+      ref={customSelectRef}
+    >
+      {transition(
+        (style, show) =>
+          show && (
+            <C.AnimatedOptionsContainer
+              openUpward={openUpward}
+              ref={optionsContainerRef}
+              style={style}
+            >
+              <Scrollable>
+                {items.grouped.map(
+                  (group) =>
+                    group && (
+                      <FlatSelectOptionGroup
+                        key={group.group}
+                        name={group.group}
+                      >
+                        {group.items.map(
+                          (option) =>
+                            option && (
+                              <FlatSelectOption
+                                playSounds={playSounds}
+                                soundVolume={soundVolume}
+                                index={normalizedItems.indexOf(option)}
+                                disabled={option.disabled}
+                                key={option.label + option.value}
+                                selected={selectedOption === option.value}
+                                onClick={() => {
+                                  setSelectedOption(option.value);
+                                  setIsOpen(false);
+                                  controller.field.onChange(option.value);
+                                  onChange?.(option.value);
+                                }}
+                              >
+                                {option.label}
+                              </FlatSelectOption>
+                            ),
+                        )}
+                      </FlatSelectOptionGroup>
+                    ),
+                )}
+
+                {items.items.map(
+                  (option) =>
+                    option && (
+                      <FlatSelectOption
+                        playSounds={playSounds}
+                        soundVolume={soundVolume}
+                        index={normalizedItems.indexOf(option)}
+                        disabled={option.disabled}
+                        key={option.label + option.value}
+                        selected={selectedOption === option.value}
+                        onClick={() => {
+                          setSelectedOption(option.value);
+                          setIsOpen(false);
+                          controller.field.onChange(option.value);
+                          onChange?.(option.value);
+                        }}
+                      >
+                        {option.label}
+                      </FlatSelectOption>
+                    ),
+                )}
+              </Scrollable>
+            </C.AnimatedOptionsContainer>
+          ),
+      )}
+      <C.Current
+        onClick={() => {
+          setIsOpen(!isOpen);
+          clickAudio.active.onClick();
         }}
-      />
-
-      <C.StyledFlatSelect
-        tabIndex={disabled ? -1 : 0}
-        active={isOpen}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
-        role="combobox"
-        aria-expanded={isOpen ? 'true' : 'false'}
-        aria-haspopup="true"
-        aria-autocomplete="none"
-        aria-label={label}
-        data-disabled={disabled}
-        id={id}
-        ref={customSelectRef}
       >
-        {transition(
-          (style, show) =>
-            show && (
-              <C.AnimatedOptionsContainer
-                openUpward={openUpward}
-                ref={optionsContainerRef}
-                style={style}
-              >
-                <Scrollable>
-                  {items.grouped.map(
-                    (group) =>
-                      group && (
-                        <FlatSelectOptionGroup
-                          key={group.group}
-                          name={group.group}
-                        >
-                          {group.items.map(
-                            (option) =>
-                              option && (
-                                <FlatSelectOption
-                                  index={normalizedItems.indexOf(option)}
-                                  disabled={option.disabled}
-                                  key={option.label + option.value}
-                                  selected={selectedOption === option.value}
-                                  onClick={() => {
-                                    setSelectedOption(option.value);
-                                    setIsOpen(false);
-                                  }}
-                                >
-                                  {option.label}
-                                </FlatSelectOption>
-                              ),
-                          )}
-                        </FlatSelectOptionGroup>
-                      ),
-                  )}
-
-                  {items.items.map(
-                    (option) =>
-                      option && (
-                        <FlatSelectOption
-                          index={normalizedItems.indexOf(option)}
-                          disabled={option.disabled}
-                          key={option.label + option.value}
-                          selected={selectedOption === option.value}
-                          onClick={() => {
-                            setSelectedOption(option.value);
-                            setIsOpen(false);
-                          }}
-                        >
-                          {option.label}
-                        </FlatSelectOption>
-                      ),
-                  )}
-                </Scrollable>
-              </C.AnimatedOptionsContainer>
-            ),
-        )}
-        <C.Current
-          onClick={() => {
-            setIsOpen(!isOpen);
-            clickAudio.active.onClick();
-          }}
-        >
-          {normalizedItems.find((item) => item.value === selectedOption)
-            ?.label || 'Select'}
-        </C.Current>
-      </C.StyledFlatSelect>
-    </>
+        {normalizedItems.find((item) => item.value === selectedOption)?.label ||
+          'Select'}
+      </C.Current>
+    </C.StyledFlatSelect>
   );
 };

@@ -1,36 +1,39 @@
 import * as C from './native-select.styles';
 import type { FC } from 'react';
 import type { SelectOption } from '../select.types';
-import type { UseFormRegister } from 'react-hook-form';
+import type { ControlledInput } from '../../../types';
+import { useController } from 'react-hook-form';
 
-export interface NativeSelectProps {
-  id: string;
-  name: string;
+export interface NativeSelectProps extends ControlledInput<string> {
   items: SelectOption[];
-  disabled?: boolean;
   hidden?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const NativeSelect: FC<NativeSelectProps> = ({
   id,
   items,
   name,
-  register,
   onChange,
   hidden,
-  disabled,
+  isDisabled,
+  control,
+  className,
+  defaultValue,
 }) => {
+  const controller = useController({ name, control, defaultValue });
+
   return (
     <C.StyledNativeSelect
+      className={className}
       hidden={hidden}
       aria-hidden={hidden}
       id={id}
-      disabled={disabled}
-      onChange={onChange}
-      {...register?.(name)}
+      name={name}
+      disabled={isDisabled}
+      onChange={(e) => {
+        controller.field.onChange(e.target.value);
+        onChange?.(e.target.value);
+      }}
     >
       {items.map(
         (option) =>

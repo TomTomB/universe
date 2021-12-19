@@ -7,7 +7,7 @@ import {
   PlayButtonPlay,
 } from './partials';
 import { PlayButtonState } from './play-button.types';
-import { type FC, type PropsWithChildren, useState } from 'react';
+import { type FC, useState } from 'react';
 import type { PlayButtonProps } from './play-button.types';
 import { useAudio } from '@/uikit/core/hooks';
 import lobbyClickAudioFile from './assets/sounds/sfx-nav-button-lobby-click.ogg';
@@ -15,7 +15,7 @@ import lobbyHoverAudioFile from './assets/sounds/sfx-nav-button-lobby-hover.ogg'
 import playClickAudioFile from './assets/sounds/sfx-nav-button-play-click.ogg';
 import playHoverAudioFile from './assets/sounds/sfx-nav-button-play-hover.ogg';
 
-export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
+export const PlayButton: FC<PlayButtonProps> = ({
   type,
   children,
   className,
@@ -25,6 +25,7 @@ export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
   prevButtonState,
   downloadProgress,
   playSounds,
+  soundVolume,
 }) => {
   const btnIsDisabled =
     disabled ||
@@ -42,19 +43,23 @@ export const PlayButton: FC<PropsWithChildren<PlayButtonProps>> = ({
   const lobbyClickAudio = useAudio(
     lobbyClickAudioFile,
     disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
+    soundVolume,
   );
   const lobbyHoverAudio = useAudio(
     lobbyHoverAudioFile,
     disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
+    soundVolume,
   );
 
   const playClickAudio = useAudio(
     playClickAudioFile,
     disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
+    soundVolume,
   );
   const playHoverAudio = useAudio(
     playHoverAudioFile,
     disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
+    soundVolume,
   );
 
   return (

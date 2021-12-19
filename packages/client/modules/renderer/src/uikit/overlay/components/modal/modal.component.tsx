@@ -49,6 +49,7 @@ export const Modal: FC<ModalProps> = ({
   topRightCloseButton,
   caret,
   playSounds,
+  soundVolume,
 }) => {
   const transitionModal = useTransition(show, {
     config: { tension: 300, friction: 20 },
@@ -152,6 +153,7 @@ export const Modal: FC<ModalProps> = ({
                                 key={b.buttonText}
                                 onClick={b.click}
                                 playSounds={playSounds}
+                                soundVolume={soundVolume}
                               >
                                 {b.buttonText}
                               </PrimaryFlatButton>
