@@ -2,42 +2,35 @@ import * as C from './range.styles';
 import { useBoundingRect } from '@/uikit/core/hooks';
 import { useState, type FC } from 'react';
 import type { Direction } from '@/types';
-import type { UseFormRegister } from 'react-hook-form';
+import { useController } from 'react-hook-form';
+import type { ControlledInput } from '../../types';
 
-export interface RangeProps {
-  id: string;
-  name: string;
+export interface RangeProps extends ControlledInput<number> {
   direction?: Direction;
-  className?: string;
-  disabled?: boolean;
   min?: number;
   max?: number;
   step?: number;
-  value?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register?: UseFormRegister<any>;
-  onChange?: (value: number) => void;
 }
 
 export const Range: FC<RangeProps> = ({
-  className,
   id,
   name,
-  disabled,
+  control,
+  defaultValue = 0,
+  className,
+  isDisabled,
   direction = 'horizontal',
   min = 0,
   max = 100,
   step = 1,
-  value: defaultValue = 0,
-  register,
   onChange,
 }) => {
+  const controller = useController({ name, control, defaultValue });
+
   const [baseBoundingRect, baseRef] = useBoundingRect<HTMLDivElement>();
   const [value, setValue] = useState(
     defaultValue > max ? max : defaultValue < min ? min : defaultValue,
   );
-
-  const reg = register?.(name);
 
   const stepInverse = 1 / step;
 
@@ -60,7 +53,7 @@ export const Range: FC<RangeProps> = ({
   const handleSliderMouseDown = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    if (disabled || e.button !== 0 || !baseBoundingRect) {
+    if (isDisabled || e.button !== 0 || !baseBoundingRect) {
       return;
     }
 
@@ -75,7 +68,7 @@ export const Range: FC<RangeProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (disabled) {
+    if (isDisabled) {
       return;
     }
 
@@ -152,61 +145,46 @@ export const Range: FC<RangeProps> = ({
 
     setValue(newValue);
     cacheVal = newValue;
+
+    controller.field.onChange(newValue);
     onChange?.(newValue);
-
-    reg?.onChange({ target: {}, type: 'change' });
-
-    const slider = document.getElementById(id + '_native') as HTMLInputElement;
-    slider.value = newValue.toString();
   };
 
   const styleValue = (100 / max) * value;
   const styleScale = styleValue / 100;
 
   return (
-    <>
-      <C.NativeSlider
-        id={id + '_native'}
-        type="range"
-        disabled={disabled}
-        name={name}
-        min={min}
-        max={max}
-        // value={value}
-        onChange={(e) => updateValue(+e.target.value)}
-        {...reg}
-      />
-      <C.StyledSlider
-        aria-orientation={direction}
-        role="slider"
-        data-disabled={disabled}
-        aria-disabled={disabled}
-        aria-valuemax={max}
-        aria-valuemin={min}
-        aria-valuenow={value}
-        aria-valuetext={value.toString()}
-        className={className}
-        tabIndex={disabled ? -1 : 0}
-        id={id}
-        style={
-          {
-            '--slider-value-scale': styleScale,
-            '--thumb-translate': `${
-              direction === 'horizontal' ? styleValue : -styleValue
-            }%`,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          } as any
-        }
-        onKeyDown={handleKeyDown}
-        onMouseDown={handleSliderMouseDown}
-      >
-        <C.SliderBase ref={baseRef}>
-          <C.ThumbRail>
-            <C.Thumb />
-          </C.ThumbRail>
-          <C.Fill />
-        </C.SliderBase>
-      </C.StyledSlider>
-    </>
+    <C.StyledSlider
+      aria-orientation={direction}
+      role="slider"
+      data-disabled={isDisabled}
+      aria-disabled={isDisabled}
+      aria-valuemax={max}
+      aria-valuemin={min}
+      aria-valuenow={value}
+      aria-valuetext={value.toString()}
+      className={className}
+      tabIndex={isDisabled ? -1 : 0}
+      id={id}
+      style={
+        {
+          '--slider-value-scale': styleScale,
+          '--thumb-translate': `${
+            direction === 'horizontal' ? styleValue : -styleValue
+          }%`,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any
+      }
+      onKeyDown={handleKeyDown}
+      onMouseDown={handleSliderMouseDown}
+      onBlur={controller.field.onBlur}
+    >
+      <C.SliderBase ref={baseRef}>
+        <C.ThumbRail>
+          <C.Thumb />
+        </C.ThumbRail>
+        <C.Fill />
+      </C.SliderBase>
+    </C.StyledSlider>
   );
 };

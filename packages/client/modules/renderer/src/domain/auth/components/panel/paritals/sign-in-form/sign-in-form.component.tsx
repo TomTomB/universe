@@ -28,7 +28,7 @@ export const SignInForm: FC = () => {
   );
 
   const resolver = useYupValidationResolver(validationSchema);
-  const { register, handleSubmit, formState } = useForm<FormValues>({
+  const { register, handleSubmit, formState, control } = useForm<FormValues>({
     resolver,
     mode: 'onChange',
   });
@@ -62,7 +62,7 @@ export const SignInForm: FC = () => {
         label="Remember Me"
         name="staySignedIn"
         id="staySignedIn"
-        register={register}
+        control={control}
         playSounds
       />
 

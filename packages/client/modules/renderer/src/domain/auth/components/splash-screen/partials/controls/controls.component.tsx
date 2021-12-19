@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
+  selectEnableMusic,
+  selectEnableSound,
   selectPlayLoginAnimations,
   selectPlayLoginMusic,
   togglePlayLoginAnimations,
@@ -10,7 +12,8 @@ import type {
   SplashScreenVideoMachine,
 } from '@/uikit/core/machines';
 import { Checkbox } from '@/uikit/forms/components';
-import type { FC } from 'react';
+import { type FC, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import type { State } from 'xstate';
 import * as C from './controls.styles';
 
@@ -34,9 +37,25 @@ interface SplashScreenControlsProps {
 
 export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
   const playLoginMusic = useAppSelector(selectPlayLoginMusic);
+  const enableSound = useAppSelector(selectEnableSound);
+  const enableMusic = useAppSelector(selectEnableMusic);
   const playLoginAnimations = useAppSelector(selectPlayLoginAnimations);
 
   const dispatch = useAppDispatch();
+
+  const { control, watch } =
+    useForm<{ disableLoginAnimations: boolean; disableLoginMusic: boolean }>();
+
+  const disableLoginAnimations = watch('disableLoginAnimations');
+  const disableLoginMusic = watch('disableLoginMusic');
+
+  useEffect(() => {
+    dispatch(togglePlayLoginAnimations(!disableLoginAnimations));
+  }, [disableLoginAnimations, dispatch]);
+
+  useEffect(() => {
+    dispatch(togglePlayLoginMusic(!disableLoginMusic));
+  }, [disableLoginMusic, dispatch]);
 
   return (
     <C.SplashScreenControlsContainer>
@@ -59,21 +78,18 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             id="disableLoginAnimations"
             label="Disable Login Animations"
             name="disableLoginAnimations"
-            value={!playLoginAnimations}
+            defaultValue={!playLoginAnimations}
             playSounds
-            onChange={() => {
-              dispatch(togglePlayLoginAnimations(!playLoginAnimations));
-            }}
+            control={control}
           />
           <Checkbox
             id="disableLoginMusic"
             label="Disable Login Music"
             name="disableLoginMusic"
-            value={!playLoginMusic}
+            defaultValue={!playLoginMusic}
             playSounds
-            onChange={() => {
-              dispatch(togglePlayLoginMusic(!playLoginMusic));
-            }}
+            isDisabled={!enableMusic || !enableSound}
+            control={control}
           />
         </C.SplashCheckboxContainer>
       </C.StyledControls>
