@@ -37,9 +37,13 @@ export const StyledTabNavigationItem = styled(TabNavigationItem)`
 `;
 
 export const NavSectionHeader = styled.p`
-  margin: 10px 0 10px 18px;
+  padding: 10px 0 10px 18px;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to bottom, #010a13 75%, transparent);
+  z-index: 1;
 
   &:not(:first-of-type) {
-    margin-top: 20px;
+    padding-top: 20px;
   }
 `;

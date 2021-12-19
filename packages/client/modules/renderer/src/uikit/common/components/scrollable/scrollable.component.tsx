@@ -7,6 +7,8 @@ export interface ScrollableProps {
   maskOverflow?: boolean;
   scrollDirection?: Direction;
   overlay?: boolean;
+  disableStartMask?: boolean;
+  disableEndMask?: boolean;
 }
 
 export const Scrollable: FC<ScrollableProps> = ({
@@ -14,6 +16,8 @@ export const Scrollable: FC<ScrollableProps> = ({
   className,
   maskOverflow,
   scrollDirection,
+  disableStartMask,
+  disableEndMask,
   overlay,
 }) => {
   const [scrolledStart, setScrolledStart] = useState(false);
@@ -78,6 +82,8 @@ export const Scrollable: FC<ScrollableProps> = ({
       scrollDirection={scrollDirection}
       scrolledStart={scrolledStart}
       scrolledEnd={scrolledEnd}
+      disableStartMask={disableStartMask}
+      disableEndMask={disableEndMask}
     >
       <div ref={startPointRef} />
       {children}

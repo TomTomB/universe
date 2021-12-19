@@ -26,6 +26,7 @@ export const SettingsNavigation: FC<SettingsNavigationProps> = ({
     <C.StyledSettingsNavigation
       className={className}
       maskOverflow
+      disableStartMask
       scrollDirection="vertical"
     >
       <div id="settings-nav-top" />
