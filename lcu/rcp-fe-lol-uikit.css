@@ -1,0 +1,59 @@
+body,
+img,
+iframe {
+  -webkit-user-select: none;
+}
+body,
+img,
+iframe,
+a {
+  -webkit-user-drag: none;
+}
+.lol-uikit-toast-layer {
+  position: absolute;
+  top: 35px;
+  display: 'none';
+  right: 258px;
+}
+.lol-uikit-contextual-notification-targetless-layer {
+  position: absolute;
+  top: 35px;
+  display: 'none';
+  right: 278px;
+}
+.uikit-added-to-dom {
+  animation-name: uikit-added-to-dom-animation;
+  animation-duration: 0s;
+}
+@-moz-keyframes uikit-added-to-dom-animation {
+  from {
+    opacity: 0.9999;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes uikit-added-to-dom-animation {
+  from {
+    opacity: 0.9999;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes uikit-added-to-dom-animation {
+  from {
+    opacity: 0.9999;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes uikit-added-to-dom-animation {
+  from {
+    opacity: 0.9999;
+  }
+  to {
+    opacity: 1;
+  }
+}
