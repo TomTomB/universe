@@ -48,15 +48,22 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
   });
 
   const transitionBase = useTransition(show, {
-    config: springConfigHarsh,
+    config: { tension: 300, friction: 20 },
     from: {
       opacity: animated ? 0 : 1,
+      transform: animated
+        ? `translate${isTopOrBottom ? 'Y' : 'X'}(-20px)`
+        : 'none',
     },
     enter: {
       opacity: animated ? 1 : 1,
+      transform: animated ? `translate${isTopOrBottom ? 'Y' : 'X'}(0)` : 'none',
     },
     leave: {
       opacity: animated ? 0 : 1,
+      transform: animated
+        ? `translate${isTopOrBottom ? 'Y' : 'X'}(-10px)`
+        : 'none',
     },
   });
 
@@ -82,23 +89,13 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
   });
 
   return (
-    <>
+    <C.StyledFlyoutFrame className={className}>
       {transitionBase(
         (styleBase, showBase) =>
           showBase && (
-            <C.StyledFlyoutFrame
-              style={{
-                opacity: styleBase.opacity?.to({
-                  range: [0, 0.25, 1],
-                  output: [0, 0.75, 1],
-                }),
-              }}
-              className={classNames(
-                className,
-                position,
-                { animated },
-                { show },
-              )}
+            <C.StyledFlyoutFrameInner
+              style={styleBase}
+              className={classNames(position, { animated }, { show })}
               ref={flyoutFrameRef}
             >
               {transitionsBorder(
@@ -125,9 +122,9 @@ export const FlyoutFrame: FC<FlyoutFrameProps> = ({
                   />
                 </C.CloseButtonContainer>
               )}
-            </C.StyledFlyoutFrame>
+            </C.StyledFlyoutFrameInner>
           ),
       )}
-    </>
+    </C.StyledFlyoutFrame>
   );
 };

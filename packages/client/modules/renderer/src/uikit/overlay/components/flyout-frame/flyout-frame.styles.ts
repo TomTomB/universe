@@ -112,8 +112,12 @@ export const FlyoutFrameInner = styled(animated.div)`
   padding: 2px;
 `;
 
-export const StyledFlyoutFrame = styled(animated.div)`
+export const StyledFlyoutFrame = styled.div`
   position: absolute;
+`;
+
+export const StyledFlyoutFrameInner = styled(animated.div)`
+  will-change: transform, opacity;
 
   &.top,
   &.bottom {
