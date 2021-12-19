@@ -7,9 +7,9 @@ import type { FC } from 'react';
 import { useEffect } from 'react';
 import { Controls, Video } from './partials';
 import * as C from './splash-screen.styles';
-import videoSplash from '@/assets/splash/videos/video-splash-popstar-2018.webm';
-import musicSplash from '@/assets/splash/music/music-splash-popstar-2018.ogg';
-import staticSplash from '@/assets/splash/images/image-splash-popstar-2018.jpg';
+import videoSplash from '@/assets/splash/videos/video-splash-ss19-c.webm';
+import musicSplash from '@/assets/splash/music/music-splash-ss19-c.ogg';
+import staticSplash from '@/assets/splash/images/image-splash-ss19-c.jpg';
 import { useAppSelector } from '@/store';
 import {
   selectPlayLoginAnimations,

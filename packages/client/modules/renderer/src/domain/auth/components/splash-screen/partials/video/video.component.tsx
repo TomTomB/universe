@@ -37,20 +37,21 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
 
   return (
     <>
-      <C.BackgroundAudio
-        ref={introMusic}
-        onLoadedData={() => {
-          music.send({
-            element: introMusic.current,
-            type: 'LOADED_INTRO_MUSIC',
-          });
-        }}
-      >
-        <source src={music.intro} type="audio/ogg" />
-      </C.BackgroundAudio>
+      {introMusic && (
+        <C.BackgroundAudio
+          ref={introMusic}
+          onLoadedData={() => {
+            music.send({
+              element: introMusic.current,
+              type: 'LOADED_INTRO_MUSIC',
+            });
+          }}
+        >
+          <source src={music.intro} type="audio/ogg" />
+        </C.BackgroundAudio>
+      )}
       <C.BackgroundAudio
         ref={loopMusic}
-        controls
         onLoadedData={() => {
           music.send({
             element: loopMusic.current,
@@ -94,31 +95,33 @@ export const Video: FC<SplashScreenProps> = ({ video, music, picture }) => {
       >
         <source src={video.loop} type="video/webm" />
       </C.DynamicSplash>
-      <C.DynamicSplash
-        show={video.current.matches('playing.intro')}
-        enabled={
-          video.current.context.isVideoEnabled &&
-          !video.current.matches('loading')
-        }
-        ref={introVideo}
-        muted
-        onLoadedData={() => {
-          if (!introVideo.current) {
-            return;
+      {introVideo && (
+        <C.DynamicSplash
+          show={video.current.matches('playing.intro')}
+          enabled={
+            video.current.context.isVideoEnabled &&
+            !video.current.matches('loading')
           }
-          video.send({
-            element: introVideo.current,
-            type: 'LOADED_INTRO_VIDEO',
-          });
-        }}
-        onEnded={() => {
-          video.send({
-            type: 'INTRO_END',
-          });
-        }}
-      >
-        <source src={video.intro} type="video/webm" />
-      </C.DynamicSplash>
+          ref={introVideo}
+          muted
+          onLoadedData={() => {
+            if (!introVideo.current) {
+              return;
+            }
+            video.send({
+              element: introVideo.current,
+              type: 'LOADED_INTRO_VIDEO',
+            });
+          }}
+          onEnded={() => {
+            video.send({
+              type: 'INTRO_END',
+            });
+          }}
+        >
+          <source src={video.intro} type="video/webm" />
+        </C.DynamicSplash>
+      )}
     </>
   );
 };
