@@ -8,13 +8,15 @@ const { copySync, removeSync } = require('fs-extra');
 
 const packagesPath = path.resolve(__dirname, '..');
 
-/** @type {'production' | 'development'} */
+/** @type {'production' | 'development' | string} */
 const mode = (process.env.MODE = process.env.MODE || 'production');
+
+const useVue = process.argv.includes('--use-vue');
 
 const packagesConfigs = [
   `${packagesPath}/modules/main/vite.config.js`,
   `${packagesPath}/modules/preload/vite.config.js`,
-  `${packagesPath}/modules/renderer/vite.config.js`,
+  `${packagesPath}/modules/renderer${useVue ? '-vue' : ''}/vite.config.js`,
 ];
 
 const buildSplash = () => {

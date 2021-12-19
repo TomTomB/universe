@@ -8,7 +8,7 @@ const { copySync } = require('fs-extra');
 
 const packagesPath = path.resolve(__dirname, '..');
 
-/** @type {'production' | 'development'} */
+/** @type {'production' | 'development' | string} */
 const mode = (process.env.MODE = process.env.MODE || 'development');
 
 /** @type {import('vite').LogLevel} */
@@ -120,11 +120,15 @@ const buildSplash = () => {
 
 (async () => {
   try {
+    const useVue = process.argv.includes('--use-vue');
+
     buildSplash();
 
     const viteDevServer = await createServer({
       ...sharedConfig,
-      configFile: `${packagesPath}/modules/renderer/vite.config.js`,
+      configFile: `${packagesPath}/modules/renderer${
+        useVue ? '-vue' : ''
+      }/vite.config.js`,
     });
 
     await viteDevServer.listen();

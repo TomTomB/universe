@@ -43,3 +43,6 @@ jobs:
 
       - name: Run build of universe/client
         run: yarn client build
+
+      - name: Run build of universe/client with vue
+        run: yarn client build --use-vue
