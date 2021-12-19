@@ -55,6 +55,7 @@ export const PagePlaceholder = styled.div`
 
 export const PagePlaceholderImg = styled.img`
   width: 100px;
+  height: 95px;
   object-fit: contain;
   margin-bottom: 10px;
 `;
