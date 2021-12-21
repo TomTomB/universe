@@ -51,7 +51,7 @@
     "vue-i18n": "9.1.9",
     "xstate": "4.26.1",
     "yup": "0.32.11",
-    "ws": "8.3.0"
+    "ws": "8.4.0"
   },
   "electronDependencies": [
     "@sentry/electron",
