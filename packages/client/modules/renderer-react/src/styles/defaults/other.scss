@@ -1,0 +1,19 @@
+html,
+body,
+#universe-app {
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+*,
+::before,
+::after {
+  user-select: none;
+  outline: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}

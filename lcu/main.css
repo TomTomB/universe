@@ -41,36 +41,6 @@
     background: rgba(var(--color-gold1-rgb), .5);
     https://www.webpagefx.com/web-design/hex-to-rgb/ good tool for converting the colors
    */
-  --color-gold1-rgb: 240, 230, 210;
-  --color-gold2-rgb: 205, 190, 145;
-  --color-gold3-rgb: 200, 170, 110;
-  --color-gold4-rgb: 200, 155, 60;
-  --color-gold5-rgb: 120, 90, 40;
-  --color-gold6-rgb: 70, 55, 20;
-  --color-gold7-rgb: 50, 40, 30;
-  --color-blue1-rgb: 205, 250, 250;
-  --color-blue2-rgb: 10, 200, 185;
-  --color-blue3-rgb: 5, 150, 170;
-  --color-blue4-rgb: 0, 90, 130;
-  --color-blue5-rgb: 10, 50, 60;
-  --color-blue6-rgb: 10, 20, 40;
-  --color-grey-blue-rgb: 163, 199, 199;
-  --color-frame-grey-rgb: 30, 40, 45;
-  --color-gold-grey-rgb: 60, 55, 50;
-  --color-grey1-rgb: 160, 155, 140;
-  --color-grey1_5-rgb: 91, 90, 86;
-  --color-grey2-rgb: 60, 60, 65;
-  --color-grey3-rgb: 30, 35, 40;
-  --color-grey-disabled-rgb: 92, 91, 87;
-  --color-ip-rgb: 30, 130, 90;
-  --color-ip2-rgb: 0, 167, 65;
-  --color-experience-rgb: 100, 60, 90;
-  --color-paladin-rgb: 10, 150, 170;
-  --color-paladin2-rgb: 10, 203, 230;
-  --color-mage-rgb: 190, 30, 55;
-  --color-mage2-rgb: 255, 35, 69;
-  --color-me-rgb: 250, 190, 10;
-  --color-almost-black-rgb: 1, 10, 19;
 
   /* animation easing from LCU Motion Guidelines
      (https://docs.google.com/document/d/1ltIA2P0EDUeUjDGRJF27GIE7zsni_dMjEOi01PyAxOo) */

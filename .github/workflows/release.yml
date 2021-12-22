@@ -56,7 +56,7 @@ jobs:
 
       - name: Build universe/client and publish artifacts
         if: steps.getClientVersion.outputs.result != 'false'
-        run: yarn client build --use-vue && yarn client package --publish
+        run: yarn client build && yarn client package --publish
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
 

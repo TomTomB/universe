@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -10,10 +11,9 @@
   },
 
   "include": [
-    "src/**/*.vue",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "./*.d.ts",
+    "types/**/*.d.ts",
     "../../../../types/**/*.d.ts",
     "../preload/types/electron-api.d.ts"
   ]

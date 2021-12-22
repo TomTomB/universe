@@ -120,15 +120,11 @@ const buildSplash = () => {
 
 (async () => {
   try {
-    const useVue = process.argv.includes('--use-vue');
-
     buildSplash();
 
     const viteDevServer = await createServer({
       ...sharedConfig,
-      configFile: `${packagesPath}/modules/renderer${
-        useVue ? '-vue' : ''
-      }/vite.config.js`,
+      configFile: `${packagesPath}/modules/renderer/vite.config.js`,
     });
 
     await viteDevServer.listen();

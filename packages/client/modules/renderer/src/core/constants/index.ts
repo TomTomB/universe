@@ -1,1 +1,1 @@
-export * from './locale.constants';
+export * from './app.constants';

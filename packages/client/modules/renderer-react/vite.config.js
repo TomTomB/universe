@@ -3,7 +3,7 @@
 import { chrome } from '../../temp/build-vars.json';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
 
 const SRC_PATH = `${resolve(__dirname, 'src')}`;
 
@@ -21,7 +21,7 @@ export default defineConfig({
       '@': SRC_PATH,
     },
   },
-  plugins: [vue()],
+  plugins: [react()],
   build: {
     sourcemap: process.env.MODE === 'development',
     target: `chrome${chrome}`,

@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import { rootSelector } from './core/constants';
+import './styles/defaults/index.scss';
 
 // import router from './router';
 // import store from './store';
@@ -11,7 +12,6 @@ import { rootSelector } from './core/constants';
 //   SUPPORT_LOCALES,
 //   SupportedLocale,
 // } from './i18n';
-// import './styles/main.scss';
 
 // const i18n = setupI18n({
 //   locale: 'en-US',

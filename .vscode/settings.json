@@ -4,5 +4,8 @@
     "**/node_modules": true,
     "**/dist": true,
     ".git": true
-  }
+  },
+  "cssVariables.lookupFiles": [
+    "./packages/client/modules/renderer/styles/defaults/theme.scss"
+  ]
 }
