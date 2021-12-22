@@ -13,7 +13,7 @@
     "postinstall": "yarn build:version",
     "commit": "npx git-cz",
     "client": "yarn --cwd packages/client",
-    "lint": "eslint --cache .",
+    "lint": "eslint --cache --ext .ts,.tsx,.js,.jsx,.vue .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "build:version": "node scripts/git-version.js"

@@ -1,9 +1,10 @@
 {
   "env": {
     "browser": true,
-    "node": false
+    "node": false,
+    "vue/setup-compiler-macros": true
   },
-  "extends": ["plugin:prettier/recommended", "plugin:vue/vue3-recommended"],
+  "extends": ["plugin:vue/vue3-recommended", "prettier"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 12,

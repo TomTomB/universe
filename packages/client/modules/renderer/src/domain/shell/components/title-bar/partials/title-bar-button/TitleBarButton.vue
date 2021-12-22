@@ -5,7 +5,7 @@ import controlHelp from './assets/images/control-help.png';
 import controlHide from './assets/images/control-hide.png';
 import controlSettings from './assets/images/control-settings.png';
 
-const { title, type } = defineProps<{
+const props = defineProps<{
   title: string;
   type: 'hide' | 'settings' | 'close' | 'help';
 }>();
@@ -13,7 +13,7 @@ const { title, type } = defineProps<{
 defineEmits<{ (event: 'click'): void }>();
 
 const controlIcon = computed(() => {
-  switch (type) {
+  switch (props.type) {
     case 'close':
       return controlClose;
     case 'help':
@@ -22,6 +22,8 @@ const controlIcon = computed(() => {
       return controlHide;
     case 'settings':
       return controlSettings;
+    default:
+      return null;
   }
 });
 </script>
@@ -31,7 +33,7 @@ const controlIcon = computed(() => {
     :aria-label="title"
     :style="{ WebkitMaskImage: `url(${controlIcon})` }"
     @click="$emit('click')"
-  ></button>
+  />
 </template>
 
 <style lang="scss" scoped>
