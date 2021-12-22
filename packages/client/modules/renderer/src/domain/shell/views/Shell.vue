@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { TitleBar } from '../components';
+import {
+  AnimatedArrowOverlay,
+  AnimatedBorderOverlay,
+} from '@/uikit/common/components';
 </script>
 
 <template>
   <div class="shell">
+    <TitleBar />
+
     <h1>Hello there!</h1>
     <a href="#" class="external">Go somewhere</a>
-    <TitleBar />
+    <br />
+
+    <button class="parent" style="color: white; position: relative">
+      <AnimatedArrowOverlay />Some text
+    </button>
+
+    <button class="parent" style="color: white; position: relative">
+      <AnimatedBorderOverlay />Some text
+    </button>
   </div>
 </template>
 

@@ -1,39 +1,14 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import controlClose from './assets/images/control-close.png';
-import controlHelp from './assets/images/control-help.png';
-import controlHide from './assets/images/control-hide.png';
-import controlSettings from './assets/images/control-settings.png';
-
 const props = defineProps<{
   title: string;
   type: 'hide' | 'settings' | 'close' | 'help';
 }>();
 
 defineEmits<{ (event: 'click'): void }>();
-
-const controlIcon = computed(() => {
-  switch (props.type) {
-    case 'close':
-      return controlClose;
-    case 'help':
-      return controlHelp;
-    case 'hide':
-      return controlHide;
-    case 'settings':
-      return controlSettings;
-    default:
-      return null;
-  }
-});
 </script>
 
 <template>
-  <button
-    :aria-label="title"
-    :style="{ WebkitMaskImage: `url(${controlIcon})` }"
-    @click="$emit('click')"
-  />
+  <button :aria-label="title" :class="props.type" @click="$emit('click')" />
 </template>
 
 <style lang="scss" scoped>
@@ -56,6 +31,22 @@ button {
   &:disabled {
     pointer-events: none;
     opacity: 0.5;
+  }
+
+  &.hide {
+    -webkit-mask-image: url(./assets/images/control-hide.png);
+  }
+
+  &.settings {
+    -webkit-mask-image: url(./assets/images/control-settings.png);
+  }
+
+  &.close {
+    -webkit-mask-image: url(./assets/images/control-close.png);
+  }
+
+  &.help {
+    -webkit-mask-image: url(./assets/images/control-help.png);
   }
 }
 </style>
