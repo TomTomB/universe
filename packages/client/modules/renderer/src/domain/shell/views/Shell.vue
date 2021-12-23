@@ -28,9 +28,11 @@ import {
       <h1>Hello test!</h1>
     </FilterFader>
 
-    <FramedIcon style="width: 100px; height: 100px">
-      <img src="/103.png" alt="Noise" />
-    </FramedIcon>
+    <button class="parent" disabled>
+      <FramedIcon style="width: 100px; height: 100px">
+        <img src="/103.png" alt="Noise" />
+      </FramedIcon>
+    </button>
   </div>
 </template>
 
