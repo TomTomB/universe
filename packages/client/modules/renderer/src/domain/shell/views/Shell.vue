@@ -3,6 +3,8 @@ import { TitleBar } from '../components';
 import {
   AnimatedArrowOverlay,
   AnimatedBorderOverlay,
+  FilterFader,
+  FramedIcon,
 } from '@/uikit/common/components';
 </script>
 
@@ -21,6 +23,14 @@ import {
     <button class="parent" style="color: white; position: relative">
       <AnimatedBorderOverlay />Some text
     </button>
+
+    <FilterFader filter="blur(10px)" :opacity="0.75">
+      <h1>Hello test!</h1>
+    </FilterFader>
+
+    <FramedIcon style="width: 100px; height: 100px">
+      <img src="/103.png" alt="Noise" />
+    </FramedIcon>
   </div>
 </template>
 
