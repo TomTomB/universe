@@ -46,7 +46,7 @@
     "ws"
   ],
   "devDependencies": {
-    "@types/electron-devtools-installer": "2.2.0",
+    "@types/electron-devtools-installer": "2.2.1",
     "@types/ws": "8.2.2",
     "@types/node-fetch": "3.0.3",
     "electron": "16.0.5",
