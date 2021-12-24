@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Bornholdt", "uikit", "xstate"],
+  "cSpell.words": ["Bornholdt", "navigations", "uikit", "xstate"],
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,

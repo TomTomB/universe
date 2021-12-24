@@ -5,7 +5,23 @@ import {
   AnimatedBorderOverlay,
   FilterFader,
   FramedIcon,
+  InfoIcon,
+  LoadingSpinner,
+  TabNavigation,
+  TabNavigationItem,
+  ParallaxBackground,
+  ParallaxLayer,
+  DEFAULT_PARALLAX_ASSETS,
+  RadialProgress,
+  RADIAL_PROGRESS_TOP_GAP,
 } from '@/uikit/common/components';
+import { ref } from 'vue';
+
+const progress = ref(23);
+
+setTimeout(() => {
+  progress.value = 50;
+}, 2500);
 </script>
 
 <template>
@@ -28,11 +44,60 @@ import {
       <h1>Hello test!</h1>
     </FilterFader>
 
-    <button class="parent" disabled>
+    <button class="parent">
       <FramedIcon style="width: 100px; height: 100px">
         <img src="/103.png" alt="Noise" />
       </FramedIcon>
     </button>
+
+    <InfoIcon :size="40" />
+
+    <LoadingSpinner />
+
+    <TabNavigation>
+      <TabNavigationItem :is-active="true">First tab</TabNavigationItem>
+      <TabNavigationItem :has-alert="true">The second tab</TabNavigationItem>
+    </TabNavigation>
+
+    <div style="position: relative; width: 400px; height: 200px">
+      <ParallaxBackground>
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.background"
+          :is-background-layer="true"
+        />
+
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.smoke01"
+          :duration="30"
+        />
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.smoke02"
+          :duration="20"
+          :delay="5000"
+        />
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.smoke03"
+          :duration="25"
+          :delay="7500"
+        />
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.smoke04"
+          :duration="28"
+          :delay="1500"
+        />
+        <ParallaxLayer
+          :img-src="DEFAULT_PARALLAX_ASSETS.foreground"
+          :is-background-layer="true"
+        />
+      </ParallaxBackground>
+    </div>
+
+    <RadialProgress
+      style="width: 100px; height: 100px"
+      :polygon-config="RADIAL_PROGRESS_TOP_GAP"
+      progress-type="champion"
+      :progress="progress"
+    />
   </div>
 </template>
 
