@@ -17,10 +17,10 @@ import {
 } from '@/uikit/common/components';
 import { ref } from 'vue';
 
-const progress = ref(23);
+const progress = ref(52);
 
 setTimeout(() => {
-  progress.value = 50;
+  progress.value = 100;
 }, 2500);
 </script>
 

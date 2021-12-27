@@ -77,11 +77,25 @@ export class PolygonGenerator {
       percent = 100;
     }
 
-    const points = this._calculatePolygonPoints(percent)
+    const points = this._calculatePolygonPoints(percent);
+
+    if (points.length !== 7) {
+      // add the last point until we have 7 points. This way we can animate the polygon.
+      const lastPoint = points[points.length - 1];
+
+      for (let i = points.length; i < 7; i++) {
+        points.push({
+          xPos: lastPoint.xPos,
+          yPos: lastPoint.yPos,
+        });
+      }
+    }
+
+    const pointsStr = points
       .map((value) => value.xPos + '% ' + value.yPos + '%')
       .reduce((prev, cur) => prev + ', ' + cur);
 
-    return 'polygon(' + points + ')';
+    return 'polygon(' + pointsStr + ')';
   }
 
   private _calculatePolygonPoints(percent: number) {

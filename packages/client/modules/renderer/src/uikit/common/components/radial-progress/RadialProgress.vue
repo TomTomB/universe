@@ -29,8 +29,6 @@ const styleVars = computed(
 watchEffect(() => {
   polygonGenerator.setStartAngle(props.polygonConfig.startAngle);
   polygonGenerator.setEndAngle(props.polygonConfig.endAngle);
-
-  console.log(polygonGenerator.generatePolygon(props.progress));
 });
 </script>
 
@@ -110,7 +108,7 @@ watchEffect(() => {
   margin: 0;
   padding: 0;
   border: 0;
-  transition: clip-path 300ms;
+  transition: clip-path 300ms var(--easing-circular-ease-out);
 
   &.middle,
   &.bottom {
