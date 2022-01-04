@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onDeactivated, ref, watchEffect } from 'vue';
+import { onUnmounted, ref, watchEffect } from 'vue';
 
 const props = defineProps<{
   overflow: 'auto' | 'overlay';
@@ -63,7 +63,7 @@ watchEffect(() => {
   observer.observe(scrollableEnd.value);
 });
 
-onDeactivated(() => {
+onUnmounted(() => {
   observer?.disconnect();
 });
 </script>

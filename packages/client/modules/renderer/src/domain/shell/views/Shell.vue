@@ -17,7 +17,11 @@ import {
   RADIAL_PROGRESS_TOP_GAP,
   Scrollable,
 } from '@/uikit/common/components';
-import { AnimatedBanner } from '@/uikit/summoner/components';
+import {
+  AnimatedBanner,
+  PendingBanner,
+  SummonerBanner,
+} from '@/uikit/summoner/components';
 import { ref } from 'vue';
 
 const progress = ref(52);
@@ -43,8 +47,10 @@ setTimeout(() => {
       <AnimatedBorderOverlay />Some text
     </button>
 
-    <div style="width: 100px">
+    <div style="height: 250px; width: 600px; display: flex; position: relative">
       <AnimatedBanner rank="challenger" />
+      <PendingBanner />
+      <SummonerBanner banner-type="primary" rank="diamond" :play-intro="true" />
     </div>
 
     <FilterFader filter="blur(10px)" :opacity="0.75">

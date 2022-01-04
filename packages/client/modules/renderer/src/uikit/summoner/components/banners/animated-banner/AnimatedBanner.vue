@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onDeactivated, ref, watchEffect } from 'vue';
+import { onUnmounted, ref, watchEffect } from 'vue';
 import {
   BannerContext,
   bannerAnimationConfig,
@@ -49,7 +49,7 @@ watchEffect(() => {
   bannerCtx.on('loaded', () => bannerCtx?.play());
 });
 
-onDeactivated(() => {
+onUnmounted(() => {
   bannerCtx?.destroy();
   bannerCtx = null;
 });
