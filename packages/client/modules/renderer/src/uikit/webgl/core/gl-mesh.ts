@@ -1,30 +1,12 @@
-import { GlOption } from '../types';
+import {
+  type GlDrawType,
+  GlOption,
+  type MeshAttribute,
+  type Face,
+  type WebGLProgramWithAttributeCache,
+} from '../types';
 import { vec3 } from 'gl-matrix';
 import type { Gl } from './gl';
-
-export type DrawType = GlOption.DYNAMIC_DRAW | GlOption.STATIC_DRAW;
-
-export type WebGLProgramWithAttributeCache = WebGLProgram & {
-  cacheAttribLoc?: Record<string, number>;
-};
-
-export interface MeshAttribute {
-  buffer?: WebGLBuffer;
-  attrPosition?: number;
-  name: string;
-  source: Array<number[]>;
-  itemSize: number;
-  drawType: DrawType;
-  dataArray: Float32Array;
-  isInstanced?: boolean;
-}
-
-export interface Face {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  normal?: any;
-  indices: number[];
-  vertices?: number[][];
-}
 
 export class GlMesh {
   private _gl: Gl;
@@ -39,14 +21,10 @@ export class GlMesh {
   private _isInstanced = false;
   private _extVAO: boolean;
   private _useVAO: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _vao: any;
-  private _drawType?:
-    | GlOption.DYNAMIC_DRAW
-    | GlOption.STATIC_DRAW
-    | GlOption.POINTS;
+  private _vao?: WebGLVertexArrayObject;
+  private _drawType?: GlDrawType;
 
-  drawType: GlOption.DYNAMIC_DRAW | GlOption.STATIC_DRAW | GlOption.POINTS;
+  drawType: GlDrawType;
   iBuffer?: WebGLBuffer & { itemSize?: number; numItems?: number };
 
   get vertices() {
@@ -93,7 +71,7 @@ export class GlMesh {
     return this._isInstanced;
   }
 
-  constructor(gl: Gl, drawType: number, useVAO = true) {
+  constructor(gl: Gl, drawType: GlDrawType, useVAO = true) {
     this._gl = gl;
     this.drawType = drawType;
 
@@ -103,7 +81,7 @@ export class GlMesh {
 
   bufferVertex(
     buffer: Array<number[]>,
-    drawType: DrawType = GlOption.STATIC_DRAW,
+    drawType: GlDrawType = GlOption.STATIC_DRAW,
   ) {
     this.bufferData(buffer, 'aVertexPosition', 3, drawType);
     if (this.normals.length < this.vertices.length) {
@@ -114,7 +92,7 @@ export class GlMesh {
 
   bufferTexCoord(
     buffer: Array<number[]>,
-    drawType: DrawType = GlOption.STATIC_DRAW,
+    drawType: GlDrawType = GlOption.STATIC_DRAW,
   ) {
     this.bufferData(buffer, 'aTextureCoord', 2, drawType);
     return this;
@@ -122,13 +100,13 @@ export class GlMesh {
 
   bufferNormal(
     buffer: Array<number[]>,
-    drawType: DrawType = GlOption.STATIC_DRAW,
+    drawType: GlDrawType = GlOption.STATIC_DRAW,
   ) {
     this.bufferData(buffer, 'aNormal', 3, drawType);
     return this;
   }
 
-  bufferIndex(buffer: number[], drawType: DrawType) {
+  bufferIndex(buffer: number[], drawType: GlDrawType) {
     this._drawType = drawType;
     this._indices = new Uint16Array(buffer);
     this._numItems = this._indices.length;
@@ -156,7 +134,7 @@ export class GlMesh {
     buffer: Array<number[]>,
     attributeName: string,
     bufferItemLength: number,
-    drawType: DrawType,
+    drawType: GlDrawType,
     isInstanced?: boolean,
   ) {
     if (!bufferItemLength) {
@@ -226,7 +204,7 @@ export class GlMesh {
 
     const glContext = this._gl.context;
 
-    if (this._hasVAO) {
+    if (this._hasVAO && this._vao) {
       glContext.bindVertexArray(this._vao);
     } else {
       if (!this.iBuffer) {
@@ -267,7 +245,13 @@ export class GlMesh {
 
     if (this._useVAO) {
       if (!this._vao) {
-        this._vao = glContext.createVertexArray();
+        const vao = glContext.createVertexArray();
+
+        if (!vao) {
+          throw 'Failed to create VAO';
+        }
+
+        this._vao = vao;
       }
 
       glContext.bindVertexArray(this._vao);
@@ -368,8 +352,13 @@ export class GlMesh {
     }
 
     if (!this.iBuffer) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.iBuffer = this._gl.context.createBuffer()!;
+      const iBuffer = this._gl.context.createBuffer();
+
+      if (!iBuffer) {
+        throw 'Failed to create index buffer';
+      }
+
+      this.iBuffer = iBuffer;
     }
 
     this._gl.context.bindBuffer(GlOption.ELEMENT_ARRAY_BUFFER, this.iBuffer);
@@ -406,8 +395,13 @@ export class GlMesh {
     let result: WebGLBuffer;
 
     if (!attribute.buffer) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      result = glContext.createBuffer()!;
+      const attributeBuffer = glContext.createBuffer();
+
+      if (!attributeBuffer) {
+        throw 'Failed to create buffer';
+      }
+
+      result = attributeBuffer;
       attribute.buffer = result;
     } else {
       result = attribute.buffer;
@@ -421,14 +415,18 @@ export class GlMesh {
       return;
     }
 
-    let faceIndex;
-    let face;
+    let faceIndex: number;
+    let face: Face;
     const buffer: Array<number[]> = [];
 
     for (let i = 0; i < this._indices.length; i += 3) {
       faceIndex = i / 3;
       face = this._faces[faceIndex];
       const faceNormal = face.normal;
+
+      if (!faceNormal) {
+        continue;
+      }
 
       buffer[face.indices[0]] = faceNormal;
       buffer[face.indices[1]] = faceNormal;
@@ -450,6 +448,10 @@ export class GlMesh {
         const face = this._faces[i];
 
         if (0 <= face.indices.indexOf(r)) {
+          if (!face.normal) {
+            continue;
+          }
+
           vector[0] += face.normal[0];
           vector[1] += face.normal[1];
           vector[2] += face.normal[2];

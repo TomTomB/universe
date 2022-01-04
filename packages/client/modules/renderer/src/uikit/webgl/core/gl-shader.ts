@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GlOption } from '../types';
+import { GlOption, GlShaderTypes, type ShaderType } from '../types';
 import basicFragmentShader from '../shaders/basic.frag.glsl?raw';
 import basicVertexShader from '../shaders/basic.vert.glsl?raw';
 import type { Gl } from './gl';
@@ -15,16 +15,6 @@ export interface GlShaderParameter {
 export class GlShader {
   private _gl: Gl;
   private _varyings: string[];
-
-  private readonly _glShaderType = {
-    float: 'uniform1f',
-    vec2: 'uniform2fv',
-    vec3: 'uniform3fv',
-    vec4: 'uniform4fv',
-    int: 'uniform1i',
-    mat3: 'uniformMatrix3fv',
-    mat4: 'uniformMatrix4fv',
-  };
 
   parameters: GlShaderParameter[] = [];
   uniformTextures: any[] = [];
@@ -73,7 +63,7 @@ export class GlShader {
 
   uniform(
     shaderProperty: string | Record<string, unknown>,
-    type?: string,
+    type?: ShaderType,
     value?: any,
   ) {
     if (!this.shaderProgram) {
@@ -91,7 +81,7 @@ export class GlShader {
 
     const program = this.shaderProgram as any;
     const glContext = this._gl.context;
-    const glType = (this._glShaderType as any)[type] || type;
+    const glType = GlShaderTypes[type];
     let foundShaderProperty = false;
     let currentShaderProperty = undefined;
     let foundShaderPropertyIndex = -1;
@@ -228,7 +218,7 @@ export class GlShader {
     }
   }
 
-  private _getUniformType(val: any) {
+  private _getUniformType(val: number | number[]): ShaderType {
     const isArray = Array.isArray(val);
 
     if (!isArray) {
@@ -238,14 +228,26 @@ export class GlShader {
     const length: number = Array.isArray(val[0]) ? val[0].length : val.length;
 
     if (length === 9) {
-      return 'uniformMatrix3fv';
+      return 'mat3';
     }
 
     if (length === 16) {
-      return 'uniformMatrix4fv';
+      return 'mat4';
     }
 
-    return `vec${length}`;
+    if (length === 2) {
+      return 'vec2';
+    }
+
+    if (length === 3) {
+      return 'vec3';
+    }
+
+    if (length === 4) {
+      return 'vec4';
+    }
+
+    return 'float';
   }
 
   private _arraysAreEqual(a: any, t: any) {

@@ -101,11 +101,11 @@ export class VBanner {
     }
 
     this.shader.bind();
-    this.shader.uniform('textureBackground', 'uniform1i', 0);
+    this.shader.uniform('textureBackground', 'int', 0);
     this.textureBackground.bind(0);
-    this.shader.uniform('textureOverlay', 'uniform1i', 1);
+    this.shader.uniform('textureOverlay', 'int', 1);
     this.textureOverlay.bind(1);
-    this.shader.uniform('textureRank', 'uniform1i', 2);
+    this.shader.uniform('textureRank', 'int', 2);
     this.textureRank.bind(2);
 
     const backgroundRankRatio =
