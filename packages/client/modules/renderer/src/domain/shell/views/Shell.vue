@@ -14,6 +14,7 @@ import {
   DEFAULT_PARALLAX_ASSETS,
   RadialProgress,
   RADIAL_PROGRESS_TOP_GAP,
+  Scrollable,
 } from '@/uikit/common/components';
 import { ref } from 'vue';
 
@@ -59,38 +60,52 @@ setTimeout(() => {
       <TabNavigationItem :has-alert="true">The second tab</TabNavigationItem>
     </TabNavigation>
 
-    <div style="position: relative; width: 400px; height: 200px">
-      <ParallaxBackground>
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.background"
-          :is-background-layer="true"
-        />
+    <Scrollable
+      direction="vertical"
+      overflow="overlay"
+      :hide-scrollbar="false"
+      style="width: 200px; height: 200px"
+    >
+      <div
+        style="
+          background-color: red;
+          width: 200px;
+          height: 2000px;
+          min-height: 2000px;
+        "
+      ></div>
+    </Scrollable>
 
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.smoke01"
-          :duration="30"
-        />
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.smoke02"
-          :duration="20"
-          :delay="5000"
-        />
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.smoke03"
-          :duration="25"
-          :delay="7500"
-        />
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.smoke04"
-          :duration="28"
-          :delay="1500"
-        />
-        <ParallaxLayer
-          :img-src="DEFAULT_PARALLAX_ASSETS.foreground"
-          :is-background-layer="true"
-        />
-      </ParallaxBackground>
-    </div>
+    <ParallaxBackground style="width: 100px; height: 100px">
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.background"
+        :is-background-layer="true"
+      />
+
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.smoke01"
+        :duration="30"
+      />
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.smoke02"
+        :duration="20"
+        :delay="5000"
+      />
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.smoke03"
+        :duration="25"
+        :delay="7500"
+      />
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.smoke04"
+        :duration="28"
+        :delay="1500"
+      />
+      <ParallaxLayer
+        :img-src="DEFAULT_PARALLAX_ASSETS.foreground"
+        :is-background-layer="true"
+      />
+    </ParallaxBackground>
 
     <RadialProgress
       style="width: 100px; height: 100px"
