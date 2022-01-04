@@ -14,20 +14,19 @@ export interface GlShaderParameter {
 
 export class GlShader {
   private _gl: Gl;
-  private _varyings: string[];
+  private _varyings: string[] | null;
 
   parameters: GlShaderParameter[] = [];
-  uniformTextures: any[] = [];
   shaderProgram?: WebGLProgram | null;
 
   constructor(
     gl: Gl,
     vertexSrc?: string,
     fragmentSrc?: string,
-    varyings?: any,
+    varyings?: string[],
   ) {
     this._gl = gl;
-    this._varyings = varyings;
+    this._varyings = varyings ?? null;
 
     if (!vertexSrc) {
       vertexSrc = basicVertexShader;
@@ -58,7 +57,6 @@ export class GlShader {
 
     this._gl.context.useProgram(this.shaderProgram);
     this._gl.useShader(this);
-    this.uniformTextures = [];
   }
 
   uniform(
