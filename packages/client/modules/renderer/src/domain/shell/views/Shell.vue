@@ -5,6 +5,7 @@ import {
   AnimatedBorderOverlay,
   FilterFader,
   FramedIcon,
+  Thumbnail,
   InfoIcon,
   LoadingSpinner,
   TabNavigation,
@@ -49,6 +50,12 @@ setTimeout(() => {
       <FramedIcon style="width: 100px; height: 100px">
         <img src="/103.png" alt="Noise" />
       </FramedIcon>
+    </button>
+
+    <button class="parent">
+      <Thumbnail style="width: 100px; height: 100px">
+        <img src="/103.png" alt="Noise" />
+      </Thumbnail>
     </button>
 
     <InfoIcon :size="40" />

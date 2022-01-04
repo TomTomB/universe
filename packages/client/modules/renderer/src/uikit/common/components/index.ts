@@ -9,3 +9,4 @@ export * from './navigations';
 export * from './parallax-background';
 export * from './radial-progress';
 export * from './scrollable';
+export * from './thumbnail';
