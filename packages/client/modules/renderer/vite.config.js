@@ -27,6 +27,7 @@ export default defineConfig({
     target: `chrome${chrome}`,
     minify: process.env.MODE !== 'development',
     assetsDir: '.',
+    assetsInlineLimit: 16384,
     outDir: '../../dist/renderer',
     brotliSize: false,
   },
