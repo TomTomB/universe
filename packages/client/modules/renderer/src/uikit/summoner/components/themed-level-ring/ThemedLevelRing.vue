@@ -95,10 +95,6 @@ const levelRingBorderAsset = computed(() => {
 <style lang="scss" scoped>
 .themed-level-ring {
   display: block;
-  width: 150px;
-  height: 150px;
-  margin-left: 5rem;
-  margin-top: 5rem;
 
   img {
     height: 140%;
