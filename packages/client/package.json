@@ -57,6 +57,6 @@
     "@types/shortid": "0.0.29",
     "@vitejs/plugin-vue": "2.0.1",
     "vue-tsc": "0.30.2",
-    "sass": "1.46.0"
+    "sass": "1.47.0"
   }
 }
