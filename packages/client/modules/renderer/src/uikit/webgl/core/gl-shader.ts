@@ -1,16 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GlOption, GlShaderTypes, type ShaderType } from '../types';
+import {
+  GlOption,
+  type GlShaderParameter,
+  GlShaderTypes,
+  type ShaderType,
+  type ShaderUniformValueType,
+} from '../types';
 import basicFragmentShader from '../shaders/basic.frag.glsl?raw';
 import basicVertexShader from '../shaders/basic.vert.glsl?raw';
 import type { Gl } from './gl';
-
-export interface GlShaderParameter {
-  name: string;
-  type: string;
-  value: number | Array<any> | Float32Array;
-  uniformLoc: string;
-  isNumber: boolean;
-}
 
 export class GlShader {
   private _gl: Gl;
@@ -59,10 +57,10 @@ export class GlShader {
     this._gl.useShader(this);
   }
 
-  uniform(
+  uniform<T extends ShaderType>(
     shaderProperty: string | Record<string, unknown>,
-    type?: ShaderType,
-    value?: any,
+    type?: T,
+    value?: ShaderUniformValueType<T>,
   ) {
     if (!this.shaderProgram) {
       return;
@@ -73,7 +71,7 @@ export class GlShader {
       return;
     }
 
-    if (!type || !value) {
+    if (!type || value === undefined) {
       return;
     }
 
@@ -170,7 +168,7 @@ export class GlShader {
         value = i;
       }
 
-      this.uniform(key, type, value);
+      this.uniform(key, type, value as any);
     }
   }
 
@@ -260,7 +258,11 @@ export class GlShader {
     return true;
   }
 
-  private _copyOrCreateArray(e: Array<any> | number) {
+  private _copyOrCreateArray(e: Array<any> | number | Float32Array) {
+    if (e instanceof Float32Array) {
+      return new Float32Array(e);
+    }
+
     return Array.isArray(e) ? e.slice(0) : new Float32Array(e);
   }
 }

@@ -7,7 +7,7 @@ import {
   type GlShader,
   type GlTexture,
 } from '@/uikit/webgl';
-import type { vec2, vec3 } from 'gl-matrix';
+import { vec2, vec3 } from 'gl-matrix';
 import fragShader from '../assets/shaders/banner.frag.glsl?raw';
 import vertShader from '../assets/shaders/banner.vert.glsl?raw';
 import type { BannerAnimationConfig, BannerTextureMap } from './types';
@@ -111,29 +111,56 @@ export class VBanner {
     const backgroundRankRatio =
       this.textureBackground.width / this.textureRank.width;
     const backgroundRankHeight = backgroundRankRatio * this.textureRank.height;
-    const rankRatioInv = [
+
+    const uRankRatioInv = vec2.create();
+    vec2.set(
+      uRankRatioInv,
       1,
       this.textureBackground.height / backgroundRankHeight,
-    ];
+    );
 
-    this.shader.uniform('uRankRatioInv', 'vec2', rankRatioInv);
-    this.shader.uniform('uRankPosition', 'vec2', [
+    const uRankPosition = vec2.create();
+    vec2.set(
+      uRankPosition,
       0.5,
       backgroundRankHeight / this.textureBackground.height / 2,
-    ]);
+    );
 
-    const uTopFade = [this._config.topFadeStart, this._config.topFadeEnd];
-    const uBottomFade = [
+    const uTopFade = vec2.create();
+    vec2.set(uTopFade, this._config.topFadeStart, this._config.topFadeEnd);
+
+    const uBottomFade = vec2.create();
+    vec2.set(
+      uBottomFade,
       this._config.bottomFadeStart,
       this._config.bottomFadeEnd,
-    ];
-    const uGradientFade = [
+    );
+
+    const uGradientFade = vec3.create();
+    vec3.set(
+      uGradientFade,
       this._config.circleGradientCenter,
       this._config.circleGradientStart,
       this._config.circleGradientEnd,
-    ];
-    const uFadeOutColor = this._config.fadeOutColor.map((e) => e / 255);
+    );
 
+    const uFadeOutColor = vec3.create();
+    vec3.set(
+      uFadeOutColor,
+      this._config.fadeOutColor[0] / 255,
+      this._config.fadeOutColor[1] / 255,
+      this._config.fadeOutColor[2] / 255,
+    );
+
+    const uHighlightNoise = vec2.create();
+    vec2.set(
+      uHighlightNoise,
+      this._config.highlightNoiseX,
+      this._config.highlightNoiseY,
+    );
+
+    this.shader.uniform('uRankRatioInv', 'vec2', uRankRatioInv);
+    this.shader.uniform('uRankPosition', 'vec2', uRankPosition);
     this.shader.uniform('uSize', 'vec2', this.size);
     this.shader.uniform('uTopFade', 'vec2', uTopFade);
     this.shader.uniform('uBottomFade', 'vec2', uBottomFade);
@@ -148,10 +175,7 @@ export class VBanner {
     this.shader.uniform('uDebug', 'float', this._config.debugFade ? 1 : 0);
     this.shader.uniform('uNoiseScale', 'float', this._config.noiseScale);
     this.shader.uniform('uMovingRange', 'float', this._config.movingRange);
-    this.shader.uniform('uHighlightNoise', 'vec2', [
-      this._config.highlightNoiseX,
-      this._config.highlightNoiseY,
-    ]);
+    this.shader.uniform('uHighlightNoise', 'vec2', uHighlightNoise);
     this.shader.uniform('uFadeOutColor', 'vec3', uFadeOutColor);
     this.shader.uniform('uSeed', 'float', this._seed);
     this.shader.uniform(this._config.ripple);
