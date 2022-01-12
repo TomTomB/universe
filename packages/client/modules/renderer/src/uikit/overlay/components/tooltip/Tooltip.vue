@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useMutationObserver, usePopper } from '@/uikit/core/hooks';
-import type { Instance, Placement } from '@popperjs/core';
+import type { Instance as PopperInstance, Placement } from '@popperjs/core';
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
 
 const props = withDefaults(
@@ -8,13 +8,12 @@ const props = withDefaults(
     attachTo: HTMLElement | undefined | null;
     tooltipType?: 'default' | 'system';
     delay?: number;
-    isEnabled?: boolean;
     placement?: Placement;
   }>(),
-  { delay: 0, isEnabled: false, placement: 'auto', tooltipType: 'default' },
+  { delay: 0, placement: 'auto', tooltipType: 'default' },
 );
 
-let popper: Instance | null = null;
+let popper: PopperInstance | null = null;
 let delayTimeout: number | null = null;
 
 const tooltipRef = ref<HTMLElement | null>(null);
@@ -50,16 +49,11 @@ const attachedElementMouseLeave = () => {
 
 watchEffect(() => {
   if (tooltipRef.value && props.attachTo) {
-    popper = usePopper(
-      props.attachTo,
-      tooltipRef.value,
-      props.isEnabled && show.value,
-      {
-        placement: props.placement,
-        offset: [0, props.tooltipType === 'default' ? 15 : 10],
-        arrowPadding: props.tooltipType === 'default' ? 20 : 10,
-      },
-    );
+    popper = usePopper(props.attachTo, tooltipRef.value, {
+      placement: props.placement,
+      offset: [0, props.tooltipType === 'default' ? 15 : 10],
+      arrowPadding: props.tooltipType === 'default' ? 20 : 10,
+    });
   }
 });
 

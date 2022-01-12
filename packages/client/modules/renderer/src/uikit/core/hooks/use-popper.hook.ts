@@ -3,12 +3,11 @@ import {
   type Placement,
   type PositioningStrategy,
 } from '@popperjs/core';
-import { watchEffect } from 'vue';
+// import { watchEffect } from 'vue';
 
 export const usePopper = (
   refToAttachTo: HTMLElement,
   popperRef: HTMLElement,
-  isEnabled = true,
   options?: {
     placement?: Placement;
     strategy?: PositioningStrategy;
@@ -35,18 +34,18 @@ export const usePopper = (
     ],
   });
 
-  const setPopperEventListeners = (enabled: boolean) => {
-    popper?.setOptions((options) => ({
-      ...options,
-      modifiers: options.modifiers
-        ? [...options.modifiers, { name: 'eventListeners', enabled }]
-        : [{ name: 'eventListeners', enabled }],
-    }));
-  };
+  // const setPopperEventListeners = (enabled: boolean) => {
+  //   popper?.setOptions((options) => ({
+  //     ...options,
+  //     modifiers: options.modifiers
+  //       ? [...options.modifiers, { name: 'eventListeners', enabled }]
+  //       : [{ name: 'eventListeners', enabled }],
+  //   }));
+  // };
 
-  watchEffect(() => {
-    setPopperEventListeners(isEnabled);
-  });
+  // watchEffect(() => {
+  //   setPopperEventListeners(isEnabled);
+  // });
 
   return popper;
 };

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { TitleBar } from '../components';
-import { Tooltip } from '@/uikit/overlay/components';
+import { Tooltip, FlyoutFrame } from '@/uikit/overlay/components';
 
 const popperRef = ref<HTMLElement | null>(null);
+
+const showFlyout = ref(false);
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const popperRef = ref<HTMLElement | null>(null);
 
     <div class="popper-test">
       <div class="popper-inner">
-        <button ref="popperRef">
+        <button ref="popperRef" @click="showFlyout = !showFlyout">
           Popper go here <br />
           Lorem, ipsum. <br />
           Lorem, ipsum. <br />
@@ -28,6 +30,22 @@ const popperRef = ref<HTMLElement | null>(null);
         Suscipit, dolore. 123
       </p>
     </Tooltip>
+
+    <FlyoutFrame
+      :show="showFlyout"
+      :attach-to="popperRef"
+      :close-on-click-outside="true"
+      placement="bottom-end"
+    >
+      <div style="padding: 1rem">
+        <h3 style="margin-bottom: 0.5rem">Hello world!</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae quas
+          <br />
+          temporibus quia! Possimus laborum fuga quisquam quia a cumque magni?
+        </p>
+      </div>
+    </FlyoutFrame>
   </div>
 </template>
 
