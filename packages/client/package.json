@@ -28,7 +28,7 @@
     "electron-updater": "4.6.5",
     "find-process": "1.4.7",
     "gl-matrix": "3.4.3",
-    "firebase": "9.6.2",
+    "firebase": "9.6.3",
     "pinia": "2.0.9",
     "@popperjs/core": "2.11.2",
     "shortid": "2.2.16",
