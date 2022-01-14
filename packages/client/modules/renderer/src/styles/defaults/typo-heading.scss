@@ -21,7 +21,7 @@ h5,
 h6 {
   font-family: LoL Display;
 
-  :not(.preserve-case) {
+  &:not(.preserve-case) {
     text-transform: uppercase;
   }
 }

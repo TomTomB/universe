@@ -66,18 +66,26 @@ const cleanupPopper = () => popper?.destroy();
 
 <template>
   <transition name="fly">
-    <div v-if="show" ref="flyoutFrameRef" class="flyout-frame">
-      <div class="border" />
-      <div class="sub-border" />
-      <div class="caret" data-popper-arrow />
-      <div class="flyout-frame-content">
-        <slot />
-      </div>
-      <div
-        v-if="flyoutFrameType === 'with-close'"
-        class="close-button-container"
-      >
-        <button class="close-button" @click="$emit('close')">X</button>
+    <div
+      v-if="show"
+      ref="flyoutFrameRef"
+      class="flyout-frame"
+      :data-popper-placement="placement"
+    >
+      <div class="flyout-frame-inner">
+        <div class="border" />
+        <div class="sub-border" />
+        <div class="caret" data-popper-arrow />
+
+        <div class="flyout-frame-content">
+          <slot />
+        </div>
+        <div
+          v-if="flyoutFrameType === 'with-close'"
+          class="close-button-container"
+        >
+          <button class="close-button" @click="$emit('close')">X</button>
+        </div>
       </div>
     </div>
   </transition>
@@ -114,11 +122,15 @@ const cleanupPopper = () => popper?.destroy();
   .sub-border {
     transition: transform var(--anim-duration) var(--easing-circular-ease-out);
   }
+
+  .flyout-frame-inner {
+    transition: transform var(--anim-duration) var(--easing-circular-ease-out);
+  }
 }
 
 .fly-enter-from,
 .fly-leave-to {
-  opacity: 0.01;
+  opacity: 0;
 
   &[data-popper-placement^='top'],
   &[data-popper-placement^='bottom'] {
@@ -143,6 +155,30 @@ const cleanupPopper = () => popper?.destroy();
       transform: scaleY(0.5);
     }
   }
+
+  &[data-popper-placement^='top'] {
+    .flyout-frame-inner {
+      transform: translateY(1.5rem);
+    }
+  }
+
+  &[data-popper-placement^='bottom'] {
+    .flyout-frame-inner {
+      transform: translateY(-1.5rem);
+    }
+  }
+
+  &[data-popper-placement^='left'] {
+    .flyout-frame-inner {
+      transform: translateX(1.5rem);
+    }
+  }
+
+  &[data-popper-placement^='right'] {
+    .flyout-frame-inner {
+      transform: translateX(-1.5rem);
+    }
+  }
 }
 
 @keyframes caretIn {
@@ -163,8 +199,12 @@ const cleanupPopper = () => popper?.destroy();
   }
 }
 
+.flyout-frame-inner {
+  will-change: transform;
+}
+
 .flyout-frame {
-  will-change: transform, opacity;
+  will-change: opacity;
 
   &[data-popper-placement^='top'],
   &[data-popper-placement^='bottom'] {
@@ -326,11 +366,11 @@ const cleanupPopper = () => popper?.destroy();
 
 .border {
   border: 2px solid transparent;
-
   position: absolute;
   box-shadow: 0 0 0 1px rgba(1, 10, 19, 0.48);
   z-index: 1;
   transform-origin: center center;
+  will-change: transform;
 
   &::before {
     content: '';
@@ -348,6 +388,7 @@ const cleanupPopper = () => popper?.destroy();
   position: absolute;
   display: flex;
   transform-origin: center center;
+  will-change: transform;
 
   &::before {
     content: '';
@@ -411,5 +452,6 @@ const cleanupPopper = () => popper?.destroy();
   -webkit-mask-position: center;
   -webkit-mask-size: 100% 100%;
   padding: 2px;
+  will-change: -webkit-mask-size;
 }
 </style>

@@ -35,10 +35,22 @@ const showFlyout = ref(false);
       :show="showFlyout"
       :attach-to="popperRef"
       :close-on-click-outside="true"
-      placement="bottom-end"
+      placement="left"
+      @close="showFlyout = false"
     >
       <div style="padding: 1rem">
         <h3 style="margin-bottom: 0.5rem">Hello world!</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae quas
+          <br />
+          temporibus quia! Possimus laborum fuga quisquam quia a cumque magni?
+        </p>
+        <br />
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae quas
+          <br />
+          temporibus quia! Possimus laborum fuga quisquam quia a cumque magni?
+        </p>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae quas
           <br />
