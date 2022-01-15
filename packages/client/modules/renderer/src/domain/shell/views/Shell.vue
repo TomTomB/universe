@@ -6,7 +6,7 @@ import { Tooltip, FlyoutFrame, Modal } from '@/uikit/overlay/components';
 const popperRef = ref<HTMLElement | null>(null);
 const popperRefInModal = ref<HTMLElement | null>(null);
 
-const showFlyout = ref(true);
+const showFlyout = ref(false);
 const showModal = ref(false);
 </script>
 
@@ -20,22 +20,24 @@ const showModal = ref(false);
       position="bottom"
       @close="showModal = false"
     >
-      <h1 id="modal-head">Hello modal</h1>
-      <p id="modal-desc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sed, ullam
-        voluptatibus cumque earum molestias sapiente modi culpa veniam
-        obcaecati.
-      </p>
-      <button ref="popperRefInModal" @click="showModal = false">
-        <p>Hide Modal</p>
-      </button>
-
-      <Tooltip :attach-to="popperRefInModal" placement="top-end">
-        <p>
-          Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Suscipit, dolore. 123
+      <div class="test-modal">
+        <h1 id="modal-head" style="margin-bottom: 1rem">Hello modal</h1>
+        <p id="modal-desc" style="margin-bottom: 2rem">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sed,
+          ullam voluptatibus cumque earum molestias sapiente modi culpa veniam
+          obcaecati.
         </p>
-      </Tooltip>
+        <button ref="popperRefInModal" @click="showModal = false">
+          <p>Hide Modal</p>
+        </button>
+
+        <Tooltip :attach-to="popperRefInModal" placement="top-end">
+          <p>
+            Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Suscipit, dolore. 123
+          </p>
+        </Tooltip>
+      </div>
     </Modal>
 
     <button style="margin-top: 3rem" @click="showModal = !showModal">
@@ -115,5 +117,11 @@ const showModal = ref(false);
 .popper-inner {
   display: flex;
   justify-content: center;
+}
+
+.test-modal {
+  width: 700px;
+  height: 500px;
+  padding: 1rem;
 }
 </style>
