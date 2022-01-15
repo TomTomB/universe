@@ -2,6 +2,7 @@
 import { useMutationObserver, usePopper } from '@/uikit/core/hooks';
 import type { Instance as PopperInstance, Placement } from '@popperjs/core';
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
+import { tooltipRootSelector } from '@/core/constants';
 
 const props = withDefaults(
   defineProps<{
@@ -79,15 +80,21 @@ const cleanupPopper = () => popper?.destroy();
 </script>
 
 <template>
-  <transition name="fade" @after-leave="cleanupPopper">
-    <div v-if="show" ref="tooltipRef" :class="['tooltip', props.tooltipType]">
-      <div class="tooltip-content">
-        <slot />
+  <teleport :to="tooltipRootSelector">
+    <transition name="fade" @after-leave="cleanupPopper">
+      <div
+        v-if="show && attachTo"
+        ref="tooltipRef"
+        :class="['tooltip', props.tooltipType]"
+      >
+        <div class="tooltip-content">
+          <slot />
+        </div>
+        <div v-if="tooltipType === 'default'" class="tooltip-sub-border" />
+        <div class="tooltip-arrow" data-popper-arrow />
       </div>
-      <div v-if="tooltipType === 'default'" class="tooltip-sub-border" />
-      <div class="tooltip-arrow" data-popper-arrow />
-    </div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <style lang="scss" scoped>

@@ -1,30 +1,62 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { TitleBar } from '../components';
-import { Tooltip, FlyoutFrame } from '@/uikit/overlay/components';
+import { Tooltip, FlyoutFrame, Modal } from '@/uikit/overlay/components';
 
 const popperRef = ref<HTMLElement | null>(null);
+const popperRefInModal = ref<HTMLElement | null>(null);
 
-const showFlyout = ref(false);
+const showFlyout = ref(true);
+const showModal = ref(false);
 </script>
 
 <template>
   <div class="shell">
     <TitleBar />
 
+    <Modal
+      :show="showModal"
+      :ally="{ describedById: 'modal-desc', labeledById: 'modal-head' }"
+      position="bottom"
+      @close="showModal = false"
+    >
+      <h1 id="modal-head">Hello modal</h1>
+      <p id="modal-desc">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sed, ullam
+        voluptatibus cumque earum molestias sapiente modi culpa veniam
+        obcaecati.
+      </p>
+      <button ref="popperRefInModal" @click="showModal = false">
+        <p>Hide Modal</p>
+      </button>
+    </Modal>
+
+    <button style="margin-top: 3rem" @click="showModal = !showModal">
+      <p>Modal</p>
+    </button>
+
     <div class="popper-test">
       <div class="popper-inner">
         <button ref="popperRef" @click="showFlyout = !showFlyout">
-          Popper go here <br />
-          Lorem, ipsum. <br />
-          Lorem, ipsum. <br />
-          Lorem, ipsum. <br />
-          Lorem, ipsum dolor.
+          <p>
+            Popper go here <br />
+            Lorem, ipsum. <br />
+            Lorem, ipsum. <br />
+            Lorem, ipsum. <br />
+            Lorem, ipsum dolor.
+          </p>
         </button>
       </div>
     </div>
 
     <Tooltip :attach-to="popperRef" placement="top-end">
+      <p>
+        Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Suscipit, dolore. 123
+      </p>
+    </Tooltip>
+
+    <Tooltip :attach-to="popperRefInModal" placement="top-end">
       <p>
         Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
         Suscipit, dolore. 123

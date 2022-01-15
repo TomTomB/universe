@@ -6,6 +6,7 @@ import {
 } from '@/uikit/core/hooks';
 import type { Instance as PopperInstance, Placement } from '@popperjs/core';
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
+import { tooltipRootSelector } from '@/core/constants';
 
 const props = withDefaults(
   defineProps<{
@@ -65,30 +66,33 @@ const cleanupPopper = () => popper?.destroy();
 </script>
 
 <template>
-  <transition name="fly">
-    <div
-      v-if="show"
-      ref="flyoutFrameRef"
-      class="flyout-frame"
-      :data-popper-placement="placement"
-    >
-      <div class="flyout-frame-inner">
-        <div class="border" />
-        <div class="sub-border" />
-        <div class="caret" data-popper-arrow />
+  <teleport :to="tooltipRootSelector">
+    <transition name="fly">
+      <div
+        v-if="show"
+        ref="flyoutFrameRef"
+        class="flyout-frame"
+        :data-popper-placement="placement"
+      >
+        <div class="flyout-frame-inner">
+          <div class="border" />
+          <div class="sub-border" />
+          <div class="caret" data-popper-arrow />
 
-        <div class="flyout-frame-content">
-          <slot />
-        </div>
-        <div
-          v-if="flyoutFrameType === 'with-close'"
-          class="close-button-container"
-        >
-          <button class="close-button" @click="$emit('close')">X</button>
+          <div class="flyout-frame-content">
+            <slot />
+          </div>
+          <div
+            v-if="flyoutFrameType === 'with-close'"
+            class="close-button-container"
+          >
+            <!-- TODO(TRB): Add correct button -->
+            <button class="close-button" @click="$emit('close')">X</button>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </teleport>
 </template>
 
 <style lang="scss" scoped>

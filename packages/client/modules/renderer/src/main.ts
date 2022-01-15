@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import { rootSelector } from './core/constants';
+import { appRootSelector } from './core/constants';
 import './styles/defaults/index.scss';
 
 // import router from './router';
@@ -37,4 +37,4 @@ import './styles/defaults/index.scss';
 //   return next();
 // });
 
-createApp(App).mount(rootSelector);
+createApp(App).mount(appRootSelector);
