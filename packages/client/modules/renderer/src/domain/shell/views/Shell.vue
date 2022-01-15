@@ -29,6 +29,13 @@ const showModal = ref(false);
       <button ref="popperRefInModal" @click="showModal = false">
         <p>Hide Modal</p>
       </button>
+
+      <Tooltip :attach-to="popperRefInModal" placement="top-end">
+        <p>
+          Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Suscipit, dolore. 123
+        </p>
+      </Tooltip>
     </Modal>
 
     <button style="margin-top: 3rem" @click="showModal = !showModal">
@@ -50,13 +57,6 @@ const showModal = ref(false);
     </div>
 
     <Tooltip :attach-to="popperRef" placement="top-end">
-      <p>
-        Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Suscipit, dolore. 123
-      </p>
-    </Tooltip>
-
-    <Tooltip :attach-to="popperRefInModal" placement="top-end">
       <p>
         Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit.
         Suscipit, dolore. 123
