@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { TitleBar } from '../components';
 import { Tooltip, FlyoutFrame, Modal } from '@/uikit/overlay/components';
+import { ThemedLevelRing } from '@/uikit/summoner/components';
 
 const popperRef = ref<HTMLElement | null>(null);
 const popperRefInModal = ref<HTMLElement | null>(null);
@@ -30,6 +31,8 @@ const showModal = ref(false);
         <button ref="popperRefInModal" @click="showModal = false">
           <p>Hide Modal</p>
         </button>
+
+        <ThemedLevelRing />
 
         <Tooltip :attach-to="popperRefInModal" placement="top-end">
           <p>
@@ -97,14 +100,8 @@ const showModal = ref(false);
 
 <style lang="scss" scoped>
 .shell {
-  width: 100%;
   height: 100%;
-  position: relative;
-  background-color: var(--color-almost-black);
-  border: 1px solid var(--color-frame-grey);
-  border-top: 2px solid var(--color-gold5);
   overflow: auto;
-  contain: content;
 }
 
 .popper-test {
