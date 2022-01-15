@@ -69,7 +69,7 @@ const cleanupPopper = () => popper?.destroy();
   <teleport :to="tooltipRootSelector">
     <transition name="fly">
       <div
-        v-if="show"
+        v-if="show && attachTo"
         ref="flyoutFrameRef"
         class="flyout-frame"
         :data-popper-placement="placement"
