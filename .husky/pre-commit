@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint && yarn git-format-staged --formatter "prettier --stdin-filepath "{}""  "*.ts" "*.js" "*.tsx" "*.jsx" "*.vue" "*.json" "*.html" "*.md" "*.yml" "*.css" "*.scss"
+yarn lint && yarn prettier --check --plugin-search-dir=. ./**/*.svelte && yarn git-format-staged --formatter "prettier --stdin-filepath "{}""  "*.ts" "*.js" "*.tsx" "*.jsx" "*.vue" "*.svelte" "*.json" "*.html" "*.md" "*.yml" "*.css" "*.scss"
