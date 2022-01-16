@@ -1,16 +1,16 @@
 {
   "env": {
     "browser": true,
-    "node": false,
-    "vue/setup-compiler-macros": true
-  },
-  "extends": ["plugin:vue/vue3-recommended", "prettier"],
-  "parserOptions": {
-    "parser": "@typescript-eslint/parser",
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "rules": {
-    "vue/multi-word-component-names": "off"
+    "node": false
+    // "vue/setup-compiler-macros": true
   }
+  // "extends": ["plugin:vue/vue3-recommended", "prettier"],
+  // "parserOptions": {
+  //   "parser": "@typescript-eslint/parser",
+  //   "ecmaVersion": 12,
+  //   "sourceType": "module"
+  // },
+  // "rules": {
+  //   "vue/multi-word-component-names": "off"
+  // }
 }

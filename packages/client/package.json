@@ -17,11 +17,10 @@
     "type-check": "yarn type-check:main && yarn type-check:preload && yarn type-check:renderer",
     "type-check:main": "tsc -p ./modules/main/tsconfig.json --noEmit",
     "type-check:preload": "tsc -p ./modules/preload/tsconfig.json --noEmit",
-    "type-check:renderer": "vue-tsc -p ./modules/renderer/tsconfig.json --noEmit"
+    "type-check:renderer": "svelte-check --tsconfig ./modules/renderer/tsconfig.json"
   },
   "dependencies": {
     "@sentry/electron": "2.5.4",
-    "@vueuse/core": "7.5.3",
     "node-fetch": "3.1.0",
     "chokidar": "3.5.2",
     "electron-log": "4.4.4",
@@ -29,12 +28,8 @@
     "find-process": "1.4.7",
     "gl-matrix": "3.4.3",
     "firebase": "9.6.3",
-    "pinia": "2.0.9",
     "@popperjs/core": "2.11.2",
     "shortid": "2.2.16",
-    "vue": "3.2.26",
-    "vue-router": "4.0.12",
-    "vue-i18n": "9.1.9",
     "xstate": "4.27.0",
     "ws": "8.4.2"
   },
@@ -47,16 +42,20 @@
     "ws"
   ],
   "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.34",
+    "@tsconfig/svelte": "3.0.0",
     "@types/electron-devtools-installer": "2.2.1",
     "@types/ws": "8.2.2",
     "@types/node-fetch": "3.0.3",
+    "@types/shortid": "0.0.29",
     "electron": "16.0.7",
     "electron-builder": "22.14.5",
     "electron-devtools-installer": "3.2.0",
-    "eslint-plugin-vue": "8.3.0",
-    "@types/shortid": "0.0.29",
-    "@vitejs/plugin-vue": "2.0.1",
-    "vue-tsc": "0.30.2",
-    "sass": "1.48.0"
+    "eslint-plugin-svelte3": "3.4.0",
+    "sass": "1.48.0",
+    "svelte": "3.46.2",
+    "svelte-check": "2.3.0",
+    "svelte-preprocess": "4.10.1",
+    "tslib": "2.3.1"
   }
 }
