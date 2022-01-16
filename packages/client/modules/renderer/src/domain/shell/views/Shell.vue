@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { TitleBar } from '../components';
 import { Tooltip, FlyoutFrame, Modal } from '@/uikit/overlay/components';
+import { ArrowButton } from '@/uikit/forms/components';
 
 const popperRef = ref<HTMLElement | null>(null);
 const popperRefInModal = ref<HTMLElement | null>(null);
@@ -43,6 +44,8 @@ const showModal = ref(false);
     <button style="margin-top: 3rem" @click="showModal = !showModal">
       <p>Modal</p>
     </button>
+
+    <ArrowButton label="Close" disabled @click="showModal = !showModal" />
 
     <div class="popper-test">
       <div class="popper-inner">
