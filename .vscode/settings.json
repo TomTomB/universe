@@ -4,5 +4,6 @@
     "**/node_modules": true,
     "**/dist": true,
     ".git": true
-  }
+  },
+  "svelte.plugin.css.globals": "packages/client/modules/renderer/src/styles/theme.scss"
 }
