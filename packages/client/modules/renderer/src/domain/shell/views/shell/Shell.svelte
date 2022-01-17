@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TitleBar } from '../components';
+  import { TitleBar } from '../../components';
 </script>
 
 <div>
