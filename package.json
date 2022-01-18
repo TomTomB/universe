@@ -16,6 +16,7 @@
     "lint": "eslint --cache --ext .ts,.tsx,.js,.jsx,.svelte .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
+    "format:svelte": "prettier --write --plugin-search-dir=. ./**/*.svelte",
     "build:version": "node scripts/git-version.js"
   },
   "devDependencies": {

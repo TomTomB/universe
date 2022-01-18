@@ -1,18 +1,9 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-
   export let type: 'hide' | 'settings' | 'close' | 'help';
   export let ariaLabel: string;
-
-  const dispatch = createEventDispatcher<{ click: void }>();
 </script>
 
-<button
-  type="button"
-  class={type}
-  aria-label={ariaLabel}
-  on:click={() => dispatch('click')}
-/>
+<button type="button" class={type} aria-label={ariaLabel} on:click />
 
 <style lang="scss">
   button {
