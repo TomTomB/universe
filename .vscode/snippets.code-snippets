@@ -61,5 +61,17 @@
       "<style lang=\"scss\" scoped></style>",
       ""
     ]
+  },
+  "svelteBasuc": {
+    "scope": "svelte",
+    "prefix": "uni-svelte",
+    "body": [
+      "<script lang=\"ts\"></script>",
+      "",
+      "${0}",
+      "",
+      "<style lang=\"scss\"></style>",
+      ""
+    ]
   }
 }
