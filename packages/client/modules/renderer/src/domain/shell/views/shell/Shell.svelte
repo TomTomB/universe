@@ -8,12 +8,11 @@
   });
 </script>
 
-<div>
-  <TitleBar />
-  <button class="parent">
-    <AnimatedArrowOverlay />
-  </button>
-</div>
+<TitleBar />
+
+<button class="parent">
+  <AnimatedArrowOverlay />
+</button>
 
 <style>
   button {
