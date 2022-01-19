@@ -11,7 +11,7 @@
   "scripts": {
     "prepare": "husky install",
     "postinstall": "yarn build:version",
-    "commit": "npx git-cz",
+    "commit": "yarn format:svelte && npx git-cz",
     "client": "yarn --cwd packages/client",
     "lint": "eslint --cache --ext .ts,.tsx,.js,.jsx,.svelte .",
     "format:check": "prettier --check .",
