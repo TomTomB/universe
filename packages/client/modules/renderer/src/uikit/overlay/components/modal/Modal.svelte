@@ -1,6 +1,9 @@
 <script lang="ts">
   import { teleport } from '@/uikit/common/actions';
   import { MODAL_PORTAL } from '@/uikit/common/constants';
+  import { fade } from 'svelte/transition';
+  import { transform } from '@/uikit/common/animations';
+  import { cubicCushioned } from '@/uikit/common/easing';
 
   export let position: 'top' | 'right' | 'bottom' | 'left';
   export let showCaret = false;
@@ -8,11 +11,24 @@
   export let isBorderless = false;
 </script>
 
-<div class="modal-container" use:teleport={MODAL_PORTAL}>
+<div
+  class="modal-container"
+  transition:fade={{ duration: 300, easing: cubicCushioned }}
+  use:teleport={MODAL_PORTAL}
+>
   <div
     class="modal {position} {showCaret ? 'show-caret' : ''} {isDisabled
       ? 'is-disabled'
       : ''}"
+    in:transform={{
+      scale: { from: 0.6 },
+      translate: { from: [0, 4], unit: 'rem' },
+      easing: cubicCushioned,
+    }}
+    out:transform={{
+      scale: { to: 1.1 },
+      easing: cubicCushioned,
+    }}
   >
     {#if !isBorderless}
       <div class="sub-border" />
@@ -23,32 +39,6 @@
 </div>
 
 <style lang="scss">
-  .modal-enter-active,
-  .modal-leave-active {
-    transition: opacity 0.3s var(--easing-cushioned);
-
-    .modal {
-      transition: transform 0.3s var(--easing-cushioned);
-    }
-  }
-
-  .modal-enter-from,
-  .modal-leave-to {
-    opacity: 0;
-  }
-
-  .modal-enter-from {
-    .modal {
-      transform: scaleX(0.6) translateY(4rem);
-    }
-  }
-
-  .modal-leave-to {
-    .modal {
-      transform: scale(1.1);
-    }
-  }
-
   .modal-container {
     position: absolute;
     top: 0;
