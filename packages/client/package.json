@@ -23,7 +23,7 @@
     "@sentry/electron": "2.5.4",
     "node-fetch": "3.1.1",
     "chokidar": "3.5.3",
-    "electron-log": "4.4.4",
+    "electron-log": "4.4.5",
     "electron-updater": "4.6.5",
     "find-process": "1.4.7",
     "gl-matrix": "3.4.3",
