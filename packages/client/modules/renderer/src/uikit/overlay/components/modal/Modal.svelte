@@ -4,22 +4,48 @@
   import { fade } from 'svelte/transition';
   import { transform } from '@/uikit/common/animations';
   import { cubicCushioned } from '@/uikit/common/easing';
+  import { createEventDispatcher } from 'svelte';
 
   export let position: 'top' | 'right' | 'bottom' | 'left';
   export let showCaret = false;
   export let isDisabled = false;
   export let isBorderless = false;
+
+  export let topRightCloseButton: {
+    variant: 'circle' | 'toast';
+    showBackground?: boolean;
+    allyLabel?: string;
+  } | null = null;
+
+  export let allyModalHeaderId: string;
+  export let allyModalDescriptionId: string;
+
+  const dispatch =
+    createEventDispatcher<{ 'backdrop-click': void; 'close-click': void }>();
+
+  const onBackdropClick = () => {
+    dispatch('backdrop-click');
+  };
+
+  const onTopRightClose = () => {
+    dispatch('close-click');
+  };
 </script>
 
 <div
   class="modal-container"
   transition:fade={{ duration: 300, easing: cubicCushioned }}
   use:teleport={MODAL_PORTAL}
+  on:click={onBackdropClick}
 >
   <div
-    class="modal {position} {showCaret ? 'show-caret' : ''} {isDisabled
-      ? 'is-disabled'
-      : ''}"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={allyModalHeaderId}
+    aria-describedby={allyModalDescriptionId}
+    class="modal {position}"
+    class:show-caret={showCaret}
+    class:is-disabled={isDisabled}
     in:transform={{
       scale: { from: 0.6 },
       translate: { from: [0, 4], unit: 'rem' },
@@ -29,12 +55,33 @@
       scale: { to: 1.1 },
       easing: cubicCushioned,
     }}
+    on:click|stopPropagation={() => void 0}
   >
     {#if !isBorderless}
       <div class="sub-border" />
     {/if}
 
     <slot />
+
+    {#if topRightCloseButton}
+      {#if topRightCloseButton.variant === 'circle'}
+        <div class="top-right-close-container">
+          <button
+            type="button"
+            class="top-right-close-button"
+            aria-label={topRightCloseButton.allyLabel ?? 'Close modal'}
+            on:click={onTopRightClose}
+          />
+        </div>
+      {:else if topRightCloseButton.variant === 'toast'}
+        <button
+          class="top-right-close-toast-button"
+          class:with-background={topRightCloseButton.showBackground}
+          aria-label={topRightCloseButton.allyLabel ?? 'Close modal'}
+          on:click={onTopRightClose}
+        />
+      {/if}
+    {/if}
   </div>
 </div>
 

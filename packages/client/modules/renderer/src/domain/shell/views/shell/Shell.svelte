@@ -19,10 +19,17 @@
 </button>
 
 {#if showModal}
-  <Modal position="bottom">
+  <Modal
+    allyModalHeaderId="modal-head"
+    allyModalDescriptionId="modal-body"
+    position="bottom"
+    topRightCloseButton={{ variant: 'toast', showBackground: true }}
+    on:backdrop-click={() => (showModal = false)}
+    on:close-click={() => (showModal = false)}
+  >
     <div class="modal-inner">
-      <h1>Modal</h1>
-      <p>
+      <h1 id="modal-head">Modal</h1>
+      <p class="modal-body">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
       </p>
     </div>

@@ -18,7 +18,7 @@
 
 <div
   use:resizeObserver
-  on:elementresize={(e) => (width = e.detail.width)}
+  on:element-resize={(e) => (width = e.detail.width)}
   class="animated-arrow-overlay-container"
 >
   <div class="animated-arrow-overlay-wrapper">
