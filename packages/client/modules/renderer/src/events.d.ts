@@ -19,5 +19,11 @@ declare namespace svelte.JSX {
         target: EventTarget & T;
       },
     ) => void;
+
+    'onelement-mutation'?: (
+      event: CustomEvent & {
+        target: EventTarget & T;
+      },
+    ) => void;
   }
 }
