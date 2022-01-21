@@ -30,7 +30,7 @@
     "firebase": "9.6.3",
     "@popperjs/core": "2.11.2",
     "shortid": "2.2.16",
-    "xstate": "4.28.0",
+    "xstate": "4.28.1",
     "ws": "8.4.2"
   },
   "electronDependencies": [
