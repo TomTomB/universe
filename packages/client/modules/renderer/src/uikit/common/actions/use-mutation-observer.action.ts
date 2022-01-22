@@ -9,6 +9,10 @@ export const mutationObserver = (
   observer.observe(node, options);
 
   return {
+    update(e?: MutationObserverInit) {
+      observer.disconnect();
+      observer.observe(node, e);
+    },
     destroy() {
       observer.disconnect();
     },
