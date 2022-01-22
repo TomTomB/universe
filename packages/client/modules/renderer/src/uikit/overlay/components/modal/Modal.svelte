@@ -20,8 +20,11 @@
   export let allyModalHeaderId: string;
   export let allyModalDescriptionId: string;
 
-  const dispatch =
-    createEventDispatcher<{ 'backdrop-click': void; 'close-click': void }>();
+  const dispatch = createEventDispatcher<{
+    'backdrop-click': void;
+    'close-click': void;
+    'escape-key-up': void;
+  }>();
 
   const onBackdropClick = () => {
     dispatch('backdrop-click');
@@ -30,7 +33,15 @@
   const onTopRightClose = () => {
     dispatch('close-click');
   };
+
+  const onWindowKeyUp = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      dispatch('escape-key-up');
+    }
+  };
 </script>
+
+<svelte:window on:keyup={onWindowKeyUp} />
 
 <div
   class="modal-container"
@@ -367,7 +378,8 @@
     appearance: none;
     padding: 0;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background: url(./assets/images/close.png), rgba(10, 20, 40, 0.5);
       background-size: 75% 75%, 100% 100%;
       background-position: center;
@@ -382,7 +394,8 @@
       opacity: 0.8;
       transition: opacity 0.05s ease-in-out;
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         opacity: 1;
       }
     }

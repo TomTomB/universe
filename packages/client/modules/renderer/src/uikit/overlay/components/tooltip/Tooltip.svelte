@@ -2,22 +2,17 @@
   import { teleport, popper } from '@/uikit/common/actions';
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
   import type { Placement } from '@popperjs/core';
-  import { fade } from 'svelte/transition';
-  import { circOut } from 'svelte/easing';
   import { onDestroy } from 'svelte';
 
   export let attachTo: HTMLElement | undefined | null = null;
   export let type: 'default' | 'system' = 'default';
   export let delay = 0;
   export let placement: Placement = 'auto';
-  export let isEnabled = true;
+  export let id: string;
 
-  $: if (attachTo && isEnabled) {
+  $: if (attachTo) {
     attachTo.addEventListener('mouseenter', attachedElementMouseEnter);
     attachTo.addEventListener('mouseleave', attachedElementMouseLeave);
-  } else if (attachTo) {
-    attachTo.removeEventListener('mouseenter', attachedElementMouseEnter);
-    attachTo.removeEventListener('mouseleave', attachedElementMouseLeave);
   }
 
   let show = false;
@@ -28,7 +23,7 @@
       delayTimeout = window.setTimeout(() => {
         show = true;
       }, delay);
-    } else if (isEnabled) {
+    } else {
       show = true;
     }
   };
@@ -42,6 +37,12 @@
     show = false;
   };
 
+  const onWindowKeyUp = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      show = false;
+    }
+  };
+
   onDestroy(() => {
     if (attachTo) {
       attachTo.removeEventListener('mouseenter', attachedElementMouseEnter);
@@ -50,17 +51,22 @@
   });
 </script>
 
-{#if show && isEnabled && attachTo}
+<svelte:window on:keyup={onWindowKeyUp} />
+
+{#if attachTo}
   <div
     use:teleport={TOOLTIP_PORTAL}
     use:popper={{
       attachTo,
+      enabled: show,
       placement,
       offset: [0, type === 'default' ? 15 : 10],
       arrowPadding: type === 'default' ? 20 : 10,
     }}
-    transition:fade={{ duration: 300, easing: circOut }}
     class="tooltip {type}"
+    class:show
+    role="tooltip"
+    {id}
   >
     <div class="tooltip-content">
       <slot />
@@ -71,7 +77,6 @@
     <div class="tooltip-arrow" data-popper-arrow />
   </div>
 {/if}
-<div />
 
 <style lang="scss" global>
   .tooltip {
@@ -82,8 +87,14 @@
     min-width: 41px;
     border: 2px solid transparent;
     z-index: 100;
+    opacity: 0;
     pointer-events: none;
     will-change: opacity;
+    transition: opacity 0.3s var(--easing-circular-ease-out);
+
+    &.show {
+      opacity: 1;
+    }
 
     &::before {
       content: '';

@@ -6,7 +6,7 @@
 
   let showModal = true;
   let enableTooltip = true;
-  let modalInner: HTMLDivElement;
+  let modalInner: HTMLButtonElement;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -28,19 +28,24 @@
     topRightCloseButton={{ variant: 'toast', showBackground: true }}
     on:backdrop-click={() => (showModal = false)}
     on:close-click={() => (showModal = false)}
+    on:escape-key-up={() => (showModal = false)}
   >
-    <div class="modal-inner" bind:this={modalInner}>
+    <div class="modal-inner">
       <h1 id="modal-head">Modal</h1>
       <p class="modal-body">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
       </p>
 
-      <button on:click={() => (enableTooltip = !enableTooltip)}>
+      <button
+        on:click={() => (enableTooltip = !enableTooltip)}
+        bind:this={modalInner}
+        aria-describedby="modalTooltip"
+      >
         <p>Toggle tooltip</p>
       </button>
     </div>
 
-    <Tooltip attachTo={modalInner} isEnabled={enableTooltip}>
+    <Tooltip attachTo={modalInner} id="modalTooltip">
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt,
         esse? {enableTooltip ? 'Yes' : 'No'}
