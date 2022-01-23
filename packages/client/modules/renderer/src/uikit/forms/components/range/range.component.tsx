@@ -1,6 +1,6 @@
 import * as C from './range.styles';
 import { useBoundingRect } from '@/uikit/core/hooks';
-import { useState, type FC } from 'react';
+import { useMemo, useRef, type FC } from 'react';
 import type { Direction } from '@/types';
 import { useController } from 'react-hook-form';
 import type { ControlledInput } from '../../types';
@@ -28,13 +28,16 @@ export const Range: FC<RangeProps> = ({
   const controller = useController({ name, control, defaultValue });
 
   const [baseBoundingRect, baseRef] = useBoundingRect<HTMLDivElement>();
-  const [value, setValue] = useState(
+  const value = useRef(
     defaultValue > max ? max : defaultValue < min ? min : defaultValue,
   );
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
-  const stepInverse = 1 / step;
+  const stepInverse = useMemo(() => 1 / step, [step]);
+  const styleValue = useRef((100 / max) * value.current);
+  const styleScale = useRef(styleValue.current / 100);
 
-  let cacheVal = value;
+  let cacheVal = value.current;
 
   const mouseMoveListener = (e: MouseEvent) => {
     if (!baseBoundingRect) {
@@ -75,20 +78,20 @@ export const Range: FC<RangeProps> = ({
     switch (e.key) {
       case 'ArrowLeft':
       case 'ArrowDown':
-        updateValue(value - step);
+        updateValue(value.current - step);
         break;
 
       case 'ArrowRight':
       case 'ArrowUp':
-        updateValue(value + step);
+        updateValue(value.current + step);
         break;
 
       case 'PageUp':
-        updateValue(value + max / 10);
+        updateValue(value.current + max / 10);
         break;
 
       case 'PageDown':
-        updateValue(value - max / 10);
+        updateValue(value.current - max / 10);
         break;
 
       case 'Home':
@@ -139,19 +142,19 @@ export const Range: FC<RangeProps> = ({
       newValue = max;
     }
 
-    if (newValue === value || newValue === cacheVal) {
+    if (newValue === value.current || newValue === cacheVal) {
       return;
     }
 
-    setValue(newValue);
+    value.current = newValue;
     cacheVal = newValue;
+
+    styleValue.current = (100 / max) * newValue;
+    styleScale.current = styleValue.current / 100;
 
     controller.field.onChange(newValue);
     onChange?.(newValue);
   };
-
-  const styleValue = (100 / max) * value;
-  const styleScale = styleValue / 100;
 
   return (
     <C.StyledSlider
@@ -161,16 +164,19 @@ export const Range: FC<RangeProps> = ({
       aria-disabled={isDisabled}
       aria-valuemax={max}
       aria-valuemin={min}
-      aria-valuenow={value}
-      aria-valuetext={value.toString()}
+      aria-valuenow={value.current}
+      aria-valuetext={value.current.toString()}
       className={className}
       tabIndex={isDisabled ? -1 : 0}
       id={id}
+      ref={sliderRef}
       style={
         {
-          '--slider-value-scale': styleScale,
+          '--slider-value-scale': styleScale.current,
           '--thumb-translate': `${
-            direction === 'horizontal' ? styleValue : -styleValue
+            direction === 'horizontal'
+              ? styleValue.current
+              : -styleValue.current
           }%`,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any
