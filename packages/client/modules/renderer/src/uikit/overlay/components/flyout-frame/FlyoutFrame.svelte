@@ -112,6 +112,7 @@
     }
   }
 
+  // TODO(TRB): Add correct animation
   .fly-enter-active {
     --anim-duration: 250ms;
   }
