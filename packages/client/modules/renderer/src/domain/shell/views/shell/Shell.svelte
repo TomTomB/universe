@@ -1,11 +1,12 @@
 <script lang="ts">
   import { AnimatedArrowOverlay } from '@/uikit/common/components';
-  import { Modal, Tooltip } from '@/uikit/overlay/components';
+  import { FlyoutFrame, Modal, Tooltip } from '@/uikit/overlay/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
 
   let showModal = true;
   let modalInner: HTMLButtonElement;
+  let showFlyoutFrame = false;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -35,7 +36,11 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
       </p>
 
-      <button bind:this={modalInner} aria-describedby="modalTooltip">
+      <button
+        bind:this={modalInner}
+        aria-describedby="modalTooltip"
+        on:click={() => (showFlyoutFrame = !showFlyoutFrame)}
+      >
         <p>I have some tooltip</p>
       </button>
     </div>
@@ -46,6 +51,18 @@
         ratione atque perspiciatis aliquam recusandae sed?
       </p>
     </Tooltip>
+
+    {#if showFlyoutFrame}
+      <FlyoutFrame attachTo={modalInner}>
+        <div class="modal-inner">
+          <h4>Hello</h4>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
+            nihil?
+          </p>
+        </div>
+      </FlyoutFrame>
+    {/if}
   </Modal>
 {/if}
 
@@ -55,7 +72,6 @@
     height: 50px;
     position: relative;
     margin-top: 5rem;
-    z-index: 10000;
     background-color: red;
     p {
       margin: 0;
