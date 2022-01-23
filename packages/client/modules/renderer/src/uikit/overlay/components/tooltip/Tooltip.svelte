@@ -61,7 +61,7 @@
       enabled: show,
       placement,
       offset: [0, type === 'default' ? 15 : 10],
-      arrowPadding: type === 'default' ? 20 : 10,
+      arrowPadding: 5,
     }}
     class="tooltip {type}"
     class:show
@@ -79,6 +79,18 @@
 {/if}
 
 <style lang="scss" global>
+  .tooltip-sub-border {
+    position: absolute;
+    z-index: -1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      border-image-repeat: stretch;
+      border-style: solid;
+    }
+  }
+
   .tooltip {
     --frameColors: #614a1f 0, #463714 5px, #463714 100%;
 
@@ -87,9 +99,9 @@
     min-width: 41px;
     border: 2px solid transparent;
     z-index: 100;
-    opacity: 0;
     pointer-events: none;
     will-change: opacity;
+    opacity: 0;
     transition: opacity 0.3s var(--easing-circular-ease-out);
 
     &.show {
@@ -107,7 +119,7 @@
       pointer-events: none;
     }
 
-    .tooltip-content :global(p:only-child) {
+    .tooltip-content p:only-child {
       margin-bottom: 0;
       padding: 8px 6px;
       max-width: 250px;
@@ -127,8 +139,8 @@
       }
     }
 
-    [data-popper-placement^='top'],
-    [data-popper-placement^='bottom'] {
+    &[data-popper-placement^='top'],
+    &[data-popper-placement^='bottom'] {
       .tooltip-arrow {
         &::after {
           transform-origin: center center;

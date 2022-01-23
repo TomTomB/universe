@@ -5,7 +5,6 @@
   import { TitleBar } from '../../components';
 
   let showModal = true;
-  let enableTooltip = true;
   let modalInner: HTMLButtonElement;
 
   onMount(() => {
@@ -36,19 +35,15 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
       </p>
 
-      <button
-        on:click={() => (enableTooltip = !enableTooltip)}
-        bind:this={modalInner}
-        aria-describedby="modalTooltip"
-      >
-        <p>Toggle tooltip</p>
+      <button bind:this={modalInner} aria-describedby="modalTooltip">
+        <p>I have some tooltip</p>
       </button>
     </div>
 
     <Tooltip attachTo={modalInner} id="modalTooltip">
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt,
-        esse? {enableTooltip ? 'Yes' : 'No'}
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
+        ratione atque perspiciatis aliquam recusandae sed?
       </p>
     </Tooltip>
   </Modal>
@@ -61,6 +56,11 @@
     position: relative;
     margin-top: 5rem;
     z-index: 10000;
+    background-color: red;
+    p {
+      margin: 0;
+      padding: 0;
+    }
   }
 
   .modal-inner {
