@@ -7,15 +7,15 @@ import {
   loadImages,
 } from '@/uikit/webgl';
 import { EventEmitter } from '@/core/util';
-import { VBanner } from './vBanner';
+import { VBanner } from './v-banner';
 import type {
   BannerAnimationConfig,
   BannerAssets,
   BannerTextureMap,
-} from '../banner-base.types';
+} from './types';
 import type { GlTextureSource, Size } from '@/uikit/webgl';
 
-export class Banner extends EventEmitter<'loaded' | 'error'> {
+export class BannerContext extends EventEmitter<'loaded' | 'error'> {
   private _fpsCounter: FpsCounter;
   private _gl: Gl;
   private _camera?: CameraOrtho;
@@ -187,6 +187,6 @@ export class Banner extends EventEmitter<'loaded' | 'error'> {
 
     this._fpsCounter.frame();
     this._gl.setMatrices(this._camera);
-    this._vBanner && this._vBanner.render();
+    this._vBanner?.render();
   }
 }

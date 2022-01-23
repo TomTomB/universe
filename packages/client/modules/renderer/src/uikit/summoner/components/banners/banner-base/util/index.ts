@@ -1,3 +1,4 @@
-export * from './animationConfig';
+export * from './animation-config';
 export * from './banner';
-export * from './vBanner';
+export * from './v-banner';
+export * from './types';

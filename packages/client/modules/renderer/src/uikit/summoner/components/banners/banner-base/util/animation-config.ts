@@ -1,4 +1,4 @@
-import type { BannerAnimationConfig } from '../banner-base.types';
+import type { BannerAnimationConfig } from './types';
 
 export const bannerAnimationConfig: BannerAnimationConfig = {
   bannerHeight: 667.8260869565217,

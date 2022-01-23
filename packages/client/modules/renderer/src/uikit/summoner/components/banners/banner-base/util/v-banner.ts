@@ -7,11 +7,10 @@ import {
   type GlShader,
   type GlTexture,
 } from '@/uikit/webgl';
-import { Shaders } from '../assets';
-import type {
-  BannerAnimationConfig,
-  BannerTextureMap,
-} from '../banner-base.types';
+import { vec2, vec3 } from 'gl-matrix';
+import fragShader from '../assets/shaders/banner.frag.glsl?raw';
+import vertShader from '../assets/shaders/banner.vert.glsl?raw';
+import type { BannerAnimationConfig, BannerTextureMap } from './types';
 
 export class VBanner {
   private _gl: Gl;
@@ -29,8 +28,8 @@ export class VBanner {
   textureRank: GlTexture;
 
   ratio: number;
-  size: [number, number];
-  position: [number, number, number];
+  size: vec2;
+  position: vec3;
 
   get width() {
     return this.size[0];
@@ -46,10 +45,7 @@ export class VBanner {
     textures: BannerTextureMap,
   ) {
     this._gl = gl;
-    this.shader = this._gl.createShader(
-      Shaders.bannerVertexShader,
-      Shaders.bannerFragmentShader,
-    );
+    this.shader = this._gl.createShader(vertShader, fragShader);
     this._config = config;
     this.textureBackground = textures.background;
     this.textureOverlay = textures.overlay;
@@ -105,55 +101,82 @@ export class VBanner {
     }
 
     this.shader.bind();
-    this.shader.uniform('textureBackground', 'uniform1i', 0);
+    this.shader.uniform('textureBackground', 'int', 0);
     this.textureBackground.bind(0);
-    this.shader.uniform('textureOverlay', 'uniform1i', 1);
+    this.shader.uniform('textureOverlay', 'int', 1);
     this.textureOverlay.bind(1);
-    this.shader.uniform('textureRank', 'uniform1i', 2);
+    this.shader.uniform('textureRank', 'int', 2);
     this.textureRank.bind(2);
 
     const backgroundRankRatio =
       this.textureBackground.width / this.textureRank.width;
     const backgroundRankHeight = backgroundRankRatio * this.textureRank.height;
-    const rankRatioInv = [
+
+    const uRankRatioInv = vec2.create();
+    vec2.set(
+      uRankRatioInv,
       1,
       this.textureBackground.height / backgroundRankHeight,
-    ];
+    );
 
-    this.shader.uniform('uRankRatioInv', 'vec2', rankRatioInv);
-    this.shader.uniform('uRankPosition', 'vec2', [
+    const uRankPosition = vec2.create();
+    vec2.set(
+      uRankPosition,
       0.5,
       backgroundRankHeight / this.textureBackground.height / 2,
-    ]);
+    );
 
-    const o = [this._config.topFadeStart, this._config.topFadeEnd],
-      r = [this._config.bottomFadeStart, this._config.bottomFadeEnd],
-      i = [
-        this._config.circleGradientCenter,
-        this._config.circleGradientStart,
-        this._config.circleGradientEnd,
-      ],
-      l = this._config.fadeOutColor.map((e) => e / 255);
+    const uTopFade = vec2.create();
+    vec2.set(uTopFade, this._config.topFadeStart, this._config.topFadeEnd);
 
+    const uBottomFade = vec2.create();
+    vec2.set(
+      uBottomFade,
+      this._config.bottomFadeStart,
+      this._config.bottomFadeEnd,
+    );
+
+    const uGradientFade = vec3.create();
+    vec3.set(
+      uGradientFade,
+      this._config.circleGradientCenter,
+      this._config.circleGradientStart,
+      this._config.circleGradientEnd,
+    );
+
+    const uFadeOutColor = vec3.create();
+    vec3.set(
+      uFadeOutColor,
+      this._config.fadeOutColor[0] / 255,
+      this._config.fadeOutColor[1] / 255,
+      this._config.fadeOutColor[2] / 255,
+    );
+
+    const uHighlightNoise = vec2.create();
+    vec2.set(
+      uHighlightNoise,
+      this._config.highlightNoiseX,
+      this._config.highlightNoiseY,
+    );
+
+    this.shader.uniform('uRankRatioInv', 'vec2', uRankRatioInv);
+    this.shader.uniform('uRankPosition', 'vec2', uRankPosition);
     this.shader.uniform('uSize', 'vec2', this.size);
-    this.shader.uniform('uTopFade', 'vec2', o);
-    this.shader.uniform('uBottomFade', 'vec2', r);
+    this.shader.uniform('uTopFade', 'vec2', uTopFade);
+    this.shader.uniform('uBottomFade', 'vec2', uBottomFade);
     this.shader.uniform(
       'uBottomFadeAlpha',
       'float',
       this._config.bottomFadeAlpha,
     );
-    this.shader.uniform('uGradientFade', 'vec3', i);
+    this.shader.uniform('uGradientFade', 'vec3', uGradientFade);
     this.shader.uniform('uRatio', 'float', this.ratio);
     this.shader.uniform('uPosition', 'vec3', this.position);
     this.shader.uniform('uDebug', 'float', this._config.debugFade ? 1 : 0);
     this.shader.uniform('uNoiseScale', 'float', this._config.noiseScale);
     this.shader.uniform('uMovingRange', 'float', this._config.movingRange);
-    this.shader.uniform('uHighlightNoise', 'vec2', [
-      this._config.highlightNoiseX,
-      this._config.highlightNoiseY,
-    ]);
-    this.shader.uniform('uFadeOutColor', 'vec3', l);
+    this.shader.uniform('uHighlightNoise', 'vec2', uHighlightNoise);
+    this.shader.uniform('uFadeOutColor', 'vec3', uFadeOutColor);
     this.shader.uniform('uSeed', 'float', this._seed);
     this.shader.uniform(this._config.ripple);
   }
@@ -167,13 +190,13 @@ export class VBanner {
   }
 
   private _resetSpeed() {
-    this._count = Math.floor(this._o(50, 200));
-    this._speed = this._o(1, 4);
+    this._count = Math.floor(this._generateRandomBetween(50, 200));
+    this._speed = this._generateRandomBetween(1, 4);
     const e = 0.75;
     this._speedOffset.targetValue = 1 - e + ((this._speed - 1) / 3) * e;
   }
 
-  private _o(e: number, t: number) {
-    return e + Math.random() * (t - e);
+  private _generateRandomBetween(start: number, end: number) {
+    return start + Math.random() * (end - start);
   }
 }

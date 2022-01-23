@@ -1,5 +1,5 @@
 import { GlMesh } from './gl-mesh';
-import { GlOption } from '../types';
+import { type GlDrawType, GlOption } from '../types';
 import { GlShader } from './gl-shader';
 import { GlTexture } from './gl-texture';
 import { mat3, mat4, type vec4 } from 'gl-matrix';
@@ -94,7 +94,7 @@ export class Gl {
     return new GlShader(this, vertexSrc, fragmentSrc);
   }
 
-  createMesh(drawType = 4) {
+  createMesh(drawType: GlDrawType = GlOption.TRIANGLES) {
     return new GlMesh(this, drawType);
   }
 

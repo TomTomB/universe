@@ -1,8 +1,12 @@
-import { Banner as BannerLogic, bannerAnimationConfig } from './util';
+import {
+  BannerContext,
+  bannerAnimationConfig,
+  type BannerAssets,
+} from './util';
 import { Images } from './assets';
 import { StyledBannerBase, getRankTrim } from './banner-base.styles';
 import { useEffect, useRef, type FC } from 'react';
-import type { BannerAssets, BannerBaseProps } from './banner-base.types';
+import type { BannerBaseProps } from './banner-base.types';
 
 export const BannerBase: FC<BannerBaseProps> = ({
   rank,
@@ -12,7 +16,7 @@ export const BannerBase: FC<BannerBaseProps> = ({
   const bannerCanvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    let banner: BannerLogic | undefined;
+    let banner: BannerContext | undefined;
 
     const bannerAssets: BannerAssets = {
       background: Images.Background.solidBannerAnimatable,
@@ -23,7 +27,7 @@ export const BannerBase: FC<BannerBaseProps> = ({
     };
 
     if (bannerCanvasRef.current) {
-      banner = new BannerLogic(
+      banner = new BannerContext(
         bannerAssets,
         bannerCanvasRef.current,
         bannerAnimationConfig,
