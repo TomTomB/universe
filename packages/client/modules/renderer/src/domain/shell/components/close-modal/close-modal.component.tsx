@@ -1,4 +1,3 @@
-import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
   selectIsCloseModalVisible,
@@ -12,13 +11,8 @@ export const CloseModal: FC = () => {
   const dispatch = useAppDispatch();
   const isCloseModalVisible = useAppSelector(selectIsCloseModalVisible);
 
-  const sfxVolume = useSfxVolume();
-  const playSounds = useSfxChannel();
-
   return (
     <Modal
-      playSounds={playSounds}
-      soundVolume={sfxVolume}
       closeFn={() => dispatch(toggleIsCloseModalVisible(false))}
       labeledById="close-modal-label"
       describedById="close-modal-description"

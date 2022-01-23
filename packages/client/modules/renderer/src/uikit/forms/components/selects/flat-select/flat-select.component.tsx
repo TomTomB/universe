@@ -8,7 +8,7 @@ import { useMemo, type FC, type PropsWithChildren } from 'react';
 import type { SelectOption } from '../select.types';
 import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';
-import type { ControlledInput, WithSound } from '../../../types';
+import type { ControlledInput } from '../../../types';
 import { useController } from 'react-hook-form';
 
 export interface SelectOptionsWithGroups {
@@ -21,7 +21,7 @@ export interface SelectOptionGroup {
   group: string;
 }
 
-export interface FlatSelectProps extends ControlledInput<string>, WithSound {
+export interface FlatSelectProps extends ControlledInput<string> {
   items: SelectOptionsWithGroups;
   label: string;
   openUpward?: boolean;
@@ -34,8 +34,6 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
   items,
   label,
   name,
-  playSounds,
-  soundVolume,
   control,
   className,
   defaultValue,
@@ -74,11 +72,7 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
     },
   });
 
-  const clickAudio = useAudio(
-    clickAudioFile,
-    isDisabled || !playSounds,
-    soundVolume,
-  );
+  const clickAudio = useAudio(clickAudioFile, 'sfx');
 
   return (
     <C.StyledFlatSelect
@@ -116,8 +110,6 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
                           (option) =>
                             option && (
                               <FlatSelectOption
-                                playSounds={playSounds}
-                                soundVolume={soundVolume}
                                 index={normalizedItems.indexOf(option)}
                                 disabled={option.disabled}
                                 key={option.label + option.value}
@@ -141,8 +133,6 @@ export const FlatSelect: FC<PropsWithChildren<FlatSelectProps>> = ({
                   (option) =>
                     option && (
                       <FlatSelectOption
-                        playSounds={playSounds}
-                        soundVolume={soundVolume}
                         index={normalizedItems.indexOf(option)}
                         disabled={option.disabled}
                         key={option.label + option.value}

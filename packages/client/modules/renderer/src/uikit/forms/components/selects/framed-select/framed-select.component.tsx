@@ -10,9 +10,9 @@ import type { SelectOption } from '../select.types';
 import { useController } from 'react-hook-form';
 import clickAudioFile from '../assets/sounds/sfx-uikit-dropdown-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';
-import type { ControlledInput, WithSound } from '../../../types';
+import type { ControlledInput } from '../../../types';
 
-export interface FramedSelectProps extends ControlledInput<string>, WithSound {
+export interface FramedSelectProps extends ControlledInput<string> {
   items: SelectOption[];
   label: string;
   openUpward?: boolean;
@@ -25,10 +25,8 @@ export const FramedSelect: FC<FramedSelectProps> = ({
   name,
   isDisabled,
   control,
-  soundVolume,
   defaultValue,
   onChange,
-  playSounds,
   className,
   openUpward,
 }) => {
@@ -53,11 +51,7 @@ export const FramedSelect: FC<FramedSelectProps> = ({
     leave: { opacity: 0, transform: 'scaleY(0)' },
   });
 
-  const clickAudio = useAudio(
-    clickAudioFile,
-    isDisabled || !playSounds,
-    soundVolume,
-  );
+  const clickAudio = useAudio(clickAudioFile, 'sfx');
 
   return (
     <FormField className={className}>
@@ -101,8 +95,6 @@ export const FramedSelect: FC<FramedSelectProps> = ({
                           <FramedSelectOption
                             index={index}
                             disabled={option.disabled}
-                            playSounds={playSounds}
-                            soundVolume={soundVolume}
                             key={option.label + option.value}
                             selected={selectedOption === option.value}
                             onClick={() => {

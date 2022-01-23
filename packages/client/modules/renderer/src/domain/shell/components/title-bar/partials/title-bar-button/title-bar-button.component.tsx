@@ -6,8 +6,6 @@ import clickAudioFile from './assets/sounds/sfx-uikit-click-generic.ogg';
 interface TitleBarButtonProps {
   label: string;
   type: 'close' | 'minimize' | 'help' | 'settings';
-  playSounds: boolean;
-  soundVolume: number;
   disabled?: boolean;
   onClick: () => void;
 }
@@ -16,15 +14,9 @@ export const TitleBarButton: FC<TitleBarButtonProps> = ({
   label,
   type,
   disabled,
-  playSounds,
-  soundVolume,
   onClick,
 }) => {
-  const clickAudio = useAudio(
-    clickAudioFile,
-    disabled || !playSounds,
-    soundVolume,
-  );
+  const clickAudio = useAudio(clickAudioFile, 'sfx');
 
   switch (type) {
     case 'close':

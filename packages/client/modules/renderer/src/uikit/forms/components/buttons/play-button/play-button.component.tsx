@@ -24,8 +24,6 @@ export const PlayButton: FC<PlayButtonProps> = ({
   buttonState,
   prevButtonState,
   downloadProgress,
-  playSounds,
-  soundVolume,
 }) => {
   const btnIsDisabled =
     disabled ||
@@ -40,27 +38,11 @@ export const PlayButton: FC<PlayButtonProps> = ({
 
   const [isHovering, setIsHovering] = useState(false);
 
-  const lobbyClickAudio = useAudio(
-    lobbyClickAudioFile,
-    disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
-    soundVolume,
-  );
-  const lobbyHoverAudio = useAudio(
-    lobbyHoverAudioFile,
-    disabled || !playSounds || buttonState !== PlayButtonState.LOBBY,
-    soundVolume,
-  );
+  const lobbyClickAudio = useAudio(lobbyClickAudioFile, 'sfx');
+  const lobbyHoverAudio = useAudio(lobbyHoverAudioFile, 'sfx');
 
-  const playClickAudio = useAudio(
-    playClickAudioFile,
-    disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
-    soundVolume,
-  );
-  const playHoverAudio = useAudio(
-    playHoverAudioFile,
-    disabled || !playSounds || buttonState !== PlayButtonState.PLAY,
-    soundVolume,
-  );
+  const playClickAudio = useAudio(playClickAudioFile, 'sfx');
+  const playHoverAudio = useAudio(playHoverAudioFile, 'sfx');
 
   return (
     <C.StyledPlayButton

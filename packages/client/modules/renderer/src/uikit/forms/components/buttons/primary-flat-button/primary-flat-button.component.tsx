@@ -13,15 +13,13 @@ export const PrimaryFlatButton: FC<PrimaryFlatButtonProps> = ({
   disabled,
   onClick,
   variant,
-  playSounds,
-  soundVolume,
   id,
   external,
 }) => {
   const [showClickAnim, setShowClickAnim] = useState(false);
 
-  const clickAudio = useAudio(clickFile, disabled || !playSounds, soundVolume);
-  const hoverAudio = useAudio(hoverFile, disabled || !playSounds, soundVolume);
+  const clickAudio = useAudio(clickFile, 'sfx');
+  const hoverAudio = useAudio(hoverFile, 'sfx');
 
   useEffect(() => {
     if (!showClickAnim) {

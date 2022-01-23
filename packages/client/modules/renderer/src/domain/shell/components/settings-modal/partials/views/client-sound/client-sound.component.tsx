@@ -1,4 +1,3 @@
-import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
   selectEnableMusic,
@@ -38,9 +37,6 @@ export interface ClientSoundProps {
 export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
   const dispatch = useAppDispatch();
 
-  const sfxVolume = useSfxVolume();
-  const playSounds = useSfxChannel();
-
   const enableMusic = useAppSelector(selectEnableMusic);
   const enableSfx = useAppSelector(selectEnableSfx);
   const enableSound = useAppSelector(selectEnableSound);
@@ -66,8 +62,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
         name="enableSound"
         control={control}
         defaultValue={enableSound}
-        playSounds={playSounds}
-        soundVolume={sfxVolume}
         onChange={(v) => dispatch(toggleEnableSound(v))}
       />
       <C.SliderSection>
@@ -91,8 +85,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
           id="enableSfx"
           name="enableSfx"
           control={control}
-          playSounds={playSounds}
-          soundVolume={sfxVolume}
           defaultValue={enableSfx}
           isDisabled={!enableSound}
           onChange={(v) => dispatch(toggleEnableSfx(v))}
@@ -119,8 +111,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playAmbientSounds"
               name="playAmbientSounds"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playAmbientSounds}
               isDisabled={!enableSound || !enableSfx}
               onChange={(v) => dispatch(togglePlayAmbientSounds(v))}
@@ -132,8 +122,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playPickQuotes"
               name="playPickQuotes"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playPickQuotes}
               isDisabled={!enableSound || !enableSfx}
               onChange={(v) => dispatch(togglePlayPickQuotes(v))}
@@ -145,8 +133,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playBanQuotes"
               name="playBanQuotes"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playBanQuotes}
               isDisabled={!enableSound || !enableSfx}
               onChange={(v) => dispatch(togglePlayBanQuotes(v))}
@@ -160,8 +146,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
           id="enableMusic"
           name="enableMusic"
           control={control}
-          playSounds={playSounds}
-          soundVolume={sfxVolume}
           defaultValue={enableMusic}
           isDisabled={!enableSound}
           onChange={(v) => dispatch(toggleEnableMusic(v))}
@@ -191,8 +175,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playChampionSelectMusic"
               name="playChampionSelectMusic"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playChampionSelectMusic}
               isDisabled={!enableSound || !enableMusic}
               onChange={(v) => dispatch(togglePlayChampionSelectMusic(v))}
@@ -204,8 +186,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playLobbyPostGameMusic"
               name="playLobbyPostGameMusic"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playLobbyPostGameMusic}
               isDisabled={!enableSound || !enableMusic}
               onChange={(v) => dispatch(togglePlayLobbyPostGameMusic(v))}
@@ -217,8 +197,6 @@ export const ClientSound: FC<ClientSoundProps> = ({ className }) => {
               id="playLoginMusic"
               name="playLoginMusic"
               control={control}
-              playSounds={playSounds}
-              soundVolume={sfxVolume}
               defaultValue={playLoginMusic}
               isDisabled={!enableSound || !enableMusic}
               onChange={(v) => dispatch(togglePlayLoginMusic(v))}

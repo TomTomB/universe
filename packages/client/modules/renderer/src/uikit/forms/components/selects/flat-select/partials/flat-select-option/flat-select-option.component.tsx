@@ -2,9 +2,8 @@ import * as C from './flat-select-option.styles';
 import type { FC } from 'react';
 import clickAudioFile from '../../../assets/sounds/sfx-uikit-dropdown-select.ogg';
 import { useAudio } from '@/uikit/core/hooks';
-import type { WithSound } from '../../../../../types';
 
-export interface FlatSelectOptionProps extends WithSound {
+export interface FlatSelectOptionProps {
   index: number;
   selected?: boolean;
   disabled?: boolean;
@@ -16,15 +15,9 @@ export const FlatSelectOption: FC<FlatSelectOptionProps> = ({
   selected,
   disabled,
   index,
-  playSounds,
-  soundVolume,
   onClick,
 }) => {
-  const clickAudio = useAudio(
-    clickAudioFile,
-    disabled || !playSounds,
-    soundVolume,
-  );
+  const clickAudio = useAudio(clickAudioFile, 'sfx');
 
   return (
     <C.StyledFlatSelectOption

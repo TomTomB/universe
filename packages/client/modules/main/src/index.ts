@@ -57,7 +57,7 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    show: false,
+    // show: false,
     width: 1280,
     height: 720,
     resizable: false,
@@ -93,6 +93,8 @@ const createWindow = async () => {
       disableBlinkFeatures: 'Auxclick',
     },
   });
+
+  mainWindow?.webContents.openDevTools({ mode: 'detach' });
 
   ipcMain.once('universe:window:did-load', () => {
     splash.destroy();

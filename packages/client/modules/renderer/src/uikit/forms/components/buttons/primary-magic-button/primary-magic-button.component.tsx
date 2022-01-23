@@ -4,9 +4,8 @@ import classNames from 'classnames';
 import hoverAudioFile from './assets/sounds/sfx-login-button-signin-hover.ogg';
 import clickAudioFile from './assets/sounds/sfx-login-button-signin-click.ogg';
 import { useAudio } from '@/uikit/core/hooks';
-import type { WithSound } from '../../../types';
 
-export interface PrimaryMagicButtonProps extends WithSound {
+export interface PrimaryMagicButtonProps {
   disabled?: boolean;
   className?: string;
 }
@@ -15,23 +14,13 @@ export const PrimaryMagicButton: FC<PrimaryMagicButtonProps> = ({
   children,
   disabled,
   className,
-  playSounds,
-  soundVolume,
 }) => {
   const [intro, setIntro] = useState(false);
 
   const introTimeout = useRef(0);
 
-  const hoverAudio = useAudio(
-    hoverAudioFile,
-    disabled || !playSounds,
-    soundVolume,
-  );
-  const clickAudio = useAudio(
-    clickAudioFile,
-    disabled || !playSounds,
-    soundVolume,
-  );
+  const hoverAudio = useAudio(hoverAudioFile, 'sfx');
+  const clickAudio = useAudio(clickAudioFile, 'sfx');
 
   useEffect(() => {
     if (!disabled) {

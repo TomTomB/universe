@@ -1,5 +1,4 @@
 import type { DownloadProgress } from '@/types';
-import type { WithSound } from '../../../types';
 import type { ButtonProps } from '../button.types';
 
 export enum PlayButtonState {
@@ -35,7 +34,7 @@ export enum PlayButtonState {
   LOBBY,
 }
 
-export interface PlayButtonProps extends ButtonProps, WithSound {
+export interface PlayButtonProps extends ButtonProps {
   downloadProgress?: DownloadProgress | null;
   buttonState: PlayButtonState;
   prevButtonState: PlayButtonState;

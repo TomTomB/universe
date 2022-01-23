@@ -12,7 +12,5 @@
     "**/dist": true,
     ".git": true
   },
-  "svelte.plugin.css.globals": "packages/client/modules/renderer/src/styles/theme.scss",
-  "typescript.suggest.paths": false,
-  "javascript.suggest.paths": false
+  "svelte.plugin.css.globals": "packages/client/modules/renderer/src/styles/theme.scss"
 }

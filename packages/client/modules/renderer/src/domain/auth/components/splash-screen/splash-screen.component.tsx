@@ -12,7 +12,7 @@ import musicSplash from '@/assets/splash/music/music-splash-ss19-c.ogg';
 import staticSplash from '@/assets/splash/images/image-splash-ss19-c.jpg';
 import { useAppSelector } from '@/store';
 import { selectPlayLoginAnimations } from '@/store/slices';
-import { useMusicChannel, useMusicVolume } from '@/domain/core/hooks';
+import { useMusicChannel, useMusicVolume } from '@/uikit/core/hooks';
 
 interface SplashScreenContainerProps {
   className?: string;

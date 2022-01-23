@@ -1,4 +1,3 @@
-import { useSfxChannel, useSfxVolume } from '@/domain/core/hooks';
 import { useAppDispatch, useAppSelector } from '@/store';
 import {
   selectEnableMusic,
@@ -42,9 +41,6 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
   const enableMusic = useAppSelector(selectEnableMusic);
   const playLoginAnimations = useAppSelector(selectPlayLoginAnimations);
 
-  const sfxVolume = useSfxVolume();
-  const playSounds = useSfxChannel();
-
   const dispatch = useAppDispatch();
 
   const { control, watch } =
@@ -83,8 +79,6 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             label="Disable Login Animations"
             name="disableLoginAnimations"
             defaultValue={!playLoginAnimations}
-            playSounds={playSounds}
-            soundVolume={sfxVolume}
             control={control}
           />
           <Checkbox
@@ -92,8 +86,6 @@ export const Controls: FC<SplashScreenControlsProps> = ({ music, video }) => {
             label="Disable Login Music"
             name="disableLoginMusic"
             defaultValue={!playLoginMusic}
-            playSounds={playSounds}
-            soundVolume={sfxVolume}
             isDisabled={!enableMusic || !enableSound}
             control={control}
           />

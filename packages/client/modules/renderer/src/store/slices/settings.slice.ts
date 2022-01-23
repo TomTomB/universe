@@ -104,6 +104,8 @@ export const {
   togglePlayPickQuotes,
 } = settingsSlice.actions;
 
+export const selectSettings = (state: RootState) => state.settings;
+
 export const selectEnableMusic = (state: RootState) =>
   state.settings.enableMusic;
 

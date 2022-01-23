@@ -9,9 +9,8 @@ import findMatchClickFile from './assets/sounds/sfx-lobby-button-find-match-clic
 import findMatchHoverFile from './assets/sounds/sfx-lobby-button-find-match-hover.ogg';
 import closeClickFile from './assets/sounds/sfx-lobby-button-quit-click.ogg';
 import closeHoverFile from './assets/sounds/sfx-lobby-button-quit-hover.ogg';
-import type { WithSound } from '../../../types';
 
-export interface ArrowFooterProps extends WithSound {
+export interface ArrowFooterProps {
   hideCloseButton?: boolean;
   isConfirmDisabled?: boolean;
   isCloseDisabled?: boolean;
@@ -38,8 +37,6 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
   isBack,
   isDecorated,
   soundType,
-  playSounds,
-  soundVolume,
   className,
   onCloseClick,
   onConfirmClick,
@@ -47,26 +44,16 @@ export const ArrowFooter: FC<ArrowFooterProps> = ({
   confirmType,
   children,
 }) => {
-  const closeClickAudio = useAudio(
-    closeClickFile,
-    isCloseDisabled || !playSounds,
-    soundVolume,
-  );
-  const closeHoverAudio = useAudio(
-    closeHoverFile,
-    isCloseDisabled || !playSounds,
-    soundVolume,
-  );
+  const closeClickAudio = useAudio(closeClickFile, 'sfx');
+  const closeHoverAudio = useAudio(closeHoverFile, 'sfx');
 
   const confirmClickAudio = useAudio(
     soundType === 'lobby' ? findMatchClickFile : gameSelectClickFile,
-    isConfirmDisabled || !playSounds,
-    soundVolume,
+    'sfx',
   );
   const confirmHoverAudio = useAudio(
     soundType === 'lobby' ? findMatchHoverFile : gameSelectHoverFile,
-    isConfirmDisabled || !playSounds,
-    soundVolume,
+    'sfx',
   );
 
   return (
