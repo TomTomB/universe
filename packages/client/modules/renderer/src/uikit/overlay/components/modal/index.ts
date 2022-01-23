@@ -1,2 +1,3 @@
-export * from './modal.component';
-export * as ModalStyles from './modal.styles';
+import Modal from './Modal.svelte';
+
+export { Modal };

@@ -1,9 +1,9 @@
 /* eslint-env node */
 
-import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { chrome } from '../../temp/build-vars.json';
 import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 const SRC_PATH = `${resolve(__dirname, 'src')}`;
 
@@ -21,7 +21,7 @@ export default defineConfig({
       '@': SRC_PATH,
     },
   },
-  plugins: [svelte()],
+  plugins: [react()],
   build: {
     sourcemap: process.env.MODE === 'development',
     target: `chrome${chrome}`,

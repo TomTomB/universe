@@ -1,2 +1,3 @@
-export * from './animated-arrow-overlay.component';
-export * as AnimatedArrowOverlayStyles from './animated-arrow-overlay.styles';
+import AnimatedArrowOverlay from './AnimatedArrowOverlay.svelte';
+
+export { AnimatedArrowOverlay };

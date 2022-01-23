@@ -11,11 +11,12 @@
   "scripts": {
     "prepare": "husky install",
     "postinstall": "yarn build:version",
-    "commit": "npx git-cz",
+    "commit": "yarn format:svelte && npx git-cz",
     "client": "yarn --cwd packages/client",
-    "lint": "eslint --cache --ext .ts,.tsx,.js,.jsx .",
+    "lint": "eslint --cache --ext .ts,.tsx,.js,.jsx,.svelte .",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
+    "format:svelte": "prettier --write --plugin-search-dir=. ./**/*.svelte",
     "build:version": "node scripts/git-version.js"
   },
   "devDependencies": {
@@ -27,10 +28,6 @@
     "eslint": "8.7.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.3.0",
     "git-describe": "4.1.0",
     "git-format-staged": "2.1.3",
     "husky": "7.0.4",

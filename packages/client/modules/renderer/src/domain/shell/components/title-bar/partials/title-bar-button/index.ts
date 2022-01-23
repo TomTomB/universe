@@ -1,2 +1,3 @@
-export * from './title-bar-button.component';
-export * as TitleBarButtonStyles from './title-bar-button.styles';
+import TitleBarButton from './TitleBarButton.svelte';
+
+export { TitleBarButton };
