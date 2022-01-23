@@ -1,3 +1,2 @@
-import FlyoutFrame from './FlyoutFrame.svelte';
-
-export { FlyoutFrame };
+export * from './flyout-frame.component';
+export * as FlyoutFrameStyles from './flyout-frame.styles';

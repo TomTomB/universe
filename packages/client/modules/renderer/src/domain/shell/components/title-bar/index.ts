@@ -1,3 +1,4 @@
-import TitleBar from './TitleBar.svelte';
+export * from './title-bar.component';
+export * as TitleBarStyles from './title-bar.styles';
 
-export { TitleBar };
+export * from './partials';

@@ -1,23 +1,19 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
+  "extends": "../../../../tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "resolveJsonModule": true,
     "baseUrl": ".",
-    "allowJs": true,
-    "checkJs": true,
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "lib": ["ESNext", "dom", "dom.iterable"]
   },
+
   "include": [
-    "src/**/*.d.ts",
     "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.svelte",
+    "src/**/*.tsx",
+    "types/**/*.d.ts",
     "../../../../types/**/*.d.ts",
     "../preload/types/electron-api.d.ts"
   ]

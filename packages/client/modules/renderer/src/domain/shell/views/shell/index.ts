@@ -1,3 +1,2 @@
-import Shell from './Shell.svelte';
-
-export { Shell };
+export * from './shell.view';
+export * from './shell.styles';
