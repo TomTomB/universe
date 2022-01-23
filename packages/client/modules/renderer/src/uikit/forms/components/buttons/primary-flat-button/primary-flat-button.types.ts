@@ -1,4 +1,3 @@
-import type { WithSound } from '../../../types';
 import type { ButtonProps } from '../button.types';
 
 export interface StyledPrimaryFlatButtonProps {
@@ -8,7 +7,7 @@ export interface StyledPrimaryFlatButtonProps {
 
 export type PrimaryFlatButtonVariant = 'primary' | 'purchase';
 
-export interface PrimaryFlatButtonProps extends ButtonProps, WithSound {
+export interface PrimaryFlatButtonProps extends ButtonProps {
   variant?: PrimaryFlatButtonVariant;
   external?: boolean;
 }
