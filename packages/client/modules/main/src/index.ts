@@ -37,13 +37,12 @@ if (import.meta.env.DEV) {
   app
     .whenReady()
     .then(() => import('electron-devtools-installer'))
-    .then(
-      ({ default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS }) =>
-        installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS], {
-          loadExtensionOptions: {
-            allowFileAccess: true,
-          },
-        }),
+    .then(({ default: installExtension }) =>
+      installExtension([], {
+        loadExtensionOptions: {
+          allowFileAccess: true,
+        },
+      }),
     )
     .catch((e) => Logger.error('Failed install extension:', e));
 }
@@ -57,7 +56,7 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    // show: false,
+    show: false,
     width: 1280,
     height: 720,
     resizable: false,
@@ -93,8 +92,6 @@ const createWindow = async () => {
       disableBlinkFeatures: 'Auxclick',
     },
   });
-
-  mainWindow?.webContents.openDevTools({ mode: 'detach' });
 
   ipcMain.once('universe:window:did-load', () => {
     splash.destroy();
