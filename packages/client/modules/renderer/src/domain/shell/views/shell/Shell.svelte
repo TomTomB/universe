@@ -1,5 +1,6 @@
 <script lang="ts">
   import { AnimatedArrowOverlay } from '@/uikit/common/components';
+  import { Slider } from '@/uikit/forms/components';
   import { FlyoutFrame, Modal, Tooltip } from '@/uikit/overlay/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
@@ -7,6 +8,8 @@
   let showModal = true;
   let modalInner: HTMLButtonElement;
   let showFlyoutFrame = false;
+
+  let sliderValue = 25;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -35,6 +38,9 @@
       <p class="modal-body">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
       </p>
+
+      <label for="slider_new1">Value is {sliderValue}</label>
+      <Slider bind:value={sliderValue} id="slider_new1" />
 
       <button
         bind:this={modalInner}

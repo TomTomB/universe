@@ -9,7 +9,7 @@ declare namespace svelte.JSX {
      * This event can only be used if the resizeObserver action is present on the element.
      */
     'onelement-resize'?: (
-      event: CustomEvent<{ width: number; height: number }> & {
+      event: CustomEvent<DOMRect> & {
         target: EventTarget & T;
       },
     ) => void;
