@@ -426,6 +426,7 @@
 
       .thumb {
         background-position: 0 -60px;
+        cursor: grabbing;
       }
     }
 
@@ -647,10 +648,6 @@
     background: url(./assets/images/slider-btn.png) no-repeat top left;
     background-size: 100%;
     cursor: grab;
-
-    &:active {
-      cursor: grabbing;
-    }
   }
 
   .slider-is-sliding {
