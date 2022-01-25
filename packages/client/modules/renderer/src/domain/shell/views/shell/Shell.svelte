@@ -8,8 +8,8 @@
   let showModal = true;
   let modalInner: HTMLButtonElement;
   let showFlyoutFrame = false;
-
   let sliderValue = 25;
+  let slider: Slider | null = null;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -32,6 +32,11 @@
     on:backdrop-click={() => (showModal = false)}
     on:close-click={() => (showModal = false)}
     on:escape-key-up={() => (showModal = false)}
+    on:transition-done={() => {
+      if (showModal && slider) {
+        slider.recalculateDimensions();
+      }
+    }}
   >
     <div class="modal-inner">
       <h1 id="modal-head">Modal</h1>
@@ -40,7 +45,7 @@
       </p>
 
       <label for="slider_new1">Value is {sliderValue}</label>
-      <Slider bind:value={sliderValue} id="slider_new1" />
+      <Slider bind:this={slider} bind:value={sliderValue} id="slider_new1" />
 
       <button
         bind:this={modalInner}

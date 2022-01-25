@@ -10,6 +10,15 @@
   export let value: number;
   export let isDisabled = false;
   export let isInverted = false;
+  export const recalculateDimensions = () => {
+    const newRect = _slider?.getBoundingClientRect();
+
+    if (!newRect) {
+      return;
+    }
+
+    sliderDimensions = newRect;
+  };
 
   const clamp = (_value: number, _min: number, _max: number) => {
     return Math.max(_min, Math.min(_value, _max));

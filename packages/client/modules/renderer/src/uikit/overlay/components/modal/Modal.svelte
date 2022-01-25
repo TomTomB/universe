@@ -24,6 +24,7 @@
     'backdrop-click': void;
     'close-click': void;
     'escape-key-up': void;
+    'transition-done': 'enter' | 'leave';
   }>();
 
   const onBackdropClick = () => {
@@ -32,6 +33,10 @@
 
   const onTopRightClose = () => {
     dispatch('close-click');
+  };
+
+  const onTransitionDone = (state: 'enter' | 'leave') => {
+    dispatch('transition-done', state);
   };
 
   const onWindowKeyUp = (event: KeyboardEvent) => {
@@ -48,6 +53,12 @@
   transition:fade={{ duration: 300, easing: cubicCushioned }}
   use:teleport={MODAL_PORTAL}
   on:click={onBackdropClick}
+  on:introend={() => {
+    onTransitionDone('enter');
+  }}
+  on:outroend={() => {
+    onTransitionDone('leave');
+  }}
 >
   <div
     role="dialog"
