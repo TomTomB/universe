@@ -5,6 +5,7 @@
   import { transform } from '@/uikit/common/animations';
   import { cubicCushioned } from '@/uikit/common/easing';
   import { createEventDispatcher } from 'svelte';
+  import { useOverlay } from '../../util';
 
   export let position: 'top' | 'right' | 'bottom' | 'left';
   export let showCaret = false;
@@ -20,6 +21,8 @@
   export let allyModalHeaderId: string;
   export let allyModalDescriptionId: string;
 
+  let didMouseDownOnBackdrop = false;
+
   const dispatch = createEventDispatcher<{
     'backdrop-click': void;
     'close-click': void;
@@ -27,9 +30,12 @@
     'transition-done': 'enter' | 'leave';
   }>();
 
-  const onBackdropClick = () => {
-    dispatch('backdrop-click');
-  };
+  const { currentOpenOverlay, overlayId } = useOverlay(() => {
+    if (overlayId === $currentOpenOverlay) {
+      dispatch('escape-key-up');
+      return true;
+    }
+  });
 
   const onTopRightClose = () => {
     dispatch('close-click');
@@ -39,20 +45,24 @@
     dispatch('transition-done', state);
   };
 
-  const onWindowKeyUp = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      dispatch('escape-key-up');
+  const onBackdropMouseDown = () => {
+    didMouseDownOnBackdrop = true;
+  };
+
+  const onBackdropMouseUp = () => {
+    if (didMouseDownOnBackdrop) {
+      dispatch('backdrop-click');
     }
+    didMouseDownOnBackdrop = false;
   };
 </script>
-
-<svelte:window on:keyup={onWindowKeyUp} />
 
 <div
   class="modal-container"
   transition:fade={{ duration: 300, easing: cubicCushioned }}
   use:teleport={MODAL_PORTAL}
-  on:click={onBackdropClick}
+  on:mousedown={onBackdropMouseDown}
+  on:mouseup={onBackdropMouseUp}
   on:introend={() => {
     onTransitionDone('enter');
   }}
@@ -77,7 +87,7 @@
       scale: { to: 1.1 },
       easing: cubicCushioned,
     }}
-    on:click|stopPropagation={() => void 0}
+    on:mousedown|stopPropagation={() => void 0}
   >
     {#if !isBorderless}
       <div class="sub-border" />
@@ -121,7 +131,8 @@
   }
 
   .modal {
-    --frameColors: #614a1f 0, #463714 5px, #463714 100%;
+    --frameColors: var(--color-gold55) 0, var(--color-gold6) 5px,
+      var(--color-gold6) 100%;
 
     border: 2px solid transparent;
     position: relative;
@@ -277,7 +288,8 @@
     }
 
     &.is-disabled {
-      --frameColors: #39393e 0, #1e282d 5px, #1e282d 100%;
+      --frameColors: var(--color-frame-grey-light) 0,
+        var(--color-frame-grey) 5px, var(--color-frame-grey) 100%;
 
       &.top {
         .sub-border {
@@ -391,14 +403,14 @@
 
     &:hover,
     &:focus-visible {
-      background: url(./assets/images/close.png), rgba(10, 20, 40, 0.5);
+      background: url(./assets/images/close.png), rgba(10, 20, 40, 1);
       background-size: 75% 75%, 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
     &.with-background {
-      background-color: #0a1428;
+      background-color: rgba(var(--color-blue6-rgb), 0.1);
       background-size: 18px 18px;
       background-position: center;
       border-radius: 2px;

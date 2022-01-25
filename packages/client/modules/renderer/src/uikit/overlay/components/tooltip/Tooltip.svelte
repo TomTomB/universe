@@ -3,6 +3,7 @@
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
   import type { Placement } from '@popperjs/core';
   import { onDestroy } from 'svelte';
+  import { popOverlay, pushOverlay, useOverlay } from '../../util';
 
   export let attachTo: HTMLElement | undefined | null = null;
   export let type: 'default' | 'system' = 'default';
@@ -18,13 +19,41 @@
   let show = false;
   let delayTimeout: number | null = null;
 
+  const { currentOpenOverlay, overlayId } = useOverlay(
+    () => {
+      if (overlayId === $currentOpenOverlay) {
+        hideTooltip();
+
+        return true;
+      }
+    },
+    {
+      ignoreOnMount: true,
+      prioritize: true,
+    },
+  );
+
+  const showTooltip = () => {
+    if (show) return;
+
+    pushOverlay(overlayId);
+    show = true;
+  };
+
+  const hideTooltip = () => {
+    if (!show) return;
+
+    popOverlay(overlayId);
+    show = false;
+  };
+
   const attachedElementMouseEnter = () => {
     if (delay) {
       delayTimeout = window.setTimeout(() => {
-        show = true;
+        showTooltip();
       }, delay);
     } else {
-      show = true;
+      showTooltip();
     }
   };
 
@@ -34,13 +63,7 @@
       delayTimeout = null;
     }
 
-    show = false;
-  };
-
-  const onWindowKeyUp = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      show = false;
-    }
+    hideTooltip();
   };
 
   onDestroy(() => {
@@ -50,8 +73,6 @@
     }
   });
 </script>
-
-<svelte:window on:keyup={onWindowKeyUp} />
 
 {#if attachTo}
   <div
@@ -92,9 +113,10 @@
   }
 
   .tooltip {
-    --frameColors: #614a1f 0, #463714 5px, #463714 100%;
+    --frameColors: var(--color-gold55) 0, var(--color-gold6) 5px,
+      var(--color-gold6) 100%;
 
-    background-color: #010a13;
+    background-color: var(--color-almost-black);
     box-shadow: 0 0 0 1px rgba(1, 10, 19, 0.48);
     min-width: 41px;
     border: 2px solid transparent;

@@ -5,6 +5,7 @@
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
   import { fade } from 'svelte/transition';
   import { circOut } from 'svelte/easing';
+  import { useOverlay } from '../../util';
 
   export let showCloseButton = false;
   export let attachTo: HTMLElement | undefined | null = null;
@@ -18,18 +19,18 @@
     'escape-key-up': void;
   }>();
 
+  const { currentOpenOverlay, overlayId } = useOverlay(() => {
+    if (overlayId === $currentOpenOverlay) {
+      dispatch('escape-key-up');
+      return true;
+    }
+  });
   const onCloseClick = () => {
     dispatch('close-click');
   };
 
   const onClickOutside = () => {
     dispatch('click-outside');
-  };
-
-  const onWindowKeyUp = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      dispatch('escape-key-up');
-    }
   };
 
   const onTransitionEnter = () => {
@@ -42,8 +43,6 @@
     flyoutFrameElement?.classList.add('caret-outro');
   };
 </script>
-
-<svelte:window on:keyup={onWindowKeyUp} />
 
 {#if attachTo}
   <div

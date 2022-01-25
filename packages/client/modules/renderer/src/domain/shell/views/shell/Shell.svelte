@@ -1,15 +1,10 @@
 <script lang="ts">
   import { AnimatedArrowOverlay } from '@/uikit/common/components';
-  import { Slider } from '@/uikit/forms/components';
-  import { FlyoutFrame, Modal, Tooltip } from '@/uikit/overlay/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
+  import TestModal from './TestModal.svelte';
 
   let showModal = true;
-  let modalInner: HTMLButtonElement;
-  let showFlyoutFrame = false;
-  let sliderValue = 25;
-  let slider: Slider | null = null;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -24,57 +19,7 @@
 </button>
 
 {#if showModal}
-  <Modal
-    allyModalHeaderId="modal-head"
-    allyModalDescriptionId="modal-body"
-    position="bottom"
-    topRightCloseButton={{ variant: 'toast', showBackground: true }}
-    on:backdrop-click={() => (showModal = false)}
-    on:close-click={() => (showModal = false)}
-    on:escape-key-up={() => (showModal = false)}
-    on:transition-done={() => {
-      if (showModal && slider) {
-        slider.recalculateDimensions();
-      }
-    }}
-  >
-    <div class="modal-inner">
-      <h1 id="modal-head">Modal</h1>
-      <p class="modal-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
-      </p>
-
-      <label for="slider_new1">Value is {sliderValue}</label>
-      <Slider bind:this={slider} bind:value={sliderValue} id="slider_new1" />
-
-      <button
-        bind:this={modalInner}
-        aria-describedby="modalTooltip"
-        on:click={() => (showFlyoutFrame = !showFlyoutFrame)}
-      >
-        <p>I have some tooltip</p>
-      </button>
-    </div>
-
-    <Tooltip attachTo={modalInner} id="modalTooltip">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
-        ratione atque perspiciatis aliquam recusandae sed?
-      </p>
-    </Tooltip>
-
-    {#if showFlyoutFrame}
-      <FlyoutFrame attachTo={modalInner}>
-        <div class="modal-inner">
-          <h4>Hello</h4>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-            nihil?
-          </p>
-        </div>
-      </FlyoutFrame>
-    {/if}
-  </Modal>
+  <TestModal on:close={() => (showModal = false)} />
 {/if}
 
 <style lang="scss">
@@ -87,14 +32,6 @@
     p {
       margin: 0;
       padding: 0;
-    }
-  }
-
-  .modal-inner {
-    padding: 1rem;
-
-    h1 {
-      margin-bottom: 0.75rem;
     }
   }
 </style>
