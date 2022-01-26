@@ -7,11 +7,11 @@ export const clickOutside = (node: HTMLElement) => {
     node.dispatchEvent(new CustomEvent('click-outside'));
   };
 
-  node.addEventListener('click', handleClick, true);
+  document.addEventListener('click', handleClick, true);
 
   return {
     destroy() {
-      node.removeEventListener('click', handleClick, true);
+      document.removeEventListener('click', handleClick, true);
     },
   };
 };
