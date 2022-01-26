@@ -49,7 +49,7 @@
   <div
     bind:this={flyoutFrameElement}
     class="flyout-frame"
-    use:clickOutside
+    use:clickOutside={{ exclude: [attachTo] }}
     use:teleport={TOOLTIP_PORTAL}
     use:popper={{
       attachTo,
