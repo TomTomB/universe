@@ -113,11 +113,11 @@
   }
 
   .tooltip {
-    --frameColors: var(--color-gold55) 0, var(--color-gold6) 5px,
-      var(--color-gold6) 100%;
+    --frame-colors: rgb(var(--color-gold-600)) 0, rgb(var(--color-gold-700)) 5px,
+      rgb(var(--color-gold-700)) 100%;
 
-    background-color: var(--color-almost-black);
-    box-shadow: 0 0 0 1px rgba(1, 10, 19, 0.48);
+    background-color: rgb(var(--color-almost-black));
+    box-shadow: 0 0 0 1px rgb(var(--color-almost-black), 0.48);
     min-width: 41px;
     border: 2px solid transparent;
     z-index: 100;
@@ -137,7 +137,7 @@
       height: calc(100% - 12px);
       top: 6px;
       left: 6px;
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px 1px rgb(var(--color-black), 0.5);
       pointer-events: none;
     }
 
@@ -204,7 +204,7 @@
     }
 
     &[data-popper-placement^='top'] {
-      border-image: linear-gradient(to top, var(--frameColors)) 1 stretch;
+      border-image: linear-gradient(to top, var(--frame-colors)) 1 stretch;
 
       .tooltip-arrow {
         bottom: 0;
@@ -220,7 +220,7 @@
     }
 
     &[data-popper-placement^='bottom'] {
-      border-image: linear-gradient(to bottom, var(--frameColors)) 1 stretch;
+      border-image: linear-gradient(to bottom, var(--frame-colors)) 1 stretch;
 
       .tooltip-arrow {
         top: 0;
@@ -238,7 +238,7 @@
     }
 
     &[data-popper-placement^='left'] {
-      border-image: linear-gradient(to left, var(--frameColors)) 1 stretch;
+      border-image: linear-gradient(to left, var(--frame-colors)) 1 stretch;
 
       .tooltip-arrow {
         right: 0;
@@ -257,7 +257,7 @@
     }
 
     &[data-popper-placement^='right'] {
-      border-image: linear-gradient(to right, var(--frameColors)) 1 stretch;
+      border-image: linear-gradient(to right, var(--frame-colors)) 1 stretch;
 
       .tooltip-arrow {
         left: 0;

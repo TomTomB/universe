@@ -1,5 +1,5 @@
 p {
-  color: var(--color-grey1);
+  color: rgb(var(--color-grey-100));
   font-size: 12px;
   font-weight: normal;
   line-height: 16px;
@@ -8,7 +8,7 @@ p {
 }
 
 label {
-  color: var(--color-grey1);
+  color: rgb(var(--color-grey-100));
   font-size: 12px;
   font-weight: normal;
   line-height: 16px;
@@ -17,12 +17,12 @@ label {
   transition: 300ms color var(--easing-circular-ease-out);
 
   &.is-invalid {
-    color: var(--color-mage2);
+    color: rgb(var(--color-mage-light));
   }
 }
 
 a {
-  color: var(--color-gold2);
+  color: rgb(var(--color-gold-200));
   font-size: 12px;
   font-weight: normal;
   outline: 0;
@@ -31,11 +31,11 @@ a {
 
   &:hover,
   &:focus-visible {
-    color: var(--color-gold1);
+    color: rgb(var(--color-gold-100));
   }
 
   &.external {
-    color: var(--color-blue3);
+    color: rgb(var(--color-blue-400));
     text-decoration: none;
 
     &::after {
@@ -46,7 +46,7 @@ a {
       vertical-align: middle;
       -webkit-mask: url(./assets/external-link-mask.png) no-repeat;
       -webkit-mask-size: contain;
-      background-color: var(--color-blue3);
+      background-color: rgb(var(--color-blue-400));
       margin-left: 5px;
       position: relative;
       bottom: 1px;
@@ -54,10 +54,10 @@ a {
 
     &:hover,
     &:focus-visible {
-      color: var(--color-blue1);
+      color: rgb(var(--color-gold-100));
 
       &::after {
-        background-color: var(--color-blue1);
+        background-color: rgb(var(--color-gold-100));
       }
     }
   }
@@ -65,7 +65,7 @@ a {
 
 ul {
   li {
-    color: var(--color-grey1);
+    color: rgb(var(--color-grey-100));
     font-size: 12px;
     font-weight: normal;
     line-height: 16px;
@@ -75,14 +75,14 @@ ul {
   &.title-list {
     li {
       font-family: LoL Display;
-      color: var(--color-gold1);
+      color: rgb(var(--color-gold-100));
       font-size: 14px;
       font-weight: 700;
       line-height: 18px;
       letter-spacing: 0.0375em;
 
       &.subhead {
-        color: var(--color-grey1);
+        color: rgb(var(--color-grey-100));
       }
     }
   }

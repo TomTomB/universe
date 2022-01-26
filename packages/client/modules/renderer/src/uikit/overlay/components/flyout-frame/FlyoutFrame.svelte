@@ -201,6 +201,9 @@
   .flyout-frame {
     will-change: opacity;
 
+    --frame-colors: rgb(var(--color-gold-600)) 0, rgb(var(--color-gold-700)) 5px,
+      rgb(var(--color-gold-700)) 100%;
+
     &[data-popper-placement^='top'],
     &[data-popper-placement^='bottom'] {
       .border {
@@ -257,13 +260,7 @@
 
     &[data-popper-placement^='top'] {
       .border {
-        border-image: linear-gradient(
-            to top,
-            #614a1f 0,
-            #463714 5px,
-            #463714 100%
-          )
-          1 stretch;
+        border-image: linear-gradient(to top, var(--frame-colors)) 1 stretch;
       }
 
       .sub-border {
@@ -278,13 +275,7 @@
     &[data-popper-placement^='bottom'] {
       .border {
         border: 2px solid transparent;
-        border-image: linear-gradient(
-            to bottom,
-            #614a1f 0,
-            #463714 5px,
-            #463714 100%
-          )
-          1 stretch;
+        border-image: linear-gradient(to bottom, var(--frame-colors)) 1 stretch;
       }
 
       .sub-border {
@@ -307,13 +298,7 @@
     &[data-popper-placement^='left'] {
       .border {
         border: 2px solid transparent;
-        border-image: linear-gradient(
-            to left,
-            #614a1f 0,
-            #463714 5px,
-            #463714 100%
-          )
-          1 stretch;
+        border-image: linear-gradient(to left, var(--frame-colors)) 1 stretch;
       }
 
       .sub-border {
@@ -336,13 +321,7 @@
     &[data-popper-placement^='right'] {
       .border {
         border: 2px solid transparent;
-        border-image: linear-gradient(
-            to right,
-            #614a1f 0,
-            #463714 5px,
-            #463714 100%
-          )
-          1 stretch;
+        border-image: linear-gradient(to right, var(--frame-colors)) 1 stretch;
       }
 
       .sub-border {
@@ -362,7 +341,7 @@
   .border {
     border: 2px solid transparent;
     position: absolute;
-    box-shadow: 0 0 0 1px rgba(1, 10, 19, 0.48);
+    box-shadow: 0 0 0 1px rgb(var(--color-almost-black), 0.48);
     z-index: 1;
     transform-origin: center center;
     will-change: transform;
@@ -374,7 +353,7 @@
       height: calc(100% + 4px);
       top: -2px;
       left: -2px;
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px 1px rgb(var(--color-almost-black), 0.5);
       pointer-events: none;
     }
   }
@@ -441,9 +420,17 @@
 
   .flyout-frame-content {
     position: relative;
-    background-color: #010a13;
-    mask-image: linear-gradient(to left, #000, #000);
-    -webkit-mask-image: linear-gradient(to left, #000, #000);
+    background-color: rgb(var(--color-almost-black));
+    mask-image: linear-gradient(
+      to left,
+      rgb(var(--color-black)),
+      rgb(var(--color-black))
+    );
+    -webkit-mask-image: linear-gradient(
+      to left,
+      rgb(var(--color-black)),
+      rgb(var(--color-black))
+    );
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-position: center;

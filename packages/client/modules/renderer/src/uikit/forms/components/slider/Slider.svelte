@@ -408,8 +408,9 @@
 
 <style lang="scss" global>
   .slider {
-    --fill: #463714, #695625;
-    --fill-hover: #785a28 0%, #c89b3c 56%, #c8aa6e 100%;
+    --fill: rgb(var(--color-gold-700)), rgb(var(--color-gold-500));
+    --fill-hover: rgb(var(--color-gold-500)) 0%, rgb(var(--color-gold-400)) 56%,
+      rgb(var(--color-gold-300)) 100%;
 
     --fill-to-right: linear-gradient(to right, var(--fill));
     --fill-to-left: linear-gradient(to left, var(--fill));
@@ -443,7 +444,7 @@
       pointer-events: none;
 
       .track-fill {
-        background: rgba(1, 10, 19, 0.15) !important;
+        background: rgb(var(--color-almost-black), 0.15) !important;
       }
 
       .thumb {
@@ -638,7 +639,7 @@
     position: absolute;
 
     transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
-    background-color: #1e2328;
+    background-color: rgb(var(--color-grey-700));
   }
 
   .thumb-container {

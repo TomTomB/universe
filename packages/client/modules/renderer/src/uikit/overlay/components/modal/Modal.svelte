@@ -126,18 +126,18 @@
     bottom: 0;
     display: grid;
     place-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(var(--color-black), 0.5);
     overflow: hidden;
   }
 
   .modal {
-    --frameColors: var(--color-gold55) 0, var(--color-gold6) 5px,
-      var(--color-gold6) 100%;
+    --frame-colors: rgb(var(--color-gold-600)) 0, rgb(var(--color-gold-700)) 5px,
+      rgb(var(--color-gold-700)) 100%;
 
     border: 2px solid transparent;
     position: relative;
     background: #010a13;
-    box-shadow: 0 0 0 1px rgba(1, 10, 19, 0.48);
+    box-shadow: 0 0 0 1px rgb(var(--color-almost-black), 0.48);
     max-width: 800px;
 
     will-change: transform, opacity;
@@ -149,7 +149,7 @@
       height: calc(100% + 4px);
       top: -2px;
       left: -2px;
-      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px 1px rgb(var(--color-black), 0.5);
       pointer-events: none;
     }
 
@@ -241,11 +241,12 @@
     }
 
     &.left {
-      border-image: linear-gradient(to right, var(--frameColors) 100%) 1 stretch;
+      border-image: linear-gradient(to right, var(--frame-colors) 100%) 1
+        stretch;
     }
 
     &.right {
-      border-image: linear-gradient(to left, var(--frameColors) 100%) 1 stretch;
+      border-image: linear-gradient(to left, var(--frame-colors) 100%) 1 stretch;
 
       .sub-border {
         &::before,
@@ -264,7 +265,7 @@
     }
 
     &.top {
-      border-image: linear-gradient(to bottom, var(--frameColors) 100%) 1
+      border-image: linear-gradient(to bottom, var(--frame-colors) 100%) 1
         stretch;
 
       .sub-border {
@@ -284,12 +285,12 @@
     }
 
     &.bottom {
-      border-image: linear-gradient(to top, var(--frameColors) 100%) 1 stretch;
+      border-image: linear-gradient(to top, var(--frame-colors) 100%) 1 stretch;
     }
 
     &.is-disabled {
-      --frameColors: var(--color-frame-grey-light) 0,
-        var(--color-frame-grey) 5px, var(--color-frame-grey) 100%;
+      --frame-colors: var(--color-frame-grey-light) 0,
+        rgb(var(--color-grey-800)) 5px, rgb(var(--color-grey-800)) 100%;
 
       &.top {
         .sub-border {
@@ -390,7 +391,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background: url(./assets/images/close.png), rgba(0, 0, 0, 0.5);
+    background: url(./assets/images/close.png), rgb(var(--color-black), 0.5);
     cursor: pointer;
     border-radius: 4px;
     background-size: 75% 75%, 100% 100%;
@@ -403,14 +404,14 @@
 
     &:hover,
     &:focus-visible {
-      background: url(./assets/images/close.png), rgba(10, 20, 40, 1);
+      background: url(./assets/images/close.png), rgb(var(--color-blue-700));
       background-size: 75% 75%, 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
     &.with-background {
-      background-color: rgba(var(--color-blue6-rgb), 0.1);
+      background-color: rgb(var(--color-blue6-rgb), 0.1);
       background-size: 18px 18px;
       background-position: center;
       border-radius: 2px;

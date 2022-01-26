@@ -21,33 +21,33 @@
   border-radius: 6px;
   background-clip: padding-box;
   height: 11px;
-  background-color: #785a28;
+  background-color: rgb(var(--color-gold-500));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #c8aa6e;
+  background-color: rgb(var(--color-gold-300));
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background-color: #463714;
+  background-color: rgb(var(--color-gold-700));
 }
 
 .no-distract {
   &::-webkit-scrollbar-thumb {
-    background-color: #1e2328;
+    background-color: rgb(var(--color-grey-700));
   }
 
   &:hover {
     &::-webkit-scrollbar-thumb {
-      background-color: #785a28;
+      background-color: rgb(var(--color-gold-500));
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background-color: #c8aa6e;
+      background-color: rgb(var(--color-gold-300));
     }
 
     &::-webkit-scrollbar-thumb:active {
-      background-color: #463714;
+      background-color: rgb(var(--color-gold-700));
     }
   }
 }

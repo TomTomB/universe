@@ -13,15 +13,15 @@
     -webkit-mask-size: contain;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
-    background-color: var(--color-grey1);
+    background-color: rgb(var(--color-grey-100));
     transition: opacity 300ms ease;
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-gold1);
+      background-color: rgb(var(--color-gold-100));
     }
     &:active {
-      background-color: var(--color-grey2);
+      background-color: rgb(var(--color-grey-400));
     }
 
     &:disabled {

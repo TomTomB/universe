@@ -1,38 +1,43 @@
 :root {
-  --color-gold1: #f0e6d2;
-  --color-gold2: #cdbe91;
-  --color-gold3: #c8aa6e;
-  --color-gold4: #c89b3c;
-  --color-gold5: #785a28;
-  --color-gold6: #463714;
-  --color-gold7: #32281e;
+  --color-gold-100: 240, 230, 209; // color-gold1 #f0e6d2
+  --color-gold-200: 205, 190, 145; // color-gold2 #cdbe91
+  --color-gold-300: 200, 170, 110; // color-gold3 #c8aa6e
+  --color-gold-400: 200, 155, 60; // color-gold4 #c89b3c
+  --color-gold-500: 120, 90, 40; // color-gold5 #785a28
+  --color-gold-600: 97, 74, 31; // #614a1f
+  --color-gold-700: 70, 55, 20; // color-gold6 #463714
+  --color-gold-800: 50, 40, 30; // color-gold7 #32281e
 
-  --color-blue1: #cdfafa;
-  --color-blue2: #0ac8b9;
-  --color-blue3: #0596aa;
-  --color-blue4: #005a82;
-  --color-blue5: #0a323c;
-  --color-blue6: #0a1428;
-  --color-grey-blue: #a3c7c7;
+  --color-blue-100: 205, 250, 250; // color-blue1 #cdfafa
+  --color-blue-200: 163, 199, 199; // color-grey-blue #a3c7c7
+  --color-blue-300: 10, 200, 185; // color-blue2 #0ac8b9
+  --color-blue-400: 5, 150, 170; // color-blue3 #0596aa
+  --color-blue-500: 0, 90, 130; // color-blue4 #005a82
+  --color-blue-600: 10, 50, 60; // color-blue5 #0a323c
+  --color-blue-700: 10, 20, 40; // color-blue6 #0a1428
 
-  --color-frame-grey: #1e282d;
-  --color-gold-grey: #3c3732;
-  --color-grey1: #a09b8c;
-  --color-grey1_5: #5b5a56;
-  --color-grey2: #3c3c41;
-  --color-grey3: #1e2328;
-  --color-grey-disabled: #5c5b57;
+  --color-grey-100: 160, 155, 140; // color-grey1 #a09b8c
+  --color-grey-200: 92, 91, 87; // color-grey-disabled #5c5b57
+  --color-grey-300: 91, 90, 86; // color-grey1_5 #5b5a56
+  --color-grey-400: 60, 60, 65; // color-grey2 #3c3c41
+  --color-grey-500: 60, 55, 50; // color-gold-grey #3c3732
+  --color-grey-600: 57, 57, 62; // #39393e
+  --color-grey-700: 30, 35, 40; // color-grey3 #1e2328
+  --color-grey-800: 30, 40, 45; // color-frame-grey #1e282d
 
-  --color-ip: #1e825a;
-  --color-ip2: #00a741;
-  --color-experience: #643c5a;
-  --color-paladin: #0a96aa;
-  --color-paladin2: #0acbe6;
-  --color-mage: #be1e37;
-  --color-mage2: #ff2345;
-  --color-me: #fabe0a;
+  --color-ip: 30, 130, 90; // color-ip #1e825a
+  --color-ip-light: 0, 167, 65; // color-ip2 #00a741
 
-  --color-almost-black: #010a13;
+  --color-paladin: 10, 150, 170; // color-paladin #0a96aa
+  --color-paladin-light: 10, 203, 230; // color-paladin2 #0acbe6
+
+  --color-mage: 190, 30, 55; // color-mage #be1e37
+  --color-mage-light: 255, 35, 69; // color-mage2 #ff2345
+
+  --color-me: 250, 190, 10; // color-me #fabe0a
+  --color-experience: 100, 60, 90; // color-experience #643c5a
+  --color-almost-black: 1, 10, 19; // color-almost-black #010a13
+  --color-black: 0, 0, 0; // #000000
 
   --easing-circular-ease-out: cubic-bezier(0, 0, 0, 1);
   --easing-cushioned: cubic-bezier(0.2, 0.9, 0, 1);
