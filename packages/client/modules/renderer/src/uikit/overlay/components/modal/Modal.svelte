@@ -397,7 +397,6 @@
     background-size: 75% 75%, 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-
     border: 0;
     appearance: none;
     padding: 0;
@@ -411,7 +410,7 @@
     }
 
     &.with-background {
-      background-color: rgb(var(--color-blue6-rgb), 0.1);
+      background-color: rgb(var(--color-blue-700), 0.5);
       background-size: 18px 18px;
       background-position: center;
       border-radius: 2px;
