@@ -54,6 +54,7 @@
     <FlyoutFrame
       attachTo={modalInner}
       on:escape-key-up={() => (showFlyoutFrame = false)}
+      on:click-outside={() => (showFlyoutFrame = false)}
     >
       <div class="modal-inner">
         <h4>Hello</h4>

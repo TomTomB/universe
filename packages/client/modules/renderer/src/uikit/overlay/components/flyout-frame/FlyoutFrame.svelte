@@ -4,8 +4,9 @@
   import { clickOutside, popper, teleport } from '@/uikit/common/actions';
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
   import { fade } from 'svelte/transition';
-  import { circOut } from 'svelte/easing';
+  import { circOut, linear } from 'svelte/easing';
   import { useOverlay } from '../../util';
+  import { transform } from '@/uikit/common/animations';
 
   export let showCloseButton = false;
   export let attachTo: HTMLElement | undefined | null = null;
@@ -56,14 +57,28 @@
       offset: [0, 18],
       arrowPadding: showCloseButton ? 30 : 17,
     }}
-    transition:fade={{ easing: circOut }}
+    transition:fade={{ easing: linear, duration: 250 }}
     on:click-outside={onClickOutside}
     on:introstart={onTransitionEnter}
     on:outrostart={onTransitionLeave}
   >
     <div class="flyout-frame-inner">
-      <div class="border" />
-      <div class="sub-border" />
+      <div
+        class="border"
+        transition:transform={{
+          scale: { from: [0.5, 1] },
+          easing: circOut,
+          duration: 250,
+        }}
+      />
+      <div
+        class="sub-border"
+        transition:transform={{
+          scale: { from: [0.5, 1] },
+          easing: circOut,
+          duration: 250,
+        }}
+      />
       <div class="caret" data-popper-arrow />
 
       <div class="flyout-frame-content">
