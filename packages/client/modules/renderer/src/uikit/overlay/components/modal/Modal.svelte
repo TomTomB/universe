@@ -79,12 +79,12 @@
     class:show-caret={showCaret}
     class:is-disabled={isDisabled}
     in:transform={{
-      scale: { from: [0.6, 0.6] },
-      translate: { from: [0, 4], unit: 'rem' },
+      scale: { x: 0.6, y: 0.6 },
+      translate: { x: 0, y: 4, unit: 'rem' },
       easing: cubicCushioned,
     }}
     out:transform={{
-      scale: { to: [1.1, 1.1] },
+      scale: { x: 1.1, y: 1.1 },
       easing: cubicCushioned,
     }}
     on:mousedown|stopPropagation={() => void 0}

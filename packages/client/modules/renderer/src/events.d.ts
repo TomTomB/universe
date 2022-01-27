@@ -1,3 +1,5 @@
+import type { Placement } from '@popperjs/core';
+
 declare namespace svelte.JSX {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface HTMLAttributes<T> {
@@ -21,7 +23,13 @@ declare namespace svelte.JSX {
     ) => void;
 
     'onelement-mutation'?: (
-      event: CustomEvent & {
+      event: CustomEvent<MutationRecord> & {
+        target: EventTarget & T;
+      },
+    ) => void;
+
+    'onpopper-placement-change'?: (
+      event: CustomEvent<Placement> & {
         target: EventTarget & T;
       },
     ) => void;

@@ -2,8 +2,9 @@ export const mutationObserver = (
   node: HTMLElement,
   options?: MutationObserverInit,
 ) => {
-  const observer = new MutationObserver(() => {
-    node.dispatchEvent(new CustomEvent('element-mutation'));
+  const observer = new MutationObserver((e) => {
+    const record = e[0];
+    node.dispatchEvent(new CustomEvent('element-mutation', { detail: record }));
   });
 
   observer.observe(node, options);

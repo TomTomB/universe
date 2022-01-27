@@ -53,6 +53,7 @@
   {#if showFlyoutFrame}
     <FlyoutFrame
       attachTo={modalInner}
+      placement="top"
       on:escape-key-up={() => (showFlyoutFrame = false)}
       on:click-outside={() => (showFlyoutFrame = false)}
     >

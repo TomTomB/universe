@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Placement } from '@popperjs/core';
+  import type { BasePlacement } from '@popperjs/core';
   import { createEventDispatcher } from 'svelte';
   import { clickOutside, popper, teleport } from '@/uikit/common/actions';
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
@@ -10,9 +10,20 @@
 
   export let showCloseButton = false;
   export let attachTo: HTMLElement | undefined | null = null;
-  export let placement: Placement = 'auto';
+  export let placement: BasePlacement;
 
   let flyoutFrameElement: HTMLDivElement | null = null;
+  let popperPlacement = placement;
+
+  $: scale =
+    popperPlacement === 'top' || popperPlacement === 'bottom'
+      ? { x: 0.5 }
+      : { y: 0.5 };
+
+  $: maskSize =
+    popperPlacement === 'top' || popperPlacement === 'bottom'
+      ? ({ x: 50, unit: '%' } as const)
+      : ({ y: 50, unit: '%' } as const);
 
   const dispatch = createEventDispatcher<{
     'close-click': void;
@@ -43,6 +54,12 @@
     flyoutFrameElement?.classList.remove('caret-intro');
     flyoutFrameElement?.classList.add('caret-outro');
   };
+
+  const onPopperPlacement = (newPlacement: CustomEvent<BasePlacement>) => {
+    console.log(newPlacement.detail);
+
+    popperPlacement = newPlacement.detail;
+  };
 </script>
 
 {#if attachTo}
@@ -57,31 +74,39 @@
       offset: [0, 18],
       arrowPadding: showCloseButton ? 30 : 17,
     }}
-    transition:fade={{ easing: linear, duration: 250 }}
+    transition:fade={{ easing: linear, duration: 200 }}
     on:click-outside={onClickOutside}
     on:introstart={onTransitionEnter}
     on:outrostart={onTransitionLeave}
+    on:popper-placement-change={onPopperPlacement}
   >
     <div class="flyout-frame-inner">
       <div
         class="border"
         transition:transform={{
-          scale: { from: [0.5, 1] },
+          scale: scale,
           easing: circOut,
-          duration: 250,
+          duration: 200,
         }}
       />
       <div
         class="sub-border"
         transition:transform={{
-          scale: { from: [0.5, 1] },
+          scale: scale,
           easing: circOut,
-          duration: 250,
+          duration: 200,
         }}
       />
       <div class="caret" data-popper-arrow />
 
-      <div class="flyout-frame-content">
+      <div
+        class="flyout-frame-content"
+        transition:transform={{
+          maskSize: maskSize,
+          easing: circOut,
+          duration: 200,
+        }}
+      >
         <slot />
       </div>
       {#if showCloseButton}
@@ -126,98 +151,15 @@
     }
   }
 
-  // TODO(TRB): Add correct animation
-  .fly-enter-active {
-    --anim-duration: 250ms;
-  }
-
-  .fly-leave-active {
-    --anim-duration: 200ms;
-  }
-
-  .fly-enter-active,
-  .fly-leave-active {
-    transition: opacity var(--anim-duration) linear;
-
-    .flyout-frame-content {
-      transition: -webkit-mask-size var(--anim-duration)
-        var(--easing-circular-ease-out);
-    }
-
-    .border,
-    .sub-border {
-      transition: transform var(--anim-duration) var(--easing-circular-ease-out);
-    }
-
-    .flyout-frame-inner {
-      transition: transform var(--anim-duration) var(--easing-circular-ease-out);
-    }
-  }
-
-  .fly-enter-from,
-  .fly-leave-to {
-    opacity: 0;
-
-    &[data-popper-placement^='top'],
-    &[data-popper-placement^='bottom'] {
-      .flyout-frame-content {
-        mask-size: 50% 100%;
-        -webkit-mask-size: 50% 100%;
-      }
-
-      .border,
-      .sub-border {
-        transform: scaleX(0.5);
-      }
-    }
-
-    &[data-popper-placement^='left'],
-    &[data-popper-placement^='right'] {
-      .flyout-frame-content {
-        mask-size: 100% 50%;
-        -webkit-mask-size: 100% 50%;
-      }
-
-      .border,
-      .sub-border {
-        transform: scaleY(0.5);
-      }
-    }
-
-    &[data-popper-placement^='top'] {
-      .flyout-frame-inner {
-        transform: translateY(1.5rem);
-      }
-    }
-
-    &[data-popper-placement^='bottom'] {
-      .flyout-frame-inner {
-        transform: translateY(-1.5rem);
-      }
-    }
-
-    &[data-popper-placement^='left'] {
-      .flyout-frame-inner {
-        transform: translateX(1.5rem);
-      }
-    }
-
-    &[data-popper-placement^='right'] {
-      .flyout-frame-inner {
-        transform: translateX(-1.5rem);
-      }
-    }
-  }
-
   .flyout-frame-inner {
     will-change: transform;
   }
 
   .flyout-frame {
-    will-change: opacity;
-
     --frame-colors: rgb(var(--color-gold-600)) 0, rgb(var(--color-gold-700)) 5px,
       rgb(var(--color-gold-700)) 100%;
+
+    will-change: opacity;
 
     &[data-popper-placement^='top'],
     &[data-popper-placement^='bottom'] {

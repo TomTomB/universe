@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   createPopper,
   type Placement,
@@ -30,6 +31,8 @@ export const popper = (
     childList: true,
     subtree: true,
     characterData: true,
+    attributes: true,
+    attributeFilter: ['data-popper-placement'],
   });
 
   const normalizeEnabled = (enabled: boolean | undefined) =>
@@ -58,11 +61,32 @@ export const popper = (
     ],
   });
 
-  const nodeMutationCallback = () => {
-    popper.update();
+  let lastPlacement = popper.state.placement;
+
+  const dispatchPlacementChange = () => {
+    node.dispatchEvent(
+      new CustomEvent('popper-placement-change', {
+        detail: popper.state.placement,
+      }),
+    );
   };
 
-  node.addEventListener('element-mutation', nodeMutationCallback);
+  const nodeMutationCallback = (event: CustomEvent<MutationRecord>) => {
+    const record = event.detail;
+
+    if (record.type !== 'attributes') {
+      popper.update();
+    } else {
+      if (lastPlacement !== popper.state.placement) {
+        lastPlacement = popper.state.placement;
+        dispatchPlacementChange();
+      }
+    }
+  };
+
+  node.addEventListener('element-mutation', nodeMutationCallback as any);
+
+  dispatchPlacementChange();
 
   return {
     update: (e: UsePopperOptions) => {
@@ -104,7 +128,7 @@ export const popper = (
       popper.update();
     },
     destroy: () => {
-      node.removeEventListener('element-mutation', nodeMutationCallback);
+      node.removeEventListener('element-mutation', nodeMutationCallback as any);
       popper.destroy();
       destroyMutationObserver();
     },
