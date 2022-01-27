@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { teleport } from '@/uikit/common/actions';
+  import { teleport, focusTrap } from '@/uikit/common/actions';
   import { MODAL_PORTAL } from '@/uikit/common/constants';
   import { fade } from 'svelte/transition';
   import { transform } from '@/uikit/common/animations';
   import { cubicCushioned } from '@/uikit/common/easing';
   import { createEventDispatcher } from 'svelte';
-  import { useOverlay } from '../../util';
+  import { useModal, useOverlay } from '../../util';
 
   export let position: 'top' | 'right' | 'bottom' | 'left';
   export let showCaret = false;
@@ -36,6 +36,8 @@
       return true;
     }
   });
+
+  const { currentOpenModal, modalId } = useModal();
 
   const onTopRightClose = () => {
     dispatch('close-click');
@@ -87,13 +89,15 @@
       scale: { x: 1.1, y: 1.1 },
       easing: cubicCushioned,
     }}
+    use:focusTrap={{
+      isEnabled: $currentOpenModal === modalId,
+      native: { allowOutsideClick: true },
+    }}
     on:mousedown|stopPropagation={() => void 0}
   >
     {#if !isBorderless}
       <div class="sub-border" />
     {/if}
-
-    <slot />
 
     {#if topRightCloseButton}
       {#if topRightCloseButton.variant === 'circle'}
@@ -114,6 +118,8 @@
         />
       {/if}
     {/if}
+
+    <slot />
   </div>
 </div>
 

@@ -4,7 +4,8 @@
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
 
-  let showModal = true;
+  let showModal = false;
+  let showOtherModal = false;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -19,7 +20,16 @@
 </button>
 
 {#if showModal}
-  <TestModal on:close={() => (showModal = false)} />
+  <TestModal on:close={() => (showModal = false)}>
+    <button class="parent" on:click={() => (showOtherModal = !showOtherModal)}>
+      <p>Hello2</p>
+      <AnimatedArrowOverlay />
+    </button>
+  </TestModal>
+{/if}
+
+{#if showOtherModal}
+  <TestModal on:close={() => (showOtherModal = false)} />
 {/if}
 
 <style lang="scss">
@@ -29,6 +39,7 @@
     position: relative;
     margin-top: 5rem;
     background-color: red;
+    z-index: 999999;
     p {
       margin: 0;
       padding: 0;

@@ -41,6 +41,8 @@
     >
       <p>I have some tooltip</p>
     </button>
+
+    <slot />
   </div>
 
   <Tooltip attachTo={modalInner} id="modalTooltip">
