@@ -1,6 +1,7 @@
 <script lang="ts">
   import { dir } from '@/store/util';
   import { resizeObserver } from '@/uikit/common/actions';
+  import { Tooltip } from '@/uikit/overlay/components';
 
   export let isVertical = false;
   export let min = 0;
@@ -10,6 +11,9 @@
   export let value: number;
   export let isDisabled = false;
   export let isInverted = false;
+  export let isTooltipEnabled = false;
+  export let tooltipValueSuffix = '';
+
   export const recalculateDimensions = () => {
     const newRect = _slider?.getBoundingClientRect();
 
@@ -29,6 +33,7 @@
   };
 
   let _slider: HTMLDivElement | null = null;
+  let _thumb: HTMLDivElement | null = null;
   let _value = clamp(value, min, max);
   let _percent = calculatePercentage(_value);
   let _isSliding: 'keyboard' | 'pointer' | null = null;
@@ -402,9 +407,20 @@
     class="thumb-container"
     style="transform: {thumbContainerStyles.transform};"
   >
-    <div class="thumb" />
+    <div class="thumb" bind:this={_thumb} />
   </div>
 </div>
+
+{#if isTooltipEnabled && !isDisabled}
+  <Tooltip
+    type="system"
+    placement={isVertical ? 'right' : 'top'}
+    attachTo={_thumb}
+    forceVisible={!!_isSliding}
+  >
+    <p>{valueText}{tooltipValueSuffix}</p>
+  </Tooltip>
+{/if}
 
 <style lang="scss" global>
   .slider {
@@ -444,7 +460,7 @@
       pointer-events: none;
 
       .track-fill {
-        background: rgb(var(--color-almost-black), 0.15) !important;
+        background: rgb(var(--color-grey-700)) !important;
       }
 
       .thumb {

@@ -9,11 +9,15 @@
   export let type: 'default' | 'system' = 'default';
   export let delay = 0;
   export let placement: Placement = 'auto';
-  export let id: string;
+  export let forceVisible = false;
 
   $: if (attachTo) {
     attachTo.addEventListener('mouseenter', attachedElementMouseEnter);
     attachTo.addEventListener('mouseleave', attachedElementMouseLeave);
+  }
+
+  $: if (!forceVisible && !show) {
+    popOverlay(overlayId);
   }
 
   let show = false;
@@ -23,7 +27,6 @@
     () => {
       if (overlayId === $currentOpenOverlay) {
         hideTooltip();
-
         return true;
       }
     },
@@ -36,14 +39,20 @@
   const showTooltip = () => {
     if (show) return;
 
-    pushOverlay(overlayId);
+    if (!forceVisible) {
+      pushOverlay(overlayId);
+    }
+
     show = true;
   };
 
   const hideTooltip = () => {
     if (!show) return;
 
-    popOverlay(overlayId);
+    if (!forceVisible) {
+      popOverlay(overlayId);
+    }
+
     show = false;
   };
 
@@ -79,15 +88,14 @@
     use:teleport={TOOLTIP_PORTAL}
     use:popper={{
       attachTo,
-      enabled: show,
+      enabled: show || forceVisible,
       placement,
       offset: [0, type === 'default' ? 15 : 10],
       arrowPadding: 5,
     }}
     class="tooltip {type}"
-    class:show
+    class:show={show || forceVisible}
     role="tooltip"
-    {id}
   >
     <div class="tooltip-content">
       <slot />

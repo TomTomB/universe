@@ -32,7 +32,13 @@
     </p>
 
     <label for="slider_new1">Value is {sliderValue}</label>
-    <Slider bind:this={slider} bind:value={sliderValue} id="slider_new1" />
+    <Slider
+      bind:this={slider}
+      bind:value={sliderValue}
+      id="slider_new1"
+      isTooltipEnabled
+      tooltipValueSuffix="%"
+    />
 
     <button
       bind:this={modalInner}
@@ -45,7 +51,7 @@
     <slot />
   </div>
 
-  <Tooltip attachTo={modalInner} id="modalTooltip">
+  <Tooltip attachTo={modalInner}>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet ratione
       atque perspiciatis aliquam recusandae sed?
