@@ -113,6 +113,7 @@
         </div>
       {:else if topRightCloseButton.variant === 'toast'}
         <button
+          type="button"
           class="top-right-close-toast-button"
           class:with-background={topRightCloseButton.showBackground}
           aria-label={topRightCloseButton.allyLabel ?? 'Close modal'}
