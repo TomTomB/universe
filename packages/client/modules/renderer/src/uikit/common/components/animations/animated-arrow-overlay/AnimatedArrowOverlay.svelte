@@ -1,6 +1,5 @@
 <script lang="ts">
   import { generateShortId } from '@/core/util';
-
   import { resizeObserver } from '@/uikit/common/actions';
   import alphaTint from './assets/images/noise-tile-alpha-tint-large.png';
 
