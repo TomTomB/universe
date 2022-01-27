@@ -61,6 +61,11 @@
 
 <div
   class="modal-container"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={allyModalHeaderId}
+  aria-describedby={allyModalDescriptionId}
+  tabindex="-1"
   transition:fade={{ duration: 300, easing: cubicCushioned }}
   use:teleport={MODAL_PORTAL}
   on:mousedown={onBackdropMouseDown}
@@ -73,10 +78,7 @@
   }}
 >
   <div
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby={allyModalHeaderId}
-    aria-describedby={allyModalDescriptionId}
+    role="document"
     class="modal {position}"
     class:show-caret={showCaret}
     class:is-disabled={isDisabled}
