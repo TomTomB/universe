@@ -14,18 +14,27 @@ declare namespace svelte.JSX {
       },
     ) => void;
 
+    /**
+     * This event can only be used if the clickOutside action is present on the element.
+     */
     'onclick-outside'?: (
       event: CustomEvent & {
         target: EventTarget & T;
       },
     ) => void;
 
+    /**
+     * This event can only be used if the mutationObserver action is present on the element.
+     */
     'onelement-mutation'?: (
       event: CustomEvent<MutationRecord> & {
         target: EventTarget & T;
       },
     ) => void;
 
+    /**
+     * This event can only be used if the popper action is present on the element.
+     */
     'onpopper-placement-change'?: (
       event: CustomEvent<
         | 'top'
