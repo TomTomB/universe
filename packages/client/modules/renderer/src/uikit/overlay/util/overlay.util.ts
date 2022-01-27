@@ -40,7 +40,7 @@ export const useOverlay = (
     prioritize,
   }: { ignoreOnMount?: boolean; prioritize?: boolean } = {},
 ) => {
-  const id = prioritize ? `PRIORITIZE_${generateShortId()}` : generateShortId();
+  const id = generateShortId(prioritize ? 'PRIORITIZE' : '');
   onEscFns.unshift(onEsc);
 
   onMount(() => {

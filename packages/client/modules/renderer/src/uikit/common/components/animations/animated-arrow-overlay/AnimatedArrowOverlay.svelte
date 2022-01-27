@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { generateShortId } from '@/core/util';
+
   import { resizeObserver } from '@/uikit/common/actions';
   import alphaTint from './assets/images/noise-tile-alpha-tint-large.png';
 
@@ -6,6 +8,13 @@
 
   let path: string;
   let width = 0;
+
+  const pathDefsId = generateShortId('path-defs');
+  const noiseMapId = generateShortId('noise-map');
+  const noiseMapOffsetId = generateShortId('noise-map-offset');
+  const scalablePathId = generateShortId('scalable-path');
+  const maskDashedBorderId = generateShortId('mask-dashed-border');
+  const maskDashedBorderOffsetId = generateShortId('mask-dashed-border-offset');
 
   $: widthMinusPadding = width - 31;
 
@@ -23,7 +32,7 @@
 >
   <div class="animated-arrow-overlay-wrapper">
     <svg
-      id="path-defs"
+      id={pathDefsId}
       class="svg-container"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -34,7 +43,7 @@
     >
       <defs>
         <pattern
-          id="noise-map"
+          id={noiseMapId}
           x="0"
           y="0"
           width="400"
@@ -56,7 +65,7 @@
           />
         </pattern>
         <pattern
-          id="noise-map-offset"
+          id={noiseMapOffsetId}
           x="25%"
           y="0"
           width="400"
@@ -78,14 +87,15 @@
           />
         </pattern>
         <path
-          id="scalable-path"
+          id={scalablePathId}
+          class="scalable-path"
           d={path}
           fill="none"
           stroke="#fff"
           stroke-width="2"
         />
         <mask
-          id="mask-dashed-border"
+          id={maskDashedBorderId}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -93,19 +103,19 @@
           height="100%"
         >
           <use
-            xlink:href="#scalable-path"
+            xlink:href="#{scalablePathId}"
             stroke-width="4"
             class="dashed-border"
           />
         </mask>
         <mask
-          id="mask-dashed-border-offset"
+          id={maskDashedBorderOffsetId}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
         >
           <use
-            xlink:href="#scalable-path"
+            xlink:href="#{scalablePathId}"
             stroke-width="4"
             class="dashed-border offset"
           />
@@ -113,10 +123,9 @@
       </defs>
     </svg>
 
-    <div id="animated-magic-container">
+    <div class="animated-magic-container">
       <svg
-        id="animated-magic-low"
-        class="svg-container"
+        class="svg-container animated-magic-low"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0"
@@ -129,21 +138,20 @@
           y="0"
           width="100%"
           height="100%"
-          mask="url(#mask-dashed-border)"
-          fill="url(#noise-map)"
+          mask="url(#{maskDashedBorderId})"
+          fill="url(#{noiseMapId})"
         />
         <rect
           x="0"
           y="0"
           width="100%"
           height="100%"
-          mask="url(#mask-dashed-border-offset)"
-          fill="url(#noise-map-offset)"
+          mask="url(#{maskDashedBorderOffsetId})"
+          fill="url(#{noiseMapOffsetId})"
         />
       </svg>
       <svg
-        id="animated-magic-high"
-        class="svg-container"
+        class="svg-container animated-magic-high"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0"
@@ -156,23 +164,23 @@
           y="0"
           width="100%"
           height="100%"
-          mask="url(#mask-dashed-border)"
-          fill="url(#noise-map)"
+          mask="url(#{maskDashedBorderId})"
+          fill="url(#{noiseMapId})"
         />
         <rect
           x="0"
           y="0"
           width="100%"
           height="100%"
-          mask="url(#mask-dashed-border-offset)"
-          fill="url(#noise-map-offset)"
+          mask="url(#{maskDashedBorderOffsetId})"
+          fill="url(#{noiseMapOffsetId})"
         />
       </svg>
     </div>
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" global>
   .parent:hover,
   .parent:focus-visible {
     .animated-arrow-overlay-wrapper {
@@ -180,7 +188,7 @@
         animation-duration: 1500ms;
       }
 
-      #animated-magic-container {
+      .animated-magic-container {
         opacity: 1;
       }
     }
@@ -192,7 +200,7 @@
         animation-duration: 750ms;
       }
 
-      #animated-magic-container {
+      .animated-magic-container {
         opacity: 1;
       }
     }
@@ -213,12 +221,12 @@
     height: 100%;
     position: relative;
 
-    #animated-magic-low {
+    .animated-magic-low {
       filter: blur(2px) contrast(1.15);
       opacity: 0.75;
     }
 
-    #animated-magic-high {
+    .animated-magic-high {
       filter: blur(4px) contrast(1.35) brightness(1.5);
       opacity: 0.85;
     }
@@ -243,11 +251,11 @@
       }
     }
 
-    #scalable-path {
+    .scalable-path {
       transform: translate(8px, 8px);
     }
 
-    #animated-magic-container {
+    .animated-magic-container {
       width: 100%;
       height: 100%;
       position: absolute;
