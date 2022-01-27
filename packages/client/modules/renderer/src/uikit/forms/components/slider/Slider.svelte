@@ -417,6 +417,7 @@
     placement={isVertical ? 'right' : 'top'}
     attachTo={_thumb}
     forceVisible={!!_isSliding}
+    delay={300}
   >
     <p>{valueText}{tooltipValueSuffix}</p>
   </Tooltip>
