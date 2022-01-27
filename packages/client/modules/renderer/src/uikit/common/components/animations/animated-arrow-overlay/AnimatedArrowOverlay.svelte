@@ -1,6 +1,5 @@
 <script lang="ts">
   import { generateShortId } from '@/core/util';
-  import { resizeObserver } from '@/uikit/common/actions';
   import alphaTint from './assets/images/noise-tile-alpha-tint-large.png';
 
   export let isCarrot = false;
@@ -24,11 +23,7 @@
   }
 </script>
 
-<div
-  use:resizeObserver
-  on:element-resize={(e) => (width = e.detail.width)}
-  class="animated-arrow-overlay-container"
->
+<div bind:clientWidth={width} class="animated-arrow-overlay-container">
   <div class="animated-arrow-overlay-wrapper">
     <svg
       id={pathDefsId}
