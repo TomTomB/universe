@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BasePlacement } from '@popperjs/core';
+  import type { BasePlacement, Placement } from '@popperjs/core';
   import { createEventDispatcher } from 'svelte';
   import { clickOutside, popper, teleport } from '@/uikit/common/actions';
   import { TOOLTIP_PORTAL } from '@/uikit/common/constants';
@@ -13,7 +13,7 @@
   export let placement: BasePlacement;
 
   let flyoutFrameElement: HTMLDivElement | null = null;
-  let popperPlacement = placement;
+  let popperPlacement: Placement = placement;
 
   $: scale =
     popperPlacement === 'top' || popperPlacement === 'bottom'
@@ -55,9 +55,7 @@
     flyoutFrameElement?.classList.add('caret-outro');
   };
 
-  const onPopperPlacement = (newPlacement: CustomEvent<BasePlacement>) => {
-    console.log(newPlacement.detail);
-
+  const onPopperPlacement = (newPlacement: CustomEvent<Placement>) => {
     popperPlacement = newPlacement.detail;
   };
 </script>
