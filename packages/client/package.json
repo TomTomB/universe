@@ -28,7 +28,7 @@
     "find-process": "1.4.7",
     "focus-trap": "6.7.2",
     "gl-matrix": "3.4.3",
-    "firebase": "9.6.4",
+    "firebase": "9.6.5",
     "@popperjs/core": "2.11.2",
     "shortid": "2.2.16",
     "xstate": "4.29.0",
