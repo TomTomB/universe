@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Slider } from '@/uikit/forms/components';
+  import { Slider, ArrowButton } from '@/uikit/forms/components';
   import { FlyoutFrame, Modal, Tooltip } from '@/uikit/overlay/components';
   import { createEventDispatcher } from 'svelte';
 
@@ -39,6 +39,8 @@
       isTooltipEnabled
       tooltipValueSuffix="%"
     />
+
+    <ArrowButton ariaLabel="Hello" />
 
     <button
       bind:this={modalInner}
