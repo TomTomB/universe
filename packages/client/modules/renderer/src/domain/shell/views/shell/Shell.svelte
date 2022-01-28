@@ -1,5 +1,8 @@
 <script lang="ts">
-  import { AnimatedArrowOverlay } from '@/uikit/common/components';
+  import {
+    AnimatedArrowOverlay,
+    AnimatedBorderOverlay,
+  } from '@/uikit/common/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
@@ -23,7 +26,7 @@
   <TestModal on:close={() => (showModal = false)}>
     <button class="parent" on:click={() => (showOtherModal = !showOtherModal)}>
       <p>Hello2</p>
-      <AnimatedArrowOverlay />
+      <AnimatedBorderOverlay />
     </button>
   </TestModal>
 {/if}
