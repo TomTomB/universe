@@ -190,7 +190,7 @@ ipcMain.on('universe:window:minimize', () => {
 });
 
 ipcMain.on('universe:window:close', () => {
-  mainWindow?.destroy();
+  mainWindow?.close();
 });
 
 ipcMain.on(
