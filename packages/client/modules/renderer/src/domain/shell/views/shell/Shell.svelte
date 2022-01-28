@@ -3,6 +3,7 @@
     AnimatedArrowOverlay,
     AnimatedBorderOverlay,
   } from '@/uikit/common/components';
+  import { ArrowFooter } from '@/uikit/forms/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
@@ -21,6 +22,60 @@
   <p>Hello</p>
   <AnimatedArrowOverlay />
 </button>
+
+<ArrowFooter
+  primaryButton={{ isDisabled: false, type: 'button', label: 'No Close' }}
+  isDecorated
+/>
+<br />
+
+<ArrowFooter
+  primaryButton={{ isDisabled: true, type: 'button', label: 'No Close' }}
+/>
+<br />
+
+<ArrowFooter
+  primaryButton={{ isDisabled: false, type: 'button', label: 'No Close' }}
+  isDecorated
+  isCompleted
+/>
+<br />
+<br />
+
+<ArrowFooter
+  primaryButton={{ isDisabled: false, type: 'button', label: 'With Both' }}
+  secondaryButton={{
+    type: 'button',
+    isDisabled: false,
+    ariaLabel: 'Exit',
+    isBack: false,
+  }}
+  isDecorated
+/>
+<br />
+
+<ArrowFooter
+  primaryButton={{ isDisabled: true, type: 'button', label: 'With Both' }}
+  secondaryButton={{
+    type: 'button',
+    isDisabled: true,
+    ariaLabel: 'Exit',
+    isBack: false,
+  }}
+/>
+<br />
+
+<ArrowFooter
+  primaryButton={{ isDisabled: false, type: 'button', label: 'Completed' }}
+  secondaryButton={{
+    type: 'button',
+    isDisabled: false,
+    ariaLabel: 'Exit',
+    isBack: false,
+  }}
+  isDecorated
+  isCompleted
+/>
 
 {#if showModal}
   <TestModal on:close={() => (showModal = false)}>

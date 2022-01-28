@@ -51,11 +51,13 @@
     }
   }
 
-  .parent:hover,
-  .parent:focus-visible,
-  .parent:active {
-    > .animated-border-overlay-wrapper {
-      opacity: 1;
+  .parent:not(:disabled) {
+    &:hover,
+    &:focus-visible,
+    &:active {
+      > .animated-border-overlay-wrapper {
+        opacity: 1;
+      }
     }
   }
 

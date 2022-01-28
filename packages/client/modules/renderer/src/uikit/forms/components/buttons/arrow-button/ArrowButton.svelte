@@ -51,7 +51,7 @@
     width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
-    transition: 0.3s all ease;
+    transition: opacity 0.3s ease;
     top: 2px;
     bottom: 2px;
 

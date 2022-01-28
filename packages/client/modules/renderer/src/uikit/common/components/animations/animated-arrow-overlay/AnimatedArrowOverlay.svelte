@@ -175,27 +175,29 @@
 </div>
 
 <style lang="scss" global>
-  .parent:hover,
-  .parent:focus-visible {
-    .animated-arrow-overlay-wrapper {
-      .dashed-border {
-        animation-duration: 1500ms;
-      }
+  .parent:not(:disabled) {
+    &:hover,
+    &:focus-visible {
+      .animated-arrow-overlay-wrapper {
+        .dashed-border {
+          animation-duration: 1500ms;
+        }
 
-      .animated-magic-container {
-        opacity: 1;
+        .animated-magic-container {
+          opacity: 1;
+        }
       }
     }
-  }
 
-  .parent:active {
-    .animated-arrow-overlay-wrapper {
-      .dashed-border {
-        animation-duration: 750ms;
-      }
+    &:active {
+      .animated-arrow-overlay-wrapper {
+        .dashed-border {
+          animation-duration: 750ms;
+        }
 
-      .animated-magic-container {
-        opacity: 1;
+        .animated-magic-container {
+          opacity: 1;
+        }
       }
     }
   }
