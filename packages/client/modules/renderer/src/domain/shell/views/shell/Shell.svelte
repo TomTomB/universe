@@ -43,19 +43,23 @@
 <br />
 
 <ArrowFooter
-  primaryButton={{ isDisabled: false, type: 'button', label: 'With Both' }}
+  primaryButton={{
+    isDisabled: false,
+    type: 'button',
+    label: 'With Both With Both With Both',
+  }}
   secondaryButton={{
     type: 'button',
     isDisabled: false,
     ariaLabel: 'Exit',
-    isBack: false,
+    isBack: true,
   }}
   isDecorated
 />
 <br />
 
 <ArrowFooter
-  primaryButton={{ isDisabled: true, type: 'button', label: 'With Both' }}
+  primaryButton={{ isDisabled: true, type: 'button', label: 'With Both ' }}
   secondaryButton={{
     type: 'button',
     isDisabled: true,
@@ -71,7 +75,7 @@
     type: 'button',
     isDisabled: false,
     ariaLabel: 'Exit',
-    isBack: false,
+    isBack: true,
   }}
   isDecorated
   isCompleted
