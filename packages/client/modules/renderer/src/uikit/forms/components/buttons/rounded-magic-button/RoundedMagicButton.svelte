@@ -62,6 +62,10 @@
     &:active {
       color: rgb(var(--color-blue-500));
 
+      .button-state.hover {
+        opacity: 0;
+      }
+
       .button-state.active {
         opacity: 1;
       }
