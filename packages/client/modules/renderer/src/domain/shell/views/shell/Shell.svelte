@@ -3,7 +3,7 @@
     AnimatedArrowOverlay,
     AnimatedBorderOverlay,
   } from '@/uikit/common/components';
-  import { ArrowFooter } from '@/uikit/forms/components';
+  import { ArrowFooter, RoundedMagicButton } from '@/uikit/forms/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
@@ -24,62 +24,23 @@
 </button>
 
 <ArrowFooter
-  primaryButton={{ isDisabled: false, type: 'button', label: 'No Close' }}
-  isDecorated
-/>
-<br />
-
-<ArrowFooter
-  primaryButton={{ isDisabled: true, type: 'button', label: 'No Close' }}
-/>
-<br />
-
-<ArrowFooter
-  primaryButton={{ isDisabled: false, type: 'button', label: 'No Close' }}
-  isDecorated
-  isCompleted
-/>
-<br />
-<br />
-
-<ArrowFooter
   primaryButton={{
     isDisabled: false,
     type: 'button',
-    label: 'With Both With Both With Both',
+    label: 'Find match',
   }}
   secondaryButton={{
     type: 'button',
     isDisabled: false,
-    ariaLabel: 'Exit',
-    isBack: true,
-  }}
-  isDecorated
-/>
-<br />
-
-<ArrowFooter
-  primaryButton={{ isDisabled: true, type: 'button', label: 'With Both ' }}
-  secondaryButton={{
-    type: 'button',
-    isDisabled: true,
     ariaLabel: 'Exit',
     isBack: false,
   }}
 />
 <br />
 
-<ArrowFooter
-  primaryButton={{ isDisabled: false, type: 'button', label: 'Completed' }}
-  secondaryButton={{
-    type: 'button',
-    isDisabled: false,
-    ariaLabel: 'Exit',
-    isBack: true,
-  }}
-  isDecorated
-  isCompleted
-/>
+<div style="display: flex; justify-content: center;">
+  <RoundedMagicButton isDecorated>Find match</RoundedMagicButton>
+</div>
 
 {#if showModal}
   <TestModal on:close={() => (showModal = false)}>
