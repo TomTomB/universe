@@ -7,8 +7,10 @@
     ArrowFooter,
     RoundedMagicButton,
     ArrowButton,
+    RoundedIconButton,
+    PrimaryFlatButton,
+    ButtonGroup,
   } from '@/uikit/forms/components';
-  import RoundedIconButton from '@/uikit/forms/components/buttons/rounded-icon-button/RoundedIconButton.svelte';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
@@ -55,6 +57,26 @@
 <br />
 
 <ArrowButton ariaLabel="dd" />
+
+<br />
+<ButtonGroup>
+  <PrimaryFlatButton>Default</PrimaryFlatButton>
+  <PrimaryFlatButton isExternal>Default dis</PrimaryFlatButton>
+  <PrimaryFlatButton isDisabled>Default dis</PrimaryFlatButton>
+</ButtonGroup>
+
+<ButtonGroup>
+  <PrimaryFlatButton variant="golden">Default</PrimaryFlatButton>
+  <PrimaryFlatButton isExternal variant="golden">Ext gol</PrimaryFlatButton>
+  <PrimaryFlatButton variant="golden" isDisabled>Default dis</PrimaryFlatButton>
+</ButtonGroup>
+
+<ButtonGroup>
+  <PrimaryFlatButton variant="purple">purchase</PrimaryFlatButton>
+  <PrimaryFlatButton isExternal variant="purple">Ext pur</PrimaryFlatButton>
+  <PrimaryFlatButton variant="purple" isDisabled>purchase dis</PrimaryFlatButton
+  >
+</ButtonGroup>
 
 {#if showModal}
   <TestModal on:close={() => (showModal = false)}>
