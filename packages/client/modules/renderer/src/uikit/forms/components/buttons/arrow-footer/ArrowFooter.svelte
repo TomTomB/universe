@@ -225,6 +225,11 @@
     &:active {
       color: rgb(var(--color-blue-500));
 
+      .button-state.default,
+      .button-state.hover {
+        opacity: 0;
+      }
+
       .button-state.active {
         opacity: 1;
       }
@@ -351,8 +356,15 @@
       opacity: 1;
     }
 
-    &:active .active {
-      opacity: 1;
+    &:active {
+      .default,
+      .hover {
+        opacity: 0;
+      }
+
+      .active {
+        opacity: 1;
+      }
     }
 
     &:disabled {

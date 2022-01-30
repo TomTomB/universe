@@ -3,7 +3,12 @@
     AnimatedArrowOverlay,
     AnimatedBorderOverlay,
   } from '@/uikit/common/components';
-  import { ArrowFooter, RoundedMagicButton } from '@/uikit/forms/components';
+  import {
+    ArrowFooter,
+    RoundedMagicButton,
+    ArrowButton,
+  } from '@/uikit/forms/components';
+  import RoundedIconButton from '@/uikit/forms/components/buttons/rounded-icon-button/RoundedIconButton.svelte';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
   import TestModal from './TestModal.svelte';
@@ -41,6 +46,15 @@
 <div style="display: flex; justify-content: center;">
   <RoundedMagicButton isDecorated>Find match</RoundedMagicButton>
 </div>
+
+<br />
+<RoundedIconButton ariaLabel="icon btn" icon="close" />
+<br />
+
+<RoundedIconButton ariaLabel="icon btn" icon="close" isDisabled />
+<br />
+
+<ArrowButton ariaLabel="dd" />
 
 {#if showModal}
   <TestModal on:close={() => (showModal = false)}>

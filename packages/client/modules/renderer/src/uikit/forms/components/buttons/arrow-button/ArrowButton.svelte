@@ -2,6 +2,7 @@
   export let isDisabled = false;
   export let isRotated = false;
   export let ariaLabel: string;
+  export let type: 'button' | 'submit' | 'reset' | null = null;
 </script>
 
 <button
@@ -9,6 +10,7 @@
   class:is-rotated={isRotated}
   disabled={isDisabled}
   aria-label={ariaLabel}
+  type={type ?? 'button'}
   on:click
 >
   <div class="button-state default" />
@@ -33,12 +35,24 @@
       opacity: 1;
     }
 
-    &:active .active {
-      opacity: 1;
+    &:active {
+      .default,
+      .hover {
+        opacity: 0;
+      }
+
+      .active {
+        opacity: 1;
+      }
     }
 
     &:disabled {
       pointer-events: none;
+
+      .default {
+        opacity: 0;
+      }
+
       .disabled {
         opacity: 1;
       }
