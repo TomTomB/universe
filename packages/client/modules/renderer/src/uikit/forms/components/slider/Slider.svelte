@@ -380,7 +380,7 @@
   aria-valuemin={min}
   aria-valuenow={_value}
   aria-valuetext={valueText}
-  tabIndex={isDisabled ? -1 : 0}
+  tabindex={isDisabled ? -1 : 0}
   class:slider-is-sliding={_isSliding}
   class:slider-is-inverted={isInverted}
   use:resizeObserver
