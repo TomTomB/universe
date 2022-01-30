@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Slider, ArrowButton } from '@/uikit/forms/components';
+  import { Slider, ArrowButton, ButtonGroup } from '@/uikit/forms/components';
   import { FlyoutFrame, Modal, Tooltip } from '@/uikit/overlay/components';
   import { createEventDispatcher } from 'svelte';
 
@@ -42,15 +42,16 @@
 
     <ArrowButton ariaLabel="Hello" />
 
-    <button
-      bind:this={modalInner}
-      aria-describedby="modalTooltip"
-      on:click={() => (showFlyoutFrame = !showFlyoutFrame)}
-    >
-      <p>I have some tooltip</p>
-    </button>
-
-    <slot />
+    <ButtonGroup>
+      <button
+        bind:this={modalInner}
+        aria-describedby="modalTooltip"
+        on:click={() => (showFlyoutFrame = !showFlyoutFrame)}
+      >
+        <p>I have some tooltip</p>
+      </button>
+      <slot />
+    </ButtonGroup>
   </div>
 
   <Tooltip attachTo={modalInner}>
