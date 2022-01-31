@@ -196,6 +196,15 @@
         }
       }
 
+      &:hover,
+      &:focus-visible {
+        .content-wrapper {
+          &::after {
+            background: rgb(var(--color-gold-100));
+          }
+        }
+      }
+
       &:active {
         color: rgb(var(--color-gold-500));
         background: linear-gradient(to bottom, #362715 0%, #17130e 100%);
