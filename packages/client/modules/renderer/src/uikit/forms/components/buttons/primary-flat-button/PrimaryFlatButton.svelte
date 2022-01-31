@@ -28,7 +28,6 @@
   onDestroy(() => {
     if (clickAnimTimeout !== null) {
       window.clearTimeout(clickAnimTimeout);
-      clickAnimTimeout = null;
     }
   });
 </script>

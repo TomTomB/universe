@@ -10,6 +10,7 @@
     RoundedIconButton,
     PrimaryFlatButton,
     ButtonGroup,
+    PrimaryMagicButton,
   } from '@/uikit/forms/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
@@ -17,6 +18,7 @@
 
   let showModal = false;
   let showOtherModal = false;
+  let isPrimaryDisabled = true;
 
   onMount(() => {
     window.electron.window.didLoad();
@@ -75,6 +77,15 @@
   <PrimaryFlatButton variant="purple">purchase</PrimaryFlatButton>
   <PrimaryFlatButton isExternal variant="purple">Ext pur</PrimaryFlatButton>
   <PrimaryFlatButton variant="purple" isDisabled>purchase dis</PrimaryFlatButton
+  >
+</ButtonGroup>
+
+<ButtonGroup>
+  <PrimaryMagicButton on:click={() => (isPrimaryDisabled = !isPrimaryDisabled)}
+    >Default</PrimaryMagicButton
+  >
+  <PrimaryMagicButton isDisabled={isPrimaryDisabled}
+    >Disabled</PrimaryMagicButton
   >
 </ButtonGroup>
 
