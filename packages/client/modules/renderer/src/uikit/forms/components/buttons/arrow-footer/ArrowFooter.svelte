@@ -107,6 +107,8 @@
 </div>
 
 <style lang="scss">
+  @import '@/styles';
+
   .arrow-footer {
     display: flex;
     justify-content: center;
@@ -190,12 +192,8 @@
   }
 
   .primary-button {
-    font-kerning: normal;
-    font-family: LoL Display;
-    font-feature-settings: 'kern' 1;
-    -webkit-font-feature-settings: 'kern' 1;
-    -webkit-font-smoothing: antialiased;
-    text-transform: uppercase;
+    @include fontDisplay();
+
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.0325em;

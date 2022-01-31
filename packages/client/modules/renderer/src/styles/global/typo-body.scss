@@ -74,7 +74,7 @@ ul {
   }
   &.title-list {
     li {
-      font-family: LoL Display;
+      font-family: var(--font-display);
       color: rgb(var(--color-gold-100));
       font-size: 14px;
       font-weight: 700;

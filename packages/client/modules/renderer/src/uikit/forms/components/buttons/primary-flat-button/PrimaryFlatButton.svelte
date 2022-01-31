@@ -55,17 +55,14 @@
 </button>
 
 <style lang="scss">
+  @import '@/styles';
+
   .primary-flat-button {
-    font-kerning: normal;
-    font-family: LoL Display;
-    font-feature-settings: 'kern' 1;
-    -webkit-font-feature-settings: 'kern' 1;
-    -webkit-font-smoothing: antialiased;
-    text-transform: uppercase;
+    @include fontDisplay();
+
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.075em;
-
     color: rgb(var(--color-gold-200));
     position: relative;
     display: flex;

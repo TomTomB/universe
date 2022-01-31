@@ -39,7 +39,11 @@
   --color-almost-black: 1, 10, 19; // color-almost-black #010a13
   --color-black: 0, 0, 0; // #000000
 
-  --easing-circular-ease-out: cubic-bezier(0, 0, 0, 1);
-  --easing-cushioned: cubic-bezier(0.2, 0.9, 0, 1);
-  --easing-magnetic: cubic-bezier(0, 0, 1, 0);
+  --easing-circular-ease-out: cubic-bezier(0, 0, 0, 1); // --easing-soft
+  --easing-cushioned: cubic-bezier(0.2, 0.9, 0, 1); // --easing-soft-stern
+  --easing-magnetic: cubic-bezier(0, 0, 1, 0); //  --easing-stern
+
+  --font-display: LoL Display;
+  --font-body: LoL Body;
+  --font-esport: LoL ESport;
 }

@@ -21,6 +21,8 @@
 </div>
 
 <style lang="scss">
+  @import '@/styles';
+
   .rounded-magic-container {
     position: relative;
     height: 51px;
@@ -28,18 +30,13 @@
   }
 
   .rounded-magic-button {
+    @include fontDisplay();
+
     display: block;
     height: 100%;
     width: 100%;
     position: relative;
-
-    font-family: LoL Display;
     color: rgb(var(--color-blue-100));
-    font-kerning: normal;
-    font-feature-settings: 'kern' 1;
-    -webkit-font-feature-settings: 'kern' 1;
-    -webkit-font-smoothing: antialiased;
-    text-transform: uppercase;
     font-size: 14px;
     font-weight: 700;
     line-height: 18px;
