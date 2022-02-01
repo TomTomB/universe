@@ -1,6 +1,6 @@
 <script lang="ts"></script>
 
-<div class="animated-border-overlay-wrapper">
+<div class="animated-border-overlay-wrapper" aria-hidden="true">
   <div class="animated-border-overlay-container">
     <div class="blur-effect high">
       <div class="glow-mask top">

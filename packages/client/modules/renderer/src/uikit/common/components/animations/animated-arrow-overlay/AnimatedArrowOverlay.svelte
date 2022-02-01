@@ -23,7 +23,11 @@
   }
 </script>
 
-<div bind:clientWidth={width} class="animated-arrow-overlay-container">
+<div
+  bind:clientWidth={width}
+  class="animated-arrow-overlay-container"
+  aria-hidden="true"
+>
   <div class="animated-arrow-overlay-wrapper">
     <svg
       id={pathDefsId}

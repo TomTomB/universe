@@ -7,12 +7,12 @@
   export let min = 0;
   export let max = 100;
   export let step = 1;
-  export let id: string;
   export let value: number;
   export let isDisabled = false;
   export let isInverted = false;
   export let isTooltipEnabled = false;
   export let tooltipValueSuffix = '';
+  export let ariaLabeledBy: string;
 
   export const recalculateDimensions = () => {
     const newRect = _slider?.getBoundingClientRect();
@@ -371,7 +371,6 @@
 </script>
 
 <div
-  {id}
   class="slider"
   role="slider"
   aria-orientation={isVertical ? 'vertical' : 'horizontal'}
@@ -380,6 +379,7 @@
   aria-valuemin={min}
   aria-valuenow={_value}
   aria-valuetext={valueText}
+  aria-labelledby={ariaLabeledBy}
   tabindex={isDisabled ? -1 : 0}
   class:slider-is-sliding={_isSliding}
   class:slider-is-inverted={isInverted}

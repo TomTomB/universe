@@ -36,7 +36,7 @@
   primaryButton={{
     isDisabled: false,
     type: 'button',
-    label: 'Find match',
+    label: 'Start search',
   }}
   secondaryButton={{
     type: 'button',
@@ -48,7 +48,7 @@
 <br />
 
 <div style="display: flex; justify-content: center;">
-  <RoundedMagicButton isDecorated>Find match</RoundedMagicButton>
+  <RoundedMagicButton isDecorated>Start search</RoundedMagicButton>
 </div>
 
 <br />

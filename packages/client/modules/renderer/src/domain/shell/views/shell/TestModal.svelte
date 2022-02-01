@@ -27,15 +27,15 @@
 >
   <div class="modal-inner">
     <h1 id="modal-head">Modal</h1>
-    <p class="modal-body">
+    <p id="modal-body">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, porro!
     </p>
 
-    <label for="slider_new1">Value is {sliderValue}</label>
+    <p id="slider_new1">Value is {sliderValue}</p>
     <Slider
       bind:this={slider}
       bind:value={sliderValue}
-      id="slider_new1"
+      ariaLabeledBy="slider_new1"
       isTooltipEnabled
       tooltipValueSuffix="%"
     />
