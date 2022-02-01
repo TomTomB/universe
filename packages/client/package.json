@@ -6,7 +6,7 @@
   "description": "Universe client",
   "author": "Tom-Rune Bornholdt",
   "browserslist": [
-    "Chrome 96"
+    "Chrome 98"
   ],
   "scripts": {
     "postinstall": "yarn gen:build-vars",
