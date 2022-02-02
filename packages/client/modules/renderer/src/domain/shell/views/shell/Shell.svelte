@@ -10,6 +10,7 @@
     RoundedIconButton,
     PrimaryFlatButton,
     ButtonGroup,
+    PrimaryReplayButton,
     PrimaryMagicButton,
   } from '@/uikit/forms/components';
   import { onMount } from 'svelte';
@@ -47,6 +48,8 @@
   }}
 />
 <br />
+<PrimaryReplayButton ariaLabel="dd" />
+<br />
 
 <div style="display: flex; justify-content: center;">
   <RoundedMagicButton isDecorated>Start search</RoundedMagicButton>
@@ -64,21 +67,20 @@
 <br />
 <ButtonGroup>
   <PrimaryFlatButton>Default</PrimaryFlatButton>
-  <PrimaryFlatButton isExternal>Default dis</PrimaryFlatButton>
-  <PrimaryFlatButton isDisabled>Default dis</PrimaryFlatButton>
+  <PrimaryFlatButton isExternal>External</PrimaryFlatButton>
+  <PrimaryFlatButton isDisabled>Disabled</PrimaryFlatButton>
 </ButtonGroup>
 
 <ButtonGroup>
   <PrimaryFlatButton variant="golden">Default</PrimaryFlatButton>
-  <PrimaryFlatButton isExternal variant="golden">Ext gol</PrimaryFlatButton>
-  <PrimaryFlatButton variant="golden" isDisabled>Default dis</PrimaryFlatButton>
+  <PrimaryFlatButton isExternal variant="golden">External</PrimaryFlatButton>
+  <PrimaryFlatButton variant="golden" isDisabled>Disabled</PrimaryFlatButton>
 </ButtonGroup>
 
 <ButtonGroup>
   <PrimaryFlatButton variant="purple">purchase</PrimaryFlatButton>
-  <PrimaryFlatButton isExternal variant="purple">Ext pur</PrimaryFlatButton>
-  <PrimaryFlatButton variant="purple" isDisabled>purchase dis</PrimaryFlatButton
-  >
+  <PrimaryFlatButton isExternal variant="purple">External</PrimaryFlatButton>
+  <PrimaryFlatButton variant="purple" isDisabled>Disabled</PrimaryFlatButton>
 </ButtonGroup>
 
 <ButtonGroup>
@@ -111,6 +113,8 @@
     margin-top: 5rem;
     background-color: red;
     z-index: 999999;
+    clip-path: polygon(60% 0, 100% 50%, 60% 100%, 0 100%, 0 0);
+
     p {
       margin: 0;
       padding: 0;
