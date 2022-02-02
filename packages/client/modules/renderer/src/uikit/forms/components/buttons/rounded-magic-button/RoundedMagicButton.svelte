@@ -25,21 +25,21 @@
 
   .rounded-magic-container {
     position: relative;
-    height: 51px;
-    width: 188px;
+    block-size: 51px;
+    inline-size: 188px;
   }
 
   .rounded-magic-button {
     @include fontDisplay();
 
     display: block;
-    height: 100%;
-    width: 100%;
+    block-size: 100%;
+    inline-size: 100%;
     position: relative;
     color: rgb(var(--color-blue-100));
     font-size: 14px;
     font-weight: 700;
-    line-height: 18px;
+    line-block-size: 18px;
     letter-spacing: 0.075em;
     transition: color 300ms ease;
 
@@ -81,7 +81,7 @@
   .button-state {
     position: absolute;
     opacity: 0;
-    width: 100%;
+    inline-size: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     transition: opacity 0.3s ease;
@@ -110,8 +110,8 @@
     position: absolute;
     background-size: cover;
     top: 2px;
-    height: 28px;
-    width: 122px;
+    block-size: 28px;
+    inline-size: 122px;
     pointer-events: none;
 
     &-left {

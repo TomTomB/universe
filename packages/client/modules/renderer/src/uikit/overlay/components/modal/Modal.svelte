@@ -129,10 +129,7 @@
 <style lang="scss">
   .modal-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     display: grid;
     place-items: center;
     background-color: rgb(var(--color-black), 0.5);
@@ -147,17 +144,17 @@
     position: relative;
     background: #010a13;
     box-shadow: 0 0 0 1px rgb(var(--color-almost-black), 0.48);
-    max-width: 800px;
+    max-inline-size: 800px;
 
     will-change: transform, opacity;
 
     &::before {
       content: '';
       position: absolute;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      top: -2px;
-      left: -2px;
+      inline-size: calc(100% + 4px);
+      block-size: calc(100% + 4px);
+      inset-block-start: -2px;
+      inset-inline-start: -2px;
       box-shadow: 0 0 10px 1px rgb(var(--color-black), 0.5);
       pointer-events: none;
     }
@@ -169,32 +166,32 @@
         background: url(./assets/images/caret.png) 50% no-repeat;
       }
 
-      &.top::after {
-        height: 18px;
-        width: 100%;
-        top: -16px;
+      &.inset-block-start::after {
+        block-size: 18px;
+        inline-size: 100%;
+        inset-block-start: -16px;
         transform: rotate(180deg);
       }
 
-      &.bottom::after {
-        height: 18px;
-        width: 100%;
-        bottom: -17px;
+      &.inset-block-end::after {
+        block-size: 18px;
+        inline-size: 100%;
+        inset-block-end: -17px;
       }
 
-      &.left::after {
-        height: 100%;
-        width: 32px;
-        top: 0;
-        left: -23px;
+      &.inset-inline-start::after {
+        block-size: 100%;
+        inline-size: 32px;
+        inset-block-start: 0;
+        inset-inline-start: -23px;
         transform: rotate(90deg);
       }
 
-      &.right::after {
-        height: 100%;
-        width: 32px;
-        top: 0;
-        right: -23px;
+      &.inset-inline-end::after {
+        block-size: 100%;
+        inline-size: 32px;
+        inset-block-start: 0;
+        inset-inline-end: -23px;
         transform: rotate(-90deg);
       }
     }
@@ -204,21 +201,21 @@
       .sub-border {
         &::before,
         &::after {
-          left: 12px;
-          width: calc(100% - 24px);
-          height: 0;
+          inset-inline-start: 12px;
+          inline-size: calc(100% - 24px);
+          block-size: 0;
           border-width: 4px 4px 0 4px;
           border-image-width: 4px 4px 0 4px;
           border-image-slice: 4 4 0 4;
         }
 
         &::before {
-          top: -6px;
+          inset-block-start: -6px;
           border-image-source: url(./assets/images/sub-border-secondary-horizontal.png);
         }
 
         &::after {
-          bottom: -6px;
+          inset-block-end: -6px;
           border-image-source: url(./assets/images/sub-border-primary-horizontal.png);
         }
       }
@@ -229,21 +226,21 @@
       .sub-border {
         &::before,
         &::after {
-          top: 12px;
-          height: calc(100% - 24px);
-          width: 0;
+          inset-block-start: 12px;
+          block-size: calc(100% - 24px);
+          inline-size: 0;
           border-width: 4px 4px 4px 0;
           border-image-width: 4px 4px 4px 0;
           border-image-slice: 4 4 4 0;
         }
 
         &::before {
-          left: -6px;
+          inset-inline-start: -6px;
           border-image-source: url(./assets/images/sub-border-primary-vertical.png);
         }
 
         &::after {
-          right: -6px;
+          inset-inline-end: -6px;
           border-image-source: url(./assets/images/sub-border-secondary-vertical.png);
         }
       }
@@ -353,8 +350,8 @@
 
   .sub-border {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     pointer-events: none;
 
     &::before,
@@ -371,10 +368,10 @@
     &::before {
       content: '';
       position: absolute;
-      width: 38px;
-      height: 68px;
-      top: -22px;
-      right: -22px;
+      inline-size: 38px;
+      block-size: 68px;
+      inset-block-start: -22px;
+      inset-inline-end: -22px;
       background-image: url(./assets/images/frame-button-close-top-down.png);
       background-size: 38px 68px;
     }
@@ -382,24 +379,24 @@
 
   .top-right-close-button {
     position: absolute;
-    top: -17px;
-    right: -17px;
-    width: 28px;
-    height: 28px;
+    inset-block-start: -17px;
+    inset-inline-end: -17px;
+    inline-size: 28px;
+    block-size: 28px;
 
     > div {
-      width: 24px;
-      height: 24px;
+      inline-size: 24px;
+      block-size: 24px;
     }
   }
 
   .top-right-close-toast-button {
     display: block;
-    height: 24px;
-    width: 24px;
+    block-size: 24px;
+    inline-size: 24px;
     position: absolute;
-    top: 8px;
-    right: 8px;
+    inset-block-start: 8px;
+    inset-inline-end: 8px;
     background: url(./assets/images/close.png), rgb(var(--color-black), 0.5);
     cursor: pointer;
     border-radius: 4px;

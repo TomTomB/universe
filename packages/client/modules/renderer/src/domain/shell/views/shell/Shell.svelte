@@ -33,6 +33,7 @@
 </button>
 
 <ArrowFooter
+  isDecorated
   primaryButton={{
     isDisabled: false,
     type: 'button',
@@ -58,7 +59,7 @@
 <RoundedIconButton ariaLabel="icon btn" icon="close" isDisabled />
 <br />
 
-<ArrowButton ariaLabel="dd" />
+<ArrowButton ariaLabel="dd" isRotated />
 
 <br />
 <ButtonGroup>

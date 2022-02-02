@@ -8,34 +8,34 @@
 
     position: relative;
     background-color: rgb(var(--color-almost-black));
-    padding: 0 4px;
+    padding-inline: 4px;
     display: inline-flex;
 
     &::before,
     &::after {
       content: '';
       position: absolute;
-      height: 10px;
+      block-size: 10px;
     }
 
     &::before {
       left: 0;
       bottom: 0;
-      border-right: 2px solid var(--border-color);
-      border-top: 2px solid transparent;
-      height: 10px;
+      border-inline-end: 2px solid var(--border-color);
+      border-block-start: 2px solid transparent;
+      block-size: 10px;
     }
 
     &::after {
       right: 0;
       bottom: 0;
-      border-left: 2px solid var(--border-color);
-      border-top: 2px solid transparent;
-      height: 10px;
+      border-inline-start: 2px solid var(--border-color);
+      border-block-start: 2px solid transparent;
+      block-size: 10px;
     }
 
     :global(button + button) {
-      margin-left: 0.125rem;
+      margin-inline-start: 0.125rem;
     }
   }
 </style>

@@ -22,11 +22,12 @@
 <style lang="scss">
   .arrow-button {
     display: block;
-    height: 48px;
-    width: 44px;
+    block-size: 48px;
+    inline-size: 44px;
     position: relative;
 
-    &.is-rotated {
+    &.is-rotated:not(:dir(rtl)),
+    &:dir(rtl) {
       transform: rotate(180deg);
     }
 
@@ -66,8 +67,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     transition: opacity 0.3s ease;
-    top: 2px;
-    bottom: 2px;
+    inset-block: 2px;
 
     &.default {
       opacity: 1;

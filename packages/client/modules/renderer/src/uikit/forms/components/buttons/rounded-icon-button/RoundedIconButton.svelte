@@ -45,8 +45,8 @@
 
 <style lang="scss">
   .rounded-icon-button {
-    width: 32px;
-    height: 32px;
+    inline-size: 32px;
+    block-size: 32px;
     border-radius: 50%;
 
     display: flex;
@@ -146,8 +146,8 @@
   }
 
   .contents {
-    width: 28px;
-    height: 28px;
+    inline-size: 28px;
+    block-size: 28px;
     border-radius: 50%;
     transition: box-shadow 150ms ease, color 150ms ease;
 
@@ -190,8 +190,8 @@
     -webkit-mask-size: var(--maskSize);
 
     background-color: rgb(var(--color-gold-200));
-    width: 10px;
-    height: 10px;
+    inline-size: 10px;
+    block-size: 10px;
     transition: background-color 300ms ease;
   }
 
@@ -202,8 +202,8 @@
         --maskUrl: url(./assets/images/arrow-right.png);
         --maskSize: 7px 10px;
 
-        width: 7px;
-        height: 10px;
+        inline-size: 7px;
+        block-size: 10px;
       }
     }
 
@@ -212,8 +212,8 @@
         --maskUrl: url(./assets/images/refresh.png);
         --maskSize: 20px;
 
-        width: 20px;
-        height: 20px;
+        inline-size: 20px;
+        block-size: 20px;
       }
     }
 
@@ -222,8 +222,8 @@
         --maskUrl: url(./assets/images/icon_settings.png);
         --maskSize: 18px;
 
-        width: 24px;
-        height: 24px;
+        inline-size: 24px;
+        block-size: 24px;
       }
     }
 
@@ -232,8 +232,8 @@
         --maskUrl: url(./assets/images/icon_edit.png);
         --maskSize: 13px 12px;
 
-        width: 13px;
-        height: 12px;
+        inline-size: 13px;
+        block-size: 12px;
       }
     }
 
@@ -242,8 +242,8 @@
         --maskUrl: url(./assets/images/icon_add.png);
         --maskSize: 10px;
 
-        width: 10px;
-        height: 10px;
+        inline-size: 10px;
+        block-size: 10px;
       }
     }
 
@@ -252,8 +252,8 @@
         --maskUrl: url(./assets/images/icon_delete.png);
         --maskSize: 13px 15px;
 
-        width: 13px;
-        height: 15px;
+        inline-size: 13px;
+        block-size: 15px;
       }
     }
 
@@ -262,8 +262,8 @@
         --maskUrl: url(./assets/images/icon_next.png);
         --maskSize: 17px 16px;
 
-        width: 17px;
-        height: 16px;
+        inline-size: 17px;
+        block-size: 16px;
       }
     }
 
@@ -272,8 +272,8 @@
         --maskUrl: url(./assets/images/icon_compare.png);
         --maskSize: 18px;
 
-        width: 24px;
-        height: 24px;
+        inline-size: 24px;
+        block-size: 24px;
       }
     }
 
@@ -282,8 +282,8 @@
         --maskUrl: url(./assets/images/icon_back.png);
         --maskSize: 16px;
 
-        width: 16px;
-        height: 16px;
+        inline-size: 16px;
+        block-size: 16px;
       }
     }
 
@@ -292,8 +292,8 @@
         --maskUrl: url(./assets/images/icon_plus.png);
         --maskSize: 11px;
 
-        width: 11px;
-        height: 11px;
+        inline-size: 11px;
+        block-size: 11px;
       }
     }
 
@@ -302,8 +302,8 @@
         --maskUrl: url(./assets/images/icon_copy.png);
         --maskSize: 18px;
 
-        width: 20px;
-        height: 20px;
+        inline-size: 20px;
+        block-size: 20px;
       }
     }
 
@@ -312,8 +312,8 @@
         --maskUrl: url(./assets/images/icon_clearall.png);
         --maskSize: 17px 16px;
 
-        width: 17px;
-        height: 16px;
+        inline-size: 17px;
+        block-size: 16px;
       }
     }
 
@@ -322,8 +322,8 @@
         --maskUrl: url(./assets/images/icon_export.png);
         --maskSize: 14px;
 
-        width: 17px;
-        height: 16px;
+        inline-size: 17px;
+        block-size: 16px;
       }
     }
 
@@ -332,8 +332,8 @@
         --maskUrl: url(./assets/images/icon_import.png);
         --maskSize: 14px;
 
-        width: 17px;
-        height: 16px;
+        inline-size: 17px;
+        block-size: 16px;
       }
     }
   }
@@ -341,8 +341,8 @@
   .button-state {
     position: absolute;
     opacity: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     transition: opacity 0.3s ease;
     border-radius: 50%;
 

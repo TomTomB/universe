@@ -1,7 +1,7 @@
 ::-webkit-scrollbar {
-  width: 11px;
+  inline-size: 11px;
   background-color: transparent;
-  height: 11px;
+  block-size: 11px;
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -20,7 +20,7 @@
   border: 3px solid transparent;
   border-radius: 6px;
   background-clip: padding-box;
-  height: 11px;
+  block-size: 11px;
   background-color: rgb(var(--color-gold-500));
 }
 

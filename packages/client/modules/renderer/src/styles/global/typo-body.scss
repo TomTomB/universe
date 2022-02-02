@@ -39,17 +39,17 @@ a {
     text-decoration: none;
 
     &::after {
-      width: 9px;
-      height: 9px;
+      inline-size: 9px;
+      block-size: 9px;
       content: '';
       display: inline-block;
       vertical-align: middle;
       -webkit-mask: url(./assets/external-link-mask.png) no-repeat;
       -webkit-mask-size: contain;
       background-color: rgb(var(--color-blue-400));
-      margin-left: 5px;
+      margin-inline-start: 5px;
       position: relative;
-      bottom: 1px;
+      inset-block-end: 1px;
     }
 
     &:hover,

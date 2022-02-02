@@ -67,6 +67,7 @@ const createWindow = async () => {
     center: true,
     frame: false,
     webPreferences: {
+      experimentalFeatures: true,
       sandbox: true,
       contextIsolation: true,
       devTools: !app.isPackaged,

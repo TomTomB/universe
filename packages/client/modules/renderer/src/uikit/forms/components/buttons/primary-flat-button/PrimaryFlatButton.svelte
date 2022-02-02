@@ -68,8 +68,9 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    padding: 5px 1.3em;
-    min-height: 32px;
+    padding-block: 5px;
+    padding-inline: 1.3em;
+    min-block-size: 32px;
     box-shadow: 0 0 1px 1px rgb(var(--color-almost-black)),
       inset 0 0 1px 1px rgb(var(--color-almost-black));
     background: rgb(var(--color-grey-700));
@@ -368,8 +369,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     overflow: hidden;
 
     &::before {
@@ -377,8 +378,8 @@
       position: absolute;
       top: -25px;
       left: -25px;
-      width: 48px;
-      height: 48px;
+      inline-size: 48px;
+      block-size: 48px;
       opacity: 0;
       background: transparent url(./assets/images/sheen.png) top center
         no-repeat;
@@ -389,8 +390,8 @@
       position: absolute;
       bottom: -25px;
       right: -25px;
-      width: 48px;
-      height: 48px;
+      inline-size: 48px;
+      block-size: 48px;
       opacity: 0;
       background: transparent url(./assets/images/sheen.png) top center
         no-repeat;
@@ -401,8 +402,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     filter: blur(4px);
     animation: initial;
   }
@@ -411,8 +412,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     transition: opacity 400ms cubic-bezier(0, 0, 0.33, 1);
     opacity: 0;
     background-image: linear-gradient(
@@ -427,8 +428,8 @@
     position: absolute;
     top: -2px;
     left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    inline-size: calc(100% + 4px);
+    block-size: calc(100% + 4px);
     opacity: 1;
     border: 2px solid transparent;
     border-image: linear-gradient(
@@ -446,8 +447,8 @@
     position: absolute;
     top: -2px;
     left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    inline-size: calc(100% + 4px);
+    block-size: calc(100% + 4px);
     opacity: 0;
     border: 2px solid transparent;
   }
@@ -457,8 +458,8 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
   }
 
   .sheen {
@@ -466,8 +467,8 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    width: 100%;
-    height: 150%;
+    inline-size: 100%;
+    block-size: 150%;
     transform: translateY(-100%);
     background: linear-gradient(
       to bottom,
@@ -483,8 +484,8 @@
 
     &::after {
       display: none;
-      width: 9px;
-      height: 9px;
+      inline-size: 9px;
+      block-size: 9px;
       content: '';
       vertical-align: middle;
       mask: url(./assets/images/external-link-mask.png) no-repeat;
@@ -492,8 +493,8 @@
       mask-size: contain;
       -webkit-mask-size: contain;
       background: rgb(var(--color-gold-200));
-      margin-left: 5px;
-      margin-top: -5px;
+      margin-inline-start: 5px;
+      margin-block-start: -5px;
     }
   }
 

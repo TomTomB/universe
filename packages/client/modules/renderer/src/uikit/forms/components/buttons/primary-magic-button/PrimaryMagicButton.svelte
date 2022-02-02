@@ -63,8 +63,8 @@
   .frame {
     display: block;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     box-sizing: border-box;
     transition: 300ms all linear;
 
@@ -72,8 +72,8 @@
     &::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       top: 0;
       left: 0;
       box-sizing: border-box;
@@ -142,8 +142,8 @@
     background-repeat: no-repeat;
 
     &-left {
-      width: 44px;
-      height: 22px;
+      inline-size: 44px;
+      block-size: 22px;
       left: 0;
       bottom: 0;
       background-image: url(./assets/images/magic-button-left-runes-44x22-29f30f29f.png);
@@ -151,8 +151,8 @@
     }
 
     &-right {
-      width: 62px;
-      height: 22px;
+      inline-size: 62px;
+      block-size: 22px;
       right: 0;
       top: 0;
       background-image: url(./assets/images/magic-button-right-runes-62x22-25f30f29f.png);
@@ -162,16 +162,16 @@
 
   .radial-container {
     display: block;
-    width: 0;
-    height: 0;
+    inline-size: 0;
+    block-size: 0;
     pointer-events: none;
   }
 
   .radial-effect {
     display: none;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     padding: 3px;
     box-sizing: border-box;
     overflow: hidden;
@@ -182,8 +182,8 @@
       content: '';
       display: block;
       position: absolute;
-      width: 100%;
-      height: 120px;
+      inline-size: 100%;
+      block-size: 120px;
       top: -120px;
       opacity: 0.1;
       background-image: radial-gradient(
@@ -207,18 +207,18 @@
     position: relative;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
-    padding: 0 1.3em;
+    inline-size: 100%;
+    padding-inline: 1.3em;
     text-align: center;
     box-sizing: border-box;
     border: 2px solid transparent;
     overflow: hidden;
     transition: 300ms all linear;
-    height: 100%;
+    block-size: 100%;
   }
 
   .primary-magic-button {
-    height: 32px;
+    block-size: 32px;
     position: relative;
     display: flex;
 

@@ -182,7 +182,7 @@ body {
 }
 
 hr {
-  border-top-width: 1px;
+  border-block-start-width: 1px;
 }
 
 img {
@@ -263,8 +263,8 @@ video {
 
 img,
 video {
-  max-width: 100%;
-  height: auto;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 [hidden] {

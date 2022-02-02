@@ -112,7 +112,7 @@
   .arrow-footer {
     display: flex;
     justify-content: center;
-    height: 43px;
+    block-size: 43px;
 
     &.is-secondary-hidden {
       .border-bg {
@@ -121,12 +121,13 @@
         }
 
         .border-middle-bg {
-          margin: 0 7px;
+          margin-block: 0;
+          margin-inline: 7px;
         }
       }
 
       .primary-button {
-        margin-left: 0;
+        margin-inline-start: 0;
 
         .left-primary {
           .button-state {
@@ -173,14 +174,18 @@
         }
       }
     }
+
+    &:dir(rtl) :global(.animated-arrow-overlay-container) {
+      transform: scale(-1);
+    }
   }
 
   .button-state {
     width: 100%;
-    height: 100%;
+    block-size: 100%;
     position: absolute;
-    left: 0;
-    top: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -197,18 +202,22 @@
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.0325em;
-    height: 34px;
+    block-size: 34px;
     min-width: 170px;
-    padding-right: 1px;
-    margin-left: 29px;
+    padding-inline-end: 1px;
+    margin-inline-start: 29px;
     color: rgb(var(--color-blue-200));
     position: relative;
     display: flex;
-    top: 5px;
+    inset-block-start: 5px;
     transition: color 300ms ease;
 
     span {
       position: relative;
+
+      &:dir(rtl) {
+        transform: scale(-1);
+      }
     }
 
     &:hover,
@@ -247,9 +256,13 @@
     }
 
     .left-primary {
-      height: 34px;
+      block-size: 34px;
       width: 12px;
       position: relative;
+
+      &:dir(rtl) {
+        transform: scale(-1);
+      }
 
       .button-state {
         &.default {
@@ -277,14 +290,18 @@
 
     .middle-primary {
       background-size: 100% 100%;
-      height: 34px;
+      block-size: 34px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-grow: 1;
-      padding: 0px 10px;
+      padding-inline: 10px;
       background-repeat: repeat-x;
       position: relative;
+
+      &:dir(rtl) {
+        transform: scale(-1);
+      }
 
       .button-state {
         &.default {
@@ -312,9 +329,13 @@
 
     .right-primary {
       background-size: 100% 100%;
-      height: 34px;
+      block-size: 34px;
       width: 17px;
       position: relative;
+
+      &:dir(rtl) {
+        transform: scale(-1);
+      }
 
       .button-state {
         &.default {
@@ -343,11 +364,11 @@
 
   .secondary-button {
     width: 34px;
-    height: 34px;
+    block-size: 34px;
     background-size: contain;
     position: absolute;
-    left: 0px;
-    top: 5px;
+    inset-inline-start: 0px;
+    inset-block-start: 5px;
 
     &:hover .hover,
     &:focus-visible .hover {
@@ -398,7 +419,7 @@
     }
 
     .secondary-icon {
-      height: 34px;
+      block-size: 34px;
       width: 34px;
 
       .button-state {
@@ -458,33 +479,40 @@
   .border-bg {
     position: absolute;
     width: 100%;
-    height: 44px;
+    block-size: 44px;
     display: flex;
 
+    &:dir(rtl) {
+      .border-left-bg,
+      .border-right-bg {
+        transform: scale(-1);
+      }
+    }
+
     .border-left-bg {
-      height: 44px;
+      block-size: 44px;
       width: 29px;
       position: absolute;
-      top: 0px;
-      left: -6px;
+      inset-block-start: 0px;
+      inset-inline-start: -6px;
       background-size: 100% 100%;
       background-image: url(./assets/images/bgleft.png);
     }
 
     .border-middle-bg {
       flex-grow: 1;
-      height: 44px;
-      margin: 0px 12px;
+      block-size: 44px;
+      margin-inline: 12px;
       background-size: contain;
       background-image: url(./assets/images/bgmid.png);
     }
 
     .border-right-bg {
-      height: 44px;
+      block-size: 44px;
       width: 26px;
       position: absolute;
-      top: 0;
-      right: -6px;
+      inset-block-start: 0;
+      inset-inline-end: -6px;
       background-size: 100% 100%;
       background-image: url(./assets/images/bgright.png);
     }
@@ -500,16 +528,20 @@
     .decoration-child {
       background-size: 100% 100%;
       width: 256px;
-      height: 8px;
+      block-size: 8px;
+
+      &:dir(rtl) {
+        transform: scale(-1);
+      }
 
       &-left {
-        margin-right: 50px;
+        margin-inline-end: 50px;
         align-self: flex-end;
         background-image: url(./assets/images/footermetaldecorationleft.png);
       }
 
       &-right {
-        margin-left: 50px;
+        margin-inline-start: 50px;
         align-self: flex-start;
         background-image: url(./assets/images/footermetaldecorationright.png);
       }

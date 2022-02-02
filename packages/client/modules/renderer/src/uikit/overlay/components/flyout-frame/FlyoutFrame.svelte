@@ -158,22 +158,21 @@
       rgb(var(--color-gold-700)) 100%;
 
     will-change: opacity;
-
     &[data-popper-placement^='top'],
     &[data-popper-placement^='bottom'] {
       .border {
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
       }
 
       .sub-border {
-        left: 8px;
-        width: calc(100% - 16px);
-        height: 0;
+        inset-inline-start: 8px;
+        inline-size: calc(100% - 16px);
+        block-size: 0;
 
         &::before {
-          width: 100%;
-          height: 0;
+          inline-size: 100%;
+          block-size: 0;
           border-image-source: url(./assets/images/sub-border-primary-horizontal.png);
           border-width: 4px 4px 0 4px;
           border-image-width: 4px 4px 0 4px;
@@ -191,18 +190,18 @@
     &[data-popper-placement^='left'],
     &[data-popper-placement^='right'] {
       .border {
-        width: 100%;
-        height: 100%;
+        inline-size: 100%;
+        block-size: 100%;
       }
 
       .sub-border {
-        width: 0;
-        height: calc(100% - 16px);
-        top: 8px;
+        inline-size: 0;
+        block-size: calc(100% - 16px);
+        inset-block-start: 8px;
 
         &::before {
-          height: 100%;
-          width: 0;
+          block-size: 100%;
+          inline-size: 0;
           border-image-source: url(./assets/images/sub-border-primary-vertical.png);
           border-width: 4px 4px 4px 0;
           border-image-width: 4px 4px 4px 0;
@@ -219,11 +218,11 @@
       }
 
       .sub-border {
-        bottom: 0;
+        inset-block-end: 0;
       }
 
       .caret {
-        bottom: -13px;
+        inset-block-end: -13px;
       }
     }
 
@@ -234,7 +233,7 @@
       }
 
       .sub-border {
-        top: -4px;
+        inset-block-start: -4px;
 
         &::before {
           transform: rotate(180deg);
@@ -242,7 +241,7 @@
       }
 
       .caret {
-        top: -13px;
+        inset-block-start: -13px;
 
         &::before {
           transform: rotate(180deg);
@@ -257,7 +256,7 @@
       }
 
       .sub-border {
-        right: 0;
+        inset-inline-end: 0;
 
         &::before {
           transform: rotate(180deg);
@@ -265,7 +264,7 @@
       }
 
       .caret {
-        right: -17px;
+        inset-inline-end: -17px;
 
         &::before {
           transform: rotate(270deg);
@@ -280,11 +279,11 @@
       }
 
       .sub-border {
-        left: -4px;
+        inset-inline-start: -4px;
       }
 
       .caret {
-        left: -17px;
+        inset-inline-start: -17px;
 
         &::before {
           transform: rotate(90deg);
@@ -304,10 +303,10 @@
     &::before {
       content: '';
       position: absolute;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      top: -2px;
-      left: -2px;
+      inline-size: calc(100% + 4px);
+      block-size: calc(100% + 4px);
+      inset-block-start: -2px;
+      inset-inline-start: -2px;
       box-shadow: 0 0 10px 1px rgb(var(--color-almost-black), 0.5);
       pointer-events: none;
     }
@@ -330,14 +329,14 @@
     display: flex;
     justify-content: center;
     z-index: 2;
-    width: 24px;
-    height: 16px;
+    inline-size: 24px;
+    block-size: 16px;
 
     &::before {
       content: '';
       position: relative;
-      width: 100%;
-      height: 100%;
+      inline-size: 100%;
+      block-size: 100%;
       background-image: url(./assets/images/pointer-intro-01.png);
       background-size: initial;
       background-position: -312px;
@@ -349,10 +348,10 @@
     &::before {
       content: '';
       position: absolute;
-      width: 38px;
-      height: 68px;
-      top: -20px;
-      right: -20px;
+      inline-size: 38px;
+      block-size: 68px;
+      inset-block-start: -20px;
+      inset-inline-end: -20px;
       background-image: url(./assets/images/frame-button-close-top-down.png);
       background-size: 38px 68px;
       z-index: 1;
@@ -361,15 +360,15 @@
 
   .close-button {
     position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 28px;
-    height: 28px;
+    inset-block-start: -15px;
+    inset-inline-end: -15px;
+    inline-size: 28px;
+    block-size: 28px;
     z-index: 1;
 
     > div {
-      width: 24px;
-      height: 24px;
+      inline-size: 24px;
+      block-size: 24px;
     }
   }
 

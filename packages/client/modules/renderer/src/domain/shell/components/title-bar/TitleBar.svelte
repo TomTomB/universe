@@ -26,10 +26,9 @@
   .title-bar {
     -webkit-app-region: drag;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 32px;
+    inset-inline: 0;
+    inset-block-start: 0;
+    block-size: 32px;
     display: grid;
     justify-content: end;
     z-index: 10000;
@@ -39,8 +38,8 @@
     -webkit-app-region: no-drag;
     align-self: center;
     position: relative;
-    top: -1px;
-    right: 10px;
+    inset-block-start: -1px;
+    inset-inline-end: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
