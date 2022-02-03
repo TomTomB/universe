@@ -54,7 +54,7 @@
     "electron-devtools-installer": "3.2.0",
     "eslint-plugin-svelte3": "3.4.0",
     "sass": "1.49.7",
-    "svelte": "3.46.3",
+    "svelte": "3.46.4",
     "svelte-check": "2.4.1",
     "svelte-preprocess": "4.10.2",
     "prettier-plugin-svelte": "2.6.0",
