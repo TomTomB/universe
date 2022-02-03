@@ -6,3 +6,4 @@ export * from './rounded-icon-button';
 export * from './primary-flat-button';
 export * from './primary-magic-button';
 export * from './primary-replay-button';
+export * from './secondary-flat-button';

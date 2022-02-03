@@ -6,7 +6,18 @@
   -webkit-font-feature-settings: 'kern' 1;
   -webkit-font-smoothing: antialiased;
 
-  @if expression($uppercase) {
+  @if $uppercase == true {
+    text-transform: uppercase;
+  }
+}
+
+@mixin fontBody($uppercase: false) {
+  font-family: LoL Body;
+  font-kerning: normal;
+  -webkit-font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  @if $uppercase == true {
     text-transform: uppercase;
   }
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
   export let isDisabled = false;
   export let isDecorated = false;
+  export let type: 'button' | 'submit' | 'reset' | null = null;
 </script>
 
 <div class="rounded-magic-container">
@@ -8,7 +9,12 @@
     <div class="decoration-child decoration-child-left" />
   {/if}
 
-  <button class="rounded-magic-button" disabled={isDisabled}>
+  <button
+    class="rounded-magic-button"
+    disabled={isDisabled}
+    type={type ?? 'button'}
+    on:click
+  >
     <div class="button-state default" />
     <div class="button-state hover" />
     <div class="button-state active" />

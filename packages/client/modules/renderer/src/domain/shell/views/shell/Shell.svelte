@@ -12,6 +12,7 @@
     ButtonGroup,
     PrimaryReplayButton,
     PrimaryMagicButton,
+    SecondaryFlatButton,
   } from '@/uikit/forms/components';
   import { onMount } from 'svelte';
   import { TitleBar } from '../../components';
@@ -64,6 +65,11 @@
 
 <ArrowButton ariaLabel="dd" isRotated />
 
+<ButtonGroup>
+  <SecondaryFlatButton>Hello</SecondaryFlatButton>
+  <SecondaryFlatButton isDisabled>Disabled</SecondaryFlatButton>
+</ButtonGroup>
+<br />
 <br />
 <ButtonGroup>
   <PrimaryFlatButton>Default</PrimaryFlatButton>
