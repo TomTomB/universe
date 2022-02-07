@@ -55,7 +55,7 @@
     "eslint-plugin-svelte3": "3.4.0",
     "sass": "1.49.7",
     "svelte": "3.46.4",
-    "svelte-check": "2.4.2",
+    "svelte-check": "2.4.3",
     "svelte-preprocess": "4.10.2",
     "prettier-plugin-svelte": "2.6.0",
     "tslib": "2.3.1"
